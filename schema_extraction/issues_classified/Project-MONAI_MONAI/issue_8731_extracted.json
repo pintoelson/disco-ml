@@ -1,0 +1,15 @@
+{
+  "Issue": "Feature request to add SparseDice, SparseClDice, CenterlineDice Losses and 3D TransUNet for 3D medical image segmentation tasks",
+  "Decision": "Addition of SparseDiceLoss, SparseClDiceLoss, CenterlineDiceLoss, and 3D TransUNet to MONAI",
+  "Rationale": "These additions would greatly help users working on complex 3D segmentation tasks, especially with sparse annotations and tubular structures. SparseDiceLoss supports sparse labels for multi-class segmentation with incomplete annotations. SparseClDiceLoss combines clDice and sparse label support for tubular structures. CenterlineDiceLoss measures topological agreement between predicted and ground-truth structures by comparing their soft skeletons, useful for thin elongated objects in 2D/3D. 3D TransUNet extends the current 2D TransUNet to full 3D to handle volumetric medical images directly.",
+  "Author": "jermmy19998",
+  "Status": "open",
+  "Description": "MONAI library for 3D medical image segmentation tasks",
+  "Time stamp": "2026-02-04T08:48:46Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "Loss functions and model architecture for 3D medical image segmentation",
+  "Justification": "The decision involves adding specific loss functions (SparseDiceLoss, SparseClDiceLoss, CenterlineDiceLoss) and a model architecture (3D TransUNet) to the MONAI library, which are directly related to algorithm selection and model architecture refinement for medical image segmentation tasks."
+}

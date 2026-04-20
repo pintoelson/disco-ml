@@ -1,0 +1,21 @@
+{
+  "Issue": "apex.contrib.clip_grad.clip_grad_norm_ crashes with PyTorch 2.10 due to multi_tensor_applier attempting to access raw data pointer of gradient tensors, which no longer expose traditional storage in PyTorch 2.10",
+  "Decision": "Upgrade apex.contrib.clip_grad.clip_grad_norm_ to be compatible with PyTorch 2.10's tensor storage changes",
+  "Rationale": "PyTorch 2.10 introduced changes where some tensors (e.g., those with lazy/functional storage) no longer expose traditional storage, causing apex's multi_tensor_applier to fail when accessing raw data pointers of gradient tensors. This necessitates an update to apex.contrib.clip_grad.clip_grad_norm_ to handle these new tensor storage behaviors.",
+  "Author": "KumoLiu",
+  "Status": "open",
+  "Description": "apex.contrib.clip_grad.clip_grad_norm_ function in the MONAI repository",
+  "Time stamp": "2026-02-11T15:21:51Z",
+  "Cost": null,
+  "Risk": "Technical debt: Incompatibility with PyTorch 2.10's tensor storage changes may lead to crashes in gradient clipping operations. Potential side effects include failures in training pipelines that rely on apex.contrib.clip_grad.clip_grad_norm_.",
+  "Argument": [
+    {
+      "author": "KumoLiu",
+      "timestamp": "2026-02-11T15:21:51Z",
+      "argument": "PyTorch 2.10's changes to tensor storage (removing traditional storage for some tensors) cause apex.contrib.clip_grad.clip_grad_norm_ to crash when accessing raw data pointers, necessitating an update to apex to handle these new behaviors."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "apex.contrib.clip_grad.clip_grad_norm_",
+  "Justification": "The issue relates to compatibility changes for apex.contrib.clip_grad.clip_grad_norm_ in PyTorch 2.10, specifically about tensor storage access in gradient clipping operations. Keywords like 'layers' (implied in tensor operations) and the context of training pipeline failures due to algorithmic changes point to Modeling Development."
+}

@@ -1,0 +1,23 @@
+{
+  "Issue": "In `JukeboxLoss.forward()`, the variable names `input_amplitude` and `target_amplitude` were swapped: `input_amplitude` was computed from `target` (should be from `input`) and `target_amplitude` was computed from `input` (should be from `target`)",
+  "Decision": "Swap `input_amplitude` and `target_amplitude` assignments in `JukeboxLoss.forward()` to match semantic meaning and PyTorch convention",
+  "Rationale": "Corrects the assignments to match semantic meaning and the standard `forward(input, target)` PyTorch convention. Fixes the docstring bug in `SSIMLoss.forward()` where examples incorrectly showed `print(1-SSIMLoss()(x,y))` instead of the raw SSIM value",
+  "Author": "Zeesejo",
+  "Status": "closed",
+  "Description": "`JukeboxLoss.forward()` method in `monai/losses/spectral_loss.py` and `SSIMLoss.forward()` docstring in `monai/losses/ssim_loss.py`",
+  "Time stamp": "2026-04-11T18:17:54Z (created), 2026-04-11T18:46:18Z (updated)",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-11T18:18:09Z",
+      "argument": "No actionable comments were generated in the recent review"
+    },
+    {
+      "author": "Zeesejo",
+      "timestamp": "2026-04-11T18:46:18Z",
+      "argument": "This PR now also includes a second commit (`4417d79`) that fixes a docstring bug in `SSIMLoss.forward()` (tracked in #8822). The `forward()` docstring examples showed `print(1-SSIMLoss()(x,y))`, but since `SSIMLoss` already computes `1 - ssim_value` internally, those examples would actually return the raw SSIM value (not the loss)"
+    }
+  ]
+}

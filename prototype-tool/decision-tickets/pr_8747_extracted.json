@@ -1,0 +1,26 @@
+{
+  "Issue": "Slightly improve performance in engines/utils.py",
+  "Decision": "Replace list() with [] and dict() with {} in PrepareBatchExtraInput.__call__",
+  "Rationale": "Using [] and {} is semantically the same as list() and dict() but likely slightly better in performance due to reduced dictionary lookups and temporary objects",
+  "Author": "benediktjohannes",
+  "Status": "Approved",
+  "Description": "monai/engines/utils.py, specifically in PrepareBatchExtraInput.__call__",
+  "Time stamp": "2026-02-22T13:13:41Z (created), 2026-04-02T17:25:31Z (merged)",
+  "Cost": "Low (trivial changes with minimal resource impact)",
+  "Risk": "Minimal (no control-flow or error-handling changes, only container initialization optimization)",
+  "Argument": [
+    {
+      "author": "benediktjohannes",
+      "timestamp": "2026-02-22T13:13:41Z",
+      "argument": "Using [] and {} is semantically the same as list() and dict() but likely slightly better in performance due to reduced dictionary lookups and temporary objects"
+    },
+    {
+      "author": "benediktjohannes",
+      "timestamp": "2026-04-02T17:25:31Z",
+      "argument": "Could you maybe open an extra PR for your additional suggestions and merge this for now, so that we can check on the more complex (and test requiring) changes lateron, but already have these safe slight improvements?"
+    }
+  ],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "engines/utils.py",
+  "Justification": "The change involves optimizing Python container initialization ([] and {}) in a utility function, which is a general code optimization unrelated to ML-specific lifecycle stages. Keywords like 'performance' refer to software engineering improvements, not ML model tuning or data processing."
+}

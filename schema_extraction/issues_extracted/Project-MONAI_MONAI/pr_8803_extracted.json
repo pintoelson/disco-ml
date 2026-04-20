@@ -1,0 +1,38 @@
+{
+  "Issue": "Handling precomputed crops and safe no-grad cleanup in auto3dseg analyzer",
+  "Decision": "Added validation for precomputed nda_croppeds and used @torch.no_grad() for exception-safe gradient state handling in ImageStats, FgImageStats, and LabelStats",
+  "Rationale": "Added explicit type and length validation for precomputed nda_croppeds to raise clear ValueError for invalid/mismatched values. Used @torch.no_grad() to ensure gradient state is preserved after exceptions, addressing potential side effects and uncertainties in the architecture.",
+  "Author": "bluehyena",
+  "Status": "closed",
+  "Description": "monai.auto3dseg.analyzer (ImageStats, FgImageStats, LabelStats)",
+  "Time stamp": "2026-04-02T15:16:07Z (created), 2026-04-17T13:35:11Z (CI issues fixed)",
+  "Cost": "Minor (added tests and validation logic)",
+  "Risk": "Potential side effects from gradient state leakage if no-grad context was not properly handled. Technical debt from unclear error messages for malformed precomputed crops.",
+  "Argument": [
+    {
+      "author": "williams145",
+      "timestamp": "2026-04-09T22:24:26Z",
+      "argument": "The ternary in nda_croppeds handling lacks validation; errors surface downstream as confusing shape mismatches rather than clear messages. #8809 adds explicit type and length validation with descriptive ValueError."
+    },
+    {
+      "author": "williams145",
+      "timestamp": "2026-04-09T22:24:26Z",
+      "argument": "torch.no_grad() always restores grad to enabled after the block, regardless of caller state. If caller had grad disabled, this silently re-enables it, a subtle semantic change. #8810 uses try/finally with torch.is_grad_enabled() to restore exact pre-call state."
+    },
+    {
+      "author": "bluehyena",
+      "timestamp": "2026-04-15T13:10:18Z",
+      "argument": "Moved ImageStats.__call__ docstring to method top and switched analyzer __call__ methods to @torch.no_grad() for clarity. Verified no_grad restores caller's previous grad state on exit, including exception paths."
+    },
+    {
+      "author": "williams145",
+      "timestamp": "2026-04-16T20:21:45Z",
+      "argument": "Correction: torch.no_grad() does not unconditionally re-enable gradients on exit; __exit__ calls torch.set_grad_enabled(self.prev), preserving caller's gradient state."
+    },
+    {
+      "author": "williams145",
+      "timestamp": "2026-04-16T20:21:45Z",
+      "argument": "nda_croppeds validation addresses earlier concerns about unclear error messages for malformed precomputed values."
+    }
+  ]
+}

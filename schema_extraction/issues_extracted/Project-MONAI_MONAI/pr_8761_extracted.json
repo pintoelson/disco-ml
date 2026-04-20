@@ -1,0 +1,28 @@
+{
+  "Issue": "When resolve_writer() fails to find a backend for a given file extension, the error was generic and unhelpful, leaving users unsure which package was missing.",
+  "Decision": "Added a format-to-package lookup in resolve_writer() that appends an install hint for common formats.",
+  "Rationale": "The new FILETYPE_HINT mapping and enhanced error messages provide clear guidance on missing packages, improving user experience by reducing confusion and installation issues.",
+  "Author": "yashnaiduu",
+  "Status": "open",
+  "Description": "monai/data/image_writer.py",
+  "Time stamp": "2026-03-01T18:06:19Z",
+  "Cost": "Low (minor code changes and documentation updates)",
+  "Risk": "Low (no significant risks introduced; improves error clarity without changing functionality)",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-01T18:06:43Z",
+      "argument": "Reviews paused due to active development to avoid overwhelming with comments."
+    },
+    {
+      "author": "yashnaiduu",
+      "timestamp": "2026-03-07T13:18:04Z",
+      "argument": "Moved the dictionary to a module-level constant FILETYPE_HINT and added unit tests as suggested."
+    },
+    {
+      "author": "ericspod",
+      "timestamp": "2026-03-29T23:47:58Z",
+      "argument": "Suggested coordination with contributors to #7437 for improving messages with LoadImage, as similar problem with different approaches."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "Issue": "Replace nested batch/channel Python loops in DiceHelper.__call__() with vectorized torch operations",
+  "Decision": "Vectorize DiceHelper.__call__() with torch operations",
+  "Rationale": "Vectorization improves performance by replacing nested loops with optimized torch operations, though it may increase peak memory for large 3D volumes. Memory trade-off noted for potential future optimization.",
+  "Author": "aymuos15",
+  "Status": "open",
+  "Description": "DiceHelper.__call__() method in monai/metrics/meandice.py",
+  "Time stamp": "2026-03-03T17:31:57Z",
+  "Cost": "Increased peak memory usage for large 3D volumes due to simultaneous batch and channel vectorization",
+  "Risk": "Potential memory overhead for large 3D volumes; future optimization may be needed to loop over batch while keeping channels vectorized",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-03T17:32:51Z",
+      "argument": "Vectorization across both batch and channel dimensions increases peak memory for large 3D volumes, but retains most speedup while keeping memory proportional to a single sample if batch is looped instead"
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "DiceHelper.__call__() in meandice.py",
+  "Justification": "The ticket involves vectorization of batch and channel dimensions with torch operations (keywords: 'batch', 'channels'), indicating a modeling-related optimization (loop replacement) with potential hardware implications (memory trade-offs)."
+}

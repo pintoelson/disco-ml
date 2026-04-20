@@ -1,0 +1,21 @@
+{
+  "Issue": "Discrepancy between UNETR module's hidden states usage and its original publication",
+  "Decision": "Verification of UNETR module's hidden states indexing",
+  "Rationale": "The discrepancy may stem from an indexing issue where the MONAI implementation uses outputs from transformer blocks 4, 7, and 10 instead of the originally published blocks 3, 6, 9, and 12",
+  "Author": "Y-SHI-MxLucid",
+  "Status": null,
+  "Description": "UNETR module in monai.networks.nets",
+  "Time stamp": "2025-05-29T10:33:58Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "Y-SHI-MxLucid",
+      "timestamp": "2025-05-29T10:33:58Z",
+      "argument": "The MONAI implementation uses hidden_states_out[3], hidden_states_out[6], hidden_states_out[9] which correspond to outputs of transformer blocks 4, 7, and 10, while the original publication specifies outputs from blocks 3, 6, 9, and 12"
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "UNETR module",
+  "Justification": "The issue involves correcting the hidden states indexing in the UNETR module (a neural network architecture) during implementation, which is part of model architecture verification and aligns with 'layers' and 'model architecture' keywords."
+}

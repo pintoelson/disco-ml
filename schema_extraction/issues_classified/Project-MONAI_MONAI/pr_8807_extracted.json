@@ -1,0 +1,15 @@
+{
+  "Issue": "Tests are installed as a package causing import conflicts in downstream projects with their own local tests folder",
+  "Decision": "Exclude tests directory from MANIFEST.in and setup.py to prevent installation as a package",
+  "Rationale": "To resolve import conflicts in downstream projects and restore expected import resolution for downstream users",
+  "Author": "ffvogmv",
+  "Status": "closed",
+  "Description": "MONAI tests directory and its subfolders",
+  "Time stamp": "2026-04-06T14:15:57Z",
+  "Cost": null,
+  "Risk": "Import conflicts in downstream projects",
+  "Argument": [],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "setup.py and MANIFEST.in",
+  "Justification": "The issue pertains to packaging configuration (setup.py and MANIFEST.in) and import resolution, which is an environment/setup concern rather than a specific ML lifecycle stage. No ML-related keywords or artifacts are mentioned."
+}

@@ -1,0 +1,26 @@
+{
+  "Issue": "Fix SSIMLoss docstring examples to remove redundant 1- prefix in print statements, ensuring examples print the actual loss value (1 minus SSIM index) rather than the similarity value.",
+  "Decision": "Remove the redundant 1- prefix in the three print(1-SSIMLoss(...)(x,y)) calls in the docstring examples to make them print the actual loss value.",
+  "Rationale": "The docstring examples were printing 1 - (1 - ssim) = ssim (similarity value) instead of the loss (1 - ssim) due to the redundant 1- prefix. Removing the 1- prefix aligns the examples with the Returns docstring, which states the loss is '1 minus the ssim index'. This ensures users copying the examples would not train in the wrong direction.",
+  "Author": "haoyu-haoyu",
+  "Status": "closed",
+  "Description": "SSIMLoss.forward() docstring examples in monai/losses/ssim_loss.py",
+  "Time stamp": "2026-04-14T12:05:23Z (created), 2026-04-15T00:03:29Z (closed)",
+  "Cost": null,
+  "Risk": "Risk of users copying the docstring examples and building a 'loss' that increases as images grow more similar, leading to incorrect training direction.",
+  "Argument": [
+    {
+      "author": "haoyu-haoyu",
+      "timestamp": "2026-04-14T18:38:58Z",
+      "argument": "The PR #8821 (commit 4417d79b54de36f2677fc32e70cfa246a104f097) addresses the same issue by making the exact same edits to the SSIMLoss docstring examples, making this PR redundant."
+    },
+    {
+      "author": "ericspod",
+      "timestamp": "2026-04-14T23:40:44Z",
+      "argument": "PR #8821 includes changes to ssim_loss.py that perform the same fix as this PR, indicating duplication."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "SSIMLoss documentation/examples",
+  "Justification": "The decision involves correcting docstring examples for SSIMLoss.forward(), which relate to the model's loss function implementation during training. Keywords like 'loss', 'training direction', and 'SSIMLoss' indicate this is part of Modeling Development, specifically addressing a critical component for model optimization."
+}

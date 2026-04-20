@@ -1,0 +1,36 @@
+{
+  "Issue": "Forced eager C-order copy in NibabelReader._get_array_data causes unnecessary memory reordering during NIfTI file loading, leading to performance issues reported in issue #8107.",
+  "Decision": "Remove forced C-order conversion in NibabelReader._get_array_data to allow nibabel's native (F-order) memory layout.",
+  "Rationale": "The forced C-order conversion was causing a full dense memory reorder on every load, adding unnecessary overhead to the hot path. Dropping it aligns the CPU path with the existing GPU/cupy branch and avoids materializing nibabel's memmap view unnecessarily. Downstream MONAI conversion paths already handle C-contiguous memory where needed.",
+  "Author": "aymuos15",
+  "Status": "open",
+  "Description": "NibabelReader._get_array_data method in the NibabelReader class, specifically in the file image_reader.py.",
+  "Time stamp": "2026-04-13T10:24:40Z (Issue creation), 2026-04-13T10:24:50Z (Comment by coderabbitai[bot]), 2026-04-16T11:49:35Z (Comment by ericspod), 2026-04-16T11:55:14Z (Comment by aymuos15), 2026-04-16T11:59:51Z (Comment by ericspod)",
+  "Cost": "Performance improvement: Avoids full dense memory reordering on every load, reducing overhead in the hot path. Biggest wins on uncompressed .nii files where nibabel's memmap view is returned lazily rather than materialized.",
+  "Risk": "Potential compatibility issues for external callers consuming reader.get_data(...)[0] directly via .tobytes() or raw C-extension buffer without first calling ascontiguousarray, as the returned array's memory layout changes from C-contiguous to F-contiguous.",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-13T10:24:50Z",
+      "argument": "The change removes the explicit order='C' argument from np.asanyarray(img.dataobj) in the NibabelReader's _get_array_data method, allowing NumPy to use its default memory layout handling instead of forcing C-contiguous conversion. A new test was added to verify that loaded NIfTI data is not C-contiguous, confirming the optimization avoids unnecessary data copying."
+    },
+    {
+      "author": "ericspod",
+      "timestamp": "2026-04-16T11:49:35Z",
+      "argument": "The change was originally added explicitly for a fix but its purpose is unclear (possibly MetaTensor or lazy transform related). Further investigation is needed with transforms."
+    },
+    {
+      "author": "aymuos15",
+      "timestamp": "2026-04-16T11:55:14Z",
+      "argument": "Internal testing showed the change was better, but acknowledges lack of deeper investigation into the original purpose."
+    },
+    {
+      "author": "ericspod",
+      "timestamp": "2026-04-16T11:59:51Z",
+      "argument": "The change is possible now with other changes that have been done since, or a constructor argument to choose ordering could be added to handle compatibility concerns."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "NibabelReader._get_array_data (image_reader.py)",
+  "Justification": "The decision involves memory optimization in data loading during the ML pipeline hot path, specifically around 'eager C-order copy' and 'memory reordering' in NIfTI file loading. This is a performance-related change in data handling during model input processing, aligning with optimizations typically seen in modeling frameworks (e.g., CuPy/GPU branches). While hardware/memory-related, it occurs in a data preprocessing context during training/inference, fitting the 'Modeling Development' stage. Keywords: 'memory reordering', 'hot path', 'GPU/cupy branch', 'downstream MONAI conversion paths'."
+}

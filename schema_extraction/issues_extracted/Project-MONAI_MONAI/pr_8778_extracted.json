@@ -1,0 +1,23 @@
+{
+  "Issue": "Fix multi-axis shear transform to compose individual shear matrices",
+  "Decision": "Refactor _create_shear function to compose individual single-axis shear matrices rather than directly assigning off-diagonal elements",
+  "Rationale": "Corrects incorrect multi-axis shear behavior by ensuring shear operations are area-preserving and composable. The 2D implementation builds a rank-3 shear matrix via sequential multiplication of elementary shear matrices, while the 3D implementation composes six elementary shear matrices in a loop.",
+  "Author": "aymuos15",
+  "Status": "open",
+  "Description": "Shear transform in monai/transforms/utils.py and related test files (tests/transforms/test_create_grid_and_affine.py, tests/transforms/test_rand_affine.py, tests/transforms/test_rand_affined.py)",
+  "Time stamp": "2026-03-17T15:56:16Z",
+  "Cost": null,
+  "Risk": "Potential side effects or uncertainties introduced by refactoring the shear transform implementation, though not explicitly detailed in the document.",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-17T15:56:38Z",
+      "argument": "The PR refactors the _create_shear function to compose individual single-axis shear matrices rather than directly assigning off-diagonal elements, ensuring area-preserving and composable shear operations."
+    },
+    {
+      "author": "CodeRabbit Review",
+      "timestamp": "2026-03-17T15:56:38Z",
+      "argument": "The 2D implementation builds a rank-3 shear matrix via sequential multiplication of elementary shear matrices, while the 3D implementation composes six elementary shear matrices in a loop, correcting incorrect multi-axis shear behavior."
+    }
+  ]
+}

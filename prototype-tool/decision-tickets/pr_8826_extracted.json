@@ -1,0 +1,21 @@
+{
+  "Issue": "docs: clarify volumetric array axis order is WHD (X,Y,Z), not HWD",
+  "Decision": "Update docstrings to use WHD / CWHD / NCWHD instead of HWD / CHWD / NCHWD",
+  "Rationale": "Correct spatial axis conventions to match NIfTI/ITK reader outputs (WHD instead of HWD) for clarity and consistency",
+  "Author": "aymuos15",
+  "Status": "open",
+  "Description": "Volumetric array axis order in MONAI's NIfTI/ITK readers and related modules",
+  "Time stamp": "2026-04-13T11:15:42Z",
+  "Cost": "Documentation-only changes; no runtime behavior affected",
+  "Risk": "Potential confusion in existing code/doc mismatch (e.g., deepedit/transforms.py) if not addressed separately",
+  "Argument": [
+    {
+      "author": "aymuos15",
+      "timestamp": "2026-04-13T11:15:42Z",
+      "argument": "MONAI's NIfTI/ITK readers return ndarrays with axis 0 as columns/Width (X), axis 1 as rows/Height (Y), and axis 2 as Depth/slices (Z), which is WHD (X,Y,Z) order. This PR updates docstrings to reflect this convention (WHD / CWHD / NCWHD) instead of the previously incorrect HWD / CHWD / NCHWD."
+    }
+  ],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "documentation",
+  "Justification": "The issue pertains to correcting documentation (docstrings and axis order conventions) without affecting runtime behavior, model training, or deployment. No ML-specific artifacts (data, model, deployment) are involved."
+}

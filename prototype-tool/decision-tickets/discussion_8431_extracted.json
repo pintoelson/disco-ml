@@ -1,0 +1,26 @@
+{
+  "Issue": "High and unstable memory usage when training a model from .mha files using the ITKReader ImageReader class",
+  "Decision": "Use NiBabelReader with nifti format files instead of ITKReader with .mha files",
+  "Rationale": "NiBabelReader shows significantly lower and more stable memory usage compared to ITKReader, making it a better choice for handling large datasets without crashing. Explicit gc.collect calls help but do not fully mitigate the issue.",
+  "Author": "Jorissss",
+  "Status": null,
+  "Description": "Memory usage optimization for ITKReader when processing .mha files in MONAI's ImageReader class",
+  "Time stamp": "2025-04-29T06:41:48Z",
+  "Cost": "High memory consumption leading to container crashes (~60 epochs) when using ITKReader with .mha files",
+  "Risk": "Memory instability and crashes due to rapid memory ramp-up in ITKReader, requiring workarounds like gc.collect or format conversion",
+  "Argument": [
+    {
+      "author": "Jorissss",
+      "timestamp": "2025-04-29T06:41:48Z",
+      "argument": "NiBabelReader on nifti images is better than ITKReader on .mha files because it shows much lower and more stable memory usage, allowing full 150 epochs without crashing compared to ITKReader which crashes at ~60 epochs."
+    },
+    {
+      "author": "Jorissss",
+      "timestamp": "2025-04-29T06:41:48Z",
+      "argument": "Adding explicit gc.collect statements after each iteration helps reduce memory usage but does not fully solve the rapid memory ramp-up issue seen with ITKReader."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "ITKReader Memory Optimization",
+  "Justification": "Keywords 'training', 'memory usage', and 'crashes' indicate optimization during the model training process. The decision focuses on improving training stability (via NiBabelReader choice) to complete full epochs, which aligns with Modeling Development (Hardware Constraints) per rule 2."
+}

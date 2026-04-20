@@ -1,0 +1,21 @@
+{
+  "Issue": "In practical medical image segmentation, it is very common to have label values that should be ignored (e.g. padding, unlabeled regions, auxiliary classes). Currently, MONAI losses and metrics (e.g. DiceLoss, DiceMetric, MeanIoU) do not natively support ignoring specific classes or label values.",
+  "Decision": "Add native support for an argument such as ignore_index or ignore_classes to losses and metrics.",
+  "Rationale": "This would improve correctness, reproducibility, and align MONAI with common PyTorch APIs (e.g. CrossEntropyLoss(ignore_index)).",
+  "Author": "jermmy19998",
+  "Status": null,
+  "Description": "Losses and metrics in MONAI (e.g. DiceLoss, DiceMetric, MeanIoU)",
+  "Time stamp": "2026-02-07T01:45:03Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "jermmy19998",
+      "timestamp": "2026-02-15T02:20:57Z",
+      "argument": "Merge with Ignore Class #8667"
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "losses and metrics",
+  "Justification": "The issue involves adding support for an argument like 'ignore_index' to MONAI losses and metrics (e.g., DiceLoss, DiceMetric, MeanIoU), which pertains to model architecture and functionality. The rationale mentions alignment with PyTorch APIs, specifically CrossEntropyLoss(ignore_index), which is a modeling-related component."
+}

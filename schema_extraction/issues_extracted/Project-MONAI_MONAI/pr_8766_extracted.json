@@ -1,0 +1,18 @@
+{
+  "Issue": "Remove unused `n_dims` parameter from `Fourier.inv_shift_fourier`",
+  "Decision": "Remove the `n_dims` parameter from the `Fourier.inv_shift_fourier` method",
+  "Rationale": "The `n_dims` parameter was unused and its removal simplifies the method signature without affecting behavior or return type",
+  "Author": "aymuos15",
+  "Status": "Decided",
+  "Description": "The `Fourier.inv_shift_fourier` method in the `Fourier` class",
+  "Time stamp": "2026-03-03T19:05:34Z",
+  "Cost": "Trivial (estimated ~3 minutes)",
+  "Risk": "None explicitly mentioned, but potential disruption to callers passing `n_dims`",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-03T19:06:04Z",
+      "argument": "The `inv_shift_fourier` method's new signature is `(k: NdarrayOrTensor, spatial_dims: int, as_contiguous: bool = False) -> NdarrayOrTensor`, and callers passing `n_dims` will need to stop doing so; behavior and return type otherwise unchanged."
+    }
+  ]
+}

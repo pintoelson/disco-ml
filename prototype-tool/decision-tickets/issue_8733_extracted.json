@@ -1,0 +1,36 @@
+{
+  "Issue": "Current MONAI segmentation metrics aggregate scores globally, masking clinically relevant failure modes like missing small lesions while achieving high Dice scores due to dominant large structures. There is no native support for connected component aware evaluation except Panoptic Quality.",
+  "Decision": "Add connected component aware variants of existing MONAI semantic segmentation metrics (CC Metrics).",
+  "Rationale": "The proposed CC Metrics operate as thin wrappers around existing MONAI metrics to decompose ground truth foreground into connected components, assign voxels via Voronoi partition, evaluate standard MONAI metrics per component, and support aggregation modes. This addresses the issue of masking clinically relevant failure modes in multi-instance medical segmentation tasks.",
+  "Author": "alexanderjaus",
+  "Status": "open",
+  "Description": "MONAI semantic segmentation metrics, specifically connected component aware evaluation for multi-instance medical segmentation tasks.",
+  "Time stamp": "2026-02-06T15:12:41Z",
+  "Cost": null,
+  "Risk": "Masking clinically relevant failure modes (e.g., missing small lesions) due to global aggregation of scores.",
+  "Argument": [
+    {
+      "author": "alexanderjaus",
+      "timestamp": "2026-02-06T15:12:41Z",
+      "argument": "Current MONAI segmentation metrics aggregate scores globally, masking clinically relevant failure modes like missing small lesions while achieving high Dice scores due to dominant large structures."
+    },
+    {
+      "author": "alexanderjaus",
+      "timestamp": "2026-02-06T15:12:41Z",
+      "argument": "Panoptic Quality offers a partial solution but relies on fixed and threshold-dependent overlap-based matching and only considers IoU as a metric."
+    },
+    {
+      "author": "alexanderjaus",
+      "timestamp": "2026-02-06T15:12:41Z",
+      "argument": "Instance segmentation metrics require different model outputs and are not applicable to semantic segmentation pipelines."
+    },
+    {
+      "author": "alexanderjaus",
+      "timestamp": "2026-02-06T15:12:41Z",
+      "argument": "The proposed CC Metrics decompose ground truth foreground into connected components, assign voxels via Voronoi partition, and evaluate standard MONAI metrics per component, addressing the issue of masking clinically relevant failure modes."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "MONAI segmentation metrics (CC Metrics)",
+  "Justification": "The decision involves enhancing MONAI's semantic segmentation metrics by adding connected component-aware variants (e.g., 'CC Metrics'), which requires algorithmic modification of existing metrics. Keywords like 'metric variants', 'Voronoi partition', and 'evaluate standard MONAI metrics per component' indicate changes to evaluation logic (Modeling Development) rather than pure data/modeling aspects."
+}

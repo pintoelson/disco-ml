@@ -1,0 +1,578 @@
+Loading environment variables from .env...
+Using model: rwth_gpt/mistralai-mistral-small-4-119b
+[contextgem] [34m2026-04-13 13:58:35.759[0m | [34mINFO   [0m | Using model rwth_gpt/mistralai-mistral-small-4-119b[0m
+[contextgem] [34m2026-04-13 13:58:35.759[0m | [34mINFO   [0m | API base was not provided. Set `api_base`, if applicable.[0m
+Processing repository: pallets_click
+  Found 100 issues.
+    Skipping issue_3242.md (already extracted)
+    Skipping issue_3258.md (already extracted)
+    Skipping issue_3263.md (already extracted)
+    Skipping issue_3277.md (already extracted)
+[contextgem] [34m2026-04-13 13:58:35.848[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:58:35.849[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from issue_3285.md...
+[contextgem] [32m2026-04-13 13:58:35.851[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:58:35.852[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:58:35.852[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:58:40.165[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 4.31 seconds.[0m
+[contextgem] [32m2026-04-13 13:58:40.165[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 4.31 seconds.[0m
+[contextgem] [34m2026-04-13 13:58:40.167[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:58:40.169[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from issue_3298.md...
+[contextgem] [32m2026-04-13 13:58:40.171[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:58:40.172[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:58:40.172[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:58:44.151[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.98 seconds.[0m
+[contextgem] [32m2026-04-13 13:58:44.151[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.98 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:58:44.155[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:58:44.156[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3219.md...
+[contextgem] [32m2026-04-13 13:58:44.162[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:58:44.163[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:58:44.163[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:58:46.989[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.83 seconds.[0m
+[contextgem] [32m2026-04-13 13:58:46.990[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.83 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:58:46.991[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:58:46.991[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3220.md...
+[contextgem] [32m2026-04-13 13:58:46.993[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:58:46.994[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:58:46.994[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:58:49.469[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.48 seconds.[0m
+[contextgem] [32m2026-04-13 13:58:49.469[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.48 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:58:49.471[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:58:49.472[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3221.md...
+[contextgem] [32m2026-04-13 13:58:49.474[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:58:49.476[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:58:49.476[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:58:54.695[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 5.22 seconds.[0m
+[contextgem] [32m2026-04-13 13:58:54.695[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 5.22 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:58:54.697[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:58:54.698[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3222.md...
+[contextgem] [32m2026-04-13 13:58:54.701[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:58:54.703[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:58:54.703[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:58:58.098[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.4 seconds.[0m
+[contextgem] [32m2026-04-13 13:58:58.098[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.4 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:58:58.100[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:58:58.101[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3223.md...
+[contextgem] [32m2026-04-13 13:58:58.104[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:58:58.106[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:58:58.106[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:01.248[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.14 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:01.248[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.14 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:01.250[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:01.254[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3224.md...
+[contextgem] [32m2026-04-13 13:59:01.258[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:01.260[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:01.260[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:09.754[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 8.5 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:09.754[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 8.5 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:09.757[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:09.759[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3225.md...
+[contextgem] [32m2026-04-13 13:59:09.761[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:09.763[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:09.763[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:12.920[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.16 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:12.920[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.16 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:12.924[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:12.927[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3226.md...
+[contextgem] [32m2026-04-13 13:59:12.932[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:12.935[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:12.937[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:15.287[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.35 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:15.287[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.36 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:15.290[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:15.293[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3227.md...
+[contextgem] [32m2026-04-13 13:59:15.299[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:15.301[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:15.302[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:17.528[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.23 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:17.528[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.23 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:17.531[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:17.537[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.01 seconds.[0m
+    Extracting concepts from pr_3228.md...
+[contextgem] [32m2026-04-13 13:59:17.541[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:17.542[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:17.543[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:21.513[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.97 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:21.514[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.97 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:21.516[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:21.517[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3229.md...
+[contextgem] [32m2026-04-13 13:59:21.520[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:21.522[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:21.522[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:26.440[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 4.92 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:26.440[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 4.92 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:26.442[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:26.443[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3230.md...
+[contextgem] [32m2026-04-13 13:59:26.446[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:26.448[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:26.448[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:30.123[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.68 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:30.124[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.68 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:30.127[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:30.129[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3231.md...
+[contextgem] [32m2026-04-13 13:59:30.132[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:30.133[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:30.134[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:32.990[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.86 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:32.990[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.86 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:32.992[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:32.994[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3232.md...
+[contextgem] [32m2026-04-13 13:59:32.998[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:32.999[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:33.000[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:38.214[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 5.22 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:38.214[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 5.22 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:38.217[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:38.218[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3233.md...
+[contextgem] [32m2026-04-13 13:59:38.221[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:38.222[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:38.222[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:42.517[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 4.3 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:42.517[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 4.3 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:42.519[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:42.519[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3234.md...
+[contextgem] [32m2026-04-13 13:59:42.520[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:42.521[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:42.522[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:45.724[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.2 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:45.724[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.2 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:45.726[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:45.727[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3235.md...
+[contextgem] [32m2026-04-13 13:59:45.730[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:45.731[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:45.732[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:48.556[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.83 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:48.556[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.83 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:48.558[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:48.559[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3236.md...
+[contextgem] [32m2026-04-13 13:59:48.562[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:48.563[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:48.564[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 13:59:52.548[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.99 seconds.[0m
+[contextgem] [32m2026-04-13 13:59:52.548[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.99 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 13:59:52.550[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 13:59:52.552[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3237.md...
+[contextgem] [32m2026-04-13 13:59:52.556[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 13:59:52.558[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:52.558[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [31m2026-04-13 13:59:57.826[0m | [31mERROR  [0m | Error when validating parsed JSON: parsed_json is None[0m
+[contextgem] [31m2026-04-13 13:59:57.826[0m | [31mERROR  [0m | LLM did not return valid JSON for concepts[0m
+[contextgem] [34m2026-04-13 13:59:57.826[0m | [34mINFO   [0m | Retrying concepts with invalid JSON (1/3)[0m
+[contextgem] [33m2026-04-13 13:59:57.829[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 13:59:57.830[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [32m2026-04-13 14:00:02.996[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 10.44 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:02.996[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 10.44 seconds.[0m
+[contextgem] [34m2026-04-13 14:00:02.999[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:03.000[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3238.md...
+[contextgem] [32m2026-04-13 14:00:03.002[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:03.004[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:03.004[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:05.554[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.55 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:05.555[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.55 seconds.[0m
+[contextgem] [34m2026-04-13 14:00:05.558[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:05.559[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3239.md...
+[contextgem] [32m2026-04-13 14:00:05.564[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:05.567[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:05.567[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:09.429[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.87 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:09.429[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.87 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:09.431[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:09.432[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3240.md...
+[contextgem] [32m2026-04-13 14:00:09.435[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:09.437[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:09.438[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:15.059[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 5.62 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:15.059[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 5.62 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:15.061[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:15.062[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3241.md...
+[contextgem] [32m2026-04-13 14:00:15.063[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:15.064[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:15.064[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:17.732[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.67 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:17.733[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.67 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:17.735[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:17.736[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3243.md...
+[contextgem] [32m2026-04-13 14:00:17.740[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:17.741[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:17.741[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:19.992[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.25 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:19.993[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.25 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:19.996[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:19.997[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3244.md...
+[contextgem] [32m2026-04-13 14:00:20.001[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:20.003[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:20.003[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:24.089[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 4.09 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:24.089[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 4.09 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:24.091[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:24.092[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3245.md...
+[contextgem] [32m2026-04-13 14:00:24.095[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:24.097[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:24.097[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:27.777[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.68 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:27.778[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.68 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:27.780[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:27.782[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3246.md...
+[contextgem] [32m2026-04-13 14:00:27.786[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:27.788[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:27.790[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:31.150[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.36 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:31.150[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.36 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:31.152[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:31.153[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3247.md...
+[contextgem] [32m2026-04-13 14:00:31.158[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:31.160[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:31.160[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:34.217[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.06 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:34.217[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.06 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:34.219[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:34.221[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3248.md...
+[contextgem] [32m2026-04-13 14:00:34.224[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:34.225[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:34.226[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:37.623[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.4 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:37.623[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.4 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:37.625[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:37.626[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3249.md...
+[contextgem] [32m2026-04-13 14:00:37.628[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:37.629[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:37.630[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:40.161[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.53 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:40.161[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.53 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:40.164[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:40.164[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3250.md...
+[contextgem] [32m2026-04-13 14:00:40.167[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:40.169[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:40.170[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:42.874[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.71 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:42.874[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.71 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:42.877[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:42.878[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3251.md...
+[contextgem] [32m2026-04-13 14:00:42.880[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:42.882[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:42.882[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:46.479[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.6 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:46.479[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.6 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:46.482[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:46.483[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3253.md...
+[contextgem] [32m2026-04-13 14:00:46.486[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:46.488[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:46.488[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:52.892[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 6.41 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:52.892[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 6.41 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:52.893[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:52.893[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3254.md...
+[contextgem] [32m2026-04-13 14:00:52.895[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:52.896[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:52.897[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:00:56.551[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.66 seconds.[0m
+[contextgem] [32m2026-04-13 14:00:56.551[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.66 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:00:56.553[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:00:56.555[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3255.md...
+[contextgem] [32m2026-04-13 14:00:56.558[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:00:56.560[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:00:56.560[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:00.353[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.79 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:00.353[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.8 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:00.354[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:00.355[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3256.md...
+[contextgem] [32m2026-04-13 14:01:00.358[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:00.360[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:00.360[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:03.512[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.15 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:03.513[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.15 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:03.515[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:03.516[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3257.md...
+[contextgem] [32m2026-04-13 14:01:03.519[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:03.520[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:03.520[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:06.175[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.66 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:06.175[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.66 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:06.177[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:06.178[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3259.md...
+[contextgem] [32m2026-04-13 14:01:06.181[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:06.183[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:06.183[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:08.757[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.58 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:08.757[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.58 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:08.758[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:08.759[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3260.md...
+[contextgem] [32m2026-04-13 14:01:08.761[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:08.762[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:08.763[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:11.070[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.31 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:11.070[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.31 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:11.073[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:11.074[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3261.md...
+[contextgem] [32m2026-04-13 14:01:11.077[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:11.080[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:11.081[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:14.366[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.29 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:14.367[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.29 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:14.369[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:14.370[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3262.md...
+[contextgem] [32m2026-04-13 14:01:14.373[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:14.374[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:14.375[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:19.853[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 5.48 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:19.853[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 5.48 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:19.855[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:19.857[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3264.md...
+[contextgem] [32m2026-04-13 14:01:19.860[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:19.862[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:19.862[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:22.149[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.29 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:22.150[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.29 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:22.152[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:22.155[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3265.md...
+[contextgem] [32m2026-04-13 14:01:22.158[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:22.159[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:22.160[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:25.632[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 3.47 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:25.632[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 3.47 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:25.634[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:25.635[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3266.md...
+[contextgem] [32m2026-04-13 14:01:25.638[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:25.639[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:25.639[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:28.498[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.86 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:28.499[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.86 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+[contextgem] [34m2026-04-13 14:01:28.501[0m | [34mINFO   [0m | Text is being segmented into paragraphs, as no Paragraph instances were provided...[0m
+[contextgem] [32m2026-04-13 14:01:28.502[0m | [32mSUCCESS[0m | Process `Document initialization` finished in 0.0 seconds.[0m
+    Extracting concepts from pr_3267.md...
+[contextgem] [32m2026-04-13 14:01:28.505[0m | [32mSUCCESS[0m | Process `Aspects extraction from document` finished in 0.0 seconds.[0m
+[contextgem] [33m2026-04-13 14:01:28.506[0m | [33mWARNING[0m | Could not validate max input tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [33m2026-04-13 14:01:28.507[0m | [33mWARNING[0m | Could not validate max output tokens for model `rwth_gpt/mistralai-mistral-small-4-119b`: This model isn't mapped yet. model=rwth_gpt/mistralai-mistral-small-4-119b, custom_llm_provider=rwth_gpt. Add it here - https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json.[0m
+[contextgem] [32m2026-04-13 14:01:30.853[0m | [32mSUCCESS[0m | Process `Concepts extraction from document` finished in 2.35 seconds.[0m
+[contextgem] [32m2026-04-13 14:01:30.853[0m | [32mSUCCESS[0m | Process `All aspects and concepts extraction` finished in 2.35 seconds.[0m
+/home/elson/Files/Automated_Ontology/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_worker.py:75: RuntimeWarning: coroutine 'Logging.async_success_handler' was never awaited
+  self._queue = None
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+    Failed to process pr_3267.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues_extracted/pallets_click/pr_3267_extracted.json'
+    Failed to process pr_3269.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3269.md'
+    Failed to process pr_3270.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3270.md'
+    Failed to process pr_3271.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3271.md'
+    Failed to process pr_3274.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3274.md'
+    Failed to process pr_3275.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3275.md'
+    Failed to process pr_3276.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3276.md'
+    Failed to process pr_3278.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3278.md'
+    Failed to process pr_3279.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3279.md'
+    Failed to process pr_3280.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3280.md'
+    Failed to process pr_3282.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3282.md'
+    Failed to process pr_3283.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3283.md'
+    Failed to process pr_3284.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3284.md'
+    Failed to process pr_3288.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3288.md'
+    Failed to process pr_3289.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3289.md'
+    Failed to process pr_3290.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3290.md'
+    Failed to process pr_3291.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3291.md'
+    Failed to process pr_3292.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3292.md'
+    Failed to process pr_3293.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3293.md'
+    Failed to process pr_3294.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3294.md'
+    Failed to process pr_3295.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3295.md'
+    Failed to process pr_3296.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3296.md'
+    Failed to process pr_3297.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3297.md'
+    Failed to process pr_3299.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3299.md'
+    Failed to process pr_3301.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3301.md'
+    Failed to process pr_3302.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3302.md'
+    Failed to process pr_3303.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3303.md'
+    Failed to process pr_3304.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3304.md'
+    Failed to process pr_3306.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3306.md'
+    Failed to process pr_3307.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3307.md'
+    Failed to process pr_3308.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3308.md'
+    Failed to process pr_3310.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3310.md'
+    Failed to process pr_3312.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3312.md'
+    Failed to process pr_3313.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3313.md'
+    Failed to process pr_3314.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3314.md'
+    Failed to process pr_3315.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3315.md'
+    Failed to process pr_3320.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3320.md'
+    Failed to process pr_3321.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3321.md'
+    Failed to process pr_3322.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3322.md'
+    Failed to process pr_3323.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3323.md'
+    Failed to process pr_3324.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3324.md'
+    Failed to process pr_3326.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3326.md'
+    Failed to process pr_3327.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3327.md'
+    Failed to process pr_3328.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3328.md'
+    Failed to process pr_3330.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3330.md'
+    Failed to process pr_3331.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3331.md'
+    Failed to process pr_3332.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3332.md'
+    Failed to process pr_3333.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3333.md'
+    Failed to process pr_3334.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3334.md'
+    Failed to process pr_3335.md: [Errno 2] No such file or directory: '/home/elson/Files/Automated_Ontology/schema_extraction/issues/pallets_click/pr_3335.md'
+
+Extraction process complete.

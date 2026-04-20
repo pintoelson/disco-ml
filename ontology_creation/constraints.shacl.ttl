@@ -1,0 +1,18 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mlops: <https://growgraph.dev/mlops#> .
+
+mlops:DecisionTicketShape
+    a sh:NodeShape ;
+    sh:targetClass mlops:DecisionTicket ;
+    sh:property [
+        sh:path mlops:hasArgument ;
+        sh:minCount 1 ;
+        sh:message "A DecisionTicket must have at least one Argument." ;
+    ] ;
+    sh:property [
+        sh:path mlops:hasAccountableAgent ;
+        sh:minCount 1 ;
+        sh:message "A DecisionTicket must have at least one AccountableAgent." ;
+    ] .

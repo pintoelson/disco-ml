@@ -1,0 +1,21 @@
+{
+  "Issue": "GPU memory limitations when changing patch resolution from 16\u00d716\u00d716 to 32\u00d732\u00d732",
+  "Decision": "Modify model architecture by changing patch size and adding nn.Upsample block",
+  "Rationale": "To accommodate larger patch size (32\u00d732\u00d732) due to GPU memory constraints, requiring architectural modifications like adding upsampling blocks",
+  "Author": "riku-ops",
+  "Status": "Decided",
+  "Description": "UNETR model architecture",
+  "Time stamp": "2025-06-19T07:22:05Z",
+  "Cost": "GPU memory limitations",
+  "Risk": "Potential need for architectural modifications (e.g., adding upsampling blocks) when increasing patch size",
+  "Argument": [
+    {
+      "author": "id-b3",
+      "timestamp": "2025-08-19T09:26:36Z",
+      "argument": "The patch size for the UNETR is hard-coded to 16 due to the need for modifying the upsampling blocks if the patch size is different. This has been covered in a previous discussion."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "UNETR model architecture",
+  "Justification": "The decision involves modifying the 'model architecture' by changing 'patch size' and adding 'nn.Upsample blocks' to address GPU memory constraints during training. The 'UNETR model architecture' is explicitly mentioned as the artifact."
+}

@@ -1,0 +1,271 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.com/sadm> a owl:Ontology ;
+    rdfs:label "Software Architecture Decision-Making Ontology" ;
+    dcterms:created "2026-04-14T12:37:38.447880+00:00"^^xsd:dateTime ;
+    dcterms:description "An ontology for modeling the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and Architectural Decision Records (ADR) in software engineering. It captures the decision-making process, including problems, alternatives, constraints, and consequences, to support traceability and analysis of architectural choices." ;
+    dcterms:identifier "hash:b18b9aff9ef483728ca9c36d9c488f24dc97fb497b8245fd8aced88062fe8731" ;
+    dcterms:title "sadm" ;
+    rdfs:comment "An ontology for modeling the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and Architectural Decision Records (ADR) in software engineering. It captures the decision-making process, including problems, alternatives, constraints, and consequences, to support traceability and analysis of architectural choices." ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasDerivedFrom <urn:hash:084c3d69bf0fb057e21cf0020f5f5cfc405ff1e58ed2b454cb70713e91a48124> .
+
+<https://example.com/sadm#AntiExistenceDecision> a owl:Class ;
+    rdfs:label "Anti-Existence Decision"@en ;
+    rdfs:comment "A decision that explicitly forbids the presence or creation of an architectural element, often resulting from eliminating alternatives."@en ;
+    rdfs:subClassOf <https://example.com/sadm#ExistenceDecision> .
+
+<https://example.com/sadm#DesignGuideline> a owl:Class ;
+    rdfs:label "Design Guideline"@en ;
+    rdfs:comment "A recommended practice or rule to be followed in the system's design, expressed positively as an enduring trait or quality."@en ;
+    rdfs:subClassOf <https://example.com/sadm#DesignConstraint> .
+
+<https://example.com/sadm#DesignTradeOff> a owl:Class ;
+    rdfs:label "Design Trade-Off"@en ;
+    rdfs:comment "A balancing of competing factors or concerns in architectural decision-making, where improving one aspect may worsen another."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/sadm#ExecutiveDecision> a owl:Class ;
+    rdfs:label "Executive Decision"@en ;
+    rdfs:comment "A decision related to process, technology selection, or organizational directives that influence architectural choices."@en ;
+    rdfs:subClassOf <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#Impact> a owl:DatatypeProperty ;
+    rdfs:label "impact"@en ;
+    rdfs:comment "The potential magnitude of effect or consequence resulting from an architectural design decision, often used in risk assessment."@en ;
+    rdfs:domain <https://example.com/sadm#Exposure> ;
+    rdfs:range xsd:decimal .
+
+<https://example.com/sadm#Likelihood> a owl:DatatypeProperty ;
+    rdfs:label "likelihood"@en ;
+    rdfs:comment "The probability or chance that a risk associated with an architectural design decision will materialize, often used in risk assessment."@en ;
+    rdfs:domain <https://example.com/sadm#Exposure> ;
+    rdfs:range xsd:decimal .
+
+<https://example.com/sadm#PropertyDecision> a owl:Class ;
+    rdfs:label "Property Decision"@en ;
+    rdfs:comment "A decision that establishes an enduring trait or quality of the system, such as a design rule, guideline, or constraint."@en ;
+    rdfs:subClassOf <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#addresses> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "addresses"@en ;
+    rdfs:comment "Relates an architectural design decision to the design problem it aims to resolve or mitigate."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#DesignProblem> ;
+    rdfs:subPropertyOf schema:about .
+
+<https://example.com/sadm#conflictsWith> a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "conflicts with"@en ;
+    rdfs:comment "Indicates that two architectural design decisions are mutually exclusive or incompatible without additional scoping or context."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#constrains> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "constrains"@en ;
+    rdfs:comment "Indicates that one architectural design decision imposes restrictions or prerequisites on another, such that the latter depends on the former."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#derivesFrom> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "derives from"@en ;
+    rdfs:comment "Indicates that an architectural design decision is based on or informed by another decision, often through refinement or generalization."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#enables> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "enables"@en ;
+    rdfs:comment "Indicates that an architectural design decision makes another decision possible or feasible, though not mandatory."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#forbids> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "forbids"@en ;
+    rdfs:comment "Indicates that an architectural design decision explicitly prevents or excludes another decision from being made or implemented."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#hasAlternative> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has alternative"@en ;
+    rdfs:comment "Associates an architectural design decision with a potential alternative considered during its formulation."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#DesignAlternative> ;
+    rdfs:subPropertyOf schema:option .
+
+<https://example.com/sadm#hasConsequence> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has consequence"@en ;
+    rdfs:comment "Relates an architectural design decision to an outcome or impact resulting from its implementation."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#DesignConsequence> ;
+    rdfs:subPropertyOf schema:result .
+
+<https://example.com/sadm#hasCost> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has cost"@en ;
+    rdfs:comment "The estimated or actual cost associated with implementing an architectural design decision, typically measured in monetary units or effort."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range xsd:decimal .
+
+<https://example.com/sadm#hasEpitome> a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has epitome"@en ;
+    rdfs:comment "A concise summary or title encapsulating the essence of an architectural design decision."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range xsd:string .
+
+<https://example.com/sadm#hasHistory> a owl:ObjectProperty ;
+    rdfs:label "has history"@en ;
+    rdfs:comment "Relates an architectural design decision to a chronological record of changes, including timestamps, authors, and modifications."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#DecisionHistory> .
+
+<https://example.com/sadm#hasQualityAttribute> a owl:ObjectProperty ;
+    rdfs:label "has quality attribute"@en ;
+    rdfs:comment "Relates an architectural design decision to the quality attributes it addresses or impacts."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#QualityAttribute> .
+
+<https://example.com/sadm#hasRationale> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has rationale"@en ;
+    rdfs:comment "Links an architectural design decision to its rationale or justification."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#DecisionRationale> ;
+    rdfs:subPropertyOf schema:description .
+
+<https://example.com/sadm#hasRisk> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has risk"@en ;
+    rdfs:comment "Relates an architectural design decision to its associated risk level, often expressed as exposure combining impact and likelihood."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range schema:Risk .
+
+<https://example.com/sadm#hasScope> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has scope"@en ;
+    rdfs:comment "Relates an architectural design decision to the extent or domain to which it applies, such as a subsystem, layer, or organizational unit."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#DecisionScope> ;
+    rdfs:subPropertyOf schema:scope .
+
+<https://example.com/sadm#hasStakeholder> a owl:ObjectProperty ;
+    rdfs:label "has stakeholder"@en ;
+    rdfs:comment "Relates an architectural design decision to the stakeholders involved in its formulation or approval."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#Stakeholder> .
+
+<https://example.com/sadm#hasState> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has state"@en ;
+    rdfs:comment "Relates an architectural design decision to its current state within a defined lifecycle, such as proposed, accepted, rejected, or deprecated."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#DecisionState> ;
+    rdfs:subPropertyOf schema:additionalProperty .
+
+<https://example.com/sadm#impliesTradeOffWith> a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "implies trade-off with"@en ;
+    rdfs:comment "Indicates that an architectural design decision involves a trade-off relationship with another decision or concern, where improving one may worsen the other."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#isSupersededBy> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is superseded by"@en ;
+    rdfs:comment "Indicates that an architectural design decision has been replaced or rendered obsolete by another decision, establishing a lineage of evolution."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:subPropertyOf <https://example.com/sadm#overrides> .
+
+<https://example.com/sadm#subsumes> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "subsumes"@en ;
+    rdfs:comment "Indicates that an architectural design decision encompasses or generalizes another, such that the latter is a specific instance of the former."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#DecisionHistory> a owl:Class ;
+    rdfs:label "Decision History"@en ;
+    rdfs:comment "A chronological record of changes to an architectural design decision, including timestamps, authors, and modifications."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/sadm#DecisionRationale> a owl:Class ;
+    rdfs:label "Decision Rationale"@en ;
+    rdfs:comment "The justification, reasoning, or explanation behind an architectural design decision, including avoided alternatives and trade-offs considered."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/sadm#DecisionScope> a owl:Class ;
+    rdfs:label "Decision Scope"@en ;
+    rdfs:comment "The extent or domain to which an architectural design decision applies, such as a subsystem, layer, or organizational unit."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/sadm#DecisionState> a owl:Class ;
+    rdfs:label "Decision State"@en ;
+    rdfs:comment "The current status or stage of an architectural design decision within its lifecycle, such as proposed, accepted, rejected, or deprecated."@en ;
+    rdfs:subClassOf skos:Concept .
+
+<https://example.com/sadm#DesignAlternative> a owl:Class ;
+    rdfs:label "Design Alternative"@en ;
+    rdfs:comment "A potential solution or approach considered during the decision-making process for an architectural design decision, which may be accepted, rejected, or superseded."@en ;
+    rdfs:subClassOf schema:Option .
+
+<https://example.com/sadm#DesignConsequence> a owl:Class ;
+    rdfs:label "Design Consequence"@en ;
+    rdfs:comment "An outcome, effect, or impact resulting from an architectural design decision, which may be positive, negative, or neutral."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/sadm#DesignConstraint> a owl:Class ;
+    rdfs:label "Design Constraint"@en ;
+    rdfs:comment "A restriction or limitation imposed on the system or its architecture, often derived from requirements, standards, or organizational policies."@en ;
+    rdfs:subClassOf schema:Constraint .
+
+<https://example.com/sadm#DesignProblem> a owl:Class ;
+    rdfs:label "Design Problem"@en ;
+    rdfs:comment "A specific issue, challenge, or requirement that an architectural design decision aims to address or resolve."@en ;
+    rdfs:subClassOf schema:Problem .
+
+<https://example.com/sadm#ExistenceDecision> a owl:Class ;
+    rdfs:label "Existence Decision"@en ;
+    rdfs:comment "A decision that asserts the presence or creation of an architectural element, such as a subsystem, component, or connector."@en ;
+    rdfs:subClassOf <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#QualityAttribute> a owl:Class ;
+    rdfs:label "Quality Attribute"@en ;
+    rdfs:comment "A non-functional requirement or characteristic of the system, such as performance, security, or maintainability, that architectural design decisions aim to satisfy."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/sadm#Stakeholder> a owl:Class ;
+    rdfs:label "Stakeholder"@en ;
+    rdfs:comment "An individual or group with an interest or concern in the outcome of architectural design decisions, such as developers, architects, or end-users."@en ;
+    rdfs:subClassOf schema:Person .
+
+<https://example.com/sadm#overrides> a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "overrides"@en ;
+    rdfs:comment "Indicates that an architectural design decision supersedes or replaces another, rendering the latter obsolete or deprecated in the current context."@en ;
+    rdfs:domain <https://example.com/sadm#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/sadm#ArchitecturalDesignDecision> .
+
+<https://example.com/sadm#Exposure> a owl:Class ;
+    rdfs:label "Exposure"@en ;
+    rdfs:comment "A measure of risk associated with an architectural design decision, combining impact and likelihood factors as defined in risk management standards."@en ;
+    rdfs:subClassOf schema:Risk .
+
+<https://example.com/sadm#ArchitecturalDesignDecision> a owl:Class ;
+    rdfs:label "Architectural Design Decision"@en ;
+    rdfs:comment "A significant decision made during the architectural design process of a software-intensive system, representing a first-class entity in software architecture representation."@en ;
+    rdfs:subClassOf schema:Decision .
+

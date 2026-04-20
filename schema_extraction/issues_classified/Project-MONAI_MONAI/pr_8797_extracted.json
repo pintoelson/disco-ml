@@ -1,0 +1,21 @@
+{
+  "Issue": "Input spatial dimensions must be divisible by 2 ** (len(blocks_down) - 1) for SegResNetDS class",
+  "Decision": "Add spatial shape constraint documentation to SegResNetDS class docstring",
+  "Rationale": "To clarify input shape constraints and provide worked examples for validation via shape_factor() and is_valid_shape() methods",
+  "Author": "Talhax55z",
+  "Status": "Decided",
+  "Description": "SegResNetDS class docstring",
+  "Time stamp": "2026-03-31T15:05:43Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-31T15:05:58Z",
+      "argument": "Reviews were paused due to active development branch, which is a reasonable precaution to avoid overwhelming review comments with new commits"
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "SegResNetDS class docstring",
+  "Justification": "The issue involves input spatial dimension constraints for the SegResNetDS class, which are architecture/parameter requirements typical for model development. Keywords like 'blocks_down' and 'spatial shape constraint' align with modeling decisions."
+}

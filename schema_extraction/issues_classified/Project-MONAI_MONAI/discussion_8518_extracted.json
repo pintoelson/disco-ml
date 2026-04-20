@@ -1,0 +1,26 @@
+{
+  "Issue": "Confusing behavior with the AsDiscrete transform where thresholding is applied after one-hot encoding, leading to unexpected results with probabilistic inputs.",
+  "Decision": "Apply thresholding before one-hot encoding in AsDiscrete transform to correctly map probabilistic outputs to discrete class indices.",
+  "Rationale": "The current implementation applies one-hot encoding first, which assumes discrete class indices as input, making it counterintuitive for probabilistic outputs. Applying thresholding before one-hot encoding aligns with expected behavior for post-processing model outputs.",
+  "Author": "thibaultdvx (issue reporter)",
+  "Status": "Challenged",
+  "Description": "AsDiscrete transform in MONAI library, specifically its behavior with probabilistic inputs and thresholding.",
+  "Time stamp": "2025-07-24T15:57:37Z (issue creation)",
+  "Cost": null,
+  "Risk": "Potential confusion and incorrect behavior in AsDiscrete transform when handling probabilistic outputs, leading to misinterpretation of model predictions.",
+  "Argument": [
+    {
+      "author": "thibaultdvx",
+      "timestamp": "2025-07-24T15:57:37Z",
+      "argument": "The current implementation applies one-hot encoding before thresholding, which is counterintuitive for probabilistic inputs. Applying thresholding first (e.g., using Compose([AsDiscrete(threshold=0.5), AsDiscrete(to_onehot=2, dim=1)])) produces the expected results."
+    },
+    {
+      "author": "NabJa",
+      "timestamp": "2025-08-05T07:53:14Z",
+      "argument": "The current implementation of AsDiscrete first applies one-hot encoding and then performs thresholding, which assumes discrete class indices as input. This is counterintuitive for probabilistic outputs like softmax or sigmoid values, where thresholding should be applied before one-hot encoding."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "AsDiscrete transform in MONAI library",
+  "Justification": "The decision involves transform implementation (AsDiscrete) and model output post-processing (thresholding, one-hot encoding), which are core modeling development tasks. Keywords like 'thresholding' and 'one-hot encoding' relate to model output handling, while 'AsDiscrete transform' indicates algorithm implementation."
+}

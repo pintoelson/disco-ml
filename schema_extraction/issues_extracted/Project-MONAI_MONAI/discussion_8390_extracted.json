@@ -1,0 +1,28 @@
+{
+  "Issue": "Memory constraints when training diffusion models on large images (12 channels, 256x256) causing out-of-memory (OOM) errors even with batch size 1",
+  "Decision": "Reduce model size of Diffusion_AE to accommodate larger data",
+  "Rationale": "Reducing model size can help mitigate memory issues during training, though the exact method is unclear. Alternative approaches like random cropping or using flash attention are suggested to reduce memory usage.",
+  "Author": "karllandheer",
+  "Status": null,
+  "Description": "Diffusion_AE model and training pipeline for 2D diffusion autoencoder",
+  "Time stamp": "2025-03-17T17:48:04Z",
+  "Cost": "High memory usage due to large image size (256x256, 12 channels) and model complexity",
+  "Risk": "Out-of-memory (OOM) errors when training on large images, potential trade-offs in model performance when reducing size or using cropping transforms",
+  "Argument": [
+    {
+      "author": "karllandheer",
+      "timestamp": "2025-03-17T17:48:04Z",
+      "argument": "Reducing model size of Diffusion_AE is a potential solution to address memory constraints when training on larger images."
+    },
+    {
+      "author": "virginiafdez",
+      "timestamp": "2025-09-05T06:42:47Z",
+      "argument": "Using flash attention, removing attention layers, or reducing the number of channels/residual blocks per level can make attention layers more efficient and reduce memory usage."
+    },
+    {
+      "author": "virginiafdez",
+      "timestamp": "2025-09-05T06:42:47Z",
+      "argument": "Applying center-crop transforms to reduce input size is another way to mitigate memory issues, though it may complicate inference."
+    }
+  ]
+}

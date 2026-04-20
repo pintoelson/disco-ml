@@ -1,0 +1,26 @@
+{
+  "Issue": "Replace direct np.random.* calls with np.random.RandomState instances for reproducibility",
+  "Decision": "Replace direct np.random.* calls with np.random.RandomState instances in utility functions and signal transforms",
+  "Rationale": "Improves reproducibility by avoiding global RNG state; utility functions respect np.random.seed() when rand_state is None; signal transforms use self.R for consistency",
+  "Author": "haoyu-haoyu",
+  "Status": "Rejected",
+  "Description": "Utility functions in monai/transforms/utils.py, monai/data/synthetic.py, monai/data/utils.py, monai/utils/ordering.py and signal transforms in monai/transforms/signal/array.py",
+  "Time stamp": "2026-04-01T01:19:38Z",
+  "Cost": "Low (reverting changes to utility functions; only signal transforms retained)",
+  "Risk": "Low (reverting changes to utility functions avoids breaking reproducibility; signal transforms inconsistency fixed)",
+  "Argument": [
+    {
+      "author": "haoyu-haoyu",
+      "timestamp": "2026-04-01T01:19:38Z",
+      "argument": "Replacing global RNG with unseeded np.random.RandomState() breaks reproducibility for callers relying on np.random.seed(); utility functions should respect np.random.seed() when rand_state is None"
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-01T01:20:02Z",
+      "argument": "Utility functions with optional rand_state should delegate to global RNG when None for deterministic behavior; signal/array.py fix is correct improvement"
+    }
+  ],
+  "Mapped Stage": "Data Preparation",
+  "Primary Artifact": "RNG determinism in utility functions and signal transforms",
+  "Justification": "The decision involves replacing np.random.* calls (common in data preprocessing/transforms) to ensure reproducibility, which is a key aspect of data preparation. The discussion centers on utility functions in monai/transforms/utils.py, monai/data/synthetic.py, and signal/array.py which are typically used during data handling (referenced in utilities and transforms)."
+}

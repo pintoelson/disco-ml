@@ -1,0 +1,23 @@
+{
+  "Issue": "The docstring examples in `SSIMLoss.forward()` incorrectly show `1-SSIMLoss()(x,y)`, which negates the loss because `SSIMLoss.forward()` already computes `1 - ssim_value` internally. This leads users to compute a 'loss' that increases when images become less similar, training in the wrong direction.",
+  "Decision": "Remove the `1-` prefix from each of the three docstring example `print()` statements in `SSIMLoss.forward()` to correctly compute the loss.",
+  "Rationale": "The current docstring examples incorrectly suggest subtracting 1 from the result of `SSIMLoss()(x,y)`, but the loss is already computed as `1 - ssim_value` internally. Removing the `1-` prefix aligns the examples with the actual implementation, ensuring users compute the correct loss value for training.",
+  "Author": "Zeesejo",
+  "Status": "open",
+  "Description": "The docstring examples in `SSIMLoss.forward()` (file: `monai/losses/ssim_loss.py`, ~line 100) and the `SSIMLoss` class implementation.",
+  "Time stamp": "2026-04-11T18:28:45Z",
+  "Cost": null,
+  "Risk": "Users following the incorrect docstring examples would compute a 'loss' that increases when images become less similar, leading to incorrect training direction. This introduces a risk of training failure or degraded model performance due to the opposite optimization direction.",
+  "Argument": [
+    {
+      "author": "Zeesejo",
+      "timestamp": "2026-04-11T18:28:45Z",
+      "argument": "The current docstring examples incorrectly show `1-SSIMLoss()(x,y)`, but `SSIMLoss.forward()` already computes `1 - ssim_value` internally, so calling `1-SSIMLoss()(x,y)` produces `1 - (1 - ssim) = ssim`, which is the structural similarity value \u2014 not the loss."
+    },
+    {
+      "author": "Zeesejo",
+      "timestamp": "2026-04-11T18:28:45Z",
+      "argument": "Removing the `1-` prefix from the docstring examples aligns them with the actual implementation, ensuring users compute the correct loss value for training."
+    }
+  ]
+}

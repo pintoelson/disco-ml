@@ -1,0 +1,15 @@
+{
+  "Issue": "Native support for ignore_index in core losses and metrics to exclude specific labels (e.g., padding or unlabeled regions) from calculations in medical imaging workflows.",
+  "Decision": "Implementing masking logic in DiceLoss to support ignore_index.",
+  "Rationale": "To allow voxels with specific labels to be excluded from calculations, which is critical for medical imaging workflows. Subsequent updates will cover DiceMetric, MeanIoU, and other requested components.",
+  "Author": "Rusheel86",
+  "Status": "Decided",
+  "Description": "Core losses and metrics, specifically DiceLoss initially, to support ignore_index functionality.",
+  "Time stamp": "2026-02-14T09:17:29Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "DiceLoss (core loss function)",
+  "Justification": "The decision involves implementing functionality in a core loss function (DiceLoss) to support 'ignore_index', which relates to algorithm modification and training/inference logic. Keywords like 'masking logic' and 'support ignore_index' indicate modifications to the model's computational behavior during development."
+}

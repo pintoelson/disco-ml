@@ -1,0 +1,26 @@
+{
+  "Issue": "Fix batch size broadcasting bug in GeneralizedWassersteinDiceLoss",
+  "Decision": "Squeeze `dim=1` after gather in `_compute_generalized_true_positive` and `_compute_denominator` to fix broadcasting issue and reduce with `dim=1` instead of `dim=[1, 2]`",
+  "Rationale": "The fix follows the reference implementation by the original paper's author to resolve the broadcasting issue. Also fixed `reduction=\"none\"` path which was broken due to incorrect reshaping of per-sample loss.",
+  "Author": "hongjie-qiu",
+  "Status": "Approved",
+  "Description": "GeneralizedWassersteinDiceLoss module in monai/losses/dice.py",
+  "Time stamp": "2026-02-19T17:17:04Z",
+  "Cost": "Moderate (estimated code review effort: ~20 minutes)",
+  "Risk": "Technical debt from incorrect loss computation in batch processing; potential side effects from reshaping errors in `reduction=\"none\"` path",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-19T17:17:29Z",
+      "argument": "The PR corrects batch handling in GeneralizedWassersteinDiceLoss: for `reduction=\"none\"` the forward now preserves a per-sample shape (B,) instead of broadcasting to per-voxel. Internal helpers `_compute_generalized_true_positive` and `_compute_denominator` squeeze the gathered `alpha_extended` class dimension and switch their sum reductions from dims `[1, 2]` to `dim=1`, keeping results per batch."
+    },
+    {
+      "author": "hongjie-qiu",
+      "timestamp": "2026-02-21T04:18:06Z",
+      "argument": "Updated the tests to validate the fix for batch consistency."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "GeneralizedWassersteinDiceLoss module",
+  "Justification": "Keywords 'batch size' and 'reduction' in the Issue/Decision imply model training optimization. The fix involves reshaping operations (`squeeze`, `dim=1`) and corrections to loss computation paths (`reduction=\"none\"`), which are core to model architecture/training."
+}

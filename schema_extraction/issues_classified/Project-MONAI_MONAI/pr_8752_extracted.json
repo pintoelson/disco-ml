@@ -1,0 +1,21 @@
+{
+  "Issue": "Support for additional dtypes (bool and integer) in the pad_nd function due to removal of hardcoded dtype exclusion list",
+  "Decision": "Remove hardcoded dtype exclusion list in pad_nd function to support more dtypes",
+  "Rationale": "Previously, _pt_pad was restricted to specific dtypes, now it is used for all dtypes when the padding mode is in the allowed set, improving flexibility and compatibility with PyTorch's optimized padding",
+  "Author": "skdas20",
+  "Status": "closed",
+  "Description": "pad_nd function in the MONAI library",
+  "Time stamp": "2026-02-22T19:36:58Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-22T19:37:17Z",
+      "argument": "Previously, _pt_pad was used only if the mode was in {\"constant\", \"reflect\", \"edge\", \"replicate\", \"wrap\", \"circular\"} and the tensor dtype was not in {torch.int16, torch.int64, torch.bool, torch.uint8}. Now _pt_pad is chosen whenever the mode is in that set, regardless of dtype, which removes unnecessary restrictions and allows for more flexible dtype support."
+    }
+  ],
+  "Mapped Stage": "Data Preparation",
+  "Primary Artifact": "pad_nd function in MONAI library",
+  "Justification": "The decision involves modifying the dtype support in pad_nd function, which relates to data compatibility and flexibility in tensor operations. While dtype modifications can occur in modeling, the context here is about enabling broader dtype support in a utility function, aligning with data preparation concerns for downstream ML tasks."
+}

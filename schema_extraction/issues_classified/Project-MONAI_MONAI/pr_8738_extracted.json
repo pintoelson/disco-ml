@@ -1,0 +1,15 @@
+{
+  "Issue": "Update base image to nvcr.io/nvidia/pytorch:25.12-py3",
+  "Decision": "Update base image to nvcr.io/nvidia/pytorch:25.12-py3",
+  "Rationale": "Modernize the base Docker image to version 25.12 for compatibility and performance improvements",
+  "Author": "KumoLiu",
+  "Status": "Decided",
+  "Description": "Docker base image update",
+  "Time stamp": "2026-02-11T16:40:24Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [],
+  "Mapped Stage": "Deployment",
+  "Primary Artifact": "Docker base image",
+  "Justification": "The decision involves updating a Docker base image, which is part of infrastructure setup for model serving or training, aligning with the Deployment stage in MLOps."
+}

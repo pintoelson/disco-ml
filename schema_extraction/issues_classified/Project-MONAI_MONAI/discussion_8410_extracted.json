@@ -1,0 +1,31 @@
+{
+  "Issue": "Detection model training with negative samples and anchor shape calculation for nodules < 3mm and >=3mm",
+  "Decision": "Including negative samples in training data using StandardizedEmptyBoxd transform",
+  "Rationale": "Negative samples inclusion improved training but validation accuracy remained zero for nodules >=3mm. Positive samples alone showed better validation accuracy after 80+ epochs. Suggests potential need to adjust base anchor shapes in config/train.json for better detection of smaller nodules.",
+  "Author": "abhishekmarkad",
+  "Status": "Tentative",
+  "Description": "RetinaNet detector training for lung nodule CT detection using MONAI model zoo scripts",
+  "Time stamp": "2025-04-04T06:09:59Z",
+  "Cost": "Resource-intensive training with custom data experiments; computational cost not explicitly quantified but implied by multiple experiments",
+  "Risk": "Zero validation accuracy in experiments with negative samples; potential risk of model failing to detect nodules <3mm when trained with mixed samples",
+  "Argument": [
+    {
+      "author": "abhishekmarkad",
+      "timestamp": "2025-04-04T06:09:59Z",
+      "argument": "Negative samples inclusion (10%) led to zero validation accuracy until 115 epochs, whereas positive samples alone showed increasing validation accuracy after 80+ epochs, suggesting negative samples may hinder detection of smaller nodules."
+    },
+    {
+      "author": "abhishekmarkad",
+      "timestamp": "2025-04-04T06:09:59Z",
+      "argument": "Training with nodules >=3mm and negative samples resulted in zero validation accuracy, indicating potential issues with anchor shape configuration for larger nodules."
+    },
+    {
+      "author": "abhishekmarkad",
+      "timestamp": "2025-04-04T06:09:59Z",
+      "argument": "Positive samples with nodules <3mm and >=3mm showed better validation accuracy after 80+ epochs compared to mixed samples, implying smaller nodules require different anchor configurations."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "Anchor shapes in config/train.json",
+  "Justification": "The decision involves training a RetinaNet detector (model architecture) with negative samples and discusses anchor shape configuration in config/train.json for nodules <3mm and >=3mm. Keywords like 'training', 'anchor shape', and 'layers' (implied in RetinaNet architecture) indicate modeling-related activity. The focus on hyperparameters (anchor shapes, batch size) and training outcomes further supports this classification."
+}

@@ -1,0 +1,18 @@
+{
+  "Issue": "Division by zero in clDice loss harmonic mean when computing topology precision and sensitivity",
+  "Decision": "Add epsilon (1e-7) to the denominator (tprec + tsens) in clDice loss computation",
+  "Rationale": "Prevents NaN when both tprec and tsens are zero (e.g., empty inputs, non-overlapping predictions/targets, or smooth=0). Returns cl_dice = 1.0 (maximum loss) when both precision and sensitivity are zero, which is the correct semantic result. Has negligible impact on normal computation (tprec, tsens are bounded in [0, 1]). Consistent with epsilon-based denominator guards used elsewhere in MONAI (e.g., smooth_dr in DiceLoss)",
+  "Author": "Mr-Neutr0n",
+  "Status": "Decided",
+  "Description": "clDice loss computation in SoftclDiceLoss and SoftDiceclDiceLoss",
+  "Time stamp": "2026-02-11T18:35:21Z",
+  "Cost": "Negligible (epsilon value of 1e-7 added to denominator)",
+  "Risk": "Potential NaN propagation through loss and training crashes when both tprec and tsens are zero without the fix",
+  "Argument": [
+    {
+      "author": "ericspod",
+      "timestamp": "2026-03-01T00:58:37Z",
+      "argument": "Suggests following the pattern found with other Dice losses by adding a smooth_dr constructor argument with a value of 1e-7 instead of hardcoding the epsilon value in the forward methods"
+    }
+  ]
+}

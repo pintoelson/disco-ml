@@ -1,0 +1,21 @@
+{
+  "Issue": "FutureWarning triggered by deprecated `cuda.cudart` module import in `monai.networks.trt_compiler`",
+  "Decision": "Update import in `monai/networks/trt_compiler.py` to use `cuda.bindings.runtime` with fallback to `cuda.cudart`",
+  "Rationale": "Avoid deprecation warning by migrating from deprecated `cuda.cudart` to `cuda.bindings.runtime` while maintaining backward compatibility",
+  "Author": "vmiller987",
+  "Status": "closed",
+  "Description": "monai.networks.trt_compiler module",
+  "Time stamp": "2026-03-23T15:03:35Z",
+  "Cost": "Low (code change only, no runtime impact)",
+  "Risk": "Future compatibility risk if `cuda.cudart` is removed without fallback implementation",
+  "Argument": [
+    {
+      "author": "vmiller987",
+      "timestamp": "2026-03-23T15:03:35Z",
+      "argument": "Using `cuda.bindings.runtime` is better than `cuda.cudart` because the latter is deprecated and will be removed in future releases, but requires fallback to maintain compatibility with older versions"
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "monai.networks.trt_compiler module",
+  "Justification": "The issue involves a deprecation warning in a model-related component (`monai.networks.trt_compiler`), and the decision requires code changes to maintain backward compatibility during model development stages."
+}

@@ -1,0 +1,21 @@
+{
+  "Issue": "Warning 'transform info of image is not available or no InvertibleTransform applied.' in MONAI 1.2.0 causes incorrect inverse-transformed predictions when using Invertd + SaveImaged during inference + post-processing",
+  "Decision": "Use Invertd transform with SaveImaged in MONAI 1.2.0 without proper trace_key handling",
+  "Rationale": "The issue occurs due to missing trace_key during transform in MONAI 1.2.0, causing inverse-transformed predictions to be misaligned. The same code works correctly in MONAI 0.9.0.",
+  "Author": "dcb937",
+  "Status": "Challenged",
+  "Description": "Inference and post-processing pipeline using Invertd + SaveImaged transforms in MONAI 1.2.0",
+  "Time stamp": "2025-10-31T08:53:41Z",
+  "Cost": null,
+  "Risk": "Technical debt from missing trace_key in MONAI 1.2.0 causing misaligned predictions",
+  "Argument": [
+    {
+      "author": "dcb937",
+      "timestamp": "2025-10-31T08:53:41Z",
+      "argument": "MONAI 1.2.0's Invertd warning suggests missing trace_key during transform, while the same code works correctly in MONAI 0.9.0"
+    }
+  ],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "MONAI transforms (Invertd, SaveImaged)",
+  "Justification": "The issue pertains to a software/library-specific transform incompatibility (trace_key handling) between MONAI versions 1.2.0 and 0.9.0, which is a general bug/environment setup concern rather than a core ML lifecycle stage."
+}

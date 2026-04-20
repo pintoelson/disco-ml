@@ -1,0 +1,23 @@
+{
+  "Issue": "Enhanced metadata extraction for MetaTensor without duplication",
+  "Decision": "Added `image_only` parameter to `ExtractDataKeyFromMetaKeyd` to prevent MetaTensor metadata duplication",
+  "Rationale": "Prevents duplication of metadata associations by skipping extraction when `image_only` is True and the value is a MetaTensor; maintains existing missing-key handling",
+  "Author": "skdas20",
+  "Status": "open",
+  "Description": "monai/apps/reconstruction/transforms/dictionary.py (ExtractDataKeyFromMetaKeyd transform)",
+  "Time stamp": "2026-02-22T19:38:54Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-22T19:39:15Z",
+      "argument": "When `image_only` is True, the transform skips extracting the meta value if that value is a MetaTensor, preventing duplication of metadata associations"
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-22T19:39:15Z",
+      "argument": "PyTorch padding is now chosen solely based on the padding `mode` set, simplifying `pad_nd` by removing dtype-based exclusion"
+    }
+  ]
+}

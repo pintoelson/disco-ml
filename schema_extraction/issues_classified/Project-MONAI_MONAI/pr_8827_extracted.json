@@ -1,0 +1,21 @@
+{
+  "Issue": "Input spatial dimensions must be divisible by 2 ** (num_depths + int(use_downsample)) for DiNTS",
+  "Decision": "Added input-size validation to DiNTS: the constructor now checks that a provided `dints_space` object's `use_downsample` attribute matches the `use_downsample` argument and raises `ValueError` on mismatch. Introduced a private `@torch.jit.unused` helper `DiNTS._check_input_size(spatial_shape)` that computes the required divisibility factor `2 ** (num_depths + int(use_downsample))` and raises `ValueError` listing offending spatial dimensions. `DiNTS.forward(x)` calls this helper at runtime when not scripting/tracing.",
+  "Rationale": "Previously only a `print()` warning existed in `TopologyConstruction.__init__` \u2014 no error was raised. This PR adds `_check_input_size()` to `DiNTS`, calls it in `forward()`, updates the class docstring with a `Spatial Shape Constraints` section, and adds tests for both 3D and 2D invalid inputs to enforce spatial shape constraints and improve robustness.",
+  "Author": "coderabbitai[bot]",
+  "Status": "closed",
+  "Description": "DiNTS class and its input validation logic",
+  "Time stamp": "2026-04-13T15:57:14Z",
+  "Cost": "Low to moderate (adding validation logic and documentation, no major architectural changes)",
+  "Risk": "Potential breaking changes if existing code relied on the silent warning behavior instead of explicit errors for invalid inputs",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-13T15:57:31Z",
+      "argument": "Previously only a `print()` warning existed in `TopologyConstruction.__init__` \u2014 no error was raised. This PR adds `_check_input_size()` to `DiNTS`, calls it in `forward()`, updates the class docstring with a `Spatial Shape Constraints` section, and adds tests for both 3D and 2D invalid inputs."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "DiNTS model input validation logic",
+  "Justification": "The decision involves adding input-size validation to the DiNTS model class (_check_input_size() in DiNTS.forward()), which is a runtime constraint check during forward pass. The term 'spatial shape constraints' and 'DiNTS' (model architecture) imply Modeling stage. The change affects model behavior during inference/foward pass, not data processing or deployment."
+}

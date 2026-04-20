@@ -1,0 +1,218 @@
+@prefix aicd: <https://example.com//aicd#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+aicd:AIFactory a owl:Class ;
+    rdfs:label "AI Factory" ;
+    rdfs:comment "An organizational model for scaling AI model productionalization through standardized processes, reusable patterns, and shared capabilities." ;
+    rdfs:subClassOf schema:Organization .
+
+aicd:ExplainabilityConcern a owl:Class ;
+    rdfs:label "Explainability Concern" ;
+    rdfs:comment "A cross-silo concern related to making AI model behavior understandable across the lifecycle." ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:FairnessConcern a owl:Class ;
+    rdfs:label "Fairness Concern" ;
+    rdfs:comment "A cross-silo concern related to bias and fairness assessment across the lifecycle of AI model development and deployment." ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:GitBasedWorkflow a owl:Class ;
+    rdfs:label "Git-Based Workflow" ;
+    rdfs:comment "A development workflow based on Git branches and pull requests that supports coordination, automation, and CI/CD activities for ML projects." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:IncidentResponse a owl:Class ;
+    rdfs:label "Incident Response" ;
+    rdfs:comment "An operational response activity for handling detected issues affecting AI models in production." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ModelDeployment a owl:Class ;
+    rdfs:label "Model Deployment" ;
+    rdfs:comment "The activity of packaging and releasing an AI model into an operational environment for inference services." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ModelMaintenance a owl:Class ;
+    rdfs:label "Model Maintenance" ;
+    rdfs:comment "The activity of sustaining deployed AI models through updates, fixes, and operational support." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ModelRetraining a owl:Class ;
+    rdfs:label "Model Retraining" ;
+    rdfs:comment "The activity of training an existing AI model again using new or refreshed data to address drift or change." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ModelValidation a owl:Class ;
+    rdfs:label "Model Validation" ;
+    rdfs:comment "The activity of evaluating an AI model, data, or pipeline behavior against requirements, constraints, or quality criteria." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:Ontology a owl:Ontology ;
+    rdfs:label "AI Continuous Development Ontology" ;
+    dcterms:created "2026-04-16T12:58:26.732545+00:00"^^xsd:dateTime ;
+    dcterms:description "An ontology for the continuous development of artificial intelligence models as a software engineering and MLOps-oriented lifecycle concept. It covers abstract notions such as recurring pipelines, continuous development processes, validation, and research/practice perspectives related to AI model evolution. The ontology is intentionally one level above a single pipeline example and is suitable for describing recurring AI development workflows across settings." ;
+    dcterms:identifier "hash:0aefed77edd926b3a11cfd5e3c5e87119c9900ded0dab4cc3a4a9634095281c5" ;
+    dcterms:title "aicd" ;
+    rdfs:comment "An ontology for the continuous development of artificial intelligence models as an MLOps-oriented lifecycle concept. It covers recurring pipelines, continuous development processes, validation, monitoring, maintenance, retraining, governance, and research/practice perspectives related to AI model evolution across settings." ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasDerivedFrom <urn:hash:fdc9167c42649ab3eecfbc2cda62f00a58c857bcd9d52820f890c887221ba40a> .
+
+aicd:Productionalization a owl:Class ;
+    rdfs:label "Productionalization" ;
+    rdfs:comment "The broader process of transitioning an AI or ML model from a laboratory or experimental setting into production use." ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess .
+
+aicd:RecurringPipeline a owl:Class ;
+    rdfs:label "Recurring Pipeline" ;
+    rdfs:comment "A pipeline that is repeatedly executed to support continuous development and operationalization of AI models." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:SecurityConcern a owl:Class ;
+    rdfs:label "Security Concern" ;
+    rdfs:comment "A cross-silo concern related to protecting AI models, data, infrastructure, and operations throughout the lifecycle." ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:SecurityMonitoring a owl:Class ;
+    rdfs:label "Security Monitoring" ;
+    rdfs:comment "Monitoring activity focused on detecting security issues affecting AI models or their operating environment." ;
+    rdfs:subClassOf aicd:ModelMonitoring .
+
+aicd:SpecializedMLEngineeringTeam a owl:Class ;
+    rdfs:label "Specialized ML Engineering Team" ;
+    rdfs:comment "A team focused on deployment, operations, and maintenance capabilities common across multiple ML projects." ;
+    rdfs:subClassOf schema:Organization .
+
+aicd:addressesConcern a owl:ObjectProperty ;
+    rdfs:label "addresses concern" ;
+    rdfs:comment "Relates a lifecycle activity, practice, or process to a cross-silo concern it addresses." ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:conceptDrift a owl:Class ;
+    rdfs:label "Concept Drift" ;
+    rdfs:comment "A change in the relationship between input data and target behavior that can degrade deployed model performance." ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:featureBranch a owl:ObjectProperty ;
+    rdfs:label "feature branch" ;
+    rdfs:comment "Relates a workflow or development process to a short-lived branch used for feature development and integration." ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:hasDeploymentPhase a owl:ObjectProperty ;
+    rdfs:label "has deployment phase" ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a deployment phase included within it." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasLifecycleStage a owl:ObjectProperty ;
+    rdfs:label "has lifecycle stage" ;
+    rdfs:comment "Relates a continuous development process to one of its constituent lifecycle stages or activities." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasMonitoringPhase a owl:ObjectProperty ;
+    rdfs:label "has monitoring phase" ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a monitoring phase included within it." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasRetrainingPhase a owl:ObjectProperty ;
+    rdfs:label "has retraining phase" ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a retraining phase included within it." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:monitorsFor a owl:ObjectProperty ;
+    rdfs:label "monitors for" ;
+    rdfs:comment "Relates monitoring activity to a condition or issue it is intended to detect, such as drift or safety violations." ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:monitorsForConceptDrift a owl:Class ;
+    rdfs:label "Concept Drift Monitoring" ;
+    rdfs:comment "Monitoring activity focused on detecting concept drift in deployed AI models." ;
+    rdfs:subClassOf aicd:ModelMonitoring .
+
+aicd:producesInferenceService a owl:ObjectProperty ;
+    rdfs:label "produces inference service" ;
+    rdfs:comment "Relates deployment activity to an inference service made available by the deployed model." ;
+    rdfs:subPropertyOf schema:produces .
+
+aicd:requiresDataTransformation a owl:ObjectProperty ;
+    rdfs:label "requires data transformation" ;
+    rdfs:comment "Relates an integration or deployment activity to the data transformation logic needed to align source data with model expectations." ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:retrainedUsing a owl:ObjectProperty ;
+    rdfs:label "retrained using" ;
+    rdfs:comment "Relates a retraining activity to the data used for the update." ;
+    rdfs:subPropertyOf schema:object .
+
+aicd:reusableArtifact a owl:ObjectProperty ;
+    rdfs:label "reusable artifact" ;
+    rdfs:comment "Relates an AI Factory or specialized team to reusable artifacts used across ML projects." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:reusablePattern a owl:ObjectProperty ;
+    rdfs:label "reusable pattern" ;
+    rdfs:comment "Relates an AI Factory or specialized team to reusable patterns used to scale AI operations." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:safetyConstraintViolation a owl:Class ;
+    rdfs:label "Safety Constraint Violation" ;
+    rdfs:comment "A condition in which a deployed AI model violates expected safety constraints." ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:standardizedProcess a owl:ObjectProperty ;
+    rdfs:label "standardized process" ;
+    rdfs:comment "Relates an AI Factory or specialized team to standardized operational processes it relies on or establishes." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:supportsScaling a owl:ObjectProperty ;
+    rdfs:label "supports scaling" ;
+    rdfs:comment "Relates a team, workflow, or organizational pattern to its role in scaling AI productionalization." ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:triggeredByPullRequest a owl:ObjectProperty ;
+    rdfs:label "triggered by pull request" ;
+    rdfs:comment "Relates a process or activity to the pull request event that initiates it." ;
+    rdfs:subPropertyOf schema:actionStatus .
+
+aicd:usesProductionData a owl:ObjectProperty ;
+    rdfs:label "uses production data" ;
+    rdfs:comment "Relates retraining activity to data sourced from the production environment." ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:validationAfterTraining a owl:ObjectProperty ;
+    rdfs:label "validation after training" ;
+    rdfs:comment "Relates a lifecycle process to validation performed after model training." ;
+    rdfs:subPropertyOf aicd:hasValidationPhase .
+
+aicd:validationBeforeTraining a owl:ObjectProperty ;
+    rdfs:label "validation before training" ;
+    rdfs:comment "Relates a lifecycle process to validation performed before model training." ;
+    rdfs:subPropertyOf aicd:hasValidationPhase .
+
+aicd:validationDuringTraining a owl:ObjectProperty ;
+    rdfs:label "validation during training" ;
+    rdfs:comment "Relates a lifecycle process to validation performed during model training." ;
+    rdfs:subPropertyOf aicd:hasValidationPhase .
+
+aicd:ContinuousDevelopmentProcess a owl:Class ;
+    rdfs:label "Continuous Development Process" ;
+    rdfs:comment "An ongoing process for iteratively developing, validating, deploying, and updating AI models within an operational lifecycle." ;
+    rdfs:subClassOf schema:Process .
+
+aicd:ModelMonitoring a owl:Class ;
+    rdfs:label "Model Monitoring" ;
+    rdfs:comment "The activity of observing deployed AI models and their behavior in production to detect drift, safety issues, or performance degradation." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:CrossSiloConcern a owl:Class ;
+    rdfs:label "Cross-Silo Concern" ;
+    rdfs:comment "A concern that must be addressed across multiple phases of the AI lifecycle rather than within only a single stage." ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:hasValidationPhase a owl:ObjectProperty ;
+    rdfs:label "has validation phase" ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a validation phase included within it." ;
+    rdfs:subPropertyOf schema:hasPart .
+

@@ -1,0 +1,26 @@
+{
+  "Issue": "Implement native support for `ignore_index` in core MONAI losses and metrics to exclude specific label values (e.g., padding, unlabeled regions) from loss and metric calculations",
+  "Decision": "Add `ignore_index` parameter to loss and metric classes (e.g., DiceLoss, FocalLoss, TverskyLoss, MeanDice, MeanIoU, HausdorffDistanceMetric)",
+  "Rationale": "Refactoring to use a robust helper in utils for cleaner implementation and easier maintenance",
+  "Author": "Rusheel86",
+  "Status": "Decided",
+  "Description": "Core MONAI losses and metrics (e.g., DiceLoss, FocalLoss, TverskyLoss, MeanDice, MeanIoU, HausdorffDistanceMetric)",
+  "Time stamp": "2026-02-25T15:33:16Z",
+  "Cost": "Refactoring effort to consolidate logic into a helper utility (estimated effort: ~120 minutes)",
+  "Risk": "Potential technical debt from initial scoped implementation; refactoring to utils reduces complexity and improves maintainability",
+  "Argument": [
+    {
+      "author": "aymuos15",
+      "timestamp": "2026-03-18T20:48:47Z",
+      "argument": "A robust helper specifically for `ignore_index` logic would be cleaner and more reusable across loss/metric functions"
+    },
+    {
+      "author": "Rusheel86",
+      "timestamp": "2026-03-19T13:45:41Z",
+      "argument": "Initial scoped implementation was temporary for verification; refactoring to utils will reduce complexity and improve maintainability"
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "Loss and metric classes (e.g., DiceLoss, FocalLoss, TverskyLoss, MeanDice, MeanIoU, HausdorffDistanceMetric)",
+  "Justification": "The decision involves adding a parameter (`ignore_index`) to core loss and metric classes, which is part of model architecture refinement and helper utilities for cleaner implementation. The term 'losses and metrics' in the context of refactoring aligns with the Modeling (Development) stage."
+}

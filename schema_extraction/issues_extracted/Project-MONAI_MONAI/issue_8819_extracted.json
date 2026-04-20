@@ -1,0 +1,23 @@
+{
+  "Issue": "kernel not registered as buffer in LocalNormalizedCrossCorrelationLoss causing silent gradient tracking and wrong device placement",
+  "Decision": "Replace plain attribute assignments with register_buffer for kernel and kernel_vol",
+  "Rationale": "Fixing typo in requires_grad (from require_grads) and using register_buffer ensures proper gradient tracking control and device placement. This prevents unnecessary memory usage in computation graph and ensures kernel moves with loss module during device changes (e.g., loss.cuda()).",
+  "Author": "Zeesejo",
+  "Status": "open",
+  "Description": "LocalNormalizedCrossCorrelationLoss in monai/losses/image_dissimilarity.py",
+  "Time stamp": "2026-04-11T17:51:56Z",
+  "Cost": "Low (typo fix and buffer registration)",
+  "Risk": "Potential silent gradient tracking leading to unnecessary memory consumption in computation graph and device mismatch errors during runtime operations like loss.cuda()",
+  "Argument": [
+    {
+      "author": "Zeesejo",
+      "timestamp": "2026-04-11T17:51:56Z",
+      "argument": "Using register_buffer instead of plain attribute assignment ensures kernel moves with loss module during device changes (e.g., loss.cuda()), preventing device mismatch errors."
+    },
+    {
+      "author": "Zeesejo",
+      "timestamp": "2026-04-11T17:51:56Z",
+      "argument": "Fixing typo from require_grads to requires_grad ensures proper gradient tracking control, preventing unnecessary memory usage in computation graph."
+    }
+  ]
+}

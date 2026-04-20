@@ -1,0 +1,31 @@
+{
+  "Issue": "Difference between self-attention and cross-attention in diffusion model U-Net",
+  "Decision": null,
+  "Rationale": "Cross-attention is better when conditioning input has more structure (clinical features, text, etc.), as it allows the network to focus dynamically instead of treating the label as a simple embedding. Self-attention is sufficient for a few discrete labels.",
+  "Author": "Ahmad-Omar-Ahsan",
+  "Status": null,
+  "Description": "Training a 2D conditional diffusion model on different labels with U-Net architecture",
+  "Time stamp": "2025-09-03T16:28:35Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "NabJa",
+      "timestamp": "2025-09-04T07:20:42Z",
+      "argument": "Cross-attention is really good when your conditioning input has more structure (clinical features, text, etc.), since it lets the network focus dynamically instead of treating the label as a simple embedding."
+    },
+    {
+      "author": "NabJa",
+      "timestamp": "2025-09-04T07:20:42Z",
+      "argument": "Self-attention is usually fine if you only have a few discrete labels, the model will learn to condition on those."
+    },
+    {
+      "author": "NabJa",
+      "timestamp": "2025-09-04T07:20:42Z",
+      "argument": "For context_embed, typically you would pick something in line with your U-Net hidden dim (often the first channels entry, e.g. 64 or 128)."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "Diffusion model U-Net architecture",
+  "Justification": "Keywords like 'self-attention', 'cross-attention', 'diffusion model U-Net', and 'layers' indicate architectural choices and training framework discussions. The debate explicitly compares attention mechanisms in model design."
+}

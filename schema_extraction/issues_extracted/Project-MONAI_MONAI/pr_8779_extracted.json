@@ -1,0 +1,23 @@
+{
+  "Issue": "The Enhancing Tumor (ET) label was hardcoded as 4 in the original transform, causing it to fail recognizing the ET channel in BraTS 2023 datasets where the ET label is 3.",
+  "Decision": "Introduce an `et_label` parameter to `ConvertToMultiChannelBasedOnBratsClasses` with a default value of 4 to support BraTS 2023 dataset conventions without breaking backwards compatibility.",
+  "Rationale": "The change allows existing pipelines to remain unaffected (backwards compatibility) while enabling BraTS 23 users to pass `et_label=3` for standard sub-region extraction (TC, WT, ET).",
+  "Author": "AbdoMis",
+  "Status": "Decided",
+  "Description": "The `ConvertToMultiChannelBasedOnBratsClasses` transform and its dictionary wrapper `ConvertToMultiChannelBasedOnBratsClassesd` in the MONAI library.",
+  "Time stamp": "2026-03-17T18:35:05Z (creation), 2026-04-09T23:41:48Z (parameter order change)",
+  "Cost": "Low (parameter addition with default value ensures no breaking changes; minimal implementation effort)",
+  "Risk": "Low (no significant risks identified; change is backward compatible and addresses dataset convention shift)",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-17T18:35:26Z",
+      "argument": "Reviews were paused due to active development to avoid overwhelming the review process with new commits."
+    },
+    {
+      "author": "AbdoMis",
+      "timestamp": "2026-04-09T23:41:48Z",
+      "argument": "Applied the suggested change to the parameter order, indicating responsiveness to review feedback."
+    }
+  ]
+}

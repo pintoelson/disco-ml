@@ -1,0 +1,26 @@
+{
+  "Issue": "Adds the `channel_wise` parameter to `RandScaleIntensityFixedMean` and `RandScaleIntensityFixedMeand`, which was documented in docstrings but never implemented.",
+  "Decision": "Adds `channel_wise` parameter to `RandScaleIntensityFixedMean` and `RandScaleIntensityFixedMeand` transforms",
+  "Rationale": "When `channel_wise=True`, a separate random scale factor is generated per channel, and `preserve_range`/`fixed_mean` are applied per channel \u2014 following the existing pattern from `RandScaleIntensity`.",
+  "Author": "engmohamedsalah",
+  "Status": "closed",
+  "Description": "`RandScaleIntensityFixedMean` and `RandScaleIntensityFixedMeand` transforms in MONAI library",
+  "Time stamp": "2026-02-14T20:28:48Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "engmohamedsalah",
+      "timestamp": "2026-02-14T20:28:48Z",
+      "argument": "When `channel_wise=True`, a separate random scale factor is generated per channel, and `preserve_range`/`fixed_mean` are applied per channel \u2014 following the existing pattern from `RandScaleIntensity`."
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-14T20:29:05Z",
+      "argument": "All changes align with `#8363` scope: parameter implementation, per-channel logic, docstring corrections, and corresponding tests."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "MONAI transforms (RandScaleIntensityFixedMean, RandScaleIntensityFixedMeand)",
+  "Justification": "Keywords 'channel_wise', 'transforms', and 'per-channel logic' indicate algorithm feature implementation and architecture modification, which are core Modeling (Development) activities. The addition of a parameter (`channel_wise`) and its behavior align with model architecture adjustments."
+}

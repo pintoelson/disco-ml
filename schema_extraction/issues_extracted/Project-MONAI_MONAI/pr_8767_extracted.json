@@ -1,0 +1,12 @@
+{
+  "Issue": "Implementation of sparse dice loss for handling sparse datasets in the MONAI library",
+  "Decision": "Addition of `SparseDiceLoss` class to `monai/losses/dice.py` with support for sparse/one-hot target formats",
+  "Rationale": "Sparse dice loss is computed within the function as dice loss is computed among tensors and zero denominations are considered, avoiding the need for a separate implementation",
+  "Author": "Asmodasis",
+  "Status": "Closed",
+  "Description": "Implementation of sparse dice loss in the `monai/losses/dice.py` module",
+  "Time stamp": "2026-03-06T02:22:00Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": []
+}

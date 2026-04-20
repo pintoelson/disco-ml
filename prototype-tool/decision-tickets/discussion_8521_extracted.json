@@ -1,0 +1,26 @@
+{
+  "Issue": "Lack of clarity in documentation and tutorials about what a datalist is for newcomers to MONAI",
+  "Decision": "Clarify the datalist format and its usage in MONAI documentation and tutorials",
+  "Rationale": "The current documentation does not adequately explain the datalist format, particularly for custom datasets, leading to confusion for users attempting to use Auto3DSeg with their own data",
+  "Author": "DanielNobbe",
+  "Status": "Idea",
+  "Description": "Documentation and tutorials for MONAI, specifically regarding the datalist format used in Auto3DSeg",
+  "Time stamp": "2025-07-25T19:14:57Z",
+  "Cost": null,
+  "Risk": "Uncertainty and lack of clarity in the datalist format documentation, which may lead to user confusion and potential errors when setting up custom datasets",
+  "Argument": [
+    {
+      "author": "DanielNobbe",
+      "timestamp": "2025-07-25T19:14:57Z",
+      "argument": "The documentation and tutorials do not clearly explain what a datalist is, making it difficult for newcomers to understand and use the format, especially for custom datasets"
+    },
+    {
+      "author": "DanielNobbe",
+      "timestamp": "2025-08-05T08:23:32Z",
+      "argument": "The Decathlon datalist documentation lacks details such as the existence of 'train' and 'test' lists and possible metadata fields, which are critical for proper usage"
+    }
+  ],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "MONAI documentation",
+  "Justification": "The issue pertains to documentation clarity and tutorial improvements for the datalist format in MONAI, which is not directly related to any specific MLOps lifecycle stage. The focus is on educating users rather than data, models, deployment, or monitoring."
+}

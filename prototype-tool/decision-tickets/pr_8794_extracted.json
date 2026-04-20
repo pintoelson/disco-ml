@@ -1,0 +1,26 @@
+{
+  "Issue": "Need to enable global coordinates in spatial crop transforms to avoid manual conversion of annotations from physical to voxel space when preprocessing spacing changes",
+  "Decision": "Add `TransformPointsWorldToImaged` and `TransformPointsImageToWorldd` transforms and enable string dictionary keys for `roi_center`, `roi_size`, `roi_start`, and `roi_end` in `SpatialCropd`",
+  "Rationale": "Eliminates manual recalculation of voxel coordinates by allowing direct use of world-space annotations in cropping pipelines. Zero overhead for existing usage as the original code path is preserved when no string keys are passed. String-key path defers slice computation until data dict is available, ensuring dynamic resolution of coordinates.",
+  "Author": "emanuilo",
+  "Status": "open",
+  "Description": "Spatial crop transforms in MONAI's preprocessing pipeline, specifically affecting `SpatialCropd`, `TransformPointsWorldToImaged`, and `TransformPointsImageToWorldd`",
+  "Time stamp": "2026-03-28T10:28:04Z",
+  "Cost": "Minimal overhead for existing usage; string-key path recreates `SpatialCrop` on each `__call__` (stored on `self.cropper`), which may introduce computational complexity but ensures dynamic resolution of coordinates.",
+  "Risk": "Potential technical debt from deferred slice computation in string-key path of `SpatialCropd`; requires careful handling of `inverse()` to avoid inconsistencies in transform stack. Risk of systematic bias in coordinate rounding via `torch.round` (banker's rounding).",
+  "Argument": [
+    {
+      "author": "emanuilo",
+      "timestamp": "2026-03-28T10:28:04Z",
+      "argument": "Using world-space annotations directly in cropping pipelines (via `TransformPointsWorldToImaged` and `SpatialCropd` string keys) is better than manual conversion to voxel space because it eliminates error-prone recalculation steps and ensures consistency across preprocessing changes."
+    },
+    {
+      "author": "ericspod",
+      "timestamp": "2026-03-28T10:28:04Z",
+      "argument": "The design proposed in #8206 (implemented here) addresses the issue of manual coordinate conversion by enabling direct use of world-space annotations in spatial crop transforms, reducing complexity and improving pipeline robustness."
+    }
+  ],
+  "Mapped Stage": "Data Preparation",
+  "Primary Artifact": "Spatial crop transforms in MONAI preprocessing pipeline",
+  "Justification": "The decision involves modifying preprocessing transforms (`SpatialCropd`, `TransformPointsWorldToImaged`, `TransformPointsImageToWorldd`) to handle spatial coordinate systems, with specific mentions of 'transforms', 'preprocessing pipeline', and 'feature engineering'-like operations (coordinate conversion/space alignment). This clearly falls under data transformation in the preparation stage."
+}

@@ -1,0 +1,21 @@
+{
+  "Issue": "Inverse transformation fails when using ToTensord in the MONAI pipeline",
+  "Decision": "ToTensord does not implement an inverse method",
+  "Rationale": "ToTensord's inverse is a Numpy Array, which conflicts with the expected 'dict' or 'MetaTensor' input for previous transforms like CropForeground in the pipeline",
+  "Author": "emi-dm",
+  "Status": "Idea",
+  "Description": "MONAI pipeline transform inversion with ToTensord",
+  "Time stamp": "2025-05-19T14:09:19Z",
+  "Cost": null,
+  "Risk": "Potential incompatibility between ToTensord's inverse (Numpy Array) and spatial transforms like CropForegroundd (expecting 'dict' or 'MetaTensor')",
+  "Argument": [
+    {
+      "author": "emi-dm",
+      "timestamp": "2025-05-19T14:45:40Z",
+      "argument": "ToTensord's inverse is a Numpy Array, so the previous transform (CropForeground) in the compose pipeline expects a 'dict' or 'MetaTensor'"
+    }
+  ],
+  "Mapped Stage": "Data Preparation",
+  "Primary Artifact": "MONAI pipeline transform (ToTensord)",
+  "Justification": "The issue describes a failure in the inverse transformation of a MONAI pipeline transform (ToTensord), which is part of data preprocessing in the Data Preparation stage. The conflict involves how the output of ToTensord's inverse (Numpy Array) is incompatible with the expected input type ('dict' or 'MetaTensor') for previous transforms like CropForegroundd."
+}

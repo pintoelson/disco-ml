@@ -1,0 +1,26 @@
+{
+  "Issue": "Bug in `make_gaussian_kernel` causes incorrect `LocalNormalizedCrossCorrelationLoss` when `kernel_size > 3`",
+  "Decision": "Fix the `truncated` parameter in `make_gaussian_kernel` to be passed as a multiple of sigma (e.g., 1.0) instead of absolute pixel radius",
+  "Rationale": "The bug occurs because `make_gaussian_kernel` incorrectly passes the absolute pixel radius (`kernel_size // 2`) to `gaussian_1d`'s `truncated` parameter, which expects truncation in units of standard deviations. This causes the kernel values to become negligibly small, corrupting the LNCC calculation.",
+  "Author": "xiyizhou16",
+  "Status": "closed",
+  "Description": "The `make_gaussian_kernel` function in `monai/losses/image_dissimilarity.py` and its impact on `LocalNormalizedCrossCorrelationLoss` with `kernel_type=\"gaussian\"` and `kernel_size > 3`",
+  "Time stamp": "2026-03-18T07:36:25Z",
+  "Cost": "Low (requires correction of a parameter misconfiguration in the kernel generation function)",
+  "Risk": "High (numerical instability in LNCC calculation due to extremely small kernel values, leading to incorrect loss values)",
+  "Argument": [
+    {
+      "author": "xiyizhou16",
+      "timestamp": "2026-03-18T07:36:25Z",
+      "argument": "The `truncated` parameter in `make_gaussian_kernel` is incorrectly set to `kernel_size // 2` (absolute pixel radius) instead of a multiple of sigma (standard deviations), causing the Gaussian kernel to be truncated at an excessively large radius (e.g., 7 sigma for kernel_size=15). This results in negligibly small kernel values, corrupting the LNCC calculation."
+    },
+    {
+      "author": "atharvajoshi01",
+      "timestamp": "2026-04-08T01:55:26Z",
+      "argument": "The truncated parameter is being set to kernel_size // 2 but gaussian_1d expects it as the number of standard deviations. With kernel_size=15 this means truncated=7, so the Gaussian gets truncated at 7 sigma and the kernel values become negligibly small."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "LocalNormalizedCrossCorrelationLoss (LNCC) kernel generation function",
+  "Justification": "The issue involves a bug in the `make_gaussian_kernel` function which directly impacts the `LocalNormalizedCrossCorrelationLoss` calculation. The fix involves correcting a parameter (`truncated`) related to kernel generation and sigma calculations, which are core to model training/loss computation. Keywords like `kernel_size` and `gaussian_kernel` indicate modeling/development activities."
+}

@@ -1,0 +1,2760 @@
+@prefix aieng: <https://example.com/aieng#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <http://example.org/aieng#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<aieng:> a owl:Ontology ;
+    rdfs:label "AI Engineering Ontology" ;
+    dcterms:created "2026-04-16T12:08:10.375291+00:00"^^xsd:dateTime ;
+    dcterms:description "Ontology for concepts and relationships in AI engineering, covering processes, tools, roles, maturity models, challenges, provenance, and related artifacts." ;
+    dcterms:identifier "hash:590257cb5075f479e4620b96a21a780c057f485fa900ef3246df272e976b8017" ;
+    dcterms:title "aieng" ;
+    rdfs:comment "Ontology for concepts and relationships in AI engineering, covering processes, tools, roles, maturity models, challenges, provenance, and related artifacts." ;
+    owl:versionInfo "1.0.2" ;
+    prov:wasDerivedFrom <urn:hash:3c297330825987614be4ca8244408b0f7bb4f02ee27a5674c68b01a524a1a473> .
+
+ns1: dcterms:description "Extended ontology for AI engineering with added abstract concepts for MLOps research, including processes, maturity models, attributes, benefits, challenges, research questions, and search strategies."^^xsd:string,
+        "Ontology for AI engineering, with emphasis on MLOps processes, tools, maturity models, challenges, and scholarly artifacts."^^xsd:string .
+
+ns1:AIOpsFramework a owl:Class ;
+    rdfs:label "AIOps Framework"^^xsd:string ;
+    rdfs:comment "Framework for goal-driven operationalization of distributed analytical pipelines."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:AgileProcess a owl:Class ;
+    rdfs:label "Agile Process"^^xsd:string ;
+    rdfs:comment "Iterative and incremental approach to software and model development."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:BusinessTeam a owl:Class ;
+    rdfs:label "Business Team"^^xsd:string ;
+    rdfs:comment "Team representing business stakeholders and goals."^^xsd:string ;
+    rdfs:subClassOf ns1:Team .
+
+ns1:CICDPractice a owl:Class ;
+    rdfs:label "CI/CD Practice"^^xsd:string ;
+    rdfs:comment "Practice of continuous integration and continuous delivery for ML models."^^xsd:string ;
+    rdfs:subClassOf ns1:AutomationPractice ;
+    owl:sameAs ns1:CI_CD_Tool .
+
+ns1:CRISPDMMethodology a owl:Class ;
+    rdfs:label "CRISP-DM Methodology"^^xsd:string ;
+    rdfs:comment "Cross-Industry Standard Process for Data Mining, a methodology for data science projects."^^xsd:string ;
+    rdfs:subClassOf ns1:Methodology .
+
+ns1:Collaboration a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "collaborates with"^^xsd:string ;
+    rdfs:comment "Indicates collaborative relationship between teams."^^xsd:string ;
+    rdfs:domain ns1:Team ;
+    rdfs:range ns1:Team .
+
+ns1:CommunicationChallenge a owl:Class ;
+    rdfs:label "Communication Challenge"^^xsd:string ;
+    rdfs:comment "Challenge concerning communication among stakeholders in ML-enabled system development."^^xsd:string ;
+    rdfs:subClassOf ns1:CollaborationChallenge .
+
+ns1:ContinuousDelivery a owl:Class ;
+    rdfs:label "Continuous Delivery"^^xsd:string ;
+    rdfs:comment "Practice of automatically delivering validated changes to staging or production."^^xsd:string ;
+    rdfs:subClassOf ns1:Process .
+
+ns1:Cost a owl:Class ;
+    rdfs:label "Cost"^^xsd:string ;
+    rdfs:comment "Monetary expense associated with computational resources or MLOps activities."^^xsd:string ;
+    rdfs:subClassOf schema1:PriceSpecification .
+
+ns1:CrossTeamCollaboration a owl:Class ;
+    rdfs:label "CrossâTeam Collaboration"^^xsd:string ;
+    rdfs:comment "Enhanced collaboration across teams resulting from MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf ns1:Benefit .
+
+ns1:Customer a owl:Class ;
+    rdfs:label "Customer"^^xsd:string ;
+    rdfs:comment "Endâuser or stakeholder who receives the AI product."^^xsd:string ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:DataCleaningProcess a owl:Class ;
+    rdfs:label "Data Cleaning Process"^^xsd:string ;
+    rdfs:comment "Activity that cleanses and validates raw data to ensure quality."^^xsd:string ;
+    rdfs:subClassOf prov:Activity ;
+    owl:sameAs ns1:DataCollectionProcess,
+        ns1:DataVersioningProcess .
+
+ns1:DataDrivenScrumMethodology a owl:Class ;
+    rdfs:label "Data-Driven Scrum Methodology"^^xsd:string ;
+    rdfs:comment "An agile methodology adapted for data science and machine learning projects."^^xsd:string ;
+    rdfs:subClassOf ns1:Methodology .
+
+ns1:DataEngineer a owl:Class ;
+    rdfs:label "Data Engineer"^^xsd:string ;
+    rdfs:comment "Builds and maintains data pipelines and feature stores."^^xsd:string,
+        "Designs and maintains data infrastructure and pipelines."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsRole,
+        ns1:MLRole .
+
+ns1:DataManagementChallenge a owl:Class ;
+    rdfs:label "Data Management Challenge"^^xsd:string ;
+    rdfs:comment "Difficulty managing data throughout the ML lifecycle."^^xsd:string ;
+    rdfs:subClassOf ns1:Challenge .
+
+ns1:DataOpsPractice a owl:Class ;
+    rdfs:label "DataOps Practice"^^xsd:string ;
+    rdfs:comment "Practice related to automated data management and feature engineering."^^xsd:string ;
+    rdfs:subClassOf ns1:AutomationPractice .
+
+ns1:DataQualityChallenge a owl:Class ;
+    rdfs:label "Data Quality Challenge"^^xsd:string ;
+    ns1:involvesRole ns1:DataEngineerRole,
+        ns1:DataScientistRole ;
+    ns1:requiresDataStrategy ns1:DataStrategy ;
+    rdfs:comment "Challenge related to low quality of data used for training machine learning models."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsAdoptionChallenge .
+
+ns1:DataQuantityChallenge a owl:Class ;
+    rdfs:label "Data Quantity Challenge"^^xsd:string ;
+    ns1:involvesRole ns1:DataEngineerRole,
+        ns1:DataScientistRole ;
+    ns1:requiresDataStrategy ns1:DataStrategy ;
+    rdfs:comment "Challenge concerning insufficient volume of relevant data for training deep learning models."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsAdoptionChallenge .
+
+ns1:DataScienceMethodology a owl:Class ;
+    rdfs:label "Data Science Methodology"^^xsd:string ;
+    rdfs:comment "A structured approach to conducting data science projects."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:DataScientist a owl:Class ;
+    rdfs:label "Data Scientist"^^xsd:string ;
+    rdfs:comment "Professional responsible for data analysis, feature engineering, and model development."^^xsd:string,
+        "Professional responsible for data analysis, model development, and experimentation."^^xsd:string,
+        "Responsible for developing ML models and experiments."^^xsd:string,
+        "Responsible for problem definition, data analysis, and model development."^^xsd:string,
+        "Role responsible for data analysis and model development."^^xsd:string,
+        "Stakeholder responsible for data analysis and model training."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsRole,
+        ns1:MLRole,
+        ns1:Role,
+        ns1:StakeholderRole .
+
+ns1:DataStorage a owl:Class ;
+    rdfs:label "Data Storage"^^xsd:string ;
+    rdfs:comment "Persistent repository where processed data sets are kept."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:DeepLearningEra a owl:Class ;
+    rdfs:label "Deep Learning Era"^^xsd:string ;
+    rdfs:comment "The period characterized by widespread adoption of deep learning techniques."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:DeployedProductQuality a owl:Class ;
+    rdfs:label "Deployed Product Quality"^^xsd:string ;
+    rdfs:comment "Higher quality of deployed machineâlearning products as a benefit of MLOps."^^xsd:string ;
+    rdfs:subClassOf ns1:Benefit .
+
+ns1:DeploymentStage a owl:Class ;
+    rdfs:label "Deployment Stage"^^xsd:string ;
+    rdfs:comment "Stage where model versions are deployed to production environments."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsStage .
+
+ns1:DevOpsEngineer a owl:Class ;
+    rdfs:label "DevOps Engineer"^^xsd:string ;
+    rdfs:comment "Manages CI/CD pipelines and infrastructure for ML deployments."^^xsd:string,
+        "Manages CI/CD pipelines, infrastructure, and deployment automation."^^xsd:string,
+        "Role that manages CI/CD pipelines and infrastructure for ML systems."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsRole,
+        ns1:MLRole,
+        ns1:Role .
+
+ns1:DevelopmentTeam a owl:Class ;
+    rdfs:label "Development Team"^^xsd:string ;
+    rdfs:comment "Team responsible for developing models and code."^^xsd:string ;
+    rdfs:subClassOf ns1:Team .
+
+ns1:Docker a owl:Class ;
+    rdfs:label "Docker"^^xsd:string ;
+    rdfs:comment "Container platform used to package ML models and services."^^xsd:string ;
+    rdfs:subClassOf ns1:ContainerizationTechnology .
+
+ns1:DocumentationChallenge a owl:Class ;
+    rdfs:label "Documentation Challenge"^^xsd:string ;
+    rdfs:comment "Challenge concerning documentation practices in ML-enabled system development."^^xsd:string ;
+    rdfs:subClassOf ns1:CollaborationChallenge .
+
+ns1:EngineeringChallenge a owl:Class ;
+    rdfs:label "Engineering Challenge"^^xsd:string ;
+    rdfs:comment "Challenge concerning engineering activities in ML-enabled system development."^^xsd:string ;
+    rdfs:subClassOf ns1:CollaborationChallenge .
+
+ns1:Experiment a owl:Class ;
+    rdfs:label "Experiment"^^xsd:string ;
+    rdfs:comment "A tracked run of model training with specific parameters."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:ExperimentalNatureChallenge a owl:Class ;
+    rdfs:label "Experimental Nature Challenge"^^xsd:string ;
+    rdfs:comment "The inherently experimental nature of ML that hampers repeatability."^^xsd:string ;
+    rdfs:subClassOf ns1:Challenge .
+
+ns1:FeatureEngineeringProcess a owl:Class ;
+    rdfs:label "Feature Engineering Process"^^xsd:string ;
+    rdfs:comment "Process that creates and transforms features for model training."^^xsd:string ;
+    rdfs:subClassOf ns1:Process .
+
+ns1:GPU a owl:Class ;
+    rdfs:label "GPU"^^xsd:string ;
+    rdfs:comment "Graphics Processing Unit used to accelerate model training."^^xsd:string ;
+    rdfs:subClassOf ns1:Hardware .
+
+ns1:GitHubActions a owl:Class ;
+    rdfs:label "GitHub Actions"^^xsd:string ;
+    rdfs:comment "CI/CD platform provided by GitHub."^^xsd:string ;
+    rdfs:subClassOf ns1:CI_CD_Tool .
+
+ns1:GoalDrivenOperationalization a owl:Class ;
+    rdfs:label "Goal-Driven Operationalization"^^xsd:string ;
+    rdfs:comment "Process of operationalizing analytical pipelines based on defined goals."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:IntegrationChallenge a owl:Class ;
+    rdfs:label "Integration Challenge"^^xsd:string ;
+    ns1:involvesRole ns1:DataScientistRole,
+        ns1:SoftwareEngineerRole ;
+    rdfs:comment "Challenge arising from the need to integrate data science and software engineering work within MLOps."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsAdoptionChallenge ;
+    owl:sameAs ns1:CollaborationChallenge,
+        ns1:TeamIntegrationChallenge .
+
+ns1:Jenkins a owl:Class ;
+    rdfs:label "Jenkins"^^xsd:string ;
+    rdfs:comment "CI/CD automation server used in MLOps pipelines."^^xsd:string,
+        "Open-source automation server for CI/CD."^^xsd:string ;
+    rdfs:subClassOf ns1:CI_CD_Tool,
+        ns1:Tool .
+
+ns1:Kubeflow a owl:Class ;
+    rdfs:label "Kubeflow"^^xsd:string ;
+    rdfs:comment "MLOpsâspecific platform built on Kubernetes for managing ML workflows."^^xsd:string ;
+    rdfs:subClassOf ns1:Tool .
+
+ns1:Kubernetes a owl:Class ;
+    rdfs:label "Kubernetes"^^xsd:string ;
+    rdfs:comment "Container orchestration platform used to deploy ML services."^^xsd:string,
+        "Container orchestrator commonly used for ML model deployment."^^xsd:string ;
+    rdfs:subClassOf ns1:Orchestrator,
+        ns1:Tool .
+
+ns1:MLComponent a owl:Class ;
+    rdfs:label "ML Component"^^xsd:string ;
+    rdfs:comment "A reusable machine learning component, such as a model, feature extractor, or pipeline step."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MLEnabledSystem a owl:Class ;
+    rdfs:label "ML-Enabled System"^^xsd:string ;
+    rdfs:comment "A software system that incorporates machine learning components."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MLEngineer a owl:Class ;
+    rdfs:label "ML Engineer"^^xsd:string ;
+    rdfs:comment "Bridges model development and production, handling deployment and pipelines."^^xsd:string,
+        "Bridges model development and production, handling model packaging and deployment."^^xsd:string,
+        "Role that bridges data science and engineering, focusing on model deployment and scaling."^^xsd:string,
+        "Stakeholder bridging machine learning and software engineering."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsRole,
+        ns1:MLRole,
+        ns1:Role,
+        ns1:StakeholderRole .
+
+ns1:MLOpsAdoptionBenefitCategory a owl:Class ;
+    rdfs:label "MLOps Adoption Benefit Category" ;
+    rdfs:comment "High-level grouping of benefits from MLOps adoption." ;
+    rdfs:subClassOf ns1:BenefitCategory .
+
+ns1:MLOpsAdoptionChallengeCategory a owl:Class ;
+    rdfs:label "MLOps Adoption Challenge Category" ;
+    rdfs:comment "High-level grouping of challenges from MLOps adoption." ;
+    rdfs:subClassOf ns1:ChallengeCategory .
+
+ns1:MLOpsAttribute a owl:Class ;
+    rdfs:label "MLOps Attribute"^^xsd:string ;
+    rdfs:comment "An essential attribute or principle that contributes to successful MLOps implementation."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:MLOpsEngineer a owl:Class ;
+    rdfs:label "MLOps Engineer"^^xsd:string ;
+    rdfs:comment "Professional responsible for operationalizing ML models, pipelines, and monitoring."^^xsd:string,
+        "Role dedicated to implementing and maintaining MLOps practices."^^xsd:string ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:MappingStudy a owl:Class ;
+    rdfs:label "Mapping Study"^^xsd:string ;
+    rdfs:comment "A systematic mapping study that surveys literature to identify research trends and gaps."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:MediumCompany a owl:Class ;
+    rdfs:label "Medium Company"^^xsd:string ;
+    rdfs:comment "Software development company with 51 to 200 employees."^^xsd:string ;
+    rdfs:subClassOf ns1:OrganizationSizeCategory .
+
+ns1:ModelDeploymentProcess a owl:Class ;
+    rdfs:label "Model Deployment Process"^^xsd:string ;
+    rdfs:comment "Process that deploys a trained model to a target environment."^^xsd:string ;
+    rdfs:subClassOf ns1:Process .
+
+ns1:ModelEffectiveness a owl:Class ;
+    rdfs:label "Model Effectiveness"^^xsd:string ;
+    rdfs:comment "Overall suitability of a model for its intended operational purpose."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ModelInterpretability a owl:Class ;
+    rdfs:label "Model Interpretability"^^xsd:string ;
+    rdfs:comment "The degree to which a human can understand the internal mechanics of a model."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ModelQuality a owl:Class ;
+    rdfs:label "Model Quality"^^xsd:string ;
+    rdfs:comment "Overall measure of model accuracy, precision, and suitability."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ModelRegistry a owl:Class ;
+    rdfs:label "Model Registry"^^xsd:string ;
+    rdfs:comment "Centralized store for model versions and metadata."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ModelRelevance a owl:Class ;
+    rdfs:label "Model Relevance"^^xsd:string ;
+    rdfs:comment "Extent to which a model remains applicable to current business needs."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ModelReliability a owl:Class ;
+    rdfs:label "Model Reliability"^^xsd:string ;
+    rdfs:comment "Consistency of a model's performance over time."^^xsd:string,
+        "Consistency of model performance over time."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ModelRobustness a owl:Class ;
+    rdfs:label "Model Robustness"^^xsd:string ;
+    rdfs:comment "Ability of a model to maintain performance under varying conditions."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ModelTeam a owl:Class ;
+    rdfs:label "Model Team"^^xsd:string ;
+    rdfs:comment "Team focused on model development and maintenance."^^xsd:string ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:ModelTrainingProcess a owl:Class ;
+    rdfs:label "Model Training Process"^^xsd:string ;
+    rdfs:comment "Process that trains a machine learning model."^^xsd:string ;
+    rdfs:subClassOf ns1:Process .
+
+ns1:MonitoringTool a owl:Class ;
+    rdfs:label "Monitoring Tool"^^xsd:string ;
+    rdfs:comment "Tool used to monitor model performance and data drift."^^xsd:string ;
+    rdfs:subClassOf ns1:Tool ;
+    owl:sameAs ns1:ModelMonitoringProcess,
+        ns1:MonitoringPractice,
+        ns1:MonitoringStage .
+
+ns1:MultidisciplinaryCollaboration a owl:Class ;
+    rdfs:label "Multidisciplinary Collaboration"^^xsd:string ;
+    rdfs:comment "Collaboration among professionals from different domains (e.g., data science, software engineering, domain experts) in AI projects."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:OperationalEfficiency a owl:Class ;
+    rdfs:label "Operational Efficiency"^^xsd:string ;
+    rdfs:comment "Improved efficiency of AI engineering operations as a benefit of MLOps."^^xsd:string ;
+    rdfs:subClassOf ns1:Benefit .
+
+ns1:OperationsExpert a owl:Class ;
+    rdfs:label "Operations Expert"^^xsd:string ;
+    rdfs:comment "Stakeholder responsible for deployment, monitoring, and operational reliability."^^xsd:string ;
+    rdfs:subClassOf ns1:StakeholderRole .
+
+ns1:OperationsTeam a owl:Class ;
+    rdfs:label "Operations Team"^^xsd:string ;
+    rdfs:comment "Team responsible for deploying and maintaining models in production."^^xsd:string ;
+    rdfs:subClassOf ns1:Team .
+
+ns1:Pipeline a owl:Class ;
+    rdfs:label "Pipeline"^^xsd:string ;
+    rdfs:comment "A sequence of steps that process data and/or models."^^xsd:string ;
+    rdfs:subClassOf ns1:DataPipeline ;
+    owl:sameAs ns1:CICDPipeline,
+        ns1:JenkinsPipeline .
+
+ns1:ProbabilisticOutput a owl:Class ;
+    rdfs:label "Probabilistic Output"^^xsd:string ;
+    rdfs:comment "Model output that represents probabilities or distributions."^^xsd:string ;
+    rdfs:subClassOf ns1:Output ;
+    owl:sameAs ns1:DeterministicOutput .
+
+ns1:ProblemDefinitionStage a owl:Class ;
+    rdfs:label "Problem Definition Stage"^^xsd:string ;
+    rdfs:comment "Stage where business objectives and requirements are defined."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsStage .
+
+ns1:ProcessChallenge a owl:Class ;
+    rdfs:label "Process Challenge"^^xsd:string ;
+    rdfs:comment "Challenge concerning process management in ML-enabled system development."^^xsd:string ;
+    rdfs:subClassOf ns1:CollaborationChallenge .
+
+ns1:Product a owl:Class ;
+    rdfs:label "Product"^^xsd:string ;
+    rdfs:comment "A deliverable that incorporates ML components for end users."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ProductOwner a owl:Class ;
+    rdfs:label "Product Owner"^^xsd:string ;
+    rdfs:comment "Defines product requirements and success criteria for ML solutions."^^xsd:string ;
+    rdfs:subClassOf ns1:MLRole .
+
+ns1:ProductTeam a owl:Class ;
+    rdfs:label "Product Team"^^xsd:string ;
+    rdfs:comment "Team representing product requirements and business value."^^xsd:string ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:RequirementEngineeringPaperClassification a owl:Class ;
+    rdfs:label "Requirement Engineering Paper Classification"^^xsd:string ;
+    rdfs:comment "A classification scheme for requirement engineering research papers."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ResourceConstraint a owl:Class ;
+    rdfs:label "Resource Constraint"^^xsd:string ;
+    rdfs:comment "Limitation of resources such as compute, data, or personnel affecting AI development."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ResponsibleDevelopment a owl:Class ;
+    rdfs:label "Responsible Development"^^xsd:string ;
+    rdfs:comment "Practices ensuring ethical and accountable development of AI systems."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:RetrainingPractice a owl:Class ;
+    rdfs:label "Retraining Practice"^^xsd:string ;
+    rdfs:comment "Practice of automatically retraining models when performance degrades or data changes."^^xsd:string ;
+    rdfs:subClassOf ns1:AutomationPractice .
+
+ns1:ServerlessPlatform a owl:Class ;
+    rdfs:label "Serverless Platform"^^xsd:string ;
+    rdfs:comment "Cloud service providing serverless compute for training and inference."^^xsd:string ;
+    rdfs:subClassOf ns1:CloudResource .
+
+ns1:SmallCompany a owl:Class ;
+    rdfs:label "Small Company"^^xsd:string ;
+    rdfs:comment "Software development company with 11 to 50 employees."^^xsd:string ;
+    rdfs:subClassOf ns1:OrganizationSizeCategory .
+
+ns1:SoftSkill a owl:Class ;
+    rdfs:label "Soft Skill"^^xsd:string ;
+    rdfs:comment "Nonâtechnical competencies such as communication, collaboration, and adaptability."^^xsd:string ;
+    rdfs:subClassOf ns1:Skill,
+        prov:Entity ;
+    owl:sameAs ns1:SoftCompetency .
+
+ns1:SoftwareDeveloper a owl:Class ;
+    rdfs:label "Software Developer"^^xsd:string ;
+    rdfs:comment "Implements software components and integrates ML models into applications."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsRole .
+
+ns1:SoftwareDevelopmentCompany a owl:Class ;
+    rdfs:label "Software Development Company"^^xsd:string ;
+    rdfs:comment "An organization that develops software, considered in the study."^^xsd:string ;
+    rdfs:subClassOf prov:Agent .
+
+ns1:SoftwareEngineer a owl:Class ;
+    rdfs:label "Software Engineer"^^xsd:string ;
+    rdfs:comment "Professional responsible for software development, integration, and deployment."^^xsd:string,
+        "Stakeholder responsible for software development and engineering best practices."^^xsd:string ;
+    rdfs:subClassOf ns1:Role,
+        ns1:StakeholderRole .
+
+ns1:SoftwareEngineeringPractice a owl:Class ;
+    rdfs:label "Software Engineering Practice"^^xsd:string ;
+    rdfs:comment "A practice within software engineering, such as testing, version control, or code review."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:Stakeholder a owl:Class ;
+    rdfs:label "Stakeholder"^^xsd:string ;
+    rdfs:comment "Any party with interest in the AI system's outcomes."^^xsd:string ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:Standardization a owl:Class ;
+    rdfs:label "Standardization"^^xsd:string ;
+    rdfs:comment "Process of establishing common standards for development processes."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsPractice .
+
+ns1:TPU a owl:Class ;
+    rdfs:label "TPU"^^xsd:string ;
+    rdfs:comment "Tensor Processing Unit used to accelerate model training."^^xsd:string ;
+    rdfs:subClassOf ns1:Hardware .
+
+ns1:TalentShortageChallenge a owl:Class ;
+    rdfs:label "Talent Shortage Challenge"^^xsd:string ;
+    rdfs:comment "Lack of specialized MLOps talent within an organization."^^xsd:string ;
+    rdfs:subClassOf ns1:Challenge .
+
+ns1:TrainingStage a owl:Class ;
+    rdfs:label "Training Stage"^^xsd:string ;
+    rdfs:comment "Stage where model training runs are executed."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsStage ;
+    owl:sameAs ns1:ContinuousTraining,
+        ns1:ContinuousTrainingStage .
+
+ns1:ValidationPractice a owl:Class ;
+    rdfs:label "Validation Practice"^^xsd:string ;
+    rdfs:comment "Systematic validation of model outputs and data to ensure correctness."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsPractice .
+
+ns1:addressesChallenge a owl:ObjectProperty ;
+    rdfs:label "addresses challenge"^^xsd:string ;
+    rdfs:comment "Indicates that a practice or activity addresses a specific challenge in AI engineering."^^xsd:string,
+        "Indicates that a process or practice mitigates a specific challenge."^^xsd:string,
+        "Indicates that a success factor addresses a specific MLOps challenge."^^xsd:string,
+        "The paper discusses or proposes solutions for a specific MLOps challenge."^^xsd:string ;
+    rdfs:domain ns1:MLOpsCriticalSuccessFactor,
+        ns1:MLOpsProcess,
+        ns1:ResearchPaper,
+        prov:Activity ;
+    rdfs:range ns1:Challenge,
+        ns1:MLOpsChallenge .
+
+ns1:addressesResearchQuestion a owl:ObjectProperty ;
+    rdfs:label "addresses research question"^^xsd:string ;
+    rdfs:comment "Indicates that a document or study addresses a specific research question."^^xsd:string ;
+    rdfs:domain prov:Entity ;
+    rdfs:range ns1:ResearchQuestion .
+
+ns1:allows a owl:ObjectProperty ;
+    rdfs:label "allows"^^xsd:string ;
+    rdfs:comment "Indicates that a practice enables a capability."^^xsd:string ;
+    rdfs:domain ns1:MLOpsPractice ;
+    rdfs:range prov:Entity .
+
+ns1:appliesFilter a owl:ObjectProperty ;
+    rdfs:label "applies filter"^^xsd:string ;
+    rdfs:comment "A search strategy applies a filter constraint."^^xsd:string ;
+    rdfs:domain ns1:SearchStrategy ;
+    rdfs:range ns1:Filter .
+
+ns1:appliesProgrammingPractice a owl:ObjectProperty ;
+    rdfs:label "applies programming practice"^^xsd:string ;
+    rdfs:comment "Associates a development activity with a programming practice principle."^^xsd:string ;
+    rdfs:domain prov:Activity ;
+    rdfs:range ns1:ProgrammingPracticePrinciple .
+
+ns1:appliesToPaper a owl:ObjectProperty ;
+    rdfs:label "applies to paper"^^xsd:string ;
+    rdfs:comment "Indicates that a criterion applies to a specific paper."^^xsd:string ;
+    rdfs:domain ns1:InclusionCriterion ;
+    rdfs:range ns1:Paper .
+
+ns1:assessesMaturity a owl:ObjectProperty ;
+    rdfs:label "assesses maturity"^^xsd:string ;
+    rdfs:comment "An agent (e.g., organization) uses a framework to assess its MLOps maturity level."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:MLOpsMaturityLevel .
+
+ns1:associatedWithMaturityLevel a owl:ObjectProperty ;
+    rdfs:label "associated with maturity level"^^xsd:string ;
+    rdfs:comment "Links the MLOps discipline to its current maturity level."^^xsd:string ;
+    rdfs:domain ns1:MLOpsDiscipline ;
+    rdfs:range ns1:MaturityLevel .
+
+ns1:causesPerformanceDegradation a owl:ObjectProperty ;
+    rdfs:label "causes performance degradation"^^xsd:string ;
+    rdfs:comment "Data drift can cause performance degradation of a model."^^xsd:string ;
+    rdfs:domain ns1:DataDrift ;
+    rdfs:range ns1:PerformanceDegradation ;
+    rdfs:subPropertyOf prov:wasInfluencedBy .
+
+ns1:cites a owl:ObjectProperty ;
+    rdfs:label "cites"^^xsd:string ;
+    rdfs:comment "Indicates that a research paper cites another paper."^^xsd:string ;
+    rdfs:domain ns1:ResearchPaper ;
+    rdfs:range ns1:ResearchPaper ;
+    rdfs:subPropertyOf dcterms:references .
+
+ns1:collaboratesWith a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "collaborates with"^^xsd:string ;
+    rdfs:comment "Indicates collaboration between two roles."^^xsd:string ;
+    rdfs:domain ns1:MLOpsRole ;
+    rdfs:range ns1:MLOpsRole .
+
+ns1:contributesTo a owl:ObjectProperty ;
+    rdfs:label "contributes to"^^xsd:string ;
+    rdfs:comment "Indicates that a practice contributes to a desired model attribute."^^xsd:string ;
+    rdfs:domain ns1:MLOpsPractice ;
+    rdfs:range prov:Entity .
+
+ns1:contributesToChallenge a owl:ObjectProperty ;
+    rdfs:label "contributes to challenge"^^xsd:string ;
+    rdfs:comment "A complexity factor that contributes to a particular challenge category."^^xsd:string ;
+    rdfs:domain ns1:ComplexityFactor ;
+    rdfs:range ns1:ChallengeCategory .
+
+ns1:definesLevel a owl:ObjectProperty ;
+    rdfs:label "defines level"^^xsd:string ;
+    rdfs:comment "A benchmark defines a specific maturity level."^^xsd:string ;
+    rdfs:domain ns1:MLOpsBenchmark ;
+    rdfs:range ns1:MLOpsMaturityLevel .
+
+ns1:definesQualityCriteria a owl:ObjectProperty ;
+    rdfs:label "defines quality criteria"^^xsd:string ;
+    rdfs:comment "Specifies quality criteria for study selection."^^xsd:string ;
+    rdfs:domain ns1:SearchObjective ;
+    rdfs:range ns1:QualityCriteria .
+
+ns1:definesRole a owl:ObjectProperty ;
+    rdfs:label "defines role"^^xsd:string ;
+    rdfs:comment "Relates an organization or process to a specific MLOps role."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:MLOpsRole .
+
+ns1:describesMaturityModel a owl:ObjectProperty ;
+    rdfs:label "describes maturity model"^^xsd:string ;
+    rdfs:comment "Links a study to a maturity model it describes."^^xsd:string ;
+    rdfs:domain ns1:MLOpsStudy ;
+    rdfs:range ns1:MaturityModel .
+
+ns1:detectsDrift a owl:ObjectProperty ;
+    rdfs:label "detects drift"^^xsd:string ;
+    rdfs:comment "Monitoring job identifies a drift condition."^^xsd:string ;
+    rdfs:domain ns1:MonitoringJob ;
+    rdfs:range ns1:Drift ;
+    owl:sameAs ns1:detectsDataDrift,
+        ns1:hasModelDrift .
+
+ns1:emitsEvent a owl:ObjectProperty ;
+    rdfs:label "emits event" ;
+    rdfs:comment "Monitoring job can emit events such as data drift detection." ;
+    rdfs:domain ns1:MonitoringJob ;
+    rdfs:range ns1:Event .
+
+ns1:enables a owl:ObjectProperty ;
+    rdfs:label "enables"^^xsd:string ;
+    rdfs:comment "Indicates that a practice enables a capability or process."^^xsd:string ;
+    rdfs:domain prov:Activity ;
+    rdfs:range prov:Activity .
+
+ns1:encourages a owl:ObjectProperty ;
+    rdfs:label "encourages"^^xsd:string ;
+    rdfs:comment "Indicates that a practice encourages a certain outcome or concept."^^xsd:string ;
+    rdfs:domain ns1:MLOpsPractice ;
+    rdfs:range prov:Entity .
+
+ns1:ensuresConfidentiality a owl:ObjectProperty ;
+    rdfs:label "ensures confidentiality"^^xsd:string ;
+    rdfs:comment "Process ensures that confidential data is protected."^^xsd:string ;
+    rdfs:domain prov:Activity ;
+    rdfs:range ns1:ConfidentialData .
+
+ns1:evaluatesMaturityModel a owl:ObjectProperty ;
+    rdfs:label "evaluates maturity model"^^xsd:string ;
+    rdfs:comment "The paper evaluates or proposes an MLOps maturity model."^^xsd:string ;
+    rdfs:domain ns1:ResearchPaper ;
+    rdfs:range ns1:MLOpsMaturityModel .
+
+ns1:excludesPaper a owl:ObjectProperty ;
+    rdfs:label "excludes paper"^^xsd:string ;
+    rdfs:comment "Indicates that an exclusion criterion excludes a specific paper."^^xsd:string ;
+    rdfs:domain ns1:ExclusionCriterion ;
+    rdfs:range ns1:Paper .
+
+ns1:feedsDataPipeline a owl:ObjectProperty ;
+    rdfs:label "feeds data pipeline" ;
+    rdfs:comment "Model provides data to a pipeline for further processing." ;
+    rdfs:domain ns1:MLModel ;
+    rdfs:range ns1:DataPipeline .
+
+ns1:followsMethodology a owl:ObjectProperty ;
+    rdfs:label "follows methodology"^^xsd:string ;
+    rdfs:comment "Indicates that a process follows a given methodology."^^xsd:string ;
+    rdfs:domain ns1:Process ;
+    rdfs:range ns1:Methodology ;
+    rdfs:subPropertyOf ns1:hasMethodology .
+
+ns1:hasAdoptionBenefit a owl:ObjectProperty ;
+    rdfs:label "has adoption benefit" ;
+    rdfs:comment "Links an MLOps adoption instance to a benefit realized." ;
+    rdfs:domain ns1:Adoption ;
+    rdfs:range ns1:MLOpsAdoptionBenefit .
+
+ns1:hasAdoptionBenefitCategory a owl:ObjectProperty ;
+    rdfs:label "has adoption benefit category" ;
+    rdfs:comment "Associates an adoption case with a benefit category." ;
+    rdfs:domain ns1:Adoption ;
+    rdfs:range ns1:BenefitCategory .
+
+ns1:hasAdoptionChallenge a owl:ObjectProperty ;
+    rdfs:label "has adoption challenge" ;
+    rdfs:comment "Links an MLOps adoption instance to a challenge encountered." ;
+    rdfs:domain ns1:Adoption ;
+    rdfs:range ns1:MLOpsAdoptionChallenge .
+
+ns1:hasAdoptionChallengeCategory a owl:ObjectProperty ;
+    rdfs:label "has adoption challenge category" ;
+    rdfs:comment "Associates an adoption case with a challenge category." ;
+    rdfs:domain ns1:Adoption ;
+    rdfs:range ns1:ChallengeCategory .
+
+ns1:hasAdoptionFactor a owl:ObjectProperty ;
+    rdfs:label "has adoption factor"^^xsd:string ;
+    rdfs:comment "Factor influencing MLOps adoption."^^xsd:string ;
+    rdfs:domain ns1:Adoption ;
+    rdfs:range ns1:AdoptionFactor .
+
+ns1:hasArtifact a owl:ObjectProperty ;
+    rdfs:label "has artifact"^^xsd:string ;
+    rdfs:comment "Links a process to an artifact it produces."^^xsd:string ;
+    rdfs:domain ns1:Process ;
+    rdfs:range ns1:Artifact ;
+    owl:sameAs ns1:producesArtifact .
+
+ns1:hasAuthor a owl:ObjectProperty ;
+    rdfs:label "has author"^^xsd:string ;
+    rdfs:comment "Relates a research paper to its author(s)."^^xsd:string ;
+    rdfs:domain ns1:ResearchPaper ;
+    rdfs:range ns1:Author ;
+    rdfs:subPropertyOf dcterms:creator .
+
+ns1:hasAutomationDegree a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has automation degree"^^xsd:string ;
+    rdfs:comment "Numeric representation of automation intensity for a maturity level (e.g., 0-4)."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityLevel ;
+    rdfs:range xsd:integer .
+
+ns1:hasAutomationPrinciple a owl:ObjectProperty ;
+    rdfs:label "has automation principle"^^xsd:string ;
+    rdfs:comment "Links a maturity level to an automation principle it embodies."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityLevel ;
+    rdfs:range ns1:AutomationPrinciple .
+
+ns1:hasBenchmark a owl:ObjectProperty ;
+    rdfs:label "has benchmark"^^xsd:string ;
+    rdfs:comment "Associates a maturity framework with external benchmark definitions."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityFramework ;
+    rdfs:range ns1:MLOpsBenchmark .
+
+ns1:hasBenefit a owl:ObjectProperty ;
+    rdfs:label "has benefit"^^xsd:string ;
+    rdfs:comment "Adoption yields a specific benefit."^^xsd:string,
+        "Associates a study or adoption case with a reported benefit."^^xsd:string,
+        "Links an MLOps practice to a reported benefit."^^xsd:string ;
+    rdfs:domain ns1:Adoption,
+        ns1:MLOpsPractice,
+        prov:Entity ;
+    rdfs:range ns1:Benefit,
+        ns1:MLOpsBenefit .
+
+ns1:hasBenefitCategory a owl:ObjectProperty ;
+    rdfs:label "has benefit category"^^xsd:string ;
+    rdfs:comment "Relates the MLOps discipline to a specific benefit category."^^xsd:string ;
+    rdfs:domain ns1:MLOpsDiscipline ;
+    rdfs:range ns1:BenefitCategory .
+
+ns1:hasBestPractice a owl:ObjectProperty ;
+    rdfs:label "has best practice"^^xsd:string ;
+    rdfs:comment "Links a study to a best practice it reports."^^xsd:string ;
+    rdfs:domain ns1:MLOpsStudy ;
+    rdfs:range ns1:BestPractice .
+
+ns1:hasChallenge a owl:ObjectProperty ;
+    rdfs:label "has challenge"^^xsd:string ;
+    rdfs:comment "Adoption faces a specific challenge."^^xsd:string,
+        "Associates a study or adoption case with a reported challenge."^^xsd:string,
+        "Links an AI system or project to a challenge it faces."^^xsd:string,
+        "Links an MLOps practice to a reported challenge."^^xsd:string ;
+    rdfs:domain ns1:Adoption,
+        ns1:MLOpsPractice,
+        prov:Entity ;
+    rdfs:range ns1:Challenge,
+        ns1:MLOpsChallenge .
+
+ns1:hasChallengeCategory a owl:ObjectProperty ;
+    rdfs:label "has challenge category"^^xsd:string ;
+    rdfs:comment "Relates the MLOps discipline to a specific challenge category."^^xsd:string ;
+    rdfs:domain ns1:MLOpsDiscipline ;
+    rdfs:range ns1:ChallengeCategory .
+
+ns1:hasCollaborationAspect a owl:ObjectProperty ;
+    rdfs:label "has collaboration aspect"^^xsd:string ;
+    rdfs:comment "Links a maturity framework to collaboration aspects considered."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityFramework ;
+    rdfs:range ns1:CollaborationAspect .
+
+ns1:hasComplexityFactor a owl:ObjectProperty ;
+    rdfs:label "has complexity factor"^^xsd:string ;
+    rdfs:comment "Associates the MLOps discipline with a factor contributing to its complexity."^^xsd:string ;
+    rdfs:domain ns1:MLOpsDiscipline ;
+    rdfs:range ns1:ComplexityFactor .
+
+ns1:hasCost a owl:DatatypeProperty ;
+    rdfs:label "has cost"^^xsd:string ;
+    schema1:unitCode "USD"^^xsd:string ;
+    rdfs:comment "Monetary cost associated with a process or implementation."^^xsd:string ;
+    rdfs:domain ns1:Process ;
+    rdfs:range xsd:decimal ;
+    owl:sameAs ns1:costEffective,
+        ns1:hasComputationalCost .
+
+ns1:hasCulturalAspect a owl:ObjectProperty ;
+    rdfs:label "has cultural aspect"^^xsd:string ;
+    rdfs:comment "Links a maturity framework to cultural aspects considered."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityFramework ;
+    rdfs:range ns1:CulturalAspect ;
+    owl:sameAs ns1:hasOrganizationalCulture .
+
+ns1:hasCustomerInvolvement a owl:DatatypeProperty ;
+    rdfs:label "has customer involvement"^^xsd:string ;
+    rdfs:comment "Indicates whether customers are involved in a given MLOps phase."^^xsd:string ;
+    rdfs:domain ns1:MLOpsPhase ;
+    rdfs:range xsd:boolean ;
+    owl:sameAs ns1:hasDataScientistInvolvement .
+
+ns1:hasDataManagement a owl:ObjectProperty ;
+    rdfs:label "has data management"^^xsd:string ;
+    rdfs:comment "Associates a project with its data management activities."^^xsd:string ;
+    rdfs:domain prov:Entity ;
+    rdfs:range ns1:DataManagement .
+
+ns1:hasDataOpsConcept a owl:ObjectProperty ;
+    rdfs:label "has DataOps concept"^^xsd:string ;
+    rdfs:comment "Links a maturity framework to DataOps concepts it includes."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityFramework ;
+    rdfs:range ns1:DataOpsConcept .
+
+ns1:hasDataPrivacyPolicy a owl:ObjectProperty ;
+    rdfs:label "has data privacy policy"^^xsd:string ;
+    rdfs:comment "Links an AI system or model to its governing data privacy policy."^^xsd:string ;
+    rdfs:domain ns1:MLModel ;
+    rdfs:range ns1:DataPrivacyPolicy .
+
+ns1:hasDegradation a owl:ObjectProperty ;
+    rdfs:label "has degradation"^^xsd:string ;
+    rdfs:comment "Indicates that a model version experiences performance degradation over time."^^xsd:string ;
+    rdfs:domain ns1:ModelVersion ;
+    rdfs:range ns1:ModelDegradation .
+
+ns1:hasDeploymentEnvironment a owl:ObjectProperty ;
+    rdfs:label "has deployment environment"^^xsd:string ;
+    rdfs:comment "Specifies the environment where a model version is deployed."^^xsd:string ;
+    rdfs:domain ns1:ModelVersion ;
+    rdfs:range ns1:DeploymentEnvironment ;
+    rdfs:subPropertyOf ns1:deployedTo .
+
+ns1:hasDeploymentStrategy a owl:ObjectProperty ;
+    rdfs:label "has deployment strategy" ;
+    rdfs:comment "Specifies the strategy used to deploy a model version." ;
+    rdfs:domain ns1:ModelVersion ;
+    rdfs:range ns1:DeploymentStrategy .
+
+ns1:hasDimension a owl:ObjectProperty ;
+    rdfs:label "has dimension"^^xsd:string ;
+    rdfs:comment "Links a maturity framework to one of its evaluation dimensions."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityFramework ;
+    rdfs:range ns1:MLOpsDimension .
+
+ns1:hasEducationProgram a owl:ObjectProperty ;
+    rdfs:label "has education program"^^xsd:string ;
+    rdfs:comment "Links an organization to an MLOps education program."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:EducationProgram .
+
+ns1:hasEthicalConsideration a owl:ObjectProperty ;
+    rdfs:label "has ethical consideration"^^xsd:string ;
+    rdfs:comment "Links a project to ethical considerations taken into account."^^xsd:string ;
+    rdfs:domain prov:Entity ;
+    rdfs:range ns1:EthicalConsideration .
+
+ns1:hasExclusionCriterion a owl:ObjectProperty ;
+    rdfs:label "has exclusion criterion"^^xsd:string ;
+    rdfs:comment "Links a selection process to an exclusion criterion."^^xsd:string ;
+    rdfs:domain ns1:SelectionProcess ;
+    rdfs:range ns1:ExclusionCriterion .
+
+ns1:hasExpectationManagement a owl:ObjectProperty ;
+    rdfs:label "has expectation management"^^xsd:string ;
+    rdfs:comment "Associates a project with activities that manage stakeholder expectations."^^xsd:string ;
+    rdfs:domain prov:Entity ;
+    rdfs:range ns1:ExpectationManagement .
+
+ns1:hasExperimentationProcess a owl:ObjectProperty ;
+    rdfs:label "has experimentation process"^^xsd:string ;
+    rdfs:comment "Associates a project with its experimentation process."^^xsd:string ;
+    rdfs:domain prov:Entity ;
+    rdfs:range ns1:ExperimentationProcess .
+
+ns1:hasExperimentationTime a owl:DatatypeProperty ;
+    rdfs:label "has experimentation time"^^xsd:string ;
+    schema1:unitCode "DAY"^^xsd:string ;
+    rdfs:comment "Amount of time allocated at the start of a project for experimentation, expressed in days."^^xsd:string ;
+    rdfs:domain ns1:MLOpsPhase ;
+    rdfs:range xsd:duration .
+
+ns1:hasGoal a owl:ObjectProperty ;
+    rdfs:label "has goal"^^xsd:string ;
+    rdfs:comment "Links a GQM paradigm to its goal."^^xsd:string,
+        "Links a research question to a GQM goal."^^xsd:string ;
+    rdfs:domain ns1:GoalQuestionMetricParadigm,
+        ns1:ResearchQuestion ;
+    rdfs:range ns1:Goal .
+
+ns1:hasInclusionCriterion a owl:ObjectProperty ;
+    rdfs:label "has inclusion criterion"^^xsd:string ;
+    rdfs:comment "Links a selection process to an inclusion criterion."^^xsd:string ;
+    rdfs:domain ns1:SelectionProcess ;
+    rdfs:range ns1:InclusionCriterion .
+
+ns1:hasInfrastructure a owl:ObjectProperty ;
+    rdfs:label "has infrastructure"^^xsd:string ;
+    rdfs:comment "Links an MLOps process to required infrastructure components."^^xsd:string ;
+    rdfs:domain ns1:MLOpsProcess ;
+    rdfs:range ns1:InfrastructureComponent .
+
+ns1:hasInterpretabilityScore a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has interpretability score"^^xsd:string ;
+    rdfs:comment "Numeric score representing model interpretability."^^xsd:string ;
+    rdfs:domain ns1:MLModel ;
+    rdfs:range xsd:float .
+
+ns1:hasLegalCompliance a owl:ObjectProperty ;
+    rdfs:label "has legal compliance"^^xsd:string ;
+    rdfs:comment "Links a project to legal compliance artifacts or activities."^^xsd:string ;
+    rdfs:domain prov:Entity ;
+    rdfs:range ns1:LegalCompliance .
+
+ns1:hasMLOpsMaturityAttribute a owl:ObjectProperty ;
+    rdfs:label "has MLOps maturity attribute" ;
+    rdfs:comment "Links a maturity level to an attribute used for assessment." ;
+    rdfs:domain ns1:MLOpsMaturityLevel ;
+    rdfs:range ns1:MLOpsMaturityAttribute .
+
+ns1:hasMLOpsMaturityBenefit a owl:ObjectProperty ;
+    rdfs:label "has MLOps maturity benefit" ;
+    rdfs:comment "Links a maturity level to a benefit associated with that level." ;
+    rdfs:domain ns1:MLOpsMaturityLevel ;
+    rdfs:range ns1:MLOpsMaturityBenefit .
+
+ns1:hasMLOpsMaturityChallenge a owl:ObjectProperty ;
+    rdfs:label "has MLOps maturity challenge" ;
+    rdfs:comment "Links a maturity level to a challenge associated with that level." ;
+    rdfs:domain ns1:MLOpsMaturityLevel ;
+    rdfs:range ns1:MLOpsMaturityChallenge .
+
+ns1:hasMLOpsMaturityDimension a owl:ObjectProperty ;
+    rdfs:label "has MLOps maturity dimension" ;
+    rdfs:comment "Links a maturity level to a dimension considered in the maturity model." ;
+    rdfs:domain ns1:MLOpsMaturityLevel ;
+    rdfs:range ns1:MLOpsDimension .
+
+ns1:hasMLOpsParadigm a owl:ObjectProperty ;
+    rdfs:label "has MLOps paradigm"^^xsd:string ;
+    rdfs:comment "Links a project or organization to the MLOps paradigm it adopts."^^xsd:string ;
+    rdfs:domain ns1:MLProject ;
+    rdfs:range ns1:MLOpsParadigm .
+
+ns1:hasMLOpsPractice a owl:ObjectProperty ;
+    rdfs:label "has MLOps practice"^^xsd:string ;
+    rdfs:comment "Links a project or pipeline to an MLOps practice employed."^^xsd:string,
+        "The paper describes a particular MLOps practice."^^xsd:string ;
+    rdfs:domain ns1:ResearchPaper,
+        prov:Entity ;
+    rdfs:range ns1:MLOpsPractice .
+
+ns1:hasMLOpsProcess a owl:ObjectProperty ;
+    rdfs:label "has MLOps process"^^xsd:string ;
+    rdfs:comment "Links the MLOps concept to a specific practice or process."^^xsd:string ;
+    rdfs:domain ns1:MLOps ;
+    rdfs:range ns1:MLOpsPractice .
+
+ns1:hasMaintenanceStrategy a owl:ObjectProperty ;
+    rdfs:label "has maintenance strategy"^^xsd:string ;
+    rdfs:comment "Specifies the strategy applied during model maintenance."^^xsd:string ;
+    rdfs:domain ns1:MaintenanceProcess ;
+    rdfs:range ns1:MaintenanceStrategy .
+
+ns1:hasMaturityLevel a owl:DatatypeProperty,
+        owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has maturity level"^^xsd:string ;
+    rdfs:comment "Associates a maturity framework with a specific maturity level."^^xsd:string,
+        "Associates a maturity model with its levels."^^xsd:string,
+        "Links a maturity model to one of its levels."^^xsd:string,
+        "Numeric or categorical indicator of MLOps maturity."^^xsd:string,
+        "Organization's MLOps maturity level."^^xsd:string,
+        "Relates an MLOps maturity model to one of its defined maturity levels."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityFramework,
+        ns1:MLOpsMaturityModel,
+        ns1:MaturityModel,
+        ns1:Organization ;
+    rdfs:range ns1:MLOpsMaturityLevel,
+        ns1:MaturityLevel,
+        xsd:string .
+
+ns1:hasMaturityModel a owl:ObjectProperty ;
+    rdfs:label "has maturity model"^^xsd:string ;
+    rdfs:comment "Associates an organization or context with a maturity model."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:MaturityModel .
+
+ns1:hasMetric a owl:DatatypeProperty,
+        owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has metric"^^xsd:string,
+        "has metric" ;
+    rdfs:comment "Associates a goal with a metric."^^xsd:string,
+        "Performance metric value associated with a model version." ;
+    rdfs:domain ns1:Goal,
+        ns1:ModelVersion ;
+    rdfs:range ns1:Metric,
+        xsd:float .
+
+ns1:hasMetricDefinition a owl:ObjectProperty ;
+    rdfs:label "has metric definition"^^xsd:string ;
+    rdfs:comment "Links a GQM paradigm to its metric definition."^^xsd:string ;
+    rdfs:domain ns1:GoalQuestionMetricParadigm ;
+    rdfs:range ns1:Metric .
+
+ns1:hasMonitoringStrategy a owl:ObjectProperty ;
+    rdfs:label "has monitoring strategy"^^xsd:string ;
+    rdfs:comment "Specifies the strategy used by a monitoring job."^^xsd:string ;
+    rdfs:domain ns1:MonitoringJob ;
+    rdfs:range ns1:MonitoringStrategy .
+
+ns1:hasMotivation a owl:DatatypeProperty ;
+    rdfs:label "has motivation"^^xsd:string ;
+    rdfs:comment "Narrative explaining why a research question is posed."^^xsd:string ;
+    rdfs:domain ns1:ResearchQuestion ;
+    rdfs:range xsd:string .
+
+ns1:hasProcess a owl:ObjectProperty ;
+    rdfs:label "has process"^^xsd:string ;
+    rdfs:comment "Associates a project with its highâlevel processes."^^xsd:string ;
+    rdfs:domain ns1:MLProject ;
+    rdfs:range ns1:Process ;
+    owl:sameAs ns1:performsProcess .
+
+ns1:hasProvenanceRecord a owl:ObjectProperty ;
+    rdfs:label "has provenance record" ;
+    rdfs:comment "Links a model version to its provenance metadata." ;
+    rdfs:domain ns1:ModelVersion ;
+    rdfs:range prov:Entity .
+
+ns1:hasPublicationVenue a owl:ObjectProperty ;
+    rdfs:label "has publication venue"^^xsd:string ;
+    rdfs:comment "The organization (journal, conference) where the paper was published."^^xsd:string ;
+    rdfs:domain ns1:ResearchPaper ;
+    rdfs:range ns1:ProfessionalOrganization .
+
+ns1:hasQuestion a owl:ObjectProperty ;
+    rdfs:label "has question"^^xsd:string ;
+    rdfs:comment "Links a GQM paradigm to its question."^^xsd:string ;
+    rdfs:domain ns1:GoalQuestionMetricParadigm ;
+    rdfs:range ns1:Question .
+
+ns1:hasResearchProtocol a owl:ObjectProperty ;
+    rdfs:label "has research protocol"^^xsd:string ;
+    rdfs:comment "Links a systematic literature review to its research protocol."^^xsd:string ;
+    rdfs:domain ns1:SystematicLiteratureReview ;
+    rdfs:range ns1:ResearchProtocol .
+
+ns1:hasResearchQuestion a owl:ObjectProperty ;
+    rdfs:label "has research question"^^xsd:string ;
+    rdfs:comment "Associates a research protocol or review with a research question."^^xsd:string,
+        "Links a study or search strategy to a research question."^^xsd:string ;
+    rdfs:domain ns1:ResearchProtocol,
+        ns1:SearchStrategy ;
+    rdfs:range ns1:ResearchQuestion .
+
+ns1:hasResourceManagement a owl:ObjectProperty ;
+    rdfs:label "has resource management"^^xsd:string ;
+    rdfs:comment "Associates a project with its resource management activities."^^xsd:string ;
+    rdfs:domain prov:Entity ;
+    rdfs:range ns1:ResourceManagement .
+
+ns1:hasResponsibility a owl:DatatypeProperty ;
+    rdfs:label "has responsibility"^^xsd:string ;
+    rdfs:comment "Describes the responsibility of a role in textual form."^^xsd:string ;
+    rdfs:domain ns1:MLOpsRole ;
+    rdfs:range xsd:string .
+
+ns1:hasReviewLevel a owl:ObjectProperty ;
+    rdfs:label "has review level"^^xsd:string ;
+    rdfs:comment "Specifies the review level at which a paper was evaluated."^^xsd:string ;
+    rdfs:domain ns1:Paper ;
+    rdfs:range ns1:ReviewLevel .
+
+ns1:hasRobustnessScore a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has robustness score"^^xsd:string ;
+    rdfs:comment "Numeric score indicating model robustness."^^xsd:string ;
+    rdfs:domain ns1:ModelVersion ;
+    rdfs:range xsd:float .
+
+ns1:hasRole a owl:ObjectProperty ;
+    rdfs:label "has role"^^xsd:string ;
+    rdfs:comment "Assigns a role to an agent within a project."^^xsd:string,
+        "Associates an agent with an ML role."^^xsd:string,
+        "Associates an agent with an MLOps role."^^xsd:string,
+        "Links an agent to a role it performs."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:MLOpsRole,
+        ns1:MLRole,
+        ns1:Role .
+
+ns1:hasSearchObjective a owl:ObjectProperty ;
+    rdfs:label "has search objective"^^xsd:string ;
+    rdfs:comment "Links a systematic review to its search objectives."^^xsd:string ;
+    rdfs:domain ns1:SystematicLiteratureReview ;
+    rdfs:range ns1:SearchObjective .
+
+ns1:hasSearchPeriod a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has search period"^^xsd:string ;
+    rdfs:comment "Temporal interval during which literature search was performed."^^xsd:string ;
+    rdfs:domain ns1:SearchStrategy ;
+    rdfs:range xsd:string .
+
+ns1:hasSecurityManagement a owl:ObjectProperty ;
+    rdfs:label "has security management"^^xsd:string ;
+    rdfs:comment "Associates an organization or system with its security management practices."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:SecurityManagement .
+
+ns1:hasSkillGap a owl:ObjectProperty ;
+    rdfs:label "has skill gap"^^xsd:string ;
+    rdfs:comment "Indicates a missing skill within an organization."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:SkillGap ;
+    owl:sameAs ns1:requiresSkill .
+
+ns1:hasSoftCompetency a owl:ObjectProperty ;
+    rdfs:label "has soft competency"^^xsd:string ;
+    rdfs:comment "Specifies a soft competency required for a role."^^xsd:string ;
+    rdfs:domain ns1:Role ;
+    rdfs:range ns1:SoftCompetency ;
+    rdfs:subPropertyOf ns1:hasCompetency .
+
+ns1:hasStage a owl:ObjectProperty ;
+    rdfs:label "has stage"^^xsd:string ;
+    rdfs:comment "Associates an MLOps process with a particular stage."^^xsd:string ;
+    rdfs:domain ns1:MLOpsProcess ;
+    rdfs:range ns1:MLOpsStage .
+
+ns1:hasTask a owl:ObjectProperty ;
+    rdfs:label "has task"^^xsd:string ;
+    rdfs:comment "Associates a process with its constituent tasks."^^xsd:string ;
+    rdfs:domain ns1:Process ;
+    rdfs:range ns1:Task .
+
+ns1:hasTechnicalCompetency a owl:ObjectProperty ;
+    rdfs:label "has technical competency"^^xsd:string ;
+    rdfs:comment "Specifies a technical competency required for a role."^^xsd:string ;
+    rdfs:domain ns1:Role ;
+    rdfs:range ns1:TechnicalCompetency ;
+    rdfs:subPropertyOf ns1:hasCompetency .
+
+ns1:hasTool a owl:ObjectProperty ;
+    rdfs:label "has tool"^^xsd:string ;
+    rdfs:comment "Indicates a tool used in a process or task."^^xsd:string ;
+    rdfs:domain ns1:Process ;
+    rdfs:range ns1:Tool .
+
+ns1:hasTrainingRun a owl:ObjectProperty ;
+    rdfs:label "has training run" ;
+    rdfs:comment "Links a model to the training run that produced it." ;
+    rdfs:domain ns1:MLModel ;
+    rdfs:range ns1:TrainingRun ;
+    rdfs:subPropertyOf prov:wasGeneratedBy .
+
+ns1:hasTrustMetric a owl:ObjectProperty ;
+    rdfs:label "has trust metric"^^xsd:string ;
+    rdfs:comment "Connects a stakeholder or system to a quantitative trust metric."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:TrustMetric .
+
+ns1:hasUncertaintyLevel a owl:ObjectProperty ;
+    rdfs:label "has uncertainty level"^^xsd:string ;
+    rdfs:comment "Indicates the level of uncertainty associated with an entity."^^xsd:string ;
+    rdfs:domain ns1:SME ;
+    rdfs:range ns1:UncertaintyLevel .
+
+ns1:hasVersionIdentifier a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has version identifier" ;
+    rdfs:comment "Unique identifier for a model version." ;
+    rdfs:domain ns1:ModelVersion ;
+    rdfs:range xsd:string .
+
+ns1:identifiesBenefit a owl:ObjectProperty ;
+    rdfs:label "identifies benefit" ;
+    rdfs:comment "Relates a study to a benefit it identifies." ;
+    rdfs:domain ns1:MLOpsAdoptionStudy ;
+    rdfs:range ns1:MLOpsAdoptionBenefit .
+
+ns1:identifiesChallenge a owl:ObjectProperty ;
+    rdfs:label "identifies challenge"^^xsd:string ;
+    rdfs:comment "Relates a study to a challenge it identifies."^^xsd:string ;
+    rdfs:domain ns1:MLOpsStudy ;
+    rdfs:range ns1:MLOpsChallenge .
+
+ns1:identifiesOpportunity a owl:ObjectProperty ;
+    rdfs:label "identifies opportunity"^^xsd:string ;
+    rdfs:comment "Relates a study to an opportunity it identifies."^^xsd:string ;
+    rdfs:domain ns1:MLOpsStudy ;
+    rdfs:range ns1:MLOpsOpportunity .
+
+ns1:includesPractice a owl:ObjectProperty ;
+    rdfs:label "includes practice"^^xsd:string ;
+    rdfs:comment "Associates a maturity level with the automation practices it encompasses."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityLevel ;
+    rdfs:range ns1:AutomationPractice ;
+    rdfs:subPropertyOf prov:used .
+
+ns1:incursSocialDebt a owl:ObjectProperty ;
+    rdfs:label "incurs social debt"^^xsd:string ;
+    rdfs:comment "Activity results in social debt."^^xsd:string ;
+    rdfs:domain prov:Activity ;
+    rdfs:range ns1:SocialDebt ;
+    owl:sameAs ns1:incursTechnicalDebt,
+        ns1:mitigatesTechnicalDebt .
+
+ns1:influencedByResearchBias a owl:ObjectProperty ;
+    rdfs:label "influenced by research bias"^^xsd:string ;
+    rdfs:comment "Indicates that literature bias affects the perception of challenges or benefits."^^xsd:string ;
+    rdfs:domain ns1:MLOpsDiscipline ;
+    rdfs:range ns1:ResearchBias .
+
+ns1:involvesRole a owl:ObjectProperty ;
+    rdfs:label "involves role"^^xsd:string ;
+    rdfs:comment "An activity or phase includes participation of a specific role."^^xsd:string,
+        "Specifies a role that is implicated in a given MLOps adoption challenge."^^xsd:string ;
+    rdfs:domain ns1:MLOpsAdoptionChallenge,
+        prov:Activity ;
+    rdfs:range ns1:Role .
+
+ns1:involvesStakeholder a owl:ObjectProperty ;
+    rdfs:label "involves stakeholder"^^xsd:string ;
+    rdfs:comment "Links an MLOps principle to the stakeholder roles required for its realization."^^xsd:string ;
+    rdfs:domain ns1:MLOpsPrinciple ;
+    rdfs:range ns1:StakeholderRole .
+
+ns1:isGeneralPurpose a owl:DatatypeProperty ;
+    rdfs:label "is general purpose"^^xsd:string ;
+    rdfs:comment "Specifies whether a tool is a generalâpurpose platform."^^xsd:string ;
+    rdfs:domain ns1:Tool ;
+    rdfs:range xsd:boolean .
+
+ns1:isMLSpecific a owl:DatatypeProperty ;
+    rdfs:label "is ML specific"^^xsd:string ;
+    rdfs:comment "Specifies whether a tool is specialized for machine learning workflows."^^xsd:string ;
+    rdfs:domain ns1:Tool ;
+    rdfs:range xsd:boolean .
+
+ns1:isSimilarTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is similar to"^^xsd:string ;
+    rdfs:comment "Indicates similarity between paradigms."^^xsd:string ;
+    rdfs:domain ns1:MLOpsParadigm ;
+    rdfs:range ns1:DevOpsParadigm .
+
+ns1:levelDescription a owl:DatatypeProperty ;
+    rdfs:label "level description"^^xsd:string ;
+    rdfs:comment "Humanâreadable description of what the maturity level entails."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityLevel,
+        ns1:MaturityLevel ;
+    rdfs:range xsd:string .
+
+ns1:levelIdentifier a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "level identifier"^^xsd:string ;
+    rdfs:comment "Identifier (e.g., numeric or textual) for a maturity level."^^xsd:string ;
+    rdfs:domain ns1:MaturityLevel ;
+    rdfs:range xsd:string .
+
+ns1:levelNumber a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "level number"^^xsd:string ;
+    rdfs:comment "Numeric identifier of a maturity level."^^xsd:string,
+        "Numeric identifier of the maturity level (e.g., 0,1,2,3,4)."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityLevel,
+        ns1:MaturityLevel ;
+    rdfs:range xsd:integer .
+
+ns1:maintainsModel a owl:ObjectProperty ;
+    rdfs:label "maintains model"^^xsd:string ;
+    rdfs:comment "Model maintenance activity maintains a specific model version."^^xsd:string ;
+    rdfs:domain ns1:ModelMaintenance ;
+    rdfs:range ns1:ModelVersion ;
+    owl:sameAs ns1:affectsModelPerformance .
+
+ns1:managesComputationalResources a owl:ObjectProperty ;
+    rdfs:label "manages computational resources"^^xsd:string ;
+    rdfs:comment "Resource management activity handles computational resources."^^xsd:string ;
+    rdfs:domain ns1:ResourceManagement ;
+    rdfs:range ns1:ComputationalResource .
+
+ns1:measuresMaturity a owl:ObjectProperty ;
+    rdfs:label "measures maturity"^^xsd:string ;
+    rdfs:comment "Relates a metric or assessment to a maturity model."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityModel ;
+    rdfs:range prov:Entity .
+
+ns1:memberOf a owl:ObjectProperty ;
+    rdfs:label "member of"^^xsd:string ;
+    rdfs:comment "Indicates membership of a person in a professional organization."^^xsd:string ;
+    rdfs:domain schema1:Person ;
+    rdfs:range ns1:ProfessionalOrganization .
+
+ns1:monitors a owl:ObjectProperty ;
+    rdfs:label "monitors" ;
+    rdfs:comment "Monitoring job observes a model's performance." ;
+    rdfs:domain ns1:MonitoringJob ;
+    rdfs:range ns1:MLModel ;
+    rdfs:subPropertyOf prov:used .
+
+ns1:monitorsBias a owl:ObjectProperty ;
+    rdfs:label "monitors bias"^^xsd:string ;
+    rdfs:comment "Monitoring job observes bias in model predictions."^^xsd:string ;
+    rdfs:domain ns1:BiasMonitoring ;
+    rdfs:range ns1:ModelFairness ;
+    rdfs:subPropertyOf prov:used ;
+    owl:sameAs ns1:monitorsFairness .
+
+ns1:monitorsPerformance a owl:ObjectProperty ;
+    rdfs:label "monitors performance"^^xsd:string ;
+    rdfs:comment "A monitoring job observes the performance of a model version."^^xsd:string ;
+    rdfs:domain ns1:MonitoringJob ;
+    rdfs:range ns1:ModelVersion .
+
+ns1:monitorsPipeline a owl:ObjectProperty ;
+    rdfs:label "monitors pipeline"^^xsd:string ;
+    rdfs:comment "Monitoring job observes a distributed analytical pipeline."^^xsd:string ;
+    rdfs:domain ns1:MonitoringJob ;
+    rdfs:range ns1:DistributedAnalyticalPipeline .
+
+ns1:numberOfBenefitCategories a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "number of benefit categories"^^xsd:string ;
+    rdfs:comment "Count of distinct benefit categories identified for MLOps."^^xsd:string ;
+    rdfs:domain ns1:MLOpsDiscipline ;
+    rdfs:range xsd:integer .
+
+ns1:numberOfChallengeCategories a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "number of challenge categories"^^xsd:string ;
+    rdfs:comment "Count of distinct challenge categories identified for MLOps."^^xsd:string ;
+    rdfs:domain ns1:MLOpsDiscipline ;
+    rdfs:range xsd:integer .
+
+ns1:orchestrates a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "orchestrates"^^xsd:string ;
+    rdfs:comment "An orchestrator tool manages execution of an MLOps process."^^xsd:string,
+        "Orchestrator manages execution of a data pipeline."^^xsd:string ;
+    rdfs:domain ns1:Orchestrator ;
+    rdfs:range ns1:DataPipeline,
+        ns1:MLOpsProcess .
+
+ns1:performsActivity a owl:ObjectProperty ;
+    rdfs:label "performs activity"^^xsd:string ;
+    rdfs:comment "An ML role performs a specific activity."^^xsd:string ;
+    rdfs:domain ns1:MLRole ;
+    rdfs:range prov:Activity .
+
+ns1:performsInference a owl:ObjectProperty ;
+    rdfs:label "performs inference"^^xsd:string ;
+    rdfs:comment "Inference activity runs a model version to generate predictions."^^xsd:string ;
+    rdfs:domain ns1:ModelInference ;
+    rdfs:range ns1:ModelVersion .
+
+ns1:producesModelVersion a owl:ObjectProperty ;
+    rdfs:label "produces model version" ;
+    rdfs:comment "Indicates that a training run produces a specific model version." ;
+    rdfs:domain ns1:TrainingRun ;
+    rdfs:range ns1:ModelVersion ;
+    rdfs:subPropertyOf prov:generated .
+
+ns1:producesOutput a owl:ObjectProperty ;
+    rdfs:label "produces output"^^xsd:string ;
+    rdfs:comment "Links a model version to the type of output it generates."^^xsd:string ;
+    rdfs:domain ns1:ModelVersion ;
+    rdfs:range ns1:Output .
+
+ns1:proposesRoadmap a owl:ObjectProperty ;
+    rdfs:label "proposes roadmap"^^xsd:string ;
+    rdfs:comment "Links a study to a roadmap it proposes."^^xsd:string ;
+    rdfs:domain ns1:MLOpsStudy ;
+    rdfs:range ns1:MLOpsRoadmap .
+
+ns1:publishedIn a owl:ObjectProperty ;
+    rdfs:label "published in"^^xsd:string ;
+    rdfs:comment "Relates a paper to its publication venue."^^xsd:string ;
+    rdfs:domain ns1:Paper ;
+    rdfs:range ns1:PublicationVenue .
+
+ns1:reducesTimeToProduction a owl:DatatypeProperty ;
+    rdfs:label "reduces time to production"^^xsd:string ;
+    rdfs:comment "Quantifies reduction in time required to move a model to production, measured in days."^^xsd:string ;
+    rdfs:domain prov:Activity ;
+    rdfs:range xsd:float ;
+    rdfs:seeAlso "Measured in days."^^xsd:string .
+
+ns1:requiresCollaborationBetween a owl:ObjectProperty ;
+    rdfs:label "requires collaboration between"^^xsd:string ;
+    rdfs:comment "Specifies that a process requires collaboration among multiple agents/roles."^^xsd:string ;
+    rdfs:domain prov:Activity ;
+    rdfs:range prov:Agent .
+
+ns1:requiresDataStrategy a owl:ObjectProperty ;
+    rdfs:label "requires data strategy"^^xsd:string ;
+    rdfs:comment "Indicates that a challenge requires a defined data strategy to be addressed."^^xsd:string ;
+    rdfs:domain ns1:MLOpsAdoptionChallenge ;
+    rdfs:range ns1:DataStrategy .
+
+ns1:requiresHardware a owl:ObjectProperty ;
+    rdfs:label "requires hardware"^^xsd:string ;
+    rdfs:comment "Specifies hardware resources needed for a process."^^xsd:string ;
+    rdfs:domain ns1:Process ;
+    rdfs:range ns1:HardwareResource .
+
+ns1:requiresQualifiedPersonnel a owl:DatatypeProperty ;
+    rdfs:label "requires qualified personnel"^^xsd:string ;
+    rdfs:comment "Indicates whether the process requires personnel with specialized MLOps skills."^^xsd:string ;
+    rdfs:domain ns1:MLOpsProcess ;
+    rdfs:range xsd:boolean .
+
+ns1:resultsIn a owl:ObjectProperty ;
+    rdfs:label "results in"^^xsd:string ;
+    rdfs:comment "Indicates that a practice results in a specific outcome."^^xsd:string ;
+    rdfs:domain ns1:MLOpsPractice ;
+    rdfs:range prov:Entity .
+
+ns1:searchesDatabase a owl:ObjectProperty ;
+    rdfs:label "searches database"^^xsd:string ;
+    rdfs:comment "A search string is applied to a bibliographic database."^^xsd:string ;
+    rdfs:domain ns1:SearchString ;
+    rdfs:range ns1:Database .
+
+ns1:searchesInDatabase a owl:ObjectProperty ;
+    rdfs:label "searches in database"^^xsd:string ;
+    rdfs:comment "Specifies which bibliographic database is queried."^^xsd:string ;
+    rdfs:domain ns1:SearchStrategy ;
+    rdfs:range ns1:Database .
+
+ns1:subscribesToEvent a owl:ObjectProperty ;
+    rdfs:label "subscribes to event" ;
+    rdfs:comment "An agent subscribes to events for response." ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:Event .
+
+ns1:supportsContinuousDeployment a owl:DatatypeProperty,
+        owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "supports continuous deployment"^^xsd:string ;
+    rdfs:comment "Boolean flag indicating whether the maturity level includes continuous deployment (CD)."^^xsd:string,
+        "MLOps paradigm includes CD practices."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityLevel,
+        ns1:MLOpsParadigm ;
+    rdfs:range ns1:ContinuousDeployment,
+        xsd:boolean ;
+    rdfs:subPropertyOf prov:hasActivity .
+
+ns1:supportsContinuousIntegration a owl:ObjectProperty ;
+    rdfs:label "supports continuous integration"^^xsd:string ;
+    rdfs:comment "MLOps paradigm includes CI practices."^^xsd:string ;
+    rdfs:domain ns1:MLOpsParadigm ;
+    rdfs:range ns1:ContinuousIntegration ;
+    rdfs:subPropertyOf prov:hasActivity .
+
+ns1:supportsContinuousMonitoring a owl:ObjectProperty ;
+    rdfs:label "supports continuous monitoring"^^xsd:string ;
+    rdfs:comment "MLOps paradigm includes continuous monitoring."^^xsd:string ;
+    rdfs:domain ns1:MLOpsParadigm ;
+    rdfs:range ns1:ContinuousMonitoring ;
+    rdfs:subPropertyOf prov:hasActivity .
+
+ns1:supportsContinuousTraining a owl:DatatypeProperty,
+        owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "supports continuous training"^^xsd:string ;
+    rdfs:comment "Boolean flag indicating whether the maturity level includes continuous training (CT)."^^xsd:string,
+        "MLOps paradigm includes continuous training."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityLevel,
+        ns1:MLOpsParadigm ;
+    rdfs:range ns1:ContinuousTraining,
+        xsd:boolean ;
+    rdfs:subPropertyOf prov:hasActivity .
+
+ns1:supportsDataOps a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "supports DataOps"^^xsd:string ;
+    rdfs:comment "Boolean flag indicating inclusion of DataOps practices at this maturity level."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityLevel ;
+    rdfs:range xsd:boolean .
+
+ns1:supportsMLOps a owl:ObjectProperty ;
+    rdfs:label "supports MLOps"^^xsd:string ;
+    rdfs:comment "Indicates that a tool is designed to support MLOps activities."^^xsd:string ;
+    rdfs:domain ns1:Tool ;
+    rdfs:range ns1:MLOpsProcess .
+
+ns1:supportsProject a owl:ObjectProperty ;
+    rdfs:label "supports project"^^xsd:string ;
+    rdfs:comment "MLOps activities support a data science project."^^xsd:string ;
+    rdfs:domain ns1:MLOps ;
+    rdfs:range ns1:DataScienceProject .
+
+ns1:targetsOrganizationSize a owl:ObjectProperty ;
+    rdfs:label "targets organization size"^^xsd:string ;
+    rdfs:comment "Specifies the size category of software development companies considered."^^xsd:string ;
+    rdfs:domain ns1:SearchObjective ;
+    rdfs:range ns1:OrganizationSizeCategory .
+
+ns1:transitionsTo a owl:ObjectProperty ;
+    rdfs:label "transitions to"^^xsd:string ;
+    rdfs:comment "Indicates transition from one lifecycle stage to another."^^xsd:string ;
+    rdfs:domain ns1:ExperimentalModel ;
+    rdfs:range ns1:ProductionEnvironment ;
+    rdfs:subPropertyOf prov:wasGeneratedBy .
+
+ns1:triggersMonitoringJob a owl:ObjectProperty ;
+    rdfs:label "triggers monitoring job"^^xsd:string ;
+    rdfs:comment "Continuous monitoring process initiates monitoring jobs."^^xsd:string ;
+    rdfs:domain ns1:ContinuousMonitoring ;
+    rdfs:range ns1:MonitoringJob .
+
+ns1:triggersRetraining a owl:ObjectProperty ;
+    rdfs:label "triggers retraining"^^xsd:string ;
+    rdfs:comment "A monitoring job can trigger a new training run when data drift is detected."^^xsd:string ;
+    rdfs:domain ns1:MonitoringJob ;
+    rdfs:range ns1:TrainingRun ;
+    rdfs:subPropertyOf prov:wasGeneratedBy ;
+    owl:sameAs ns1:triggersTrainingRun .
+
+ns1:triggersUpdate a owl:ObjectProperty ;
+    rdfs:label "triggers update"^^xsd:string ;
+    rdfs:comment "Detection of drift causes a maintenance process to start."^^xsd:string ;
+    rdfs:domain ns1:Drift ;
+    rdfs:range ns1:MaintenanceProcess .
+
+ns1:usesCICDPipeline a owl:ObjectProperty ;
+    rdfs:label "uses CI/CD pipeline"^^xsd:string ;
+    rdfs:comment "Indicates that a maturity level relies on CI/CD pipelines for automation."^^xsd:string ;
+    rdfs:domain ns1:MLOpsMaturityLevel ;
+    rdfs:range ns1:CICDPipeline .
+
+ns1:usesClassificationScheme a owl:ObjectProperty ;
+    rdfs:label "uses classification scheme"^^xsd:string ;
+    rdfs:comment "Indicates the classification scheme applied to categorize studies."^^xsd:string ;
+    rdfs:domain ns1:SearchObjective ;
+    rdfs:range ns1:ClassificationScheme .
+
+ns1:usesCloudResources a owl:ObjectProperty ;
+    rdfs:label "uses cloud resources"^^xsd:string ;
+    rdfs:comment "Indicates that an activity utilizes cloud computing resources."^^xsd:string ;
+    rdfs:domain prov:Activity ;
+    rdfs:range ns1:CloudComputing .
+
+ns1:usesDataSet a owl:ObjectProperty ;
+    rdfs:label "uses data set" ;
+    rdfs:comment "Training run consumes a data set." ;
+    rdfs:domain ns1:TrainingRun ;
+    rdfs:range ns1:DataSet .
+
+ns1:usesFeatureStore a owl:ObjectProperty ;
+    rdfs:label "uses feature store" ;
+    rdfs:comment "Training run consumes features from a feature store." ;
+    rdfs:domain ns1:TrainingRun ;
+    rdfs:range ns1:FeatureStore .
+
+ns1:usesFramework a owl:ObjectProperty ;
+    rdfs:label "uses framework"^^xsd:string ;
+    rdfs:comment "Indicates that an agent adopts a specific MLOps maturity framework."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:MLOpsMaturityFramework .
+
+ns1:usesOrchestrator a owl:ObjectProperty ;
+    rdfs:label "uses orchestrator"^^xsd:string ;
+    rdfs:comment "Agent utilizes an orchestrator for pipeline execution."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:Orchestrator .
+
+ns1:usesSearchString a owl:ObjectProperty ;
+    rdfs:label "uses search string"^^xsd:string ;
+    rdfs:comment "A search strategy employs a specific Boolean query."^^xsd:string,
+        "A selection process uses a specific search string."^^xsd:string ;
+    rdfs:domain ns1:SearchStrategy,
+        ns1:SelectionProcess ;
+    rdfs:range ns1:SearchString .
+
+ns1:usesTool a owl:ObjectProperty ;
+    rdfs:label "uses tool"^^xsd:string ;
+    rdfs:comment "An activity utilizes a specific tool."^^xsd:string,
+        "An agent or process uses a specific tool."^^xsd:string,
+        "The paper mentions or evaluates a specific MLOps tool."^^xsd:string ;
+    rdfs:domain ns1:ResearchPaper,
+        prov:Activity,
+        prov:Agent ;
+    rdfs:range ns1:MLOpsTool,
+        ns1:Tool ;
+    rdfs:subPropertyOf prov:used .
+
+aieng: dcterms:description "Ontology for concepts and relationships in AI engineering, covering processes, tools, roles, maturity models, challenges, benefits, adoption factors, and artifacts, with extensions for MLOps adoption in software development companies." .
+
+<https://example.com/doc/67afa5c93210/0a1a9d5fd14e> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.935741+00:00"^^xsd:dateTime ;
+    schema:identifier "0a1a9d5fd14e"^^xsd:string ;
+    schema:position 20 .
+
+<https://example.com/doc/67afa5c93210/123438b28c48> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.911544+00:00"^^xsd:dateTime ;
+    schema:identifier "123438b28c48"^^xsd:string ;
+    schema:position 1 .
+
+<https://example.com/doc/67afa5c93210/24ed438e147d> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.934019+00:00"^^xsd:dateTime ;
+    schema:identifier "24ed438e147d"^^xsd:string ;
+    schema:position 19 .
+
+<https://example.com/doc/67afa5c93210/2a8b4851fc73> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.920624+00:00"^^xsd:dateTime ;
+    schema:identifier "2a8b4851fc73"^^xsd:string ;
+    schema:position 7 .
+
+<https://example.com/doc/67afa5c93210/41e5238e440b> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.930120+00:00"^^xsd:dateTime ;
+    schema:identifier "41e5238e440b"^^xsd:string ;
+    schema:position 16 .
+
+<https://example.com/doc/67afa5c93210/44cdad75f3ae> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.926076+00:00"^^xsd:dateTime ;
+    schema:identifier "44cdad75f3ae"^^xsd:string ;
+    schema:position 13 .
+
+<https://example.com/doc/67afa5c93210/502996b92362> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.923034+00:00"^^xsd:dateTime ;
+    schema:identifier "502996b92362"^^xsd:string ;
+    schema:position 9 .
+
+<https://example.com/doc/67afa5c93210/693ca2e7eb64> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.932975+00:00"^^xsd:dateTime ;
+    schema:identifier "693ca2e7eb64"^^xsd:string ;
+    schema:position 18 .
+
+<https://example.com/doc/67afa5c93210/799edcdcde8e> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.923617+00:00"^^xsd:dateTime ;
+    schema:identifier "799edcdcde8e"^^xsd:string ;
+    schema:position 10 .
+
+<https://example.com/doc/67afa5c93210/7b37430ddbe8> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.918064+00:00"^^xsd:dateTime ;
+    schema:identifier "7b37430ddbe8"^^xsd:string ;
+    schema:position 5 .
+
+<https://example.com/doc/67afa5c93210/84f1a3ba0c62> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.924466+00:00"^^xsd:dateTime ;
+    schema:identifier "84f1a3ba0c62"^^xsd:string ;
+    schema:position 11 .
+
+<https://example.com/doc/67afa5c93210/8b9f8aaeb5ae> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.931826+00:00"^^xsd:dateTime ;
+    schema:identifier "8b9f8aaeb5ae"^^xsd:string ;
+    schema:position 17 .
+
+<https://example.com/doc/67afa5c93210/8f2a02f99689> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.908087+00:00"^^xsd:dateTime ;
+    schema:identifier "8f2a02f99689"^^xsd:string ;
+    schema:position 0 .
+
+<https://example.com/doc/67afa5c93210/9d5fac238431> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.918924+00:00"^^xsd:dateTime ;
+    schema:identifier "9d5fac238431"^^xsd:string ;
+    schema:position 6 .
+
+<https://example.com/doc/67afa5c93210/9dcacd41cb3f> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.915944+00:00"^^xsd:dateTime ;
+    schema:identifier "9dcacd41cb3f"^^xsd:string ;
+    schema:position 3 .
+
+<https://example.com/doc/67afa5c93210/d9cde52e6e21> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.922076+00:00"^^xsd:dateTime ;
+    schema:identifier "d9cde52e6e21"^^xsd:string ;
+    schema:position 8 .
+
+<https://example.com/doc/67afa5c93210/ec8eec237d2d> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.917166+00:00"^^xsd:dateTime ;
+    schema:identifier "ec8eec237d2d"^^xsd:string ;
+    schema:position 4 .
+
+<https://example.com/doc/67afa5c93210/ed0c75c35eee> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.926797+00:00"^^xsd:dateTime ;
+    schema:identifier "ed0c75c35eee"^^xsd:string ;
+    schema:position 14 .
+
+<https://example.com/doc/67afa5c93210/f04c1afe9280> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.914652+00:00"^^xsd:dateTime ;
+    schema:identifier "f04c1afe9280"^^xsd:string ;
+    schema:position 2 .
+
+<https://example.com/doc/67afa5c93210/f5f01a56a93b> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.928515+00:00"^^xsd:dateTime ;
+    schema:identifier "f5f01a56a93b"^^xsd:string ;
+    schema:position 15 .
+
+<https://example.com/doc/67afa5c93210/f867beb08569> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T12:07:19.925384+00:00"^^xsd:dateTime ;
+    schema:identifier "f867beb08569"^^xsd:string ;
+    schema:position 12 .
+
+ns1:AdoptionFactor a owl:Class ;
+    rdfs:label "Adoption Factor"^^xsd:string ;
+    rdfs:comment "Factor influencing the adoption of MLOps."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:Artifact a owl:Class ;
+    rdfs:label "Artifact"^^xsd:string ;
+    rdfs:comment "A tangible output produced during MLOps activities, such as model files or reports."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:Author a owl:Class ;
+    rdfs:label "Author"^^xsd:string ;
+    rdfs:comment "Person who contributed to a research paper."^^xsd:string ;
+    rdfs:subClassOf schema1:Person .
+
+ns1:BestPractice a owl:Class ;
+    rdfs:label "Best Practice"^^xsd:string ;
+    rdfs:comment "A recommended practice for effective MLOps."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:BiasMonitoring a owl:Class ;
+    rdfs:label "Bias Monitoring"^^xsd:string ;
+    rdfs:comment "Monitoring activities aimed at detecting and mitigating bias in model predictions."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:ClassificationScheme a owl:Class ;
+    rdfs:label "Classification Scheme"^^xsd:string ;
+    rdfs:comment "A taxonomy used to categorize studies, such as the scheme proposed by Wieringa et al."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:CloudResource a owl:Class ;
+    rdfs:label "Cloud Resource"^^xsd:string ;
+    rdfs:comment "Computational resource provided by cloud providers."^^xsd:string ;
+    rdfs:subClassOf ns1:InfrastructureComponent ;
+    owl:sameAs ns1:CloudComputing .
+
+ns1:CollaborationAspect a owl:Class ;
+    rdfs:label "Collaboration Aspect"^^xsd:string ;
+    rdfs:comment "Interdisciplinary collaboration factor in MLOps maturity."^^xsd:string ;
+    rdfs:subClassOf skos:Concept ;
+    owl:sameAs ns1:CollaborationPrinciple .
+
+ns1:CollaborationPrinciple a owl:Class ;
+    rdfs:label "Collaboration Principle"^^xsd:string ;
+    rdfs:comment "Principle emphasizing crossâdisciplinary collaboration among stakeholders."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsPrinciple .
+
+ns1:ComputationalResource a owl:Class ;
+    rdfs:label "Computational Resource"^^xsd:string ;
+    rdfs:comment "Hardware or cloud resources consumed during model training or inference."^^xsd:string,
+        "Hardware or virtual resources used for ML workloads, such as GPUs, CPUs, memory."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ConfidentialData a owl:Class ;
+    rdfs:label "Confidential Data"^^xsd:string ;
+    rdfs:comment "Sensitive data that requires privacy protection throughout the AI engineering lifecycle."^^xsd:string ;
+    rdfs:subClassOf prov:Entity ;
+    owl:sameAs ns1:DataPrivacyPolicy .
+
+ns1:ContainerizationTechnology a owl:Class ;
+    rdfs:label "Containerization Technology"^^xsd:string ;
+    rdfs:comment "Technology that packages software into containers."^^xsd:string ;
+    rdfs:subClassOf ns1:Tool .
+
+ns1:ContinuousDeployment a owl:Class ;
+    rdfs:label "Continuous Deployment"^^xsd:string ;
+    rdfs:comment "Automated release of model versions to production environments after validation."^^xsd:string,
+        "Practice of automatically deploying integrated code to production environments."^^xsd:string,
+        "Practice of automatically releasing validated changes to production environments."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsProcess,
+        prov:Activity .
+
+ns1:ContinuousIntegration a owl:Class ;
+    rdfs:label "Continuous Integration"^^xsd:string ;
+    rdfs:comment "Practice of automatically building and testing code changes to ensure integration quality."^^xsd:string,
+        "Practice of automatically building and testing code changes."^^xsd:string,
+        "Practice of frequently integrating code and model artifacts into a shared repository."^^xsd:string,
+        "Practice of frequently integrating code changes into a shared repository."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsProcess,
+        ns1:Process,
+        prov:Activity .
+
+ns1:ContinuousTrainingStage a owl:Class ;
+    rdfs:label "Continuous Training Stage"^^xsd:string ;
+    rdfs:comment "Stage that supports retraining models based on new data."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsStage .
+
+ns1:CulturalAspect a owl:Class ;
+    rdfs:label "Cultural Aspect"^^xsd:string ;
+    rdfs:comment "Organizational cultural factor influencing MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:DataCollectionProcess a owl:Class ;
+    rdfs:label "Data Collection Process"^^xsd:string ;
+    rdfs:comment "Activity that gathers raw data from sources for later processing."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:DataManagement a owl:Class ;
+    rdfs:label "Data Management"^^xsd:string ;
+    rdfs:comment "Practices and processes for handling the data lifecycle, including collection, storage, versioning, and governance in AI engineering."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:DataManagementPrinciple a owl:Class ;
+    rdfs:label "Data Management Principle"^^xsd:string ;
+    rdfs:comment "Principle stating that data quality and management directly affect model performance."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsPrinciple .
+
+ns1:DataOpsConcept a owl:Class ;
+    rdfs:label "DataOps Concept"^^xsd:string ;
+    rdfs:comment "Concepts related to DataOps within MLOps maturity frameworks."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:DataScienceProject a owl:Class ;
+    rdfs:label "Data Science Project"^^xsd:string ;
+    rdfs:comment "A project that involves data collection, analysis, model development, and deployment."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:DataSet a owl:Class ;
+    rdfs:label "Data Set" ;
+    rdfs:comment "A collection of data used for training or inference." ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:DataVersioningProcess a owl:Class ;
+    rdfs:label "Data Versioning Process"^^xsd:string ;
+    rdfs:comment "Process that tracks versions of datasets used in ML."^^xsd:string ;
+    rdfs:subClassOf ns1:Process .
+
+ns1:DeploymentEnvironment a owl:Class ;
+    rdfs:label "Deployment Environment"^^xsd:string ;
+    rdfs:comment "Target environment where a model version is deployed, e.g., cloud, edge."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:DeploymentStrategy a owl:Class ;
+    rdfs:label "Deployment Strategy" ;
+    rdfs:comment "A strategy for rolling out new model versions, e.g., canary, blue/green, A/B testing." ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:DeterministicOutput a owl:Class ;
+    rdfs:label "Deterministic Output"^^xsd:string ;
+    rdfs:comment "Model output that yields a single definite value."^^xsd:string ;
+    rdfs:subClassOf ns1:Output .
+
+ns1:DevOpsParadigm a owl:Class ;
+    rdfs:label "DevOps Paradigm"^^xsd:string ;
+    rdfs:comment "A set of practices for continuous integration and delivery of software."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:DevOpsPrinciple a owl:Class ;
+    rdfs:label "DevOps Principle"^^xsd:string ;
+    rdfs:comment "Principle originating from software engineering that emphasizes collaboration, automation, and monitoring."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:DistributedAnalyticalPipeline a owl:Class ;
+    rdfs:label "Distributed Analytical Pipeline"^^xsd:string ;
+    rdfs:comment "A pipeline that processes analytical tasks across distributed resources."^^xsd:string ;
+    rdfs:subClassOf ns1:DataPipeline .
+
+ns1:EducationProgram a owl:Class ;
+    rdfs:label "Education Program"^^xsd:string ;
+    rdfs:comment "Curriculum or training program that teaches MLOps concepts and practices."^^xsd:string ;
+    rdfs:subClassOf schema1:EducationalOccupationalProgram .
+
+ns1:EthicalConsideration a owl:Class ;
+    rdfs:label "Ethical Consideration"^^xsd:string ;
+    rdfs:comment "Ethical aspects considered during AI engineering, such as fairness, privacy, and societal impact."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:ExpectationManagement a owl:Class ;
+    rdfs:label "Expectation Management"^^xsd:string ;
+    rdfs:comment "Activities to align stakeholder expectations with realistic capabilities of ML systems."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:ExperimentationProcess a owl:Class ;
+    rdfs:label "Experimentation Process"^^xsd:string ;
+    rdfs:comment "Iterative process of running experiments, testing hypotheses, and refining models."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:FeatureStore a owl:Class ;
+    rdfs:label "Feature Store" ;
+    rdfs:comment "A centralized repository for features and feature engineering pipelines." ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:Filter a owl:Class ;
+    rdfs:label "Filter"^^xsd:string ;
+    rdfs:comment "A constraint applied to a literature search to limit results."^^xsd:string ;
+    rdfs:subClassOf schema1:PropertyValue .
+
+ns1:JenkinsPipeline a owl:Class ;
+    rdfs:label "Jenkins Pipeline"^^xsd:string ;
+    rdfs:comment "A CI/CD pipeline defined in Jenkins for orchestrating machine learning operations."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:LegalCompliance a owl:Class ;
+    rdfs:label "Legal Compliance"^^xsd:string ;
+    rdfs:comment "Ensuring AI systems adhere to legal regulations regarding data use and model behavior."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MLOpsAdoptionStudy a owl:Class ;
+    rdfs:label "MLOps Adoption Study" ;
+    rdfs:comment "Study focusing on the adoption of MLOps in software development companies." ;
+    rdfs:subClassOf ns1:MLOpsStudy .
+
+ns1:MLOpsCriticalSuccessFactor a owl:Class ;
+    rdfs:label "MLOps Critical Success Factor"^^xsd:string ;
+    rdfs:comment "Factors identified as critical for successful MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MLOpsMaturityAttribute a owl:Class ;
+    rdfs:label "MLOps Maturity Attribute" ;
+    rdfs:comment "Attribute used to assess maturity of MLOps practices." ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:MLOpsMaturityBenefit a owl:Class ;
+    rdfs:label "MLOps Maturity Benefit" ;
+    rdfs:comment "Benefit associated with a specific MLOps maturity level." ;
+    rdfs:subClassOf ns1:MLOpsBenefit .
+
+ns1:MLOpsMaturityChallenge a owl:Class ;
+    rdfs:label "MLOps Maturity Challenge" ;
+    rdfs:comment "Challenge associated with a specific MLOps maturity level." ;
+    rdfs:subClassOf ns1:MLOpsChallenge .
+
+ns1:MLOpsOpportunity a owl:Class ;
+    rdfs:label "MLOps Opportunity"^^xsd:string ;
+    rdfs:comment "A potential benefit or advantageous direction identified for MLOps."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MLOpsRoadmap a owl:Class ;
+    rdfs:label "MLOps Roadmap"^^xsd:string ;
+    rdfs:comment "A strategic plan outlining steps to advance MLOps practices."^^xsd:string ;
+    rdfs:subClassOf prov:Plan .
+
+ns1:MLOpsTool a owl:Class ;
+    rdfs:label "MLOps Tool"^^xsd:string ;
+    rdfs:comment "Software tool used to support MLOps activities such as CI/CD, monitoring, or feature store management."^^xsd:string ;
+    rdfs:subClassOf schema1:SoftwareApplication .
+
+ns1:ModelDegradation a owl:Class ;
+    rdfs:label "Model Degradation"^^xsd:string ;
+    rdfs:comment "Reduction in model performance due to data drift or other factors."^^xsd:string ;
+    rdfs:subClassOf prov:Entity ;
+    owl:sameAs ns1:PerformanceDegradation .
+
+ns1:ModelInference a owl:Class ;
+    rdfs:label "Model Inference"^^xsd:string ;
+    rdfs:comment "Execution of a model to generate predictions on new data."^^xsd:string ;
+    rdfs:subClassOf prov:Activity ;
+    owl:sameAs ns1:ExperimentalModel .
+
+ns1:ModelMaintenance a owl:Class ;
+    rdfs:label "Model Maintenance"^^xsd:string ;
+    rdfs:comment "Activities to keep a deployed model upâtoâdate and functional."^^xsd:string ;
+    rdfs:subClassOf prov:Activity ;
+    owl:sameAs ns1:MaintenanceProcess,
+        ns1:MaintenanceStrategy .
+
+ns1:ModelMonitoringProcess a owl:Class ;
+    rdfs:label "Model Monitoring Process"^^xsd:string ;
+    rdfs:comment "Process that monitors model performance and data drift in production."^^xsd:string ;
+    rdfs:subClassOf ns1:Process .
+
+ns1:MonitoringPractice a owl:Class ;
+    rdfs:label "Monitoring Practice"^^xsd:string ;
+    rdfs:comment "Practice of continuously monitoring model performance and data drift in production."^^xsd:string ;
+    rdfs:subClassOf ns1:AutomationPractice .
+
+ns1:MonitoringStage a owl:Class ;
+    rdfs:label "Monitoring Stage"^^xsd:string ;
+    rdfs:comment "Stage where model performance and data drift are continuously monitored."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsStage .
+
+ns1:MonitoringStrategy a owl:Class ;
+    rdfs:label "Monitoring Strategy"^^xsd:string ;
+    rdfs:comment "Approach defining how model performance and drift are observed in production."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:Organization a owl:Class ;
+    rdfs:label "Organization"^^xsd:string ;
+    rdfs:comment "An entity such as a software development company that adopts MLOps."^^xsd:string ;
+    rdfs:subClassOf prov:Agent .
+
+ns1:OrganizationalCulture a owl:Class ;
+    rdfs:label "Organizational Culture"^^xsd:string ;
+    rdfs:comment "Collective values, norms, and practices within an organization that influence MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ProductionEnvironment a owl:Class ;
+    rdfs:label "Production Environment"^^xsd:string ;
+    rdfs:comment "Runtime environment where models serve real users."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ProgrammingPracticePrinciple a owl:Class ;
+    rdfs:label "Programming Practice Principle"^^xsd:string ;
+    rdfs:comment "Principle advocating good software engineering practices during model development."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsPrinciple .
+
+ns1:PublicationVenue a owl:Class ;
+    rdfs:label "Publication Venue"^^xsd:string ;
+    rdfs:comment "The journal, conference, or congress where a paper is published."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:QualityCriteria a owl:Class ;
+    rdfs:label "Quality Criteria"^^xsd:string ;
+    rdfs:comment "Criteria used to assess relevance and quality of primary studies."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:Question a owl:Class ;
+    rdfs:label "Question"^^xsd:string ;
+    rdfs:comment "A question derived from a goal to guide metric selection."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:RefactoringProcess a owl:Class ;
+    rdfs:label "Refactoring Process"^^xsd:string ;
+    rdfs:comment "Activity that improves code quality and reduces technical debt."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:ResearchBias a owl:Class ;
+    rdfs:label "Research Bias"^^xsd:string ;
+    rdfs:comment "Systematic inclination in literature that influences the reporting of challenges or benefits."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ReviewLevel a owl:Class ;
+    rdfs:label "Review Level"^^xsd:string ;
+    rdfs:comment "A level of review (e.g., title review, abstract review, fullâtext review) used in paper selection."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:SME a owl:Class ;
+    rdfs:label "Small and Mediumâsized Enterprise"^^xsd:string ;
+    rdfs:comment "An organization with limited resources that may adopt MLOps practices."^^xsd:string ;
+    rdfs:subClassOf prov:Agent .
+
+ns1:SecurityManagement a owl:Class ;
+    rdfs:label "Security Management"^^xsd:string ;
+    rdfs:comment "Practices and controls to protect AI system assets, data, and infrastructure."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:SocialDebt a owl:Class ;
+    rdfs:label "Social Debt"^^xsd:string ;
+    rdfs:comment "Accumulated organizational issues such as unclear role responsibilities in MLOps."^^xsd:string ;
+    rdfs:subClassOf prov:Entity ;
+    owl:sameAs ns1:TechnicalDebt .
+
+ns1:Task a owl:Class ;
+    rdfs:label "Task"^^xsd:string ;
+    rdfs:comment "An atomic unit of work within a process."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:TeamIntegrationChallenge a owl:Class ;
+    rdfs:label "Team Integration Challenge"^^xsd:string ;
+    rdfs:comment "Challenges in integrating diverse teams (data, ML, ops) for MLOps."^^xsd:string ;
+    rdfs:subClassOf ns1:Challenge .
+
+ns1:TechnicalCompetency a owl:Class ;
+    rdfs:label "Technical Competency"^^xsd:string ;
+    rdfs:comment "Technical skill or knowledge required for MLOps tasks."^^xsd:string ;
+    rdfs:subClassOf ns1:Competency .
+
+ns1:TechnicalSkill a owl:Class ;
+    rdfs:label "Technical Skill"^^xsd:string ;
+    rdfs:comment "Domainâspecific technical abilities required for MLOps, e.g., programming, data version control."^^xsd:string ;
+    rdfs:subClassOf ns1:Skill,
+        prov:Entity .
+
+ns1:TrustMetric a owl:Class ;
+    rdfs:label "Trust Metric"^^xsd:string ;
+    rdfs:comment "Quantitative measure of stakeholder trust in an AI system."^^xsd:string ;
+    rdfs:subClassOf schema1:QuantitativeValue .
+
+ns1:UncertaintyLevel a owl:Class ;
+    rdfs:label "Uncertainty Level"^^xsd:string ;
+    rdfs:comment "A qualitative or quantitative measure of uncertainty in MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:affectsModelPerformance a owl:ObjectProperty ;
+    rdfs:label "affects model performance"^^xsd:string ;
+    rdfs:comment "Data management principle influences the performance of an ML model."^^xsd:string ;
+    rdfs:domain ns1:DataManagementPrinciple ;
+    rdfs:range ns1:MLModel ;
+    rdfs:subPropertyOf prov:used .
+
+ns1:costEffective a owl:DatatypeProperty ;
+    rdfs:label "cost effective"^^xsd:string ;
+    rdfs:comment "Indicates whether a resource or tool is considered costâeffective."^^xsd:string ;
+    rdfs:domain ns1:InfrastructureComponent ;
+    rdfs:range xsd:boolean .
+
+ns1:deployedTo a owl:ObjectProperty ;
+    rdfs:label "deployed to" ;
+    rdfs:comment "Indicates the environment or service where a model version is deployed." ;
+    rdfs:domain ns1:ModelVersion ;
+    rdfs:range prov:Entity .
+
+ns1:detectsDataDrift a owl:ObjectProperty ;
+    rdfs:label "detects data drift"^^xsd:string ;
+    rdfs:comment "Monitoring job identifies data drift events."^^xsd:string,
+        "Monitoring job identifies data drift."^^xsd:string ;
+    rdfs:domain ns1:MonitoringJob ;
+    rdfs:range ns1:DataDrift ;
+    rdfs:subPropertyOf prov:used .
+
+ns1:hasComputationalCost a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has computational cost"^^xsd:string ;
+    schema1:unitCode "USD"^^xsd:string ;
+    rdfs:comment "Monetary cost associated with a training run or inference."^^xsd:string ;
+    rdfs:domain ns1:TrainingRun ;
+    rdfs:range xsd:float .
+
+ns1:hasDataScientistInvolvement a owl:DatatypeProperty ;
+    rdfs:label "has data scientist involvement"^^xsd:string ;
+    rdfs:comment "Indicates whether a data scientist participates in a given MLOps phase."^^xsd:string ;
+    rdfs:domain ns1:MLOpsPhase ;
+    rdfs:range xsd:boolean .
+
+ns1:hasMethodology a owl:ObjectProperty ;
+    rdfs:label "has methodology"^^xsd:string ;
+    rdfs:comment "Associates a project with the methodology it follows."^^xsd:string ;
+    rdfs:domain ns1:MLProject ;
+    rdfs:range ns1:Methodology .
+
+ns1:hasModelDrift a owl:ObjectProperty ;
+    rdfs:label "has model drift"^^xsd:string ;
+    rdfs:comment "Associates an ML model with observed model drift phenomena."^^xsd:string ;
+    rdfs:domain ns1:MLModel ;
+    rdfs:range ns1:ModelDrift .
+
+ns1:hasOrganizationalCulture a owl:ObjectProperty ;
+    rdfs:label "has organizational culture"^^xsd:string ;
+    rdfs:comment "Links an organization or team to its cultural attributes."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:OrganizationalCulture .
+
+ns1:incursTechnicalDebt a owl:ObjectProperty ;
+    rdfs:label "incurs technical debt"^^xsd:string ;
+    rdfs:comment "Activity results in technical debt."^^xsd:string ;
+    rdfs:domain prov:Activity ;
+    rdfs:range ns1:TechnicalDebt .
+
+ns1:mitigatesTechnicalDebt a owl:ObjectProperty ;
+    rdfs:label "mitigates technical debt"^^xsd:string ;
+    rdfs:comment "Indicates that a process reduces technical debt."^^xsd:string ;
+    rdfs:domain ns1:RefactoringProcess ;
+    rdfs:range ns1:TechnicalDebt ;
+    rdfs:subPropertyOf prov:used .
+
+ns1:monitorsFairness a owl:ObjectProperty ;
+    rdfs:label "monitors fairness"^^xsd:string ;
+    rdfs:comment "Monitoring job observes model fairness."^^xsd:string ;
+    rdfs:domain ns1:MonitoringJob ;
+    rdfs:range ns1:ModelFairness ;
+    rdfs:subPropertyOf prov:used .
+
+ns1:performsProcess a owl:ObjectProperty ;
+    rdfs:label "performs process"^^xsd:string ;
+    rdfs:comment "Agent performs a given MLOps process."^^xsd:string ;
+    rdfs:domain prov:Agent ;
+    rdfs:range ns1:Process .
+
+ns1:producesArtifact a owl:ObjectProperty ;
+    rdfs:label "produces artifact"^^xsd:string ;
+    rdfs:comment "An activity generates an artifact."^^xsd:string ;
+    rdfs:domain prov:Activity ;
+    rdfs:range prov:Entity .
+
+ns1:requiresSkill a owl:ObjectProperty ;
+    rdfs:label "requires skill"^^xsd:string ;
+    rdfs:comment "A role needs a particular skill to perform its duties."^^xsd:string,
+        "Specifies a skill required for a role or activity."^^xsd:string ;
+    rdfs:domain ns1:Role,
+        prov:Agent ;
+    rdfs:range ns1:Skill .
+
+ns1:triggersTrainingRun a owl:ObjectProperty ;
+    rdfs:label "triggers training run"^^xsd:string ;
+    rdfs:comment "Continuous training process initiates a new training run."^^xsd:string ;
+    rdfs:domain ns1:ContinuousTraining ;
+    rdfs:range ns1:TrainingRun .
+
+ns1:AutomationPrinciple a owl:Class ;
+    rdfs:label "Automation Principle"^^xsd:string ;
+    rdfs:comment "A principle describing an automation practice within a maturity level."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:CICDPipeline a owl:Class ;
+    rdfs:label "CI/CD Pipeline"^^xsd:string ;
+    rdfs:comment "A pipeline that automates continuous integration and continuous delivery for ML models."^^xsd:string,
+        "Automated pipeline that orchestrates continuous integration and continuous deployment processes."^^xsd:string ;
+    rdfs:subClassOf prov:Activity,
+        prov:Entity .
+
+ns1:CloudComputing a owl:Class ;
+    rdfs:label "Cloud Computing"^^xsd:string ;
+    rdfs:comment "Provisioning of compute and storage resources over the internet, used to support ML workloads."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ComplexityFactor a owl:Class ;
+    rdfs:label "Complexity Factor"^^xsd:string ;
+    rdfs:comment "An aspect of MLOps that contributes to its overall complexity, such as integration of multiple disciplines."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ContinuousMonitoring a owl:Class ;
+    rdfs:label "Continuous Monitoring"^^xsd:string ;
+    rdfs:comment "Ongoing observation of model performance and data characteristics in production."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsPractice,
+        ns1:MLOpsProcess,
+        prov:Activity .
+
+ns1:DataPrivacyPolicy a owl:Class ;
+    rdfs:label "Data Privacy Policy"^^xsd:string ;
+    rdfs:comment "Policy describing how personal and sensitive data may be used and shared in AI systems."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:Database a owl:Class ;
+    rdfs:label "Database"^^xsd:string ;
+    rdfs:comment "A bibliographic or scholarly database (e.g., IEEE Xplore, Scopus) used for literature search."^^xsd:string,
+        "A bibliographic source or digital library used in the literature search."^^xsd:string ;
+    rdfs:subClassOf schema1:DataCatalog,
+        prov:Entity .
+
+ns1:Event a owl:Class ;
+    rdfs:label "Event" ;
+    rdfs:comment "A signal emitted by monitoring platforms indicating a condition such as data drift." ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ExclusionCriterion a owl:Class ;
+    rdfs:label "Exclusion Criterion"^^xsd:string ;
+    rdfs:comment "A criterion used to exclude papers from a systematic literature review."^^xsd:string ;
+    rdfs:subClassOf skos:Concept ;
+    owl:sameAs ns1:InclusionCriterion .
+
+ns1:ExperimentalModel a owl:Class ;
+    rdfs:label "Experimental Model"^^xsd:string ;
+    rdfs:comment "A model in early development stage before production."^^xsd:string ;
+    rdfs:subClassOf ns1:MLModel .
+
+ns1:Goal a owl:Class ;
+    rdfs:label "Goal"^^xsd:string ;
+    rdfs:comment "A desired outcome or objective in a system or process."^^xsd:string,
+        "An objective defined in the Goal-Question-Metric (GQM) approach."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork,
+        prov:Entity .
+
+ns1:Hardware a owl:Class ;
+    rdfs:label "Hardware"^^xsd:string ;
+    rdfs:comment "Physical computing resources used for ML workloads."^^xsd:string ;
+    rdfs:subClassOf prov:Entity ;
+    owl:sameAs ns1:HardwareResource .
+
+ns1:HardwareResource a owl:Class ;
+    rdfs:label "Hardware Resource"^^xsd:string ;
+    rdfs:comment "Physical computing resources required for ML workloads, such as GPUs."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MLOps a owl:Class ;
+    rdfs:label "MLOps"^^xsd:string ;
+    rdfs:comment "A set of practices that aim to unify ML system development (Dev) and ML system operation (Ops)."^^xsd:string,
+        "Application of DevOps principles to the machine learning lifecycle."^^xsd:string,
+        "Machine Learning Operations, encompassing practices, tools, and processes for managing the ML lifecycle."^^xsd:string ;
+    rdfs:subClassOf ns1:DevOpsPrinciple,
+        prov:Activity .
+
+ns1:MLOpsAdoptionBenefit a owl:Class ;
+    rdfs:label "MLOps Adoption Benefit" ;
+    rdfs:comment "Benefit realized from adopting MLOps practices in software development companies." ;
+    rdfs:subClassOf ns1:Benefit .
+
+ns1:MLOpsBenchmark a owl:Class ;
+    rdfs:label "MLOps Benchmark"^^xsd:string ;
+    rdfs:comment "A benchmark or reference model (e.g., Microsoft, Google) that defines maturity levels."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:MLOpsBenefit a owl:Class ;
+    rdfs:label "MLOps Benefit"^^xsd:string ;
+    rdfs:comment "Positive outcome obtained from adopting MLOps practices."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:MLOpsDimension a owl:Class ;
+    rdfs:label "MLOps Dimension"^^xsd:string ;
+    rdfs:comment "An aspect of MLOps (e.g., data management, model monitoring, CI/CD) used to evaluate maturity."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:MaintenanceStrategy a owl:Class ;
+    rdfs:label "Maintenance Strategy"^^xsd:string ;
+    rdfs:comment "Plan for updating, retraining, or replacing models after drift detection."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:Metric a owl:Class ;
+    rdfs:label "Metric"^^xsd:string ;
+    rdfs:comment "A measurable attribute used to assess performance or quality."^^xsd:string,
+        "A measurable indicator used to answer a research question."^^xsd:string ;
+    rdfs:subClassOf schema1:QuantitativeValue,
+        prov:Entity .
+
+ns1:ModelDrift a owl:Class ;
+    rdfs:label "Model Drift"^^xsd:string ;
+    rdfs:comment "Phenomenon where a model's performance degrades over time due to changes in data distribution."^^xsd:string,
+        "Shift in the relationship between inputs and outputs of a model over time."^^xsd:string ;
+    rdfs:subClassOf ns1:Drift,
+        prov:Entity .
+
+ns1:ModelFairness a owl:Class ;
+    rdfs:label "Model Fairness"^^xsd:string ;
+    rdfs:comment "Assessment of a model's equitable behavior across different groups."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:PerformanceDegradation a owl:Class ;
+    rdfs:label "Performance Degradation"^^xsd:string ;
+    rdfs:comment "Decline in model predictive quality due to factors such as data drift."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ProfessionalOrganization a owl:Class ;
+    rdfs:label "Professional Organization"^^xsd:string ;
+    rdfs:comment "Organization such as a scientific society or conference host."^^xsd:string ;
+    rdfs:subClassOf schema1:Organization .
+
+ns1:ResearchProtocol a owl:Class ;
+    rdfs:label "Research Protocol"^^xsd:string ;
+    rdfs:comment "A documented set of procedures and criteria guiding the conduct of a systematic review."^^xsd:string ;
+    rdfs:subClassOf prov:Plan .
+
+ns1:ResourceManagement a owl:Class ;
+    rdfs:label "Resource Management"^^xsd:string ;
+    rdfs:comment "Management of computational resources (e.g., GPUs, cloud infrastructure) for ML workloads."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:SearchString a owl:Class ;
+    rdfs:label "Search String"^^xsd:string ;
+    rdfs:comment "A Boolean query used to retrieve relevant documents in a literature search."^^xsd:string,
+        "A query string used to retrieve records from a bibliographic database."^^xsd:string ;
+    rdfs:subClassOf schema1:Text,
+        prov:Entity ;
+    owl:sameAs ns1:SearchObjective .
+
+ns1:SkillGap a owl:Class ;
+    rdfs:label "Skill Gap"^^xsd:string ;
+    rdfs:comment "Missing or insufficient skill within an organization for MLOps activities."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:SoftCompetency a owl:Class ;
+    rdfs:label "Soft Competency"^^xsd:string ;
+    rdfs:comment "Nonâtechnical skill such as communication or collaboration."^^xsd:string ;
+    rdfs:subClassOf ns1:Competency .
+
+ns1:SoftwareEngineerRole a owl:Class ;
+    rdfs:label "Software Engineer Role"^^xsd:string ;
+    rdfs:comment "Role of a software engineer, focusing on software development, deployment, and maintenance of AI systems."^^xsd:string ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:SystematicLiteratureReview a owl:Class ;
+    rdfs:label "Systematic Literature Review"^^xsd:string ;
+    rdfs:comment "A structured method for identifying, evaluating, and synthesizing research literature."^^xsd:string,
+        "A systematic literature review that aggregates and synthesizes findings from primary studies."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork,
+        prov:Activity .
+
+ns1:hasCompetency a owl:ObjectProperty ;
+    rdfs:label "has competency"^^xsd:string ;
+    rdfs:comment "Specifies a competency required for a role."^^xsd:string ;
+    rdfs:domain ns1:Role ;
+    rdfs:range ns1:Competency .
+
+ns1:BenefitCategory a owl:Class ;
+    rdfs:label "Benefit Category"^^xsd:string ;
+    rdfs:comment "A high-level grouping of benefits resulting from MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:CI_CD_Tool a owl:Class ;
+    rdfs:label "CI/CD Tool"^^xsd:string ;
+    rdfs:comment "Tool that automates integration and delivery pipelines."^^xsd:string ;
+    rdfs:subClassOf ns1:Tool .
+
+ns1:Competency a owl:Class ;
+    rdfs:label "Competency"^^xsd:string ;
+    rdfs:comment "A skill or knowledge area required to perform a role."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:ContinuousTraining a owl:Class ;
+    rdfs:label "Continuous Training"^^xsd:string ;
+    rdfs:comment "Automated retraining of models as new data becomes available."^^xsd:string,
+        "Automated retraining of models when data drift or performance degradation is detected."^^xsd:string,
+        "Ongoing process of retraining models as new data becomes available."^^xsd:string,
+        "Process of periodically retraining models with new data."^^xsd:string ;
+    rdfs:subClassOf ns1:MLOpsProcess,
+        ns1:Process,
+        prov:Activity .
+
+ns1:DataDrift a owl:Class ;
+    rdfs:label "Data Drift"^^xsd:string ;
+    rdfs:comment "Change in data distribution that may affect model performance."^^xsd:string,
+        "Change in the statistical properties of input data compared to training data."^^xsd:string,
+        "Change in the statistical properties of input data over time, potentially degrading model performance."^^xsd:string ;
+    rdfs:subClassOf ns1:Drift,
+        prov:Entity .
+
+ns1:DataEngineerRole a owl:Class ;
+    rdfs:label "Data Engineer Role"^^xsd:string ;
+    rdfs:comment "Role of a data engineer, responsible for data pipelines, storage, and quality."^^xsd:string ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:DataStrategy a owl:Class ;
+    rdfs:label "Data Strategy"^^xsd:string ;
+    rdfs:comment "A plan defining how data will be collected, cleaned, labeled, and managed for MLOps pipelines."^^xsd:string ;
+    rdfs:subClassOf prov:Plan .
+
+ns1:GoalQuestionMetricParadigm a owl:Class ;
+    rdfs:label "Goal-Question-Metric Paradigm"^^xsd:string ;
+    rdfs:comment "A methodology for defining goals, deriving questions, and selecting metrics to assess software processes."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:InclusionCriterion a owl:Class ;
+    rdfs:label "Inclusion Criterion"^^xsd:string ;
+    rdfs:comment "A criterion used to include papers in a systematic literature review, such as relevance to MLOps."^^xsd:string ;
+    rdfs:subClassOf skos:Concept .
+
+ns1:InfrastructureComponent a owl:Class ;
+    rdfs:label "Infrastructure Component"^^xsd:string ;
+    rdfs:comment "Hardware or cloud resource required to execute MLOps processes."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MLOpsMaturityModel a owl:Class ;
+    rdfs:label "MLOps Maturity Model"^^xsd:string ;
+    rdfs:comment "A framework describing levels of maturity in MLOps adoption."^^xsd:string,
+        "A framework for assessing the maturity level of MLOps adoption in an organization."^^xsd:string,
+        "A structured model describing levels of maturity for MLOps practices within an organization."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork,
+        prov:Entity .
+
+ns1:MLOpsPhase a owl:Class ;
+    rdfs:label "MLOps Phase"^^xsd:string ;
+    rdfs:comment "A distinct stage in the MLOps lifecycle such as data ingestion, training, deployment, monitoring, or maintenance."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:MLProject a owl:Class ;
+    rdfs:label "ML Project"^^xsd:string ;
+    rdfs:comment "A machine learning project encompassing data science, model development, and deployment activities."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:MaintenanceProcess a owl:Class ;
+    rdfs:label "Maintenance Process"^^xsd:string ;
+    rdfs:comment "Activity that updates or retrains a model in response to detected drift."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:MaturityModel a owl:Class ;
+    rdfs:label "Maturity Model"^^xsd:string ;
+    rdfs:comment "A model that defines maturity levels for MLOps adoption."^^xsd:string,
+        "A structured model describing maturity levels for MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:Orchestrator a owl:Class ;
+    rdfs:label "Orchestrator"^^xsd:string ;
+    rdfs:comment "Component that manages execution of pipelines and jobs in MLOps."^^xsd:string,
+        "Tool that coordinates execution of MLOps pipelines."^^xsd:string,
+        "Tool that manages deployment and scaling of containerized workloads."^^xsd:string ;
+    rdfs:subClassOf ns1:Tool,
+        prov:Agent .
+
+ns1:OrganizationSizeCategory a owl:Class ;
+    rdfs:label "Organization Size Category"^^xsd:string ;
+    rdfs:comment "Category describing size of a software development company (e.g., small, medium)."^^xsd:string ;
+    rdfs:subClassOf schema1:DefinedTerm .
+
+ns1:Output a owl:Class ;
+    rdfs:label "Output"^^xsd:string ;
+    rdfs:comment "Result produced by a model, can be deterministic or probabilistic."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:SelectionProcess a owl:Class ;
+    rdfs:label "Selection Process"^^xsd:string ;
+    rdfs:comment "The process of selecting primary papers based on inclusion and exclusion criteria, including multiâlevel review."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:Skill a owl:Class ;
+    rdfs:label "Skill"^^xsd:string ;
+    rdfs:comment "A competency required to perform MLOps tasks."^^xsd:string,
+        "General notion of a competency; can be technical or soft."^^xsd:string ;
+    rdfs:subClassOf schema1:DefinedTerm,
+        prov:Entity ;
+    owl:sameAs ns1:SkillGap,
+        ns1:TechnicalSkill .
+
+ns1:TechnicalDebt a owl:Class ;
+    rdfs:label "Technical Debt"^^xsd:string ;
+    rdfs:comment "Accumulated suboptimal code or design decisions that hinder maintainability and scalability."^^xsd:string,
+        "Accumulated suboptimal technical decisions in ML code and pipelines."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ChallengeCategory a owl:Class ;
+    rdfs:label "Challenge Category"^^xsd:string ;
+    rdfs:comment "A high-level grouping of challenges encountered in MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:DataPipeline a owl:Class ;
+    rdfs:label "Data Pipeline" ;
+    rdfs:comment "A workflow that extracts, transforms, and loads data for training or inference." ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:DataScientistRole a owl:Class ;
+    rdfs:label "Data Scientist Role"^^xsd:string ;
+    rdfs:comment "Role of a data scientist, typically responsible for model development and experimentation."^^xsd:string ;
+    rdfs:subClassOf ns1:Role .
+
+ns1:Drift a owl:Class ;
+    rdfs:label "Drift"^^xsd:string ;
+    rdfs:comment "Change in data distribution or model behavior that degrades performance."^^xsd:string ;
+    rdfs:subClassOf prov:Entity ;
+    owl:sameAs ns1:DataDrift,
+        ns1:ModelDrift .
+
+ns1:MLOpsChallenge a owl:Class ;
+    rdfs:label "MLOps Challenge"^^xsd:string ;
+    rdfs:comment "A difficulty or obstacle encountered in implementing MLOps practices."^^xsd:string,
+        "A difficulty or obstacle identified in the practice of MLOps."^^xsd:string,
+        "Challenges faced in implementing MLOps practices."^^xsd:string,
+        "Difficulty or obstacle encountered when adopting MLOps."^^xsd:string ;
+    rdfs:subClassOf skos:Concept,
+        prov:Entity .
+
+ns1:MLOpsPrinciple a owl:Class ;
+    rdfs:label "MLOps Principle"^^xsd:string ;
+    rdfs:comment "Abstract principle guiding successful MLOps implementation."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:Methodology a owl:Class ;
+    rdfs:label "Methodology"^^xsd:string ;
+    rdfs:comment "A structured set of processes and practices guiding the execution of a project."^^xsd:string ;
+    rdfs:subClassOf prov:Plan .
+
+ns1:Paper a owl:Class ;
+    rdfs:label "Paper"^^xsd:string ;
+    rdfs:comment "A scholarly article, conference paper, or other publication considered in the literature review."^^xsd:string ;
+    rdfs:subClassOf prov:Entity ;
+    owl:sameAs ns1:ResearchPaper .
+
+ns1:ResearchQuestion a owl:Class ;
+    rdfs:label "Research Question"^^xsd:string ;
+    rdfs:comment "A question formulated to guide systematic investigation of MLOps topics."^^xsd:string,
+        "A specific question that the systematic review aims to answer."^^xsd:string ;
+    rdfs:subClassOf schema1:Question .
+
+ns1:AutomationPractice a owl:Class ;
+    rdfs:label "Automation Practice"^^xsd:string ;
+    rdfs:comment "An abstract practice that can be automated within the MLOps lifecycle (e.g., training, deployment, monitoring)."^^xsd:string ;
+    rdfs:subClassOf prov:Entity ;
+    owl:sameAs ns1:AutomationPrinciple .
+
+ns1:Benefit a owl:Class ;
+    rdfs:label "Benefit"^^xsd:string ;
+    rdfs:comment "Positive outcome or advantage resulting from adopting MLOps practices."^^xsd:string,
+        "Positive outcome resulting from MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf skos:Concept,
+        prov:Entity .
+
+ns1:CollaborationChallenge a owl:Class ;
+    rdfs:label "Collaboration Challenge"^^xsd:string ;
+    rdfs:comment "Challenges related to collaboration when building ML-enabled systems, such as communication, documentation, engineering, and process issues."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MaturityLevel a owl:Class ;
+    rdfs:label "Maturity Level"^^xsd:string ;
+    rdfs:comment "A specific level within a maturity model, often numbered and described."^^xsd:string,
+        "A specific level within an MLOps maturity model."^^xsd:string,
+        "A stage representing the development and adoption maturity of the MLOps discipline."^^xsd:string,
+        "Level describing the maturity of MLOps practices within an organization."^^xsd:string ;
+    rdfs:subClassOf skos:Concept,
+        prov:Entity .
+
+ns1:SearchObjective a owl:Class ;
+    rdfs:label "Search Objective"^^xsd:string ;
+    rdfs:comment "An objective guiding the literature search, e.g., analyzing MLOps applications in SMEs."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:SearchStrategy a owl:Class ;
+    rdfs:label "Search Strategy"^^xsd:string ;
+    rdfs:comment "The methodological plan for retrieving literature related to MLOps."^^xsd:string ;
+    rdfs:subClassOf prov:Plan .
+
+ns1:Team a owl:Class ;
+    rdfs:label "Team"^^xsd:string ;
+    rdfs:comment "Group of agents collaborating towards a common goal."^^xsd:string ;
+    rdfs:subClassOf prov:Agent .
+
+ns1:MLOpsAdoptionChallenge a owl:Class ;
+    rdfs:label "MLOps Adoption Challenge"^^xsd:string,
+        "MLOps Adoption Challenge" ;
+    rdfs:comment "A challenge identified in the adoption of MLOps practices, encompassing data, organizational, and technical aspects."^^xsd:string,
+        "Challenge encountered when adopting MLOps in software development companies." ;
+    rdfs:subClassOf ns1:Challenge,
+        skos:Concept .
+
+ns1:MLOpsParadigm a owl:Class ;
+    rdfs:label "MLOps Paradigm"^^xsd:string ;
+    rdfs:comment "A set of practices and cultural principles for operationalizing machine learning models, extending DevOps."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MLOpsStage a owl:Class ;
+    rdfs:label "MLOps Stage"^^xsd:string ;
+    rdfs:comment "A distinct phase within an MLOps process, such as problem definition, training, deployment, or monitoring."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:MLOpsStudy a owl:Class ;
+    rdfs:label "MLOps Study"^^xsd:string ;
+    rdfs:comment "A scholarly work (e.g., survey, systematic literature review) that investigates MLOps challenges, opportunities, best practices, and maturity models."^^xsd:string ;
+    rdfs:subClassOf schema1:ScholarlyArticle .
+
+ns1:StakeholderRole a owl:Class ;
+    rdfs:label "Stakeholder Role"^^xsd:string ;
+    rdfs:comment "Role of a person or group involved in MLOps processes."^^xsd:string ;
+    rdfs:subClassOf prov:Agent .
+
+ns1:Adoption a owl:Class ;
+    rdfs:label "MLOps Adoption"^^xsd:string ;
+    rdfs:comment "The act of a company adopting MLOps practices."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:Challenge a owl:Class ;
+    rdfs:label "Challenge"^^xsd:string ;
+    rdfs:comment "A difficulty or obstacle encountered in AI engineering."^^xsd:string,
+        "Difficulty or obstacle encountered during MLOps adoption."^^xsd:string,
+        "Obstacle or difficulty encountered in implementing MLOps."^^xsd:string,
+        "Obstacle or difficulty encountered when implementing MLOps practices."^^xsd:string ;
+    rdfs:subClassOf skos:Concept,
+        prov:Entity .
+
+ns1:MLOpsDiscipline a owl:Class ;
+    rdfs:label "MLOps Discipline"^^xsd:string ;
+    rdfs:comment "The interdisciplinary field encompassing practices, tools, and processes for operationalizing machine learning models."^^xsd:string ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:MLOpsMaturityFramework a owl:Class ;
+    rdfs:label "MLOps Maturity Framework"^^xsd:string ;
+    rdfs:comment "A structured framework that defines levels and dimensions for assessing MLOps maturity in an organization."^^xsd:string ;
+    rdfs:subClassOf schema1:CreativeWork .
+
+ns1:TrainingRun a owl:Class ;
+    rdfs:label "Training Run" ;
+    rdfs:comment "An execution of a model training process producing a model version." ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:MLRole a owl:Class ;
+    rdfs:label "ML Role"^^xsd:string ;
+    rdfs:comment "Abstract role involved in MLOps activities."^^xsd:string ;
+    rdfs:subClassOf prov:Agent .
+
+ns1:MLModel a owl:Class ;
+    rdfs:label "ML Model" ;
+    rdfs:comment "A machine learning model that can be trained, versioned, and deployed." ;
+    rdfs:subClassOf prov:Entity .
+
+ns1:ResearchPaper a owl:Class ;
+    rdfs:label "Research Paper"^^xsd:string ;
+    rdfs:comment "Scholarly article describing research findings."^^xsd:string ;
+    rdfs:subClassOf schema1:ScholarlyArticle .
+
+ns1:MLOpsProcess a owl:Class ;
+    rdfs:label "MLOps Process"^^xsd:string ;
+    rdfs:comment "A set of coordinated activities and practices for operationalizing machine learning models within software development."^^xsd:string,
+        "A set of practices and activities that integrate the machine learning lifecycle with DevOps principles."^^xsd:string,
+        "An end-to-end workflow that encompasses model development, deployment, monitoring, and maintenance in production."^^xsd:string ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:MonitoringJob a owl:Class ;
+    rdfs:label "Monitoring Job" ;
+    rdfs:comment "An automated job that monitors model performance, data drift, and other metrics in production." ;
+    rdfs:subClassOf prov:Activity .
+
+ns1:MLOpsPractice a owl:Class ;
+    rdfs:label "MLOps Practice"^^xsd:string ;
+    rdfs:comment "A practice or technique within MLOps aimed at improving the ML product lifecycle."^^xsd:string,
+        "A practice, process, or technique that is part of MLOps."^^xsd:string,
+        "An activity or set of activities defined within MLOps to improve the model lifecycle."^^xsd:string,
+        "Specific practice within MLOps, e.g., continuous integration, monitoring, or model registry."^^xsd:string ;
+    rdfs:subClassOf prov:Activity,
+        prov:Entity .
+
+ns1:MLOpsRole a owl:Class ;
+    rdfs:label "MLOps Role"^^xsd:string ;
+    rdfs:comment "A role defined in an MLOps process, such as architect, data engineer, ML engineer, or DevOps engineer."^^xsd:string,
+        "A role performed by a person or agent within the MLOps lifecycle."^^xsd:string ;
+    rdfs:subClassOf prov:Agent .
+
+ns1:Tool a owl:Class ;
+    rdfs:label "Tool"^^xsd:string ;
+    rdfs:comment "Software or hardware used to support MLOps activities."^^xsd:string,
+        "Software or platform used to support MLOps activities."^^xsd:string,
+        "Software or platform used to support MLOps processes."^^xsd:string ;
+    rdfs:subClassOf prov:Entity,
+        prov:SoftwareAgent .
+
+ns1:ModelVersion a owl:Class ;
+    rdfs:label "Model Version" ;
+    rdfs:comment "A specific version of an ML model, identified by a version identifier." ;
+    rdfs:subClassOf ns1:MLModel .
+
+ns1:MLOpsMaturityLevel a owl:Class ;
+    rdfs:label "MLOps Maturity Level"^^xsd:string ;
+    rdfs:comment "A specific level within an MLOps maturity framework representing a degree of automation and capability."^^xsd:string,
+        "A specific level within an MLOps maturity model, representing a set of capabilities and automation."^^xsd:string ;
+    rdfs:subClassOf skos:Concept,
+        prov:Entity .
+
+ns1:Process a owl:Class ;
+    rdfs:label "Process"^^xsd:string ;
+    rdfs:comment "A defined sequence of activities within an MLOps workflow."^^xsd:string,
+        "An abstract activity within the MLOps lifecycle."^^xsd:string ;
+    rdfs:subClassOf prov:Activity,
+        prov:Plan .
+
+ns1:Role a owl:Class ;
+    rdfs:label "Role"^^xsd:string ;
+    rdfs:comment "A function or position of a person or agent in MLOps processes."^^xsd:string,
+        "A function or responsibility performed by a person in the MLOps lifecycle."^^xsd:string,
+        "A functional role performed by an agent in the AI engineering lifecycle."^^xsd:string,
+        "A set of responsibilities performed by an agent in an MLOps context."^^xsd:string ;
+    rdfs:subClassOf schema1:Role,
+        prov:Agent ;
+    owl:sameAs ns1:DataEngineerRole,
+        ns1:DataScientistRole,
+        ns1:MLOpsRole,
+        ns1:MLRole,
+        ns1:SoftwareEngineerRole,
+        ns1:StakeholderRole .
+

@@ -1,0 +1,21 @@
+{
+  "Issue": "Silent loss of discriminative power in model embeddings (representational collapse) when fine-tuning or deploying foundation models on new domains, leading to misleading downstream task performance.",
+  "Decision": "Implementation of `EmbeddingCollapseMetric`, a new metric class to detect representational collapse in medical imaging embeddings.",
+  "Rationale": "The metric computes a suite of collapse indicators (centroid cosine similarity, SVD effective rank score, per-class SVD, Linear CKA, Silhouette score, leave-one-out centroid stability) to quantitatively detect representational collapse and validate point estimates on small sample sizes. It addresses the gap where users currently have no way to determine if embeddings are separating classes meaningfully or have degenerated into a narrow subspace.",
+  "Author": "ekansh-arora0",
+  "Status": "open",
+  "Description": "Medical imaging embeddings in foundation models, specifically addressing representational collapse during fine-tuning or deployment on new domains.",
+  "Time stamp": "2026-04-07T00:55:36Z",
+  "Cost": "Low (core dependencies are torch and numpy; sklearn and matplotlib are optional and imported lazily)",
+  "Risk": "Potential silent degradation of model performance due to representational collapse, leading to misleading downstream task performance that only becomes apparent after costly training cycles. Risk of asymmetric collapse where one class collapses while others remain rich.",
+  "Argument": [
+    {
+      "author": "ekansh-arora0",
+      "timestamp": "2026-04-07T00:55:36Z",
+      "argument": "FIDMetric measures distributional shift but requires a large reference set and doesn't decompose by class or detect dimensional collapse. MMDMetric is a two-sample test, not a collapse detector. `EmbeddingCollapseMetric` is complementary to both, answering a different question: not 'are these distributions different?' but 'has the model lost the ability to distinguish classes?'"
+    }
+  ],
+  "Mapped Stage": "Evaluation (Validation)",
+  "Primary Artifact": "Metric for representational collapse detection",
+  "Justification": "The decision involves implementing a new metric class (`EmbeddingCollapseMetric`) to evaluate model embeddings for representational collapse during fine-tuning or deployment. Keywords like 'metric', 'detect', 'performance assessment', and 'validation' point to the Evaluation (Validation) stage."
+}

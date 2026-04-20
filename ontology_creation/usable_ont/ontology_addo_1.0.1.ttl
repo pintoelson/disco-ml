@@ -1,0 +1,318 @@
+@prefix doc: <https://example.com/architecture/decisions/doc/00af2e911da5/> .
+@prefix dm: <https://example.com/architecture/decisions/aadd#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <https://schema.org/> .
+doc:2758ae4ea1ba a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T10:05:40.701104Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+	schema:position 0 ;
+	schema:identifier "2758ae4ea1ba" .
+dm: dcterms:created "2023-10-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+dm:Constraint rdfs:subClassOf schema:Constraint .
+dm:followsProcess rdfs:domain dm:ArchitecturalDesignDecision .
+dm:hasAlternative a owl:ObjectProperty .
+dm:tradeOffWith rdfs:label "trade-off with"@en .
+dm:DesignRationale rdfs:subClassOf schema:Thing .
+dm:addresses rdfs:range schema:Problem .
+dm:hasStyle rdfs:range dm:ArchitecturalStyle .
+dm:supersedes rdfs:comment "Relates an architectural design decision to a previous decision it replaces or invalidates."@en .
+dm:AlternativeOption rdfs:comment "A potential architectural solution or approach considered during the decision-making process, which may be accepted or rejected."@en .
+dm:Stakeholder rdfs:subClassOf schema:Person .
+dm:influences rdfs:domain dm:ArchitecturalDesignDecision .
+dm:DecisionProcess rdfs:label "Decision Process"@en .
+dm:ArchitecturalView rdfs:comment "A representation of a system from a particular perspective, such as logical, physical, or development views, used to communicate architectural decisions."@en .
+dm:AlternativeOption rdfs:subClassOf schema:Thing .
+dm:constrainedBy rdfs:label "constrained by"@en .
+dm: rdfs:label "Architectural Design Decision Ontology"@en .
+dm:hasAlternative rdfs:comment "Relates an architectural design decision to an alternative option considered during its formulation."@en .
+dm: owl:versionInfo "1.0.0" .
+dm:hasRationale a owl:ObjectProperty .
+dm: dcterms:description "An ontology representing the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and records (ADR) in software-intensive systems. It models abstract concepts such as decisions, rationales, alternatives, constraints, and their interdependencies to support reasoning about architectural evolution and maintenance." .
+dm:Stakeholder rdfs:comment "An individual or group with an interest in the architectural design decisions, such as developers, architects, or end-users."@en .
+dm:supersedes rdfs:range dm:ArchitecturalDesignDecision .
+dm:expressedIn rdfs:comment "Relates an architectural design decision to an architectural view or model in which it is documented or communicated."@en .
+dm:constrainedBy a owl:ObjectProperty ;
+	rdfs:range dm:Constraint .
+dm:addresses a owl:ObjectProperty .
+dm:madeBy rdfs:range dm:Stakeholder .
+dm:Constraint rdfs:label "Constraint"@en .
+dm:enforces rdfs:range dm:ArchitecturalDesignDecision .
+_:n97ef4fc378404569805f1a607bdae710b4 rdf:rest rdf:nil .
+dm:tradeOffWith a owl:SymmetricProperty .
+dm:supersedes a owl:ObjectProperty .
+dm:hasRationale rdfs:comment "Relates an architectural design decision to its rationale or justification."@en .
+dm:supersedes a owl:IrreflexiveProperty .
+dm:tradeOffWith rdfs:range dm:ArchitecturalDesignDecision .
+dm:addresses rdfs:comment "Relates an architectural design decision to a problem or requirement it addresses."@en .
+dm:Constraint rdfs:comment "A restriction or limitation that influences architectural design decisions, such as performance, economic, or technology constraints."@en .
+dm:addresses rdfs:domain dm:ArchitecturalDesignDecision .
+_:n97ef4fc378404569805f1a607bdae710b1 a owl:Class .
+dm: dcterms:identifier "hash:3651024d59c018ac8d45f33f2df32c4f232fbe35843f405bceef983f2c62fc2f" .
+_:n97ef4fc378404569805f1a607bdae710b1 owl:unionOf _:n97ef4fc378404569805f1a607bdae710b2 .
+dm:AlternativeOption rdfs:label "Alternative Option"@en .
+dm:tradeOffWith a owl:ObjectProperty .
+dm:ArchitecturalStyle rdfs:subClassOf schema:Thing .
+dm: a owl:Ontology .
+dm:hasRationale rdfs:label "has rationale"@en .
+dm:influences rdfs:label "influences"@en .
+dm:DesignRationale rdfs:label "Design Rationale"@en .
+dm:madeBy rdfs:comment "Relates an architectural design decision to the stakeholder or group responsible for making it."@en .
+dm:expressedIn a owl:ObjectProperty .
+dm:enforces a owl:ObjectProperty .
+dm:followsProcess a owl:ObjectProperty .
+dm: dcterms:title "aadd" .
+_:n97ef4fc378404569805f1a607bdae710b2 rdf:first dm:ArchitecturalDesignDecision .
+dm:Stakeholder rdfs:label "Stakeholder"@en .
+dm:ArchitecturalDesignDecision a owl:Class .
+dm:tradeOffWith rdfs:domain dm:ArchitecturalDesignDecision .
+dm:hasAlternative rdfs:label "has alternative"@en .
+dm:addresses rdfs:label "addresses"@en .
+dm:hasAlternative rdfs:domain dm:ArchitecturalDesignDecision .
+dm:ArchitecturalView rdfs:label "Architectural View"@en .
+dm:ArchitecturalDesignDecision rdfs:label "Architectural Design Decision"@en .
+dm:hasAlternative rdfs:range dm:AlternativeOption .
+dm:influences a owl:ObjectProperty .
+dm:tradeOffWith rdfs:comment "Relates two architectural design decisions that involve a trade-off or compromise between competing concerns."@en .
+dm:madeBy rdfs:label "made by"@en .
+dm:supersedes rdfs:label "supersedes"@en .
+dm:hasStyle a owl:ObjectProperty .
+dm:expressedIn rdfs:range dm:ArchitecturalView .
+dm:Constraint a owl:Class .
+dm:ArchitecturalDesignDecision rdfs:subClassOf schema:Decision .
+dm:ArchitecturalView rdfs:subClassOf schema:CreativeWork .
+dm:followsProcess rdfs:label "follows process"@en .
+dm:enforces rdfs:domain dm:ArchitecturalStyle .
+dm:hasStyle rdfs:domain dm:ArchitecturalDesignDecision .
+dm:DesignRationale a owl:Class .
+_:n97ef4fc378404569805f1a607bdae710b4 rdf:first dm:Constraint .
+dm:AlternativeOption a owl:Class .
+dm:hasRationale rdfs:range dm:DesignRationale .
+dm:Stakeholder a owl:Class .
+dm:hasRationale rdfs:domain dm:ArchitecturalDesignDecision .
+dm: rdfs:comment "An ontology representing the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and records (ADR) in software-intensive systems."@en .
+dm:influences rdfs:comment "Relates an architectural design decision to another decision or artifact it influences."@en .
+dm:DesignRationale rdfs:comment "The justification, reasoning, or explanation behind an architectural design decision, including constraints, trade-offs, and implications."@en .
+dm:supersedes a owl:AsymmetricProperty .
+dm:ArchitecturalStyle a owl:Class .
+dm:DecisionProcess rdfs:comment "The sequence of activities, methods, or practices used to arrive at an architectural design decision."@en .
+_:n97ef4fc378404569805f1a607bdae710b3 rdf:rest _:n97ef4fc378404569805f1a607bdae710b4 .
+dm:constrainedBy rdfs:domain dm:ArchitecturalDesignDecision .
+dm:expressedIn rdfs:label "expressed in"@en .
+dm:influences rdfs:range _:n97ef4fc378404569805f1a607bdae710b1 .
+dm:ArchitecturalStyle rdfs:comment "A named collection of architectural design decisions that constrain and enable the design of a system, guiding its organization and behavior."@en .
+dm:ArchitecturalDesignDecision rdfs:comment "A significant decision made during the architectural design process of a software-intensive system, considered as a first-class entity."@en .
+dm:hasStyle rdfs:label "has style"@en .
+dm:madeBy a owl:ObjectProperty .
+dm:supersedes rdfs:domain dm:ArchitecturalDesignDecision .
+dm:followsProcess rdfs:comment "Relates an architectural design decision to the decision process used to arrive at it."@en .
+dm:hasStyle rdfs:comment "Relates an architectural design decision to the architectural style it adheres to or exemplifies."@en .
+dm:constrainedBy rdfs:comment "Relates an architectural design decision to a constraint that influences it."@en .
+dm:ArchitecturalStyle rdfs:label "Architectural Style"@en .
+_:n97ef4fc378404569805f1a607bdae710b2 rdf:rest _:n97ef4fc378404569805f1a607bdae710b3 .
+dm:enforces rdfs:comment "Relates an architectural style to a set of architectural design decisions it enforces or guides."@en .
+dm:DecisionProcess a owl:Class .
+dm:followsProcess rdfs:range dm:DecisionProcess .
+_:n97ef4fc378404569805f1a607bdae710b3 rdf:first dm:ArchitecturalView .
+dm:madeBy rdfs:domain dm:ArchitecturalDesignDecision .
+dm:ArchitecturalView a owl:Class .
+dm:enforces rdfs:label "enforces"@en .
+dm:DecisionProcess rdfs:subClassOf schema:Action .
+dm:expressedIn rdfs:domain dm:ArchitecturalDesignDecision .
+doc:84e1647b15fa a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T10:05:40.706416Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+	schema:position 4 ;
+	schema:identifier "84e1647b15fa" .
+<https://example.com/architecture/decisions/addo#Proposed> a <https://example.com/architecture/decisions/addo#DesignDecisionState> .
+<https://example.com/architecture/decisions/addo#isRelatedTo> owl:symmetric true .
+<https://example.com/architecture/decisions/addo#hasAlternative> rdfs:comment "Relates an architectural design decision to an alternative option considered."@en .
+<https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> rdfs:comment "A formal record of an architectural decision made during the design of a software system, including its rationale and consequences."@en .
+<https://example.com/architecture/decisions/addo#tradeOffWith> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#overrides> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#isBoundTo> rdfs:range <https://example.com/architecture/decisions/addo#DesignDecisionState> .
+<https://example.com/architecture/decisions/addo#tracesTo> rdfs:label "traces to"@en .
+<https://example.com/architecture/decisions/addo#isRelatedTo> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#hasPromotionState> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#enables> rdfs:label "enables"@en .
+<https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> rdfs:subClassOf schema:Decision .
+<https://example.com/architecture/decisions/addo#conflictsWith> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#subsumes> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#isAlternativeTo> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#Stakeholder> a owl:Class .
+<https://example.com/architecture/decisions/addo#forbids> rdfs:comment "Relates a design decision A to another decision B that A forbids."@en .
+<https://example.com/architecture/decisions/addo#TechnicalArtifact> rdfs:comment "A software or system artifact such as requirements, defects, design elements, or implementation components that are related to architectural decisions."@en .
+<https://example.com/architecture/decisions/addo#hasConstraint> rdfs:comment "Relates an architectural design decision to a constraint it must satisfy."@en .
+<https://example.com/architecture/decisions/addo#constrains> rdfs:comment "Relates a design decision A to another decision B that A constrains."@en .
+<https://example.com/architecture/decisions/addo#Constraint> rdfs:subClassOf schema:Constraint .
+_:na274110acc3e48af9dded96c81a6ffe4b1 owl:unionOf _:na274110acc3e48af9dded96c81a6ffe4b2 .
+<https://example.com/architecture/decisions/addo#hasState> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#addresses> rdfs:label "addresses"@en .
+<https://example.com/architecture/decisions/addo#isRelatedTo> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#AlternativeOption> rdfs:subClassOf schema:Option .
+<https://example.com/architecture/decisions/addo#tradeOffWith> rdfs:label "tradeOffWith"@en .
+<https://example.com/architecture/decisions/addo#hasRationale> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#Accepted> rdfs:label "Accepted"@en .
+<https://example.com/architecture/decisions/addo#subsumes> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#constrains> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#Accepted> a <https://example.com/architecture/decisions/addo#DesignDecisionState> .
+<https://example.com/architecture/decisions/addo#subsumes> rdfs:label "subsumes"@en .
+<https://example.com/architecture/decisions/addo#implies> rdfs:comment "Relates an architectural design decision to consequences or implications it entails."@en .
+<https://example.com/architecture/decisions/addo#Rejected> rdfs:comment "A design decision that has been rejected and is not in effect."@en .
+<https://example.com/architecture/decisions/addo#hasPromotionState> rdfs:range <https://example.com/architecture/decisions/addo#DesignDecisionState> .
+<https://example.com/architecture/decisions/addo#AlternativeOption> a owl:Class .
+<https://example.com/architecture/decisions/addo#addresses> a owl:ObjectProperty ;
+	rdfs:subPropertyOf schema:subjectOf .
+<https://example.com/architecture/decisions/addo#hasState> rdfs:comment "Relates a design decision to its current state."@en .
+<https://example.com/architecture/decisions/addo#doesNotComplyWith> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#Deprecated> rdfs:label "Deprecated"@en .
+<https://example.com/architecture/decisions/addo#hasStakeholder> rdfs:label "has stakeholder"@en .
+<https://example.com/architecture/decisions/addo#Constraint> rdfs:label "Constraint"@en .
+<https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> rdfs:label "Architectural Design Decision"@en .
+<https://example.com/architecture/decisions/addo#comprises> rdfs:comment "Relates a design decision A to another decision B that is part of A."@en .
+<https://example.com/architecture/decisions/addo#> dcterms:description "An ontology representing the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and records (ADR). It models abstract concepts such as decisions, rationales, constraints, alternatives, and their relationships, enabling the capture, maintenance, and exploitation of large sets of design decisions in software architecture." .
+<https://example.com/architecture/decisions/addo#enables> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#> rdfs:comment "An ontology representing the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and records (ADR)."@en .
+<https://example.com/architecture/decisions/addo#constrains> owl:asymmetric true .
+<https://example.com/architecture/decisions/addo#tracesTo> rdfs:comment "Relates a design decision to an upstream or downstream artifact it traces to, such as requirements, defects, design elements, or implementation components."@en .
+<https://example.com/architecture/decisions/addo#hasState> rdfs:range <https://example.com/architecture/decisions/addo#DesignDecisionState> .
+<https://example.com/architecture/decisions/addo#hasConstraint> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#tradeOffWith> owl:symmetric true .
+<https://example.com/architecture/decisions/addo#Deprecated> rdfs:comment "A design decision that is obsolete and no longer in effect."@en .
+<https://example.com/architecture/decisions/addo#constrains> rdfs:label "constrains"@en .
+<https://example.com/architecture/decisions/addo#TechnicalArtifact> a owl:Class .
+<https://example.com/architecture/decisions/addo#overrides> rdfs:comment "Relates a design decision A to another decision B that A overrides."@en .
+<https://example.com/architecture/decisions/addo#isRelatedTo> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#ManagementArtifact> a owl:Class .
+<https://example.com/architecture/decisions/addo#hasAlternative> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#Superseded> a <https://example.com/architecture/decisions/addo#DesignDecisionState> .
+<https://example.com/architecture/decisions/addo#hasPromotionState> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#Constraint> rdfs:comment "A restriction or condition that an architectural design decision must adhere to, often derived from requirements or system properties."@en .
+<https://example.com/architecture/decisions/addo#conflictsWith> owl:symmetric true ;
+	rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#subsumes> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#hasAlternative> rdfs:label "has alternative"@en .
+<https://example.com/architecture/decisions/addo#isAlternativeTo> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+_:na274110acc3e48af9dded96c81a6ffe4b3 rdf:first <https://example.com/architecture/decisions/addo#ManagementArtifact> .
+<https://example.com/architecture/decisions/addo#Accepted> rdfs:comment "A design decision that has been accepted and is in effect."@en .
+_:na274110acc3e48af9dded96c81a6ffe4b3 rdf:rest rdf:nil .
+<https://example.com/architecture/decisions/addo#DesignDecisionState> rdfs:subClassOf skos:Concept .
+<https://example.com/architecture/decisions/addo#tracesTo> rdfs:range _:na274110acc3e48af9dded96c81a6ffe4b1 .
+<https://example.com/architecture/decisions/addo#Stakeholder> rdfs:label "Stakeholder"@en .
+<https://example.com/architecture/decisions/addo#Rejected> rdfs:label "Rejected"@en .
+<https://example.com/architecture/decisions/addo#AlternativeOption> rdfs:comment "A potential solution or approach considered as an alternative to a chosen architectural design decision."@en .
+<https://example.com/architecture/decisions/addo#hasConstraint> rdfs:label "has constraint"@en .
+<https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> a owl:Class .
+<https://example.com/architecture/decisions/addo#addresses> rdfs:comment "Relates an architectural design decision to a problem or constraint it addresses."@en .
+<https://example.com/architecture/decisions/addo#subsumes> owl:asymmetric true .
+<https://example.com/architecture/decisions/addo#hasState> rdfs:label "has state"@en .
+<https://example.com/architecture/decisions/addo#isAlternativeTo> owl:asymmetric true .
+<https://example.com/architecture/decisions/addo#isRelatedTo> rdfs:label "is related to"@en .
+<https://example.com/architecture/decisions/addo#Rationale> rdfs:label "Rationale"@en .
+<https://example.com/architecture/decisions/addo#constrains> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#implies> rdfs:range <https://example.com/architecture/decisions/addo#Rationale> .
+<https://example.com/architecture/decisions/addo#enables> rdfs:comment "Relates a design decision A to another decision B that A enables."@en .
+<https://example.com/architecture/decisions/addo#TechnicalArtifact> rdfs:subClassOf schema:CreativeWork .
+<https://example.com/architecture/decisions/addo#doesNotComplyWith> rdfs:comment "Relates an artifact to a design decision it does not comply with."@en .
+<https://example.com/architecture/decisions/addo#hasPromotionState> rdfs:comment "Relates a design decision to its promotion state in the decision lifecycle."@en .
+<https://example.com/architecture/decisions/addo#isBoundTo> rdfs:label "is bound to"@en .
+<https://example.com/architecture/decisions/addo#> dcterms:created "2023-10-10"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://example.com/architecture/decisions/addo#constrains> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#hasStakeholder> rdfs:range <https://example.com/architecture/decisions/addo#Stakeholder> .
+<https://example.com/architecture/decisions/addo#DesignDecisionState> a owl:Class .
+<https://example.com/architecture/decisions/addo#> dcterms:title "addo" .
+<https://example.com/architecture/decisions/addo#hasRationale> owl:cardinality 1 .
+<https://example.com/architecture/decisions/addo#addresses> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#implies> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#hasStakeholder> rdfs:comment "Relates an architectural design decision to a stakeholder involved or affected."@en .
+<https://example.com/architecture/decisions/addo#> dcterms:identifier "hash:9f750117b7c4dfdc563465b872223adc980f82ff632e8fa9dfd868df67c5972c" .
+_:na274110acc3e48af9dded96c81a6ffe4b2 rdf:first <https://example.com/architecture/decisions/addo#TechnicalArtifact> .
+<https://example.com/architecture/decisions/addo#comprises> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#DesignDecisionState> rdfs:comment "The state or status of an architectural design decision, such as proposed, accepted, rejected, or deprecated."@en .
+<https://example.com/architecture/decisions/addo#enables> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#implies> owl:transitive true .
+<https://example.com/architecture/decisions/addo#tracesTo> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#doesNotComplyWith> owl:asymmetric true .
+<https://example.com/architecture/decisions/addo#implies> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#> rdfs:label "Architectural Design Decision Ontology"@en .
+<https://example.com/architecture/decisions/addo#doesNotComplyWith> rdfs:domain <https://example.com/architecture/decisions/addo#TechnicalArtifact> .
+<https://example.com/architecture/decisions/addo#subsumes> rdfs:comment "Relates a design decision A to another decision B that A subsumes or generalizes."@en .
+<https://example.com/architecture/decisions/addo#ManagementArtifact> rdfs:label "Management Artifact"@en .
+<https://example.com/architecture/decisions/addo#conflictsWith> rdfs:label "conflicts with"@en .
+<https://example.com/architecture/decisions/addo#isBoundTo> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#forbids> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#isAlternativeTo> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#conflictsWith> rdfs:comment "Relates a design decision A to another decision B that A conflicts with."@en .
+<https://example.com/architecture/decisions/addo#hasConstraint> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#ManagementArtifact> rdfs:comment "An artifact related to project management, such as risks, plans, or schedules, that are related to architectural decisions."@en .
+<https://example.com/architecture/decisions/addo#doesNotComplyWith> rdfs:label "does not comply with"@en .
+<https://example.com/architecture/decisions/addo#enables> owl:asymmetric true .
+<https://example.com/architecture/decisions/addo#isRelatedTo> rdfs:comment "Relates a design decision to another decision with a generic or unspecified relationship."@en .
+<https://example.com/architecture/decisions/addo#isBoundTo> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#DesignDecisionState> rdfs:label "Design Decision State"@en .
+<https://example.com/architecture/decisions/addo#tradeOffWith> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#TechnicalArtifact> rdfs:label "Technical Artifact"@en .
+<https://example.com/architecture/decisions/addo#Constraint> a owl:Class .
+<https://example.com/architecture/decisions/addo#hasAlternative> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#comprises> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#overrides> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#hasStakeholder> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#tracesTo> owl:transitive true .
+<https://example.com/architecture/decisions/addo#Superseded> rdfs:comment "A design decision that has been superseded by a newer decision."@en .
+<https://example.com/architecture/decisions/addo#forbids> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#tracesTo> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#Proposed> rdfs:label "Proposed"@en .
+<https://example.com/architecture/decisions/addo#Superseded> rdfs:label "Superseded"@en .
+<https://example.com/architecture/decisions/addo#> a owl:Ontology .
+<https://example.com/architecture/decisions/addo#comprises> owl:asymmetric true .
+<https://example.com/architecture/decisions/addo#hasRationale> rdfs:label "has rationale"@en .
+<https://example.com/architecture/decisions/addo#Proposed> rdfs:comment "A design decision that has been proposed but not yet accepted or rejected."@en .
+<https://example.com/architecture/decisions/addo#addresses> rdfs:range <https://example.com/architecture/decisions/addo#Constraint> .
+<https://example.com/architecture/decisions/addo#conflictsWith> rdfs:range <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#ManagementArtifact> rdfs:subClassOf schema:CreativeWork .
+<https://example.com/architecture/decisions/addo#Stakeholder> rdfs:comment "An individual or group with an interest in the outcome of an architectural design decision, such as developers, architects, or managers."@en .
+<https://example.com/architecture/decisions/addo#tradeOffWith> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#doesNotComplyWith> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#forbids> owl:asymmetric true .
+<https://example.com/architecture/decisions/addo#Rationale> rdfs:subClassOf schema:Thing .
+<https://example.com/architecture/decisions/addo#Stakeholder> rdfs:subClassOf schema:Person .
+<https://example.com/architecture/decisions/addo#overrides> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#hasRationale> rdfs:range <https://example.com/architecture/decisions/addo#Rationale> .
+<https://example.com/architecture/decisions/addo#enables> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#implies> rdfs:label "implies"@en .
+<https://example.com/architecture/decisions/addo#hasAlternative> rdfs:range <https://example.com/architecture/decisions/addo#AlternativeOption> .
+<https://example.com/architecture/decisions/addo#hasRationale> rdfs:comment "Relates an architectural design decision to its rationale."@en .
+<https://example.com/architecture/decisions/addo#hasPromotionState> rdfs:label "has promotion state"@en .
+<https://example.com/architecture/decisions/addo#AlternativeOption> rdfs:label "Alternative Option"@en .
+<https://example.com/architecture/decisions/addo#overrides> owl:asymmetric true .
+<https://example.com/architecture/decisions/addo#isAlternativeTo> rdfs:label "is alternative to"@en .
+<https://example.com/architecture/decisions/addo#forbids> rdfs:label "forbids"@en .
+<https://example.com/architecture/decisions/addo#Rationale> rdfs:comment "The justification or reasoning behind an architectural design decision, including trade-offs and implications."@en .
+<https://example.com/architecture/decisions/addo#overrides> rdfs:label "overrides"@en .
+<https://example.com/architecture/decisions/addo#tradeOffWith> rdfs:comment "Relates an architectural design decision to another decision with which it has trade-offs or conflicts."@en .
+<https://example.com/architecture/decisions/addo#Deprecated> a <https://example.com/architecture/decisions/addo#DesignDecisionState> .
+<https://example.com/architecture/decisions/addo#hasConstraint> rdfs:range <https://example.com/architecture/decisions/addo#Constraint> .
+<https://example.com/architecture/decisions/addo#Rejected> a <https://example.com/architecture/decisions/addo#DesignDecisionState> .
+<https://example.com/architecture/decisions/addo#hasState> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#Rationale> a owl:Class .
+<https://example.com/architecture/decisions/addo#isAlternativeTo> rdfs:comment "Relates a design decision A to another decision B for which A is an alternative."@en .
+<https://example.com/architecture/decisions/addo#comprises> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#isBoundTo> rdfs:comment "Relates a design decision to a state or condition it is bound to."@en .
+<https://example.com/architecture/decisions/addo#hasStakeholder> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#forbids> a owl:ObjectProperty .
+<https://example.com/architecture/decisions/addo#hasRationale> rdfs:domain <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> .
+<https://example.com/architecture/decisions/addo#comprises> rdfs:label "comprises"@en .
+_:na274110acc3e48af9dded96c81a6ffe4b2 rdf:rest _:na274110acc3e48af9dded96c81a6ffe4b3 .
+<https://example.com/architecture/decisions/addo#> owl:sameAs dm: .
+<https://example.com/architecture/decisions/addo#hasState> owl:sameAs <https://example.com/architecture/decisions/addo#hasPromotionState> .
+dm:hasRationale owl:sameAs <https://example.com/architecture/decisions/addo#hasRationale> .
+dm:ArchitecturalView owl:sameAs dm:ArchitecturalDesignDecision , <https://example.com/architecture/decisions/addo#ArchitecturalDesignDecision> , dm:ArchitecturalStyle .
+<https://example.com/architecture/decisions/addo#TechnicalArtifact> owl:sameAs <https://example.com/architecture/decisions/addo#ManagementArtifact> .
+<https://example.com/architecture/decisions/addo#Stakeholder> owl:sameAs dm:Stakeholder .
+dm:AlternativeOption owl:sameAs <https://example.com/architecture/decisions/addo#AlternativeOption> .
+dm:DecisionProcess owl:sameAs <https://example.com/architecture/decisions/addo#DesignDecisionState> .
+<https://example.com/architecture/decisions/addo#Constraint> owl:sameAs dm:Constraint .
+<https://example.com/architecture/decisions/addo#Rationale> owl:sameAs dm:DesignRationale .
+<https://example.com/architecture/decisions/addo#> owl:versionInfo "1.0.1" .

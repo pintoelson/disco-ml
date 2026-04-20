@@ -1,0 +1,26 @@
+{
+  "Issue": "Adds the `channel_wise` parameter to `RandScaleIntensityFixedMean` and `RandScaleIntensityFixedMeand`, which was documented in docstrings but never implemented.",
+  "Decision": "Adds `channel_wise` parameter to `RandScaleIntensityFixedMean` and `RandScaleIntensityFixedMeand` transforms",
+  "Rationale": "When `channel_wise=True`, a separate random scale factor is generated per channel, and `preserve_range`/`fixed_mean` are applied per channel \u2014 following the existing pattern from `RandScaleIntensity`.",
+  "Author": "engmohamedsalah",
+  "Status": "closed",
+  "Description": "`RandScaleIntensityFixedMean` and `RandScaleIntensityFixedMeand` transforms in MONAI library",
+  "Time stamp": "2026-02-14T20:28:48Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "engmohamedsalah",
+      "timestamp": "2026-02-14T20:28:48Z",
+      "argument": "When `channel_wise=True`, a separate random scale factor is generated per channel, and `preserve_range`/`fixed_mean` are applied per channel \u2014 following the existing pattern from `RandScaleIntensity`."
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-14T20:29:05Z",
+      "argument": "All changes align with `#8363` scope: parameter implementation, per-channel logic, docstring corrections, and corresponding tests."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "RandScaleIntensityFixedMean transforms",
+  "Justification": "The issue involves adding a new parameter (`channel_wise`) to image transformation transforms (`RandScaleIntensityFixedMean` and `RandScaleIntensityFixedMeand`) in the MONAI library. The rationale references a 'separate random scale factor per channel' and mentions alignment with existing patterns from similar transforms (`RandScaleIntensity`), which indicates algorithmic/training-related enhancements rather than data preparation or deployment."
+}

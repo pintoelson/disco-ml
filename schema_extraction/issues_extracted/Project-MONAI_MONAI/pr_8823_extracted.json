@@ -1,0 +1,18 @@
+{
+  "Issue": "When a user explicitly specifies a reader in `LoadImage` (e.g. `LoadImage(reader=\"ITKReader\")`, and the required package is not installed, the previous behavior was to silently warn and continue with fallback readers. This masked real configuration errors.",
+  "Decision": "Changed `warnings.warn` to `raise OptionalImportError` in the user-specified reader path inside `LoadImage.__init__`",
+  "Rationale": "To address the issue where silent fallback readers masked real configuration errors, ensuring users are immediately notified of missing dependencies when explicitly specifying a reader.",
+  "Author": "KamayaniR",
+  "Status": "open",
+  "Description": "The `LoadImage` transform in the MONAI library, specifically in the `monai/transforms/io/array.py` file, where the user-specified reader initialization occurs.",
+  "Time stamp": "2026-04-12T20:07:21Z",
+  "Cost": "Minimal (only affects explicit reader= usage and changes error handling from warning to exception)",
+  "Risk": "Potential disruption to existing workflows that relied on silent fallback behavior, though this is mitigated by the backward compatibility noted in the checklist.",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-12T20:07:37Z",
+      "argument": "No actionable comments were generated in the recent review."
+    }
+  ]
+}

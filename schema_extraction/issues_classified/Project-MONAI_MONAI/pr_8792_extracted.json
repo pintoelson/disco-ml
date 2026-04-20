@@ -1,0 +1,15 @@
+{
+  "Issue": "Module Not Found Error when setuptools' vendored code imports backports.tarfile",
+  "Decision": "Add `backports` package to `requirements-min.txt` file",
+  "Rationale": "To resolve the ModuleNotFoundError raised when setuptools' vendored code imports `backports.tarfile`",
+  "Author": "ytl0623",
+  "Status": "Decided",
+  "Description": "requirements-min.txt file",
+  "Time stamp": "2026-03-25T07:10:37Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "requirements-min.txt",
+  "Justification": "The decision is about resolving a Python package dependency error and modifying a requirements file, which falls under environment setup or general bugs, not specific to ML lifecycle stages."
+}

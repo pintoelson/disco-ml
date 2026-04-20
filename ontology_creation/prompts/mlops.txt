@@ -1,0 +1,19 @@
+# MLOps Ontology Specialized Instructions
+Goal: Extract a high-fidelity ontology focusing on Machine Learning Operations (MLOps).
+
+## Extraction Strategy:
+Search the text for entities and relationships related to the ML lifecycle, including data engineering, model development, orchestration, and infrastructure.
+
+## Important Constraints:
+- **Source Grounding:** Extract only concepts and properties that are explicitly stated, named, or fundamentally described in the source text chunks. 
+- **No Hallucinations:** Do not use the examples below if they are not present in the document.
+- **Precision:** Look for technical identifiers, specific tool roles, and process sequences.
+
+## Examples of what to look for (IF present in text):
+- *Domain Entities:* (e.g., Training Runs, Model Versions, Feature Stores, Data Pipelines)
+- *Structural Roles:* (e.g., An Orchestrator managing a Pipeline, a Dataset feeding a Training Job)
+- *Properties:* (e.g., trainedOn, versionOf, monitors, deployedTo)
+
+## Formatting:
+- Use prefix `mlops:`
+- Maintain consistent naming hierarchy as described in the source.

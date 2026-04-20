@@ -1,0 +1,18 @@
+{
+  "Issue": "Bump codecov/codecov-action from 5 to 6",
+  "Decision": "Upgrade to codecov/codecov-action version 6",
+  "Rationale": "Version 6 introduces support for node24, which may cause breaking changes for systems that do not currently support node24. This is necessary to maintain compatibility with newer Node.js versions and ensure long-term support for the action.",
+  "Author": "dependabot[bot]",
+  "Status": "Decided",
+  "Description": "GitHub Actions workflow for Project-MONAI/MONAI repository",
+  "Time stamp": "2026-04-01T05:32:45Z",
+  "Cost": "Low (automated dependency update)",
+  "Risk": "Potential breaking changes due to node24 support requirement in systems not currently supporting node24",
+  "Argument": [
+    {
+      "author": "dependabot[bot]",
+      "timestamp": "2026-04-03T13:31:15Z",
+      "argument": "Version 6 introduces support for node24 which may cause breaking changes for systems that do not currently support node24."
+    }
+  ]
+}

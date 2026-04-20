@@ -1,0 +1,36 @@
+{
+  "Issue": "Bump actions/download-artifact from 6 to 8",
+  "Decision": "Upgrade to actions/download-artifact version 8",
+  "Rationale": "To support new versions of the @actions/* packages and ensure compatibility with Node.js 24 and newer features. The migration to ESM modules and enforcement of hash checks improve security and performance.",
+  "Author": "dependabot[bot]",
+  "Status": "open",
+  "Description": "actions/download-artifact version upgrade in Project-MONAI/MONAI repository",
+  "Time stamp": "2026-03-01T05:11:12Z",
+  "Cost": "Not explicitly stated in the document",
+  "Risk": "Potential breaking changes due to ESM migration, hash mismatch errors by default, and Node.js 24 requirements. Forks may need significant changes.",
+  "Argument": [
+    {
+      "author": "actions/download-artifact release notes",
+      "timestamp": "v8.0.0 release notes",
+      "argument": "actions/download-artifact@v8 has been migrated to an ESM module, which may require forks to make significant changes."
+    },
+    {
+      "author": "actions/download-artifact release notes",
+      "timestamp": "v8.0.0 release notes",
+      "argument": "Hash mismatches will now error by default, improving security but requiring users to override this behavior if needed."
+    },
+    {
+      "author": "actions/download-artifact release notes",
+      "timestamp": "v8.0.0 release notes",
+      "argument": "Direct downloads no longer attempt to unzip all files; the action checks the Content-Type header ahead of unzipping, skipping non-zipped files."
+    },
+    {
+      "author": "actions/download-artifact release notes",
+      "timestamp": "v8.0.0 release notes",
+      "argument": "To support direct uploads in actions/upload-artifact, the action will no longer attempt to unzip all downloaded files."
+    }
+  ],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "GitHub Actions workflow files",
+  "Justification": "The decision involves upgrading a GitHub Actions tool ('actions/download-artifact'), which is part of CI/CD infrastructure rather than the ML lifecycle. Keywords like 'upgrade', 'compatibility', and 'security' relate to DevOps tooling, not ML-specific artifacts."
+}

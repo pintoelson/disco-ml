@@ -1,0 +1,23 @@
+{
+  "Issue": "Incorrect kernel initialization pattern in LocalNormalizedCrossCorrelationLoss due to using plain attribute assignment with a typo (require_grads instead of requires_grad) and not registering the kernel as a buffer.",
+  "Decision": "Replace kernel and kernel_vol assignments with register_buffer to ensure proper device placement and state_dict handling.",
+  "Rationale": "Using register_buffer ensures the kernel tensor automatically moves to the correct device and is properly saved/restored via state_dict/load_state_dict. This removes the need for manual requires_grad management and fixes the silent gradient tracking issue.",
+  "Author": "Zeesejo",
+  "Status": "Idea",
+  "Description": "LocalNormalizedCrossCorrelationLoss module in monai/losses/image_dissimilarity.py",
+  "Time stamp": "2026-04-11T17:47:06Z",
+  "Cost": "Low (fixes silent gradient tracking and ensures proper device placement without significant additional resource overhead)",
+  "Risk": "Technical debt from incorrect kernel initialization (silent gradient tracking) and potential issues with device placement if not addressed.",
+  "Argument": [
+    {
+      "author": "Zeesejo",
+      "timestamp": "2026-04-11T17:55:37Z",
+      "argument": "Using register_buffer is better than plain attribute assignment because it ensures the kernel tensor automatically moves to the correct device and is properly saved/restored via state_dict/load_state_dict, removing the need for manual requires_grad management."
+    },
+    {
+      "author": "Zeesejo",
+      "timestamp": "2026-04-11T17:55:37Z",
+      "argument": "The original code's use of require_grads (with an 's') is incorrect as it is not a valid PyTorch tensor attribute, leading to silent gradient tracking which wastes memory and computation."
+    }
+  ]
+}

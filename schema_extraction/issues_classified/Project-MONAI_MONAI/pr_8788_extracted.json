@@ -1,0 +1,26 @@
+{
+  "Issue": "Fix `AttributeError: 'int' object has no attribute 'numel'` when `RandGridDistortiond` skips the transform (random probability not met)",
+  "Decision": "Convert only the keyed tensor items via `self.key_iterator(d)` instead of calling `convert_to_tensor(d, ...)` on the entire data dict",
+  "Rationale": "Root cause: `convert_to_tensor(d, ...)` was called on the entire data dict, which fails when non-tensor metadata (ints, strings) is present. Fix ensures consistency with how other dict transforms handle the no-transform path by converting only keyed tensor items.",
+  "Author": "HeyangQin",
+  "Status": "open",
+  "Description": "RandGridDistortiond transform in MONAI library, specifically addressing the no-transform path when random probability is not met",
+  "Time stamp": "2026-03-22T06:37:31Z",
+  "Cost": "Low (simple code change with targeted fix and minimal scope)",
+  "Risk": "Technical debt: Potential side effects from modifying the no-transform path. Risk of introducing new bugs in edge cases (e.g., DataLoader with num_workers>0). Uncertainty: Integration testing pending for DataLoader scenario.",
+  "Argument": [
+    {
+      "author": "HeyangQin",
+      "timestamp": "2026-03-22T06:37:31Z",
+      "argument": "Fixing the no-transform path by converting only keyed tensor items (`self.key_iterator(d)`) is better than calling `convert_to_tensor(d, ...)` on the entire data dict because the latter fails when non-tensor metadata (ints, strings) is present."
+    },
+    {
+      "author": "HeyangQin",
+      "timestamp": "2026-03-22T06:37:31Z",
+      "argument": "The fix ensures consistency with how other dict transforms handle the no-transform path, avoiding crashes when the transform is skipped due to random probability not being met."
+    }
+  ],
+  "Mapped Stage": "Data Preparation",
+  "Primary Artifact": "RandGridDistortiond transform in MONAI library",
+  "Justification": "The issue involves fixing a transform (RandGridDistortiond) in the MONAI library, which is part of data preprocessing. The error (`AttributeError: 'int' object has no attribute 'numel'`) occurs when non-tensor metadata (ints, strings) is present during data loading, implying a data ingestion/preparation problem rather than modeling or deployment."
+}

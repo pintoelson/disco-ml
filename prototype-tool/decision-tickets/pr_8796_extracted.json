@@ -1,0 +1,36 @@
+{
+  "Issue": "Fix: raise OptionalImportError when user-specified reader package is not installed",
+  "Decision": "Raise OptionalImportError instead of warning when a user-specified reader package is not installed",
+  "Rationale": "To provide a clear, visible error message to the user about the missing reader package",
+  "Author": "Talhax55z",
+  "Status": "open",
+  "Description": "LoadImage class in MONAI's image reading functionality",
+  "Time stamp": "2026-03-30T04:57:55Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-30T04:58:12Z",
+      "argument": "No actionable comments were generated in the recent review."
+    },
+    {
+      "author": "ericspod",
+      "timestamp": "2026-03-30T11:28:31Z",
+      "argument": "There are three other PRs working on this with similar solutions, suggesting coordination is needed."
+    },
+    {
+      "author": "Talhax55z",
+      "timestamp": "2026-03-30T11:32:34Z",
+      "argument": "Deferred to other contributors due to similar solutions in other PRs."
+    },
+    {
+      "author": "ericspod",
+      "timestamp": "2026-03-30T11:35:36Z",
+      "argument": "Left the PR open for future integration with other work."
+    }
+  ],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "LoadImage class",
+  "Justification": "The issue pertains to error handling for a reader package (environment setup) rather than any ML-specific lifecycle stage. Keywords like 'reader package', 'reader package', and 'class in MONAI's image reading functionality' indicate general software environment/development rather than ML-specific processes like data preparation or modeling."
+}

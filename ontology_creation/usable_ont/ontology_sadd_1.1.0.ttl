@@ -1,0 +1,1754 @@
+@prefix adr: <https://example.com/sadd#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.com/doc/00af2e911da5/18077e16b4bb> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-14T13:56:58.159630+00:00"^^xsd:dateTime ;
+    schema:identifier "18077e16b4bb"^^xsd:string ;
+    schema:position 6 .
+
+<https://example.com/doc/00af2e911da5/2758ae4ea1ba> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-14T13:56:58.149343+00:00"^^xsd:dateTime ;
+    schema:identifier "2758ae4ea1ba"^^xsd:string ;
+    schema:position 0 .
+
+<https://example.com/doc/00af2e911da5/3c639c9b8717> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-14T13:56:58.155390+00:00"^^xsd:dateTime ;
+    schema:identifier "3c639c9b8717"^^xsd:string ;
+    schema:position 3 .
+
+<https://example.com/doc/00af2e911da5/497aa2543e79> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-14T13:56:58.151604+00:00"^^xsd:dateTime ;
+    schema:identifier "497aa2543e79"^^xsd:string ;
+    schema:position 1 .
+
+<https://example.com/doc/00af2e911da5/4c31f6938a6b> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-14T13:56:58.161567+00:00"^^xsd:dateTime ;
+    schema:identifier "4c31f6938a6b"^^xsd:string ;
+    schema:position 7 .
+
+<https://example.com/doc/00af2e911da5/576937ddb3b0> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-14T13:56:58.157256+00:00"^^xsd:dateTime ;
+    schema:identifier "576937ddb3b0"^^xsd:string ;
+    schema:position 4 .
+
+<https://example.com/doc/00af2e911da5/5fa9e84c4519> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-14T13:56:58.153159+00:00"^^xsd:dateTime ;
+    schema:identifier "5fa9e84c4519"^^xsd:string ;
+    schema:position 2 .
+
+<https://example.com/doc/00af2e911da5/a9018a077874> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-14T13:56:58.163137+00:00"^^xsd:dateTime ;
+    schema:identifier "a9018a077874"^^xsd:string ;
+    schema:position 8 .
+
+<https://example.com/doc/00af2e911da5/b0e8e8ee7232> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-14T13:56:58.158469+00:00"^^xsd:dateTime ;
+    schema:identifier "b0e8e8ee7232"^^xsd:string ;
+    schema:position 5 .
+
+adr:ArchitectEducationActivity a owl:Class ;
+    rdfs:label "Architect Education Activity"@en ;
+    rdfs:comment "An educational activity aimed at training architects, supported by documented architectural design decisions and decision graphs."@en ;
+    rdfs:subClassOf schema:EducationalOccupationalProgram .
+
+adr:ArchitecturalReview a owl:Class ;
+    rdfs:label "Architectural Review"@en ;
+    rdfs:comment "A review activity focusing on the software architecture of a system, which can be supported by visualizations and analyses of architectural design decisions."@en ;
+    rdfs:subClassOf schema:Review .
+
+adr:BanDecisionType a adr:DecisionType ;
+    rdfs:label "Ban Decision Type"@en ;
+    rdfs:comment "Decision type representing ban or non-existence decisions that forbid certain elements."@en ;
+    rdfs:subClassOf adr:ExistenceDecisionType ;
+    adr:hasDecisionKindName "anticrisis"@en .
+
+adr:BehavioralDecision a owl:Class ;
+    rdfs:label "Behavioral Decision"@en ;
+    rdfs:comment "An existence decision that concerns how design elements interact to provide functionality, satisfy non-functional requirements, or define connectors and communication patterns."@en ;
+    rdfs:subClassOf adr:ExistenceDecision .
+
+adr:BehavioralDecisionType a adr:DecisionType ;
+    rdfs:label "Behavioral Decision Type"@en ;
+    rdfs:comment "Decision type representing behavioral existence decisions that describe how elements interact, including communication mechanisms and connectors."@en ;
+    rdfs:subClassOf adr:ExistenceDecisionType .
+
+adr:ConstraintRelationship a owl:Class ;
+    rdfs:label "Constraint Relationship"@en ;
+    rdfs:comment "An abstract relationship type capturing that one decision frames, constrains, enables, or forbids another decision."@en ;
+    rdfs:subClassOf skos:Concept .
+
+adr:DecisionClusterView a owl:Class ;
+    rdfs:label "Decision Cluster View"@en ;
+    rdfs:comment "A view of a decision graph that emphasizes clusters of decisions around a category, such as a concern, topic, or subsystem."@en ;
+    rdfs:subClassOf adr:ArchitectureView ;
+    owl:differentFrom adr:DecisionRamificationView,
+        adr:DecisionTimelineView .
+
+adr:DecisionReuseActivity a owl:Class ;
+    rdfs:label "Decision Reuse Activity"@en ;
+    rdfs:comment "An activity in which existing architectural design decisions and their rationale are reused in new design endeavours."@en ;
+    rdfs:subClassOf schema:Action .
+
+adr:Defect a owl:Class ;
+    rdfs:label "Defect"@en ;
+    rdfs:comment "A problem report, bug, or defect in a system that can motivate or be addressed by one or more design decisions."@en ;
+    rdfs:subClassOf adr:DevelopmentArtifact .
+
+adr:DesignRule a owl:Class ;
+    rdfs:label "Design Rule"@en ;
+    rdfs:comment "A property decision that prescribes a positive, enduring rule or guideline about the architecture or design of the system."@en ;
+    rdfs:subClassOf adr:PropertyDecision ;
+    owl:differentFrom adr:DesignConstraint .
+
+adr:EvolutionPlanningActivity a owl:Class ;
+    rdfs:label "Evolution Planning Activity"@en ;
+    rdfs:comment "A planning activity for the further evolution of a software-intensive system, informed by existing architectural design decisions and their rationale."@en ;
+    rdfs:subClassOf schema:Action .
+
+adr:ImplementationElement a owl:Class ;
+    rdfs:label "Implementation Element"@en ;
+    rdfs:comment "A concrete implementation artifact, such as source code, configuration, or deployment description, that realizes design decisions."@en ;
+    rdfs:subClassOf adr:DevelopmentArtifact .
+
+adr:PoliticsCategory a adr:DecisionCategory ;
+    rdfs:label "Politics Category"@en ;
+    rdfs:comment "Decision category used to tag design decisions that have been made primarily on political grounds and may need revisiting when political conditions change."@en .
+
+adr:PropertyDecisionType a adr:DecisionType ;
+    rdfs:label "Property Decision Type"@en ;
+    rdfs:comment "Decision type representing property decisions that set cross-cutting traits, rules, or constraints."@en ;
+    adr:hasDecisionKindName "diacrisis"@en .
+
+adr:SafetyCategory a adr:DecisionCategory ;
+    rdfs:label "Safety Category"@en ;
+    rdfs:comment "Decision category representing safety-related concerns and quality attributes."@en .
+
+adr:SecurityCategory a adr:DecisionCategory ;
+    rdfs:label "Security Category"@en ;
+    rdfs:comment "Decision category representing security-related concerns and quality attributes."@en .
+
+adr:StructuralDecision a owl:Class ;
+    rdfs:label "Structural Decision"@en ;
+    rdfs:comment "An existence decision that leads to the creation or adoption of structural design elements such as subsystems, layers, partitions, or components in an architecture view."@en ;
+    rdfs:subClassOf adr:ExistenceDecision .
+
+adr:StructuralDecisionType a adr:DecisionType ;
+    rdfs:label "Structural Decision Type"@en ;
+    rdfs:comment "Decision type representing structural existence decisions that create or adopt structural design elements such as subsystems, layers, partitions, or components."@en ;
+    rdfs:subClassOf adr:ExistenceDecisionType .
+
+adr:ToolDecision a owl:Class ;
+    rdfs:label "Tool Decision"@en ;
+    rdfs:comment "An executive decision that selects or mandates specific tools, environments, or workbenches used in development, testing, or operations."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty adr:hasDecisionType ;
+            owl:someValuesFrom adr:ToolDecisionType ],
+        adr:ExecutiveDecision ;
+    owl:differentFrom adr:DecisionAlternative,
+        adr:DecisionAttribute,
+        adr:DecisionCategory,
+        adr:DecisionGraph,
+        adr:DecisionModel,
+        adr:DecisionProcess,
+        adr:DecisionStateLevel,
+        adr:DecisionStateMachine,
+        adr:DecisionTaxonomy,
+        adr:DecisionWellFormednessRule,
+        adr:DecisionWellFormednessViolation,
+        adr:EducationalDecision,
+        adr:ExecutiveDecisionScope,
+        adr:MethodologyDecision,
+        adr:OrganizationalDecision,
+        adr:ProcessDecision,
+        adr:TechnologyDecision .
+
+adr:UsabilityCategory a adr:DecisionCategory ;
+    rdfs:label "Usability Category"@en ;
+    rdfs:comment "Decision category representing usability-related concerns and quality attributes."@en .
+
+adr:allowedDemotionTo a owl:ObjectProperty ;
+    rdfs:label "allowed demotion to"@en ;
+    rdfs:comment "Indicates that a decision lifecycle state can be directly demoted to another state according to the state machine (e.g., challenged to tentative or rejected)."@en ;
+    rdfs:domain adr:DecisionState ;
+    rdfs:range adr:DecisionState ;
+    rdfs:subPropertyOf skos:related .
+
+adr:allowedPromotionTo a owl:ObjectProperty ;
+    rdfs:label "allowed promotion to"@en ;
+    rdfs:comment "Indicates that a decision lifecycle state can be directly promoted to another state according to the state machine (e.g., tentative to decided, decided to approved)."@en ;
+    rdfs:domain adr:DecisionState ;
+    rdfs:range adr:DecisionState ;
+    rdfs:subPropertyOf skos:related .
+
+adr:alternativeForDecision a owl:ObjectProperty ;
+    rdfs:label "alternative for decision"@en ;
+    rdfs:comment "Inverse of considers alternative: links a decision alternative to the architectural design decision for which it is an option."@en ;
+    rdfs:domain adr:DecisionAlternative ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:isPartOf ;
+    owl:inverseOf adr:considersAlternative .
+
+adr:appliesToDecisionGraph a owl:ObjectProperty ;
+    rdfs:label "applies to decision graph"@en ;
+    rdfs:comment "Associates an approval or visualization policy with the decision graph or model it governs."@en ;
+    rdfs:domain schema:Intangible ;
+    rdfs:range adr:DecisionGraph ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:avoidsAlternative a owl:ObjectProperty ;
+    rdfs:label "avoids alternative"@en ;
+    rdfs:comment "Indicates that an architectural design decision explicitly avoids or rejects a particular decision alternative."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionAlternative ;
+    rdfs:subPropertyOf adr:considersAlternative .
+
+adr:capturedInRecord a owl:ObjectProperty ;
+    rdfs:label "captured in record"@en ;
+    rdfs:comment "Inverse of documents decision: relates an architectural design decision to the architecture decision record that captures it."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitectureDecisionRecord ;
+    rdfs:subPropertyOf dcterms:isPartOf ;
+    owl:inverseOf adr:documentsDecision .
+
+adr:capturesAlternativeRejection a owl:ObjectProperty ;
+    rdfs:label "captures alternative rejection"@en ;
+    rdfs:comment "Relates a rationale fragment to an alternative option that is explicitly rejected or avoided as part of the decision-making process."@en ;
+    rdfs:domain adr:RationaleFragment ;
+    rdfs:range adr:AlternativeOption ;
+    rdfs:subPropertyOf adr:DecisionAlternativeRelation .
+
+adr:categorizedByQualityConcern a owl:ObjectProperty ;
+    rdfs:label "categorized by quality concern"@en ;
+    rdfs:comment "Indicates that an architectural design decision is categorized according to a particular quality concern."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:QualityConcern ;
+    rdfs:subPropertyOf adr:addressesQualityConcern .
+
+adr:changeAuthor a owl:DatatypeProperty ;
+    rdfs:label "change author"@en ;
+    rdfs:comment "The author responsible for a particular change recorded in a decision history entry."@en ;
+    rdfs:domain adr:DecisionHistoryEntry ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dcterms:creator .
+
+adr:changeDescription a owl:DatatypeProperty ;
+    rdfs:label "change description"@en ;
+    rdfs:comment "A textual description of what changed in a decision at a specific history entry."@en ;
+    rdfs:domain adr:DecisionHistoryEntry ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:description .
+
+adr:changeTimestamp a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "change timestamp"@en ;
+    rdfs:comment "The date and time when a particular change to a decision was recorded."@en ;
+    rdfs:domain adr:DecisionHistoryEntry ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf dcterms:modified .
+
+adr:clusterIdentifier a owl:DatatypeProperty ;
+    rdfs:label "cluster identifier"@en ;
+    rdfs:comment "An identifier used to group related architectural design decisions into a cluster for visualization and analysis."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:identifier .
+
+adr:clustersDecision a owl:ObjectProperty ;
+    rdfs:label "clusters decision"@en ;
+    rdfs:comment "Relates a decision cluster to an architectural design decision that it groups."@en ;
+    rdfs:domain adr:DecisionCluster ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:hasPart ;
+    owl:inverseOf adr:belongsToCluster .
+
+adr:conflictsWith a owl:IrreflexiveProperty,
+        owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "conflicts with"@en ;
+    rdfs:comment "Indicates that two architectural design decisions are in conflict so that they cannot both be satisfied or in force at the same time."@en,
+        "Symmetric relationship indicating that two design decisions are mutually exclusive, i.e., they cannot both be fully applied within the same scope."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:constrainsStateDependency a owl:DatatypeProperty ;
+    rdfs:label "constrains state dependency"@en ;
+    rdfs:comment "Indicates, in natural language or formal expression, how a decision graph well-formedness rule constrains dependencies between decision lifecycle states."@en ;
+    rdfs:domain adr:DecisionGraphWellFormednessRule ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:description .
+
+adr:containsDecision a owl:ObjectProperty ;
+    rdfs:label "contains decision"@en ;
+    rdfs:comment "Indicates that a decision graph or model contains a given architectural design decision as part of its node set."@en ;
+    rdfs:domain adr:DecisionGraph ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:hasPart .
+
+adr:crossCuttingProperty a owl:ObjectProperty ;
+    rdfs:label "cross-cutting property"@en ;
+    rdfs:comment "Associates a property decision with design elements that are affected as part of a cross-cutting concern, such as a quality attribute impacting many elements."@en ;
+    rdfs:domain adr:PropertyDecision ;
+    rdfs:range adr:DesignElement ;
+    rdfs:subPropertyOf adr:relatedToArtifact .
+
+adr:decisionAuthor a owl:DatatypeProperty ;
+    rdfs:label "decision author"@en ;
+    rdfs:comment "The person or role who made or owns responsibility for a design decision at a given point in its lifecycle."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dcterms:creator .
+
+adr:decisionTimestamp a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "decision timestamp"@en ;
+    rdfs:comment "The date and time when a design decision was taken in its current formulation or state."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf dcterms:date .
+
+adr:detectedInGraph a owl:ObjectProperty ;
+    rdfs:label "detected in graph"@en ;
+    rdfs:comment "Associates a decision well-formedness violation with the decision graph in which it was detected."@en ;
+    rdfs:domain adr:DecisionWellFormednessViolation ;
+    rdfs:range adr:DecisionGraph ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:documentsRiskMitigation a owl:ObjectProperty ;
+    rdfs:label "documents risk mitigation"@en ;
+    rdfs:comment "Links a rationale fragment to a mitigated risk that the fragment explains as being addressed by the architectural design decision."@en ;
+    rdfs:domain adr:RationaleFragment ;
+    rdfs:range adr:MitigatedRisk ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:doesNotComplyWith a owl:ObjectProperty ;
+    rdfs:label "does not comply with"@en ;
+    rdfs:comment "Indicates that a development artifact, such as a design or implementation element, is not compliant with a specific architectural design decision."@en ;
+    rdfs:domain adr:DevelopmentArtifact ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:eliminatesAlternative a owl:ObjectProperty ;
+    rdfs:label "eliminates alternative"@en ;
+    rdfs:comment "Indicates that a ban or non-existence decision eliminates a particular alternative option from further consideration or use."@en ;
+    rdfs:domain adr:BanDecision ;
+    rdfs:range adr:AlternativeOption ;
+    rdfs:subPropertyOf adr:forbids,
+        adr:rejectsAlternative .
+
+adr:excludesStateInReview a owl:ObjectProperty ;
+    rdfs:label "excludes state in review"@en ;
+    rdfs:comment "Specifies that decisions in a given lifecycle state are to be omitted from formal reviews or particular decision graph visualizations."@en ;
+    rdfs:domain adr:ReviewExclusionRule ;
+    rdfs:range adr:DecisionState ;
+    rdfs:subPropertyOf skos:related .
+
+adr:exposureLevel a owl:DatatypeProperty ;
+    rdfs:label "exposure level"@en ;
+    rdfs:comment "Combined numeric measure of risk exposure (e.g., impact multiplied by likelihood) for a decision."@en ;
+    rdfs:domain adr:RiskExposure ;
+    rdfs:range xsd:decimal .
+
+adr:expressesQualityAttribute a owl:ObjectProperty ;
+    rdfs:label "expresses quality attribute"@en ;
+    rdfs:comment "Links a property decision to a quality attribute or non-functional requirement that the decision is intended to satisfy."@en ;
+    rdfs:domain adr:PropertyDecision ;
+    rdfs:range adr:Requirement ;
+    rdfs:subPropertyOf adr:addressesRequirement .
+
+adr:filtersState a owl:ObjectProperty ;
+    rdfs:label "filters state"@en ;
+    rdfs:comment "Indicates that a decision visualization or review policy filters decisions based on a particular lifecycle state."@en ;
+    rdfs:domain adr:DecisionVisualizationPolicy ;
+    rdfs:range adr:DecisionState ;
+    rdfs:subPropertyOf skos:related .
+
+adr:forbidsDesignElement a owl:ObjectProperty ;
+    rdfs:label "forbids design element"@en ;
+    rdfs:comment "Associates a ban decision with the design element whose presence in the system is explicitly forbidden."@en ;
+    rdfs:domain adr:BanDecision ;
+    rdfs:range adr:DesignElement ;
+    rdfs:subPropertyOf adr:forbids,
+        adr:relatedToArtifact .
+
+adr:fromState a owl:ObjectProperty ;
+    rdfs:label "from state"@en ;
+    rdfs:comment "Indicates the source lifecycle state of a decision in a decision lifecycle transition."@en ;
+    rdfs:domain adr:DecisionLifecycleTransition ;
+    rdfs:range adr:DecisionState ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:hasAssociatedRiskExposure a owl:ObjectProperty ;
+    rdfs:label "has associated risk exposure"@en ;
+    rdfs:comment "Associates a risk with a quantified risk exposure, for example combining its impact and likelihood as used in risk management practice."@en ;
+    rdfs:domain adr:Risk ;
+    rdfs:range adr:RiskExposure ;
+    rdfs:subPropertyOf schema:riskFactor .
+
+adr:hasBehavioralAspect a owl:ObjectProperty ;
+    rdfs:label "has behavioral aspect"@en ;
+    rdfs:comment "Indicates that an existence decision concerns behavioral aspects such as interactions between elements, communication mechanisms, connectors, or protocols."@en ;
+    rdfs:domain adr:ExistenceDecision ;
+    rdfs:range adr:DesignElement ;
+    rdfs:subPropertyOf adr:relatedToArtifact .
+
+adr:hasCategory a owl:ObjectProperty ;
+    rdfs:label "has category"@en ;
+    rdfs:comment "Associates a design decision with one or more categories that characterize concerns such as usability, security, safety, or politics."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionCategory ;
+    rdfs:subPropertyOf dcterms:subject .
+
+adr:hasCost a owl:ObjectProperty ;
+    rdfs:label "has cost"@en ;
+    rdfs:comment "Associates an architectural design decision with a representation of its cost."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionCost ;
+    rdfs:subPropertyOf adr:hasDecisionAttribute,
+        schema:cost .
+
+adr:hasDecision a owl:ObjectProperty ;
+    rdfs:label "has decision"@en ;
+    rdfs:comment "Associates a decision graph with an architectural design decision that is a node in the graph."@en ;
+    rdfs:domain adr:DecisionGraph ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:hasPart .
+
+adr:hasDecisionGraph a owl:ObjectProperty ;
+    rdfs:label "has decision graph"@en ;
+    rdfs:comment "Associates an architectural design decision or a set of decisions with a decision graph representing them."@en,
+        "Relates a collection or description of architectural design decisions to the decision graph that organizes them."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision,
+        schema:CreativeWork ;
+    rdfs:range adr:DecisionGraph ;
+    rdfs:subPropertyOf dcterms:hasPart,
+        dcterms:relation .
+
+adr:hasDecisionGraphMetric a owl:ObjectProperty ;
+    rdfs:label "has decision graph metric"@en ;
+    rdfs:comment "Associates a decision graph with one of its metrics, such as size, depth, or number of conflicts, computed to assess its complexity and manageability."@en ;
+    rdfs:domain adr:DecisionGraph ;
+    rdfs:range adr:DecisionGraphMetric ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:hasDecisionKindName a owl:DatatypeProperty ;
+    rdfs:label "has decision kind name"@en ;
+    rdfs:comment "Captures an alternative or domain-specific name (such as a Greek term) used to refer to a particular kind of architectural design decision."@en ;
+    rdfs:domain adr:DecisionType ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf skos:altLabel .
+
+adr:hasDecisionPath a owl:ObjectProperty ;
+    rdfs:label "has decision path"@en ;
+    rdfs:comment "Associates a decision graph or architectural design decision with a decision path that explains how one decision leads to others through dependency relationships."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision,
+        adr:DecisionGraph ;
+    rdfs:range adr:DecisionPath ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:hasDecisionSubtype a owl:ObjectProperty ;
+    rdfs:label "has decision subtype"@en ;
+    rdfs:comment "Relates an existence decision to a more specific kind of existence decision, such as structural or behavioral."@en ;
+    rdfs:domain adr:ExistenceDecision ;
+    rdfs:range adr:DecisionType ;
+    rdfs:subPropertyOf adr:hasDecisionType .
+
+adr:hasDecisionTaxonomy a owl:ObjectProperty ;
+    rdfs:label "has decision taxonomy"@en ;
+    rdfs:comment "Associates an architectural design decision model or tool with the taxonomy that organizes its decision and decision type classifications."@en ;
+    rdfs:domain adr:Ontology ;
+    rdfs:range adr:DecisionTaxonomy ;
+    rdfs:subPropertyOf skos:inScheme .
+
+adr:hasEpitome a owl:DatatypeProperty ;
+    rdfs:label "has epitome"@en ;
+    rdfs:comment "Provides a concise textual summary (epitome) of the design decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf adr:hasDecisionAttribute,
+        schema:name .
+
+adr:hasExternalRiskRecord a owl:ObjectProperty ;
+    rdfs:label "has external risk record"@en ;
+    rdfs:comment "Links an architectural design decision to a risk entry managed in an external risk management tool."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ExternalRiskRecord ;
+    rdfs:subPropertyOf dcterms:references .
+
+adr:hasHistoryEntry a owl:ObjectProperty ;
+    rdfs:label "has history entry"@en ;
+    rdfs:comment "Links a design decision to one of its history entries."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionHistoryEntry ;
+    rdfs:subPropertyOf dcterms:hasVersion,
+        adr:hasDecisionAttribute .
+
+adr:hasImpactOnDecision a owl:ObjectProperty ;
+    rdfs:label "has impact on decision"@en ;
+    rdfs:comment "Captures that one architectural design decision has a significant impact on another decision, for example by changing its feasibility, risk, or cost, beyond simple logical constraints."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:hasLifecycleTransition a owl:ObjectProperty ;
+    rdfs:label "has lifecycle transition"@en ;
+    rdfs:comment "Links a decision state machine to one of its lifecycle transitions between decision states."@en ;
+    rdfs:domain adr:DecisionStateMachine ;
+    rdfs:range adr:DecisionLifecycleTransition ;
+    rdfs:subPropertyOf dcterms:hasPart .
+
+adr:hasNonCompliance a owl:ObjectProperty ;
+    rdfs:label "has non-compliance"@en ;
+    rdfs:comment "Links an architectural design decision to a recorded non-compliance situation where one or more artifacts currently violate it."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:NonCompliance ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:hasOrganizationalScope a owl:ObjectProperty ;
+    rdfs:label "has organizational scope"@en ;
+    rdfs:comment "Relates a design decision to an organization scope that limits where or by whom the decision applies."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:OrganizationScope ;
+    rdfs:subPropertyOf adr:hasScope .
+
+adr:hasQualityConcernCategory a owl:ObjectProperty ;
+    rdfs:label "has quality concern category"@en ;
+    rdfs:comment "Associates a decision category with a quality concern that it represents or groups, such as security, safety, or usability."@en ;
+    rdfs:domain adr:DecisionCategory ;
+    rdfs:range adr:QualityConcern ;
+    rdfs:subPropertyOf skos:related .
+
+adr:hasRationale a owl:DatatypeProperty ;
+    rdfs:label "has rationale"@en ;
+    rdfs:comment "Provides a textual account of the reasoning, justification, or argument behind a design decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf adr:hasDecisionAttribute,
+        schema:description .
+
+adr:hasRationaleReference a owl:ObjectProperty ;
+    rdfs:label "has rationale reference"@en ;
+    rdfs:comment "Links an architectural design decision to a structured rationale reference, such as a design rationale document or decision tree, that elaborates its justification."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:RationaleReference ;
+    rdfs:subPropertyOf adr:hasRationaleLink .
+
+adr:hasRisk a owl:ObjectProperty ;
+    rdfs:label "has risk"@en ;
+    rdfs:comment "Associates an architectural design decision with a risk that is directly associated with taking that decision, typically characterized by exposure, impact, and likelihood."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:Risk ;
+    rdfs:subPropertyOf schema:riskFactor .
+
+adr:hasRiskExposure a owl:ObjectProperty ;
+    rdfs:label "has risk exposure"@en ;
+    rdfs:comment "Associates a design decision with its risk exposure as defined in risk management."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:RiskExposure ;
+    rdfs:subPropertyOf adr:hasDecisionAttribute,
+        schema:riskFactor .
+
+adr:hasRiskManagementContext a owl:ObjectProperty ;
+    rdfs:label "has risk management context"@en ;
+    rdfs:comment "Relates an architectural design decision or risk record to the organizational or project context in which its risks are managed."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:RiskManagementContext ;
+    rdfs:subPropertyOf dcterms:coverage .
+
+adr:hasState a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has state"@en ;
+    rdfs:comment "Relates a design decision to its current lifecycle state."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionState ;
+    rdfs:subPropertyOf adr:hasDecisionAttribute,
+        schema:actionStatus .
+
+adr:hasStateMachine a owl:ObjectProperty ;
+    rdfs:label "has state machine"@en ;
+    rdfs:comment "Associates the ontology or a decision management tool with the state machine that governs decision lifecycle states and transitions."@en ;
+    rdfs:domain adr:Ontology ;
+    rdfs:range adr:DecisionStateMachine ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:hasStateNote a owl:DatatypeProperty ;
+    rdfs:label "has state note"@en ;
+    rdfs:comment "A textual note clarifying the interpretation or reason behind the current state of a decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:comment .
+
+adr:hasStructuralAspect a owl:ObjectProperty ;
+    rdfs:label "has structural aspect"@en ;
+    rdfs:comment "Indicates that an existence decision concerns structural design elements such as subsystems, layers, partitions, or components in an architecture view."@en ;
+    rdfs:domain adr:ExistenceDecision ;
+    rdfs:range adr:DesignElement ;
+    rdfs:subPropertyOf adr:relatedToArtifact .
+
+adr:hasSystemScope a owl:ObjectProperty ;
+    rdfs:label "has system scope"@en ;
+    rdfs:comment "Relates a design decision to a system scope that identifies the system, subsystem, or component to which it applies."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:SystemScope ;
+    rdfs:subPropertyOf adr:hasScope .
+
+adr:hasTemporalScope a owl:ObjectProperty ;
+    rdfs:label "has temporal scope"@en ;
+    rdfs:comment "Relates a design decision to a time scope that limits when the decision is in force."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:TimeScope ;
+    rdfs:subPropertyOf adr:hasScope .
+
+adr:hasTradeOff a owl:ObjectProperty ;
+    rdfs:label "has trade-off"@en ;
+    rdfs:comment "Associates an architectural design decision with a trade-off it embodies between competing concerns, costs, or risks."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:TradeOff ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:hasTradeOffDimension a owl:ObjectProperty ;
+    rdfs:label "has trade-off dimension"@en ;
+    rdfs:comment "Relates a trade-off abstraction to one of the dimensions along which alternatives are compared, such as performance or cost."@en ;
+    rdfs:domain adr:TradeOff ;
+    rdfs:range adr:TradeOffDimension ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:hasWellFormednessRule a owl:ObjectProperty ;
+    rdfs:label "has well-formedness rule"@en ;
+    rdfs:comment "Associates a decision graph or architectural design decision with a decision well-formedness rule that applies to it."@en,
+        "Associates an ontology or decision model with a well-formedness rule that should hold for its decision graphs."@en ;
+    rdfs:domain owl:Ontology,
+        adr:DecisionGraph ;
+    rdfs:range adr:DecisionGraphWellFormednessRule,
+        adr:DecisionWellFormednessRule ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:impactLevel a owl:DatatypeProperty ;
+    rdfs:label "impact level"@en ;
+    rdfs:comment "Numeric measure of the impact component of a risk exposure associated with a decision; scale is project-specific."@en ;
+    rdfs:domain adr:RiskExposure ;
+    rdfs:range xsd:decimal .
+
+adr:introducesDesignElement a owl:ObjectProperty ;
+    rdfs:label "introduces design element"@en ;
+    rdfs:comment "Links an existence decision to the design element whose existence it asserts."@en ;
+    rdfs:domain adr:ExistenceDecision ;
+    rdfs:range adr:DesignElement ;
+    rdfs:subPropertyOf adr:relatedToArtifact .
+
+adr:involvesQualityConcern a owl:ObjectProperty ;
+    rdfs:label "involves quality concern"@en ;
+    rdfs:comment "Relates a trade-off to the quality concerns that are being balanced."@en ;
+    rdfs:domain adr:TradeOff ;
+    rdfs:range adr:QualityConcern ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:isAlternativeRelationOf a owl:ObjectProperty ;
+    rdfs:label "is alternative relation of"@en ;
+    rdfs:comment "Links an alternative relation abstraction to one of the architectural design decisions participating as an alternative."@en ;
+    rdfs:domain adr:AlternativeRelation ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:isAlternativeTo a owl:IrreflexiveProperty,
+        owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is an alternative to"@en ;
+    rdfs:comment "Indicates that two architectural design decisions are alternatives to each other, typically competing options to address the same issue or requirement."@en,
+        "Relationship between similar design decisions that address the same issue but propose different choices, enabling documentation of discarded or brainstormed options."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:isAttributeOfDecision a owl:ObjectProperty ;
+    rdfs:label "is attribute of decision"@en ;
+    rdfs:comment "Inverse of has decision attribute: links a decision attribute concept back to the architectural design decision it characterizes."@en ;
+    rdfs:domain adr:DecisionAttribute ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf skos:related ;
+    owl:inverseOf adr:hasDecisionAttribute .
+
+adr:isBanOf a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is ban of"@en ;
+    rdfs:comment "Relates a ban decision to the existence decision kind or option that it negates or forbids from being realized."@en ;
+    rdfs:domain adr:BanDecision ;
+    rdfs:range adr:ExistenceDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:isBindingRelationOf a owl:ObjectProperty ;
+    rdfs:label "is binding relation of"@en ;
+    rdfs:comment "Links a binding relation abstraction to one of the architectural design decisions that are mutually bound."@en ;
+    rdfs:domain adr:BindingRelation ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:isBoundTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is bound to"@en ;
+    rdfs:comment "Indicates that two architectural design decisions are bound together, for example required to share the same lifecycle state or be promoted/demoted together."@en,
+        "Strong bidirectional relationship where each of the two decisions constrains the other and their lifecycle states should stay aligned."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:isCheckedByTool a owl:ObjectProperty ;
+    rdfs:label "is checked by tool"@en ;
+    rdfs:comment "Indicates that a decision well-formedness rule or violation is checked or detected by a particular tool support instance."@en ;
+    rdfs:domain adr:DecisionWellFormednessRule ;
+    rdfs:range adr:ToolSupport ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:isComponentDecisionOf a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is component decision of"@en ;
+    rdfs:comment "Inverse of comprises: indicates that a decision is a subordinate component of a higher-level decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision ;
+    owl:inverseOf adr:comprises .
+
+adr:isConflictRelationOf a owl:ObjectProperty ;
+    rdfs:label "is conflict relation of"@en ;
+    rdfs:comment "Links a conflict relation abstraction to one of the architectural design decisions participating in the conflict."@en ;
+    rdfs:domain adr:ConflictRelation ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:isEnabledBy a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is enabled by"@en ;
+    rdfs:comment "Inverse of enables: indicates that a decision becomes possible because another decision has been taken."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision ;
+    owl:inverseOf adr:enables .
+
+adr:isForbiddenBy a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is forbidden by"@en ;
+    rdfs:comment "Inverse of forbids: indicates that a decision is not possible because another decision forbids it."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision ;
+    owl:inverseOf adr:forbids .
+
+adr:isFramedBy a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is framed by"@en ;
+    rdfs:comment "Inverse of frames: indicates that an architectural design decision is taken within the context or boundaries set by an executive decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ExecutiveDecision ;
+    rdfs:subPropertyOf adr:isConstrainedBy ;
+    owl:inverseOf adr:frames .
+
+adr:isOverriddenBy a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is overridden by"@en ;
+    rdfs:comment "Inverse of overrides: indicates that a decision is partially or fully overridden by another decision within some scope or time interval."@en,
+        "Inverse of overrides: indicates that an architectural design decision is overridden by another decision that takes precedence."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision ;
+    owl:inverseOf adr:overrides .
+
+adr:isSubsumedBy a owl:AsymmetricProperty,
+        owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "is subsumed by"@en ;
+    rdfs:comment "Inverse of subsumes: a specific decision that is covered by a more general decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision ;
+    owl:inverseOf adr:subsumes .
+
+adr:isSupersededBy a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is superseded by"@en ;
+    rdfs:comment "Inverse of supersedes: indicates that a design decision has been made obsolete by a newer decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision ;
+    owl:inverseOf adr:supersedes .
+
+adr:isWeaklyRelatedTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is weakly related to"@en ;
+    rdfs:comment "Generic weak relationship used for documentation, when two decisions are related but not by a stronger relation such as constrains, comprises, conflicts with, or overrides."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:justifiedByRationaleFragment a owl:ObjectProperty ;
+    rdfs:label "justified by rationale fragment"@en ;
+    rdfs:comment "Indicates that a particular rationale fragment provides justification for an architectural design decision or for choosing one alternative over others."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:RationaleFragment ;
+    rdfs:subPropertyOf adr:hasRationaleFragment .
+
+adr:likelihoodLevel a owl:DatatypeProperty ;
+    rdfs:label "likelihood level"@en ;
+    rdfs:comment "Numeric measure of the likelihood component of a risk exposure associated with a decision; scale is project-specific."@en ;
+    rdfs:domain adr:RiskExposure ;
+    rdfs:range xsd:decimal .
+
+adr:manipulatesDecisionGraph a owl:ObjectProperty ;
+    rdfs:label "manipulates decision graph"@en ;
+    rdfs:comment "Relates a decision evolution activity to the decision graph that is being restructured, pruned, or otherwise evolved."@en ;
+    rdfs:domain adr:DecisionEvolutionActivity ;
+    rdfs:range adr:DecisionGraph ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:metricDescription a owl:DatatypeProperty ;
+    rdfs:label "metric description"@en ;
+    rdfs:comment "Textual description of how a decision graph metric is defined and interpreted."@en ;
+    rdfs:domain adr:DecisionGraphMetric ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:description .
+
+adr:metricName a owl:DatatypeProperty ;
+    rdfs:label "metric name"@en ;
+    rdfs:comment "Human-readable name of a decision graph metric, such as 'number of decisions' or 'maximum dependency depth'."@en ;
+    rdfs:domain adr:DecisionGraphMetric ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:name .
+
+adr:metricValue a owl:DatatypeProperty ;
+    rdfs:label "metric value"@en ;
+    rdfs:comment "Numeric value of a decision graph metric; the scale and units are metric-specific and documented in the metric description."@en ;
+    rdfs:domain adr:DecisionGraphMetric ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf schema:value .
+
+adr:mitigatesRisk a owl:ObjectProperty ;
+    rdfs:label "mitigates risk"@en ;
+    rdfs:comment "Indicates that an architectural design decision contributes to resolving or reducing a risk in the problem or solution domain; this mitigation is considered part of the decision's rationale."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:MitigatedRisk ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:motivatedByConcern a owl:ObjectProperty ;
+    rdfs:label "motivated by concern"@en ;
+    rdfs:comment "Relates a requirement or architectural design decision to a stakeholder concern that motivates it."@en ;
+    rdfs:domain adr:DevelopmentArtifact ;
+    rdfs:range adr:StakeholderConcern ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:nonCompliantArtifact a owl:ObjectProperty ;
+    rdfs:label "non-compliant artifact"@en ;
+    rdfs:comment "Associates a non-compliance situation with the development artifact that does not comply with the decision."@en ;
+    rdfs:domain adr:NonCompliance ;
+    rdfs:range adr:DevelopmentArtifact ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:nonCompliedDecision a owl:ObjectProperty ;
+    rdfs:label "non-complied decision"@en ;
+    rdfs:comment "Associates a non-compliance situation with the architectural design decision that is not complied with."@en ;
+    rdfs:domain adr:NonCompliance ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:participatesInDecisionProcess a owl:ObjectProperty ;
+    rdfs:label "participates in decision process"@en ;
+    rdfs:comment "Relates an architectural design decision to the decision process in which it is made."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionProcess ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:precedesDecision a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "precedes decision"@en ;
+    rdfs:comment "Indicates that one architectural design decision precedes another in a decision path or timeline, typically because it is taken earlier in the process and influences or constrains the later decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:dependsOn .
+
+adr:promotionLevel a owl:DatatypeProperty ;
+    rdfs:label "promotion level"@en ;
+    rdfs:comment "Numeric value of the promotion level used for comparing lifecycle states in a decision state machine; higher values indicate more promoted states."@en ;
+    rdfs:domain adr:DecisionStateLevel ;
+    rdfs:range xsd:integer .
+
+adr:ramificationDepth a owl:DatatypeProperty ;
+    rdfs:label "ramification depth"@en ;
+    rdfs:comment "A numeric indicator of the depth or extent of ramifications of a decision within a decision graph, such as the length of dependency chains; unitless and tool-specific."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf schema:measurementTechnique .
+
+adr:refersToExternalRiskRecord a owl:ObjectProperty ;
+    rdfs:label "refers to external risk record"@en ;
+    rdfs:comment "Associates a risk exposure or risk with an external risk record managed by a project risk management tool."@en ;
+    rdfs:domain adr:Risk,
+        adr:RiskExposure ;
+    rdfs:range adr:ExternalRiskRecord ;
+    rdfs:subPropertyOf dcterms:references .
+
+adr:refersToRelationType a owl:ObjectProperty ;
+    rdfs:label "refers to relation type"@en ;
+    rdfs:comment "Links a decision graph well-formedness rule to a type of decision-to-decision relation, such as forbids, conflictsWith, or isBoundTo, that it constrains."@en ;
+    rdfs:domain adr:DecisionGraphWellFormednessRule ;
+    rdfs:range owl:ObjectProperty ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:riskExposureLevel a owl:DatatypeProperty ;
+    rdfs:label "risk exposure level"@en ;
+    rdfs:comment "A numeric representation of the overall exposure level for a risk associated with a decision, combining impact and likelihood; may duplicate or aggregate more detailed impact and likelihood levels."@en ;
+    rdfs:domain adr:Risk ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf schema:riskFactor .
+
+adr:ruleDescription a owl:DatatypeProperty ;
+    rdfs:label "rule description"@en ;
+    rdfs:comment "Natural language description of a decision graph well-formedness rule."@en ;
+    rdfs:domain adr:DecisionGraphWellFormednessRule ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:description .
+
+adr:stateLevel a owl:ObjectProperty ;
+    rdfs:label "state level"@en ;
+    rdfs:comment "Associates a decision lifecycle state with an abstract promotion level that orders states for consistency checking of decision graphs."@en ;
+    rdfs:domain adr:DecisionState ;
+    rdfs:range adr:DecisionStateLevel ;
+    rdfs:subPropertyOf skos:related .
+
+adr:supportsActivity a owl:ObjectProperty ;
+    rdfs:label "supports activity"@en ;
+    rdfs:comment "Relates a development artifact or tool support to an activity, such as an architectural review or evolution planning, that it is intended to support."@en ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Action ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:supportsDecisionManagement a owl:ObjectProperty ;
+    rdfs:label "supports decision management"@en ;
+    rdfs:comment "Relates tool support to the management and manipulation of architectural design decisions and decision graphs."@en ;
+    rdfs:domain adr:ToolSupport ;
+    rdfs:range adr:DecisionGraph ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:timelinePosition a owl:DatatypeProperty ;
+    rdfs:label "timeline position"@en ;
+    rdfs:comment "A numeric or ordinal value indicating the position of an architectural design decision on a timeline view; the concrete scale is tool-specific."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf schema:position .
+
+adr:toState a owl:ObjectProperty ;
+    rdfs:label "to state"@en ;
+    rdfs:comment "Indicates the target lifecycle state of a decision in a decision lifecycle transition."@en ;
+    rdfs:domain adr:DecisionLifecycleTransition ;
+    rdfs:range adr:DecisionState ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:tracesFrom a owl:ObjectProperty ;
+    rdfs:label "traces from"@en ;
+    rdfs:comment "Inverse traceability link from a development artifact to a design decision that it motivates or realizes."@en ;
+    rdfs:domain adr:DevelopmentArtifact ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:relation ;
+    owl:inverseOf adr:tracesTo .
+
+adr:tracesToPlan a owl:ObjectProperty ;
+    rdfs:label "traces to plan"@en ;
+    rdfs:comment "Relates an architectural design decision or other artifact to a plan it is associated with or supports."@en ;
+    rdfs:domain adr:DevelopmentArtifact ;
+    rdfs:range adr:Plan ;
+    rdfs:subPropertyOf adr:tracesTo .
+
+adr:tracesToRisk a owl:ObjectProperty ;
+    rdfs:label "traces to risk"@en ;
+    rdfs:comment "Relates an architectural design decision or other artifact to a risk record it traces to or mitigates."@en ;
+    rdfs:domain adr:DevelopmentArtifact ;
+    rdfs:range adr:RiskRecord ;
+    rdfs:subPropertyOf adr:tracesTo .
+
+adr:transitionTrigger a owl:DatatypeProperty ;
+    rdfs:label "transition trigger"@en ;
+    rdfs:comment "A textual description of the trigger, event, or condition that causes a decision lifecycle transition between states."@en ;
+    rdfs:domain adr:DecisionLifecycleTransition ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:description .
+
+adr:updatesDecision a owl:ObjectProperty ;
+    rdfs:label "updates decision"@en ;
+    rdfs:comment "Indicates that a decision evolution activity leads to an update of a particular architectural design decision, such as changing its state, scope, or relationships."@en ;
+    rdfs:domain adr:DecisionEvolutionActivity ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:involvesDecision .
+
+adr:usesStateMachine a owl:ObjectProperty ;
+    rdfs:label "uses state machine"@en ;
+    rdfs:comment "Associates an approval process with the decision states and promotion policy it employs to govern decisions."@en ;
+    rdfs:domain adr:ApprovalProcess ;
+    rdfs:range adr:DecisionState ;
+    rdfs:subPropertyOf skos:related .
+
+adr:violatesWellFormednessRule a owl:ObjectProperty ;
+    rdfs:label "violates well-formedness rule"@en ;
+    rdfs:comment "Indicates that a decision graph or architectural design decision violates a specific decision well-formedness rule."@en ;
+    rdfs:domain adr:DecisionWellFormednessViolation ;
+    rdfs:range adr:DecisionWellFormednessRule ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:visualizesDecisionGraph a owl:ObjectProperty ;
+    rdfs:label "visualizes decision graph"@en ;
+    rdfs:comment "Indicates that an architecture view visualizes a particular decision graph or a subset of it."@en ;
+    rdfs:domain adr:ArchitectureView ;
+    rdfs:range adr:DecisionGraph ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:ApprovalProcess a owl:Class ;
+    rdfs:label "Approval Process"@en ;
+    rdfs:comment "A decision and approval process whose characteristics determine which lifecycle states, promotion policies, and review rules are appropriate in a given environment."@en ;
+    rdfs:subClassOf schema:Process .
+
+adr:ApprovedState a adr:DecisionState ;
+    rdfs:label "Approved State"@en ;
+    rdfs:comment "Lifecycle state in which a design decision has been reviewed and formally approved, for example by a board, often similar to decided in low-ceremony organizations."@en ;
+    skos:broader adr:AcceptedState .
+
+adr:BindingRelation a owl:Class ;
+    rdfs:label "Binding Relation"@en ;
+    rdfs:comment "An abstract relation pattern capturing that two or more architectural design decisions are mutually bound and must share the same lifecycle state."@en ;
+    rdfs:subClassOf schema:Intangible ;
+    owl:differentFrom adr:AlternativeRelation .
+
+adr:ChallengedState a adr:DecisionState ;
+    rdfs:label "Challenged State"@en ;
+    rdfs:comment "Lifecycle state in which a previously decided or approved decision is in jeopardy and may be promoted back to approved or demoted to tentative or rejected."@en ;
+    skos:broader adr:ProposedState .
+
+adr:ConflictRelation a owl:Class ;
+    rdfs:label "Conflict Relation"@en ;
+    rdfs:comment "An abstract relation pattern representing that two architectural design decisions are in logical or practical conflict and cannot both be in force simultaneously."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:DecidedState a adr:DecisionState ;
+    rdfs:label "Decided State"@en ;
+    rdfs:comment "Lifecycle state in which a design decision represents the current position of the architect or architecture team and must be consistent with other related decisions."@en ;
+    skos:broader adr:AcceptedState .
+
+adr:DecisionCost a owl:Class ;
+    rdfs:label "Decision Cost"@en ;
+    rdfs:comment "An abstraction of the cost associated with taking a design decision, such as development or acquisition cost."@en ;
+    rdfs:subClassOf schema:MonetaryAmount .
+
+adr:DecisionModel a owl:Class ;
+    rdfs:label "Decision Model"@en ;
+    rdfs:comment "A structured representation of architectural design decisions, their states, categories, and relationships, used to support analysis, queries, and reviews."@en ;
+    rdfs:subClassOf adr:DecisionGraph .
+
+adr:DecisionPath a owl:Class ;
+    rdfs:label "Decision Path"@en ;
+    rdfs:comment "A sequence or chain of interrelated architectural design decisions in a decision graph, typically following constrains, enables, subsumes, or supersedes relationships to explain the lineage of later decisions from earlier ones."@en ;
+    rdfs:subClassOf adr:DecisionGraph,
+        schema:Intangible .
+
+adr:DecisionRamificationView a owl:Class ;
+    rdfs:label "Decision Ramification View"@en ;
+    rdfs:comment "A view of a decision graph that highlights the ramifications of a decision, such as its downstream dependent decisions and affected artifacts."@en ;
+    rdfs:subClassOf adr:ArchitectureView,
+        adr:DecisionImpactGraph .
+
+adr:DecisionTimelineView a owl:Class ;
+    rdfs:label "Decision Timeline View"@en ;
+    rdfs:comment "A view of a decision graph that organizes architectural design decisions along a timeline to show their temporal evolution."@en ;
+    rdfs:subClassOf adr:ArchitectureView,
+        adr:DecisionImpactGraph .
+
+adr:DecisionVisualizationPolicy a owl:Class ;
+    rdfs:label "Decision Visualization Policy"@en ;
+    rdfs:comment "A policy describing how decision states are used as filters or styling instructions when visualizing a decision graph (for example, omitting ideas or showing them in a specific color)."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:DesignConstraint a owl:Class ;
+    rdfs:label "Design Constraint"@en ;
+    rdfs:comment "A property decision that negatively constrains the architecture or design by specifying traits or qualities that the system must not exhibit."@en ;
+    rdfs:subClassOf adr:PropertyDecision .
+
+adr:DesignDecision a owl:Class ;
+    rdfs:label "Design Decision"@en ;
+    rdfs:comment "A deliberate choice taken in the context of engineering a software-intensive system, concerning architecture or other significant design aspects."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+adr:EducationalDecision a owl:Class ;
+    rdfs:label "Educational Decision"@en ;
+    rdfs:comment "An executive decision that concerns education, training, or skill development of people involved in the project, impacting which architectural decisions are feasible."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty adr:hasDecisionType ;
+            owl:someValuesFrom adr:EducationalDecisionType ],
+        adr:ExecutiveDecision .
+
+adr:EducationalDecisionType a adr:DecisionType ;
+    rdfs:label "Educational Decision Type"@en ;
+    rdfs:comment "Decision type representing executive decisions about training, education, and skill development."@en ;
+    rdfs:subClassOf adr:ExecutiveDecisionType .
+
+adr:IdeaState a adr:DecisionState ;
+    rdfs:label "Idea State"@en ;
+    rdfs:comment "Lifecycle state in which a design decision is merely an idea captured during brainstorming so it is not lost; it cannot constrain other decisions except other ideas."@en ;
+    skos:broader adr:ProposedState .
+
+adr:MethodologyDecision a owl:Class ;
+    rdfs:label "Methodology Decision"@en ;
+    rdfs:comment "An executive decision that selects or constrains the development methodology, process framework, or design guidelines to be followed."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty adr:hasDecisionType ;
+            owl:someValuesFrom adr:MethodologyDecisionType ],
+        adr:ProcessDecision .
+
+adr:MethodologyDecisionType a adr:DecisionType ;
+    rdfs:label "Methodology Decision Type"@en ;
+    rdfs:comment "Decision type representing executive decisions about development methodologies or process frameworks."@en ;
+    rdfs:subClassOf adr:ProcessDecisionType .
+
+adr:ObsolescedState a adr:DecisionState ;
+    rdfs:label "Obsolesced State"@en ;
+    rdfs:comment "Lifecycle state in which a decision has become moot or irrelevant, for example as a result of higher-level restructuring, without being explicitly rejected."@en ;
+    skos:broader adr:ObsoleteState .
+
+adr:OrganizationalDecision a owl:Class ;
+    rdfs:label "Organizational Decision"@en ;
+    rdfs:comment "An executive decision that concerns organizational structure, responsibilities, or governance, which frames or constrains architectural design decisions."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty adr:hasDecisionType ;
+            owl:someValuesFrom adr:OrganizationalDecisionType ],
+        adr:ExecutiveDecision .
+
+adr:OrganizationalDecisionType a adr:DecisionType ;
+    rdfs:label "Organizational Decision Type"@en ;
+    rdfs:comment "Decision type representing executive decisions about organizational structure, roles, or responsibilities."@en ;
+    rdfs:subClassOf adr:ExecutiveDecisionType .
+
+adr:Plan a owl:Class ;
+    rdfs:label "Plan"@en ;
+    rdfs:comment "A management artifact describing intended activities, milestones, or releases that can be constrained or enabled by architectural design decisions."@en ;
+    rdfs:subClassOf adr:ManagementArtifact,
+        schema:ActionPlan .
+
+adr:RationaleReference a owl:Class ;
+    rdfs:label "Rationale Reference"@en ;
+    rdfs:comment "A structured reference from a design decision to external design rationale sources such as design rationale notations, decision trees, or rationale documents."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+adr:RejectedState a adr:DecisionState ;
+    rdfs:label "Rejected State"@en ;
+    rdfs:comment "Lifecycle state in which a design decision has been evaluated and explicitly not taken."@en .
+
+adr:ReviewExclusionRule a owl:Class ;
+    rdfs:label "Review Exclusion Rule"@en ;
+    rdfs:comment "An abstract rule stating that certain decision states, such as idea, tentative, or obsolesced, should be excluded from formal reviews or specific visualizations."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:RiskManagementContext a owl:Class ;
+    rdfs:label "Risk Management Context"@en ;
+    rdfs:comment "The organizational or project-specific context in which risks associated with architectural design decisions are identified, analyzed, or tracked, often governed by standards or tools."@en ;
+    rdfs:subClassOf schema:Organization .
+
+adr:StakeholderConcern a owl:Class ;
+    rdfs:label "Stakeholder Concern"@en ;
+    rdfs:comment "A need, goal, or interest of a stakeholder that motivates requirements and architectural design decisions."@en ;
+    rdfs:subClassOf skos:Concept .
+
+adr:TechnologyDecision a owl:Class ;
+    rdfs:label "Technology Decision"@en ;
+    rdfs:comment "An executive decision that selects, mandates, or excludes specific technologies, platforms, programming languages, or frameworks used in the system."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty adr:hasDecisionType ;
+            owl:someValuesFrom adr:TechnologyDecisionType ],
+        adr:ExecutiveDecision .
+
+adr:TechnologyDecisionType a adr:DecisionType ;
+    rdfs:label "Technology Decision Type"@en ;
+    rdfs:comment "Decision type representing executive decisions that select or constrain technologies, platforms, or programming languages."@en ;
+    rdfs:subClassOf adr:ExecutiveDecisionType .
+
+adr:TentativeState a adr:DecisionState ;
+    rdfs:label "Tentative State"@en ;
+    rdfs:comment "Lifecycle state in which a design decision is tentative and used for 'what if' scenarios when exploring alternatives."@en ;
+    skos:broader adr:ProposedState .
+
+adr:TradeOffDimension a owl:Class ;
+    rdfs:label "Trade-off Dimension"@en ;
+    rdfs:comment "An aspect along which architectural design options are compared, such as performance, usability, cost, or resilience, used to structure trade-off analyses in decision rationale."@en ;
+    rdfs:subClassOf skos:Concept .
+
+adr:addressesQualityConcern a owl:ObjectProperty ;
+    rdfs:label "addresses quality concern"@en ;
+    rdfs:comment "Indicates that an architectural design decision addresses or is taken to satisfy a specific quality concern."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:QualityConcern ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:addressesRequirement a owl:ObjectProperty ;
+    rdfs:label "addresses requirement"@en ;
+    rdfs:comment "Indicates that a design decision addresses or is taken to satisfy a specific requirement."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:Requirement ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:belongsToCluster a owl:ObjectProperty ;
+    rdfs:label "belongs to cluster"@en ;
+    rdfs:comment "Indicates that an architectural design decision is a member of a decision cluster used to organize and visualize large decision graphs."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionCluster ;
+    rdfs:subPropertyOf adr:classifiedByCategory .
+
+adr:classifiedByCategory a owl:ObjectProperty ;
+    rdfs:label "classified by category"@en ;
+    rdfs:comment "Indicates that an architectural design decision is classified by a decision category, enabling clustering around that category."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionCategory ;
+    rdfs:subPropertyOf skos:related .
+
+adr:dependsOn a owl:AsymmetricProperty,
+        owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "depends on"@en ;
+    rdfs:comment "Derived relationship indicating that one decision depends on another, for example when the other decision constrains it, decomposes into it, is overridden by it, or otherwise precedes it in a decision path. This dependency is asymmetric and transitive."@en,
+        "Derived relationship indicating that one decision depends on another, for example when the other decision constrains it, decomposes into it, or is overridden by it."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:seeAlso adr:comprises,
+        adr:constrains,
+        adr:isComposedOf,
+        adr:isConstrainedBy,
+        adr:overrides ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:documentsDecision a owl:ObjectProperty ;
+    rdfs:label "documents decision"@en ;
+    rdfs:comment "Links an architecture decision record to the architectural design decision it documents."@en ;
+    rdfs:domain adr:ArchitectureDecisionRecord ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:subject .
+
+adr:enables a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "enables"@en ;
+    rdfs:comment "Indicates that one decision makes another decision possible, without requiring it to be taken (a weak form of constrains)."@en,
+        "Indicates that one decision makes another decision possible, without requiring it to be taken (a weak form of constrains). The enabled decision can in principle be decided even if the enabling decision is not taken."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:frames a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "frames"@en ;
+    rdfs:comment "Indicates that an executive decision sets the context, boundaries, or preconditions within which another architectural design decision is made."@en ;
+    rdfs:domain adr:ExecutiveDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:constrains .
+
+adr:hasRationaleFragment a owl:ObjectProperty ;
+    rdfs:label "has rationale fragment"@en ;
+    rdfs:comment "Links an architectural design decision to a more structured fragment of its rationale, for instance explaining trade-offs, mitigations, or domain uncertainties."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:RationaleFragment ;
+    rdfs:subPropertyOf dcterms:description .
+
+adr:hasRationaleLink a owl:ObjectProperty ;
+    rdfs:label "has rationale link"@en ;
+    rdfs:comment "Links a design decision to an external resource that documents its design rationale in more detail, such as a trade-off analysis or design report."@en,
+        "Links a design decision to an external resource that documents its design rationale in more detail."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range schema:CreativeWork ;
+    rdfs:subPropertyOf dcterms:references .
+
+adr:involvesDecision a owl:ObjectProperty ;
+    rdfs:label "involves decision"@en ;
+    rdfs:comment "Indicates that an activity, such as an architectural review or evolution planning activity, explicitly involves consideration of one or more architectural design decisions."@en ;
+    rdfs:domain schema:Action ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:isComposedOf a owl:AsymmetricProperty,
+        owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "is composed of"@en ;
+    rdfs:comment "Inverse of comprises: indicates that a specific design decision is part of a higher-level decision that decomposes into it."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isConstrainedBy ;
+    owl:inverseOf adr:comprises .
+
+adr:rejectsAlternative a owl:ObjectProperty ;
+    rdfs:label "rejects alternative"@en ;
+    rdfs:comment "Indicates that a design decision rejects a candidate alternative option, often as part of narrowing down possible solutions."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:AlternativeOption ;
+    rdfs:subPropertyOf adr:DecisionAlternativeRelation .
+
+adr:subsumes a owl:AsymmetricProperty,
+        owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "subsumes"@en ;
+    rdfs:comment "Indicates that one decision is wider and more encompassing than another decision, which is more specific or tactical."@en,
+        "Indicates that one decision is wider and more encompassing than another decision, which is more specific or tactical. Often, a specific tactical decision is later generalized into a more encompassing decision, and the original decision can become obsolete."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:supersedes a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "supersedes"@en ;
+    rdfs:comment "Indicates that one design decision supersedes another, typically when an earlier tactical decision is replaced or generalized."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:AcceptedState a adr:DecisionState ;
+    rdfs:label "Accepted State"@en ;
+    rdfs:comment "Lifecycle state in which a design decision has been approved and is in force."@en ;
+    owl:differentFrom adr:ApprovedState,
+        adr:ChallengedState,
+        adr:DecidedState,
+        adr:IdeaState,
+        adr:ObsolescedState,
+        adr:ObsoleteState,
+        adr:ProposedState,
+        adr:RejectedState,
+        adr:TentativeState .
+
+adr:AlternativeRelation a owl:Class ;
+    rdfs:label "Alternative Relation"@en ;
+    rdfs:comment "An abstract relation pattern capturing that two or more architectural design decisions are alternative choices to address the same or related issues."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:ArchitectureDecisionRecord a owl:Class ;
+    rdfs:label "Architecture Decision Record"@en ;
+    rdfs:comment "A structured documentation artifact that records an architectural design decision together with its context, rationale, alternatives, and consequences."@en ;
+    rdfs:subClassOf adr:DevelopmentArtifact .
+
+adr:DecisionCluster a owl:Class ;
+    rdfs:label "Decision Cluster"@en ;
+    rdfs:comment "A logical grouping of architectural design decisions that share a common concern, topic, subsystem, or category, used to simplify large decision graphs and support clustered views."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:DecisionEvolutionActivity a owl:Class ;
+    rdfs:label "Decision Evolution Activity"@en ;
+    rdfs:comment "An activity in which existing architectural design decisions and their graphs are restructured, updated, or pruned to reflect architectural evolution, such as obsolescing or superseding decisions and reorganizing their relationships."@en ;
+    rdfs:subClassOf adr:DecisionProcess,
+        schema:Action .
+
+adr:DecisionImpactGraph a owl:Class ;
+    rdfs:label "Decision Impact Graph"@en ;
+    rdfs:comment "A specialization of a decision graph that emphasizes impact and ramification relationships among decisions, such as supersedes, subsumes, constrains, and dependsOn, to support reasoning about architectural evolution and maintenance."@en ;
+    rdfs:subClassOf adr:DecisionGraph .
+
+adr:DecisionTaxonomy a owl:Class ;
+    rdfs:label "Decision Taxonomy"@en ;
+    rdfs:comment "A structured classification or taxonomy of architectural design decisions and decision types used to organize and reason about the design space."@en ;
+    rdfs:subClassOf skos:ConceptScheme,
+        schema:Intangible .
+
+adr:ManagementArtifact a owl:Class ;
+    rdfs:label "Management Artifact"@en ;
+    rdfs:comment "A project management related artifact, such as a risk record or a plan, that can be traced from or to architectural design decisions."@en ;
+    rdfs:subClassOf adr:DevelopmentArtifact .
+
+adr:ObsoleteState a adr:DecisionState ;
+    rdfs:label "Obsolete State"@en ;
+    rdfs:comment "Lifecycle state in which a design decision is no longer valid, for example because it has been superseded."@en .
+
+adr:Ontology a owl:Ontology ;
+    rdfs:label "Software Architectural Design Decision Ontology"@en ;
+    dcterms:created "2026-04-14T13:58:22.945516+00:00"^^xsd:dateTime ;
+    dcterms:description "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural decision records to capture types of design decisions, their attributes (such as rationale, risk, cost, and state), and the network of relationships among decisions and related development artifacts. The ontology supports representing decision graphs, reasoning about constraints and alternatives, and preserving the rationale behind software architecture evolution. It is intended for use in tools that manage, analyze, and communicate architectural design decisions in software‑intensive projects.",
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural decision records (ADR) and architectural design decisions (ADD) to capture decision types, lifecycle states, rationale, risk, cost, categories, and scope, as well as the network of relationships among decisions and related development artifacts. The ontology supports representing decision graphs and state machines, reasoning about constraints, alternatives, and promotion policies, and preserving the rationale behind software architecture evolution and governance processes. It is intended for integration in tools that manage, analyze, and communicate architectural design decisions, reviews, and histories in softwareâintensive projects."@en,
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural decision records and similar notations to capture types of design decisions, their attributes (such as rationale, risk, cost, scope, and state), and the network of relationships among decisions and related development artifacts. The ontology supports representing decision graphs, reasoning about constraints, alternatives, subsumption, supersession, and other dependency relationships, and preserving the rationale behind software architecture evolution and risk management. It is intended for use in tools that manage, analyze, and communicate architectural design decisions and their rationale in softwareâintensive projects."@en,
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural decision records to capture types of design decisions, their attributes (such as rationale, risk, cost, risk exposure, compliance, and state), and the network of relationships among decisions, requirements, risks, plans, and other development artifacts. The ontology supports representing decision graphs, reasoning about constraints, alternatives, conflicts, and overrides, and preserving the rationale behind software architecture evolution. It is intended for use in tools that manage, analyze, and communicate architectural design decisions and their impact on softwareâintensive projects."@en,
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural decision records to capture types of design decisions, their attributes (such as rationale, risk, cost, scope, and lifecycle state), and the network of relationships among decisions, requirements, development artifacts, and organizational or process constraints. The ontology supports representing decision graphs, reasoning about constraints, alternatives, and overrides, and preserving the rationale behind software architecture and process evolution. It is intended for use in tools that manage, analyze, and communicate architectural design decisions and their executive context in softwareâintensive projects."@en,
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural decision records to capture types of design decisions, their attributes (such as rationale, risk, cost, state, and relationships), and the network of relationships among decisions and related development artifacts such as requirements, defects, design elements, implementation artifacts, and architecture views. The ontology supports representing decision graphs, including constraints, conflicts, overrides, decompositions, alternatives, dependencies, and traceability links, so that tools can reason about decision impact, manage change, and preserve the rationale behind software architecture evolution."@en,
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural decision records to capture types of design decisions, their attributes (such as rationale, risk, cost, state, and well-formedness), and the network of relationships among decisions, their decision graphs, and related development artifacts. The ontology supports representing and analyzing decision graphs over time, reasoning about constraints, alternatives, and clusters of related decisions, and preserving the rationale behind software architecture evolution. It is intended for use in tools that manage, analyze, visualize, and communicate architectural design decisions in softwareâintensive projects, including support for architectural reviews, evolution planning, reuse, and education."@en,
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural design decisions and records (such as ADRs/ADDs) to capture decision kinds (existence, ban/non-existence, property, and executive decisions), their attributes (such as epitome, rationale, history, risk, cost, scope, lifecycle state, and risk exposure), and the network of relationships among decisions (constraints, enables, forbids, subsumes, supersedes, conflicts, alternatives, decompositions, bindings, and dependencies) and related development artifacts (requirements, defects, plans, risk records, design and implementation elements, and architecture views). The ontology also models decision graphs and state machines, well-formedness rules and violations, trade-offs and quality concerns, and links to external risk management and architecture description tools. It is intended for use in tools that manage, analyze, visualize, and communicate architectural design decisions, their rationale, and their impact throughout the life cycle and variability management of software-intensive systems."@en,
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural design decisions and records to capture decision types, decision graphs, attributes (such as rationale, risk, cost, quality concerns, and lifecycle state), and the network of relationships among decisions, requirements, and related development artifacts and views. The ontology supports representing decision-centric architecture descriptions, reasoning about constraints, alternatives and trade-offs, and preserving the rationale behind software architecture evolution and variability management. It is intended for use in tools that manage, analyze, and communicate architectural design decisions throughout the life cycle of softwareâintensive projects."@en,
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural design records to capture architectural design decisions, their types, attributes (such as rationale, risk, cost, temporal state, and scope), and the network of relationships among decisions, requirements, and related development artifacts. The ontology supports representing decision graphs and decision taxonomies, reasoning about constraints and alternatives, and preserving the rationale and evolution history behind software architecture over time. It is intended for use in tools that manage, analyze, trace, and communicate architectural design decisions and their rationale in softwareâintensive projects."@en,
+        "The Software Architectural Design Decision Ontology (SADD) models software and systems engineering decision-making at the architectural level. It generalizes architectural design records to capture kinds of design decisions (such as existence, ban, property, and executive decisions), their attributes (such as rationale, risk, cost, and lifecycle state), and the network of relationships among decisions, alternative options, and related development artifacts. The ontology supports representing decision graphs, reasoning about constraints, alternatives, and supersession, and preserving the rationale behind software architecture evolution. It is intended for use in tools that manage, analyze, and communicate architectural design decisions and their trade-offs in softwareâintensive projects."@en ;
+    dcterms:identifier "hash:483c298bd2cbed727d2fa92ef7980d9e6ab82be07c10d182b59c1093de5e25a3",
+        "sadd"^^xsd:string ;
+    dcterms:title "sadd" ;
+    rdfs:comment "Ontology for representing architectural design decisions in software-intensive systems, including their lifecycle states, state machine relations, attributes, histories, categories, and relationships to development artifacts and decision graphs."@en,
+        "Ontology for representing architectural design decisions in software-intensive systems, their attributes, states, and relationships."@en,
+        "Ontology for representing architectural design decisions in software-intensive systems, their attributes, states, compliance, and relationships to requirements, risks, plans, and other artifacts."@en ;
+    owl:versionInfo "1.1.0" ;
+    prov:wasDerivedFrom <urn:hash:315c44c449177843088be1e531c97b943df034ea99f910aeb7759f3c5ed7ae82> .
+
+adr:OrganizationScope a owl:Class ;
+    rdfs:label "Organization Scope"@en ;
+    rdfs:comment "A decision scope that limits the applicability of a decision to specific organizational units, locations, or teams."@en ;
+    rdfs:subClassOf adr:ExecutiveDecisionScope .
+
+adr:ProcessDecision a owl:Class ;
+    rdfs:label "Process Decision"@en ;
+    rdfs:comment "An executive decision that defines or constrains the software or systems development process, methods, or governance (e.g., change control procedures)."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty adr:hasDecisionType ;
+            owl:someValuesFrom adr:ProcessDecisionType ],
+        adr:ExecutiveDecision .
+
+adr:ProcessDecisionType a adr:DecisionType ;
+    rdfs:label "Process Decision Type"@en ;
+    rdfs:comment "Decision type representing executive decisions that define or constrain the development process or methodology."@en ;
+    rdfs:subClassOf adr:ExecutiveDecisionType .
+
+adr:Requirement a owl:Class ;
+    rdfs:label "Requirement"@en ;
+    rdfs:comment "A condition or capability needed by a stakeholder that justifies one or more architectural design decisions."@en ;
+    rdfs:subClassOf adr:DevelopmentArtifact .
+
+adr:RiskRecord a owl:Class ;
+    rdfs:label "Risk Record"@en ;
+    rdfs:comment "A management artifact that documents an identified project or product risk that may influence or be influenced by architectural design decisions."@en ;
+    rdfs:subClassOf adr:ManagementArtifact,
+        schema:RiskFactor .
+
+adr:SystemScope a owl:Class ;
+    rdfs:label "System Scope"@en ;
+    rdfs:comment "A decision scope that applies to a specific system, subsystem, or product line element within the overall architecture."@en ;
+    rdfs:subClassOf adr:DecisionScope .
+
+adr:TimeScope a owl:Class ;
+    rdfs:label "Time Scope"@en ;
+    rdfs:comment "A decision scope that limits the validity of a decision over a specific time interval or milestone (e.g., until a release)."@en ;
+    rdfs:subClassOf adr:ExecutiveDecisionScope .
+
+adr:ToolDecisionType a adr:DecisionType ;
+    rdfs:label "Tool Decision Type"@en ;
+    rdfs:comment "Decision type representing executive decisions that select or mandate development or modeling tools."@en ;
+    rdfs:subClassOf adr:ExecutiveDecisionType .
+
+adr:ToolSupport a owl:Class ;
+    rdfs:label "Tool Support"@en ;
+    rdfs:comment "Software tool support for managing, visualizing, and checking architectural design decisions and their decision graphs."@en ;
+    rdfs:subClassOf schema:SoftwareApplication .
+
+adr:considersAlternative a owl:ObjectProperty ;
+    rdfs:label "considers alternative"@en ;
+    rdfs:comment "Indicates that a design decision explicitly considers a given alternative option during the decision-making process."@en,
+        "Relates an architectural design decision to a decision alternative that was considered during its decision process."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:AlternativeOption,
+        adr:DecisionAlternative ;
+    rdfs:subPropertyOf dcterms:relation,
+        adr:DecisionAlternativeRelation .
+
+adr:overrides a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "overrides"@en ;
+    rdfs:comment "Indicates that one architectural design decision overrides another, taking precedence in case of conflict while possibly keeping the overridden decision documented."@en,
+        "Indicates that one decision overrides another within a certain scope, so that the overridden decision is not in force for that scope or time interval."@en,
+        "Relationship where a local decision indicates an exception to another decision, defining a scope or special case where the overridden decision does not apply."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:BanDecision a owl:Class ;
+    rdfs:label "Ban Decision"@en ;
+    rdfs:comment "An architectural design decision that explicitly states that a given element or artifact will not appear in the system's design or implementation."@en ;
+    rdfs:subClassOf adr:ExistenceDecision .
+
+adr:DecisionAlternativeRelation a owl:ObjectProperty ;
+    rdfs:label "decision alternative relation"@en ;
+    rdfs:comment "Generic relationship relating an architectural design decision to an alternative option that was considered in its rationale."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:AlternativeOption ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:DecisionProcess a owl:Class ;
+    rdfs:label "Decision Process"@en ;
+    rdfs:comment "The engineering process context in which architectural design decisions are identified, evaluated, and taken, including consideration of rationale, alternatives, and constraints."@en ;
+    rdfs:subClassOf schema:Action,
+        schema:Process .
+
+adr:DecisionScope a owl:Class ;
+    rdfs:label "Decision Scope"@en ;
+    rdfs:comment "A conceptual scope within which an architectural design decision applies (e.g., system-wide, subsystem, component)."@en ;
+    rdfs:subClassOf skos:Concept .
+
+adr:DecisionStateLevel a owl:Class ;
+    rdfs:label "Decision State Level"@en ;
+    rdfs:comment "An abstract level in a promotion policy over decision lifecycle states, used to check consistency of decision graphs by ordering states such as idea, rejected, tentative, decided, and approved."@en ;
+    rdfs:subClassOf skos:Concept .
+
+adr:DecisionStateMachine a owl:Class ;
+    rdfs:label "Decision State Machine"@en ;
+    rdfs:comment "An abstract state machine that captures possible lifecycle states of an architectural design decision and the allowed transitions between these states."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+adr:DecisionWellFormednessViolation a owl:Class ;
+    rdfs:label "Decision Well-Formedness Violation"@en ;
+    rdfs:comment "An identified violation of a decision well-formedness rule in a decision graph or in individual architectural design decisions."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+adr:ExecutiveDecisionScope a owl:Class ;
+    rdfs:label "Executive Decision Scope"@en ;
+    rdfs:comment "A scope for decisions that refers to organizational, temporal, or process boundaries within which executive or architectural design decisions apply."@en ;
+    rdfs:subClassOf adr:DecisionScope ;
+    owl:differentFrom adr:OrganizationScope,
+        adr:SystemScope,
+        adr:TimeScope .
+
+adr:ExistenceDecisionType a adr:DecisionType ;
+    rdfs:label "Existence Decision Type"@en ;
+    rdfs:comment "Decision type representing existence decisions that assert the presence of elements in the system."@en ;
+    adr:hasDecisionKindName "ontocrisis"@en .
+
+adr:ExternalRiskRecord a owl:Class ;
+    rdfs:label "External Risk Record"@en ;
+    rdfs:comment "A risk record managed outside the decision model, for example in a dedicated risk management tool, which can be linked from an architectural design decision."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+adr:MitigatedRisk a owl:Class ;
+    rdfs:label "Mitigated Risk"@en ;
+    rdfs:comment "A risk in the problem or solution domain that is reduced or resolved by taking a particular architectural design decision; distinct from the risk of taking that decision."@en ;
+    rdfs:subClassOf adr:Risk .
+
+adr:NonCompliance a owl:Class ;
+    rdfs:label "Non-compliance"@en ;
+    rdfs:comment "A situation or condition in which a development artifact does not comply with a given architectural design decision."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:TradeOff a owl:Class ;
+    rdfs:label "Trade-off"@en ;
+    rdfs:comment "An abstraction of the balance between competing quality concerns, costs, or risks that must be considered when taking an architectural design decision."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:comprises a owl:AsymmetricProperty,
+        owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "comprises"@en ;
+    rdfs:comment "Indicates that a higher-level architectural design decision is made of, or decomposed into, one or more subordinate decisions."@en,
+        "Relationship where a high-level, wide-ranging decision is made of or decomposes into a set of narrower, more specific design decisions."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:constrains,
+        adr:isRelatedToDecision .
+
+adr:forbids a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "forbids"@en ;
+    rdfs:comment "Indicates that one decision prevents another decision from being made; the target decision cannot be taken while the forbidding decision is in force."@en,
+        "Indicates that one decision prevents another decision from being made; the target decision cannot be taken while the forbidding decision is in force. The forbidden decision can only reach a non-zero state if the forbidding decision is demoted to a zero or inactive state."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+adr:hasScope a owl:ObjectProperty ;
+    rdfs:label "has scope"@en ;
+    rdfs:comment "Indicates the scope within which a design decision applies."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionScope ;
+    rdfs:subPropertyOf dcterms:coverage,
+        adr:hasDecisionAttribute .
+
+adr:isConstrainedBy a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "is constrained by"@en ;
+    rdfs:comment "Inverse of constrains: indicates that a decision is constrained by another decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision ;
+    owl:inverseOf adr:constrains .
+
+adr:tracesTo a owl:ObjectProperty ;
+    rdfs:label "traces to"@en ;
+    rdfs:comment "Indicates that a development artifact has a traceability link to an architectural design decision, requirement, risk record, plan, or other related artifact."@en,
+        "Traceability link from a design decision to an external technical artifact, such as an upstream requirement or defect, or a downstream design or implementation element."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision,
+        adr:DevelopmentArtifact ;
+    rdfs:range adr:DevelopmentArtifact ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:ArchitectureView a owl:Class ;
+    rdfs:label "Architecture View"@en ;
+    rdfs:comment "A representation of a system's architecture from a particular viewpoint, to which design decisions may be traced."@en ;
+    rdfs:subClassOf adr:DevelopmentArtifact .
+
+adr:DecisionAlternative a owl:Class ;
+    rdfs:label "Decision Alternative"@en ;
+    rdfs:comment "A candidate option considered during an architectural design decision process, which may be selected, rejected, or avoided."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:DecisionAttribute a owl:Class ;
+    rdfs:label "Decision Attribute"@en ;
+    rdfs:comment "An abstract class representing a named attribute of an architectural design decision, such as epitome, rationale, scope, state, history, cost, or risk exposure."@en ;
+    rdfs:subClassOf skos:Concept .
+
+adr:DecisionGraphMetric a owl:Class ;
+    rdfs:label "Decision Graph Metric"@en ;
+    rdfs:comment "A quantitative or qualitative metric computed over a decision graph, such as graph size, depth of dependency chains, or number of conflicts, used to assess the manageability of architectural design decisions."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:DecisionGraphWellFormednessRule a owl:Class ;
+    rdfs:label "Decision Graph Well-formedness Rule"@en ;
+    rdfs:comment "A rule or constraint that specifies conditions for a design decision graph to be well-formed, such as absence of conflicts or promotion state dependencies."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:DecisionHistoryEntry a owl:Class ;
+    rdfs:label "Decision History Entry"@en ;
+    rdfs:comment "A record of a change to a design decision, including timestamp, author, and description of the change."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+adr:DecisionLifecycleTransition a owl:Class ;
+    rdfs:label "Decision Lifecycle Transition"@en ;
+    rdfs:comment "An abstract transition between two lifecycle states of an architectural design decision in a decision state machine."@en ;
+    rdfs:subClassOf schema:Action .
+
+adr:DecisionWellFormednessRule a owl:Class ;
+    rdfs:label "Decision Well-Formedness Rule"@en ;
+    rdfs:comment "A rule that specifies structural or semantic well-formedness constraints on architectural design decisions and decision graphs, which can be checked or enforced by tools."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+adr:PropertyDecision a owl:Class ;
+    rdfs:label "Property Decision"@en ;
+    rdfs:comment "An architectural design decision that states an enduring, overarching trait, rule, guideline, or constraint regarding the system."@en ;
+    rdfs:subClassOf adr:ArchitecturalDesignDecision .
+
+adr:ProposedState a adr:DecisionState ;
+    rdfs:label "Proposed State"@en ;
+    rdfs:comment "Lifecycle state in which a design decision has been identified and described but not yet accepted."@en .
+
+adr:QualityConcern a owl:Class ;
+    rdfs:label "Quality Concern"@en ;
+    rdfs:comment "A concern about a desired quality or property of the system (such as performance, resilience, usability, or economic constraints) that influences architectural design decisions."@en ;
+    rdfs:subClassOf skos:Concept .
+
+adr:RationaleFragment a owl:Class ;
+    rdfs:label "Rationale Fragment"@en ;
+    rdfs:comment "A fragment of design rationale that explains why a decision was taken, including justifications, mitigation arguments, or references to risks that the decision addresses."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+adr:constrains a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "constrains"@en ;
+    rdfs:comment "Indicates that one decision constrains another; if the constraining decision is dropped, the constrained decision is also dropped."@en,
+        "Indicates that one decision constrains another; if the constraining decision is dropped, the constrained decision is also dropped. The constrained decision is contingent on, and cannot be promoted to a higher state than, the constraining decision."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf adr:isRelatedToDecision .
+
+schema:riskFactor owl:sameAs schema:RiskFactor .
+
+adr:AlternativeOption a owl:Class ;
+    rdfs:label "Alternative Option"@en ;
+    rdfs:comment "A candidate architectural or design option considered as an alternative when making a design decision, including options that may later be accepted, rejected, or banned."@en ;
+    rdfs:subClassOf schema:Intangible .
+
+adr:DesignElement a owl:Class ;
+    rdfs:label "Design Element"@en ;
+    rdfs:comment "A structural or behavioral element in the system design, such as a subsystem, component, layer, or connector, that is the subject of existence or property decisions."@en ;
+    rdfs:subClassOf adr:DevelopmentArtifact .
+
+adr:ExecutiveDecisionType a adr:DecisionType ;
+    rdfs:label "Executive Decision Type"@en ;
+    rdfs:comment "Decision type representing executive decisions about process or technology."@en ;
+    rdfs:subClassOf adr:DecisionType ;
+    adr:hasDecisionKindName "pericrisis"@en .
+
+adr:Risk a owl:Class ;
+    rdfs:label "Risk"@en ;
+    rdfs:comment "A general risk associated with taking an architectural design decision, typically characterized by impact and likelihood and possibly managed in an external risk management tool."@en ;
+    rdfs:subClassOf schema:RiskFactor ;
+    owl:differentFrom adr:ExternalRiskRecord,
+        adr:MitigatedRisk,
+        adr:RiskRecord .
+
+adr:relatedToArtifact a owl:ObjectProperty ;
+    rdfs:label "related to artifact"@en ;
+    rdfs:comment "Associates a design decision with a development artifact such as an architecture view or design element."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DevelopmentArtifact ;
+    rdfs:subPropertyOf dcterms:relation .
+
+adr:RiskExposure a owl:Class ;
+    rdfs:label "Risk Exposure"@en ;
+    rdfs:comment "A quantified risk exposure associated with a design decision, combining impact and likelihood."@en ;
+    rdfs:subClassOf adr:DecisionAttribute,
+        schema:RiskFactor .
+
+adr:ExecutiveDecision a owl:Class ;
+    rdfs:label "Executive Decision"@en ;
+    rdfs:comment "An architectural design decision about process, technology, or other executive aspects that influence or constrain other decisions."@en ;
+    rdfs:subClassOf adr:ArchitecturalDesignDecision .
+
+adr:hasDecisionType a owl:ObjectProperty ;
+    rdfs:label "has decision type"@en ;
+    rdfs:comment "Associates an architectural design decision with its decision type within the taxonomy."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionType ;
+    rdfs:subPropertyOf skos:related .
+
+adr:DecisionCategory a owl:Class ;
+    rdfs:label "Decision Category"@en ;
+    rdfs:comment "A category or concern to which a design decision may belong, used like open-ended keywords to group decisions by quality attribute or other aspects such as politics."@en,
+        "A conceptual category used to classify architectural design decisions, enabling clustering and analysis around shared topics or concerns."@en ;
+    rdfs:subClassOf skos:Concept .
+
+adr:ExistenceDecision a owl:Class ;
+    rdfs:label "Existence Decision"@en ;
+    rdfs:comment "An architectural design decision that asserts the existence of an element or artifact in the system's design or implementation."@en ;
+    rdfs:subClassOf adr:ArchitecturalDesignDecision .
+
+adr:hasDecisionAttribute a owl:ObjectProperty ;
+    rdfs:label "has decision attribute"@en ;
+    rdfs:comment "Relates an architectural design decision to one of its named attributes from the decision template, such as epitome, rationale, scope, state, history, cost, or risk exposure."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:DecisionAttribute ;
+    rdfs:subPropertyOf skos:related .
+
+adr:DecisionGraph a owl:Class ;
+    rdfs:label "Decision Graph"@en ;
+    rdfs:comment "A graph-structured representation of architectural design decisions and their relationships, used for visualization, analysis, and reasoning over decision networks."@en,
+        "A graph-structured representation of interrelated architectural design decisions and their relationships, used to support reasoning about the architecture of software-intensive systems."@en,
+        "A model capturing a set of design decisions and their relationships, including lifecycle states and promotion policies, used for visualization and consistency checking."@en ;
+    rdfs:subClassOf adr:DevelopmentArtifact,
+        schema:CreativeWork,
+        schema:Intangible .
+
+adr:DecisionType a owl:Class ;
+    rdfs:label "Decision Type"@en ;
+    rdfs:comment "A category characterizing the nature of an architectural design decision, such as existence, property, or executive."@en ;
+    rdfs:subClassOf skos:Concept ;
+    owl:differentFrom adr:ToolDecisionType .
+
+adr:DevelopmentArtifact a owl:Class ;
+    rdfs:label "Development Artifact"@en ;
+    rdfs:comment "A generic artifact produced during software or systems development, such as requirements, architectural views, or design elements."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+adr:DecisionState a owl:Class ;
+    rdfs:label "Decision State"@en ;
+    rdfs:comment "An enumeration-like class capturing the lifecycle state of an architectural design decision."@en ;
+    rdfs:subClassOf skos:Concept .
+
+adr:isRelatedToDecision a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is related to decision"@en ;
+    rdfs:comment "A generic relationship linking two design decisions that are related in some way."@en ;
+    rdfs:domain adr:ArchitecturalDesignDecision ;
+    rdfs:range adr:ArchitecturalDesignDecision ;
+    rdfs:subPropertyOf skos:related .
+
+adr:ArchitecturalDesignDecision a owl:Class ;
+    rdfs:label "Architectural Design Decision"@en ;
+    rdfs:comment "A design decision that has significant impact on the software architecture of a software-intensive system."@en ;
+    rdfs:subClassOf adr:DesignDecision,
+        schema:CreativeWork .
+

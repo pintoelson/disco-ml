@@ -1,0 +1,26 @@
+{
+  "Issue": "Input spatial dimensions must be divisible by patch_size ** 5 (32 by default with patch_size=2) for SwinUNETR",
+  "Decision": "Add documentation of spatial shape constraints for SwinUNETR and test validation logic",
+  "Rationale": "The runtime validation logic already existed in `_check_input_size()` but was undocumented. This PR adds a `Spatial Shape Constraints` section to the class docstring, updates the `patch_size` arg description in `__init__`, and adds a test to verify that `forward()` raises `ValueError` for invalid spatial shapes.",
+  "Author": "Cado87",
+  "Status": "Decided",
+  "Description": "SwinUNETR class and its input validation logic",
+  "Time stamp": "2026-04-11T06:23:28Z (created), 2026-04-11T06:23:44Z (comment by coderabbitai[bot]), 2026-04-12T19:15:43Z (comment by Cado87)",
+  "Cost": "Low (documentation and test addition, no runtime logic modification)",
+  "Risk": "None (no risks mentioned in the document)",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-11T06:23:44Z",
+      "argument": "Updated `SwinUNETR` class docstrings to explicitly document that input spatial dimensions must be divisible by `patch_size ** 5`. Added a `Raises:` entry documenting the `ValueError` condition. Added a unit test validating that the constraint is enforced for both 2D and 3D configurations. No runtime logic was modified; validation already exists in `_check_input_size()`."
+    },
+    {
+      "author": "Cado87",
+      "timestamp": "2026-04-12T19:15:43Z",
+      "argument": "Thank you so much @ericspod for the approval. I'm new to the repository, but I'm gradually getting up to speed. Let me know if anything else needs to be added to finalize the pull request."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "SwinUNETR class docstring and validation test",
+  "Justification": "Keywords like 'patch_size', 'layers' (implied by 'SwinUNETR' architecture), and 'forward()' (model execution) directly relate to model architecture and validation during model development. The mention of '_check_input_size()' and 'forward()' imply runtime model behavior checks during the modeling phase."
+}

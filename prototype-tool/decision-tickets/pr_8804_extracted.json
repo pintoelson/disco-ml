@@ -1,0 +1,15 @@
+{
+  "Issue": "Bump black from 25.1.0 to 26.3.1",
+  "Decision": "Update black from version 25.1.0 to 26.3.1",
+  "Rationale": "To resolve dependency issues in tests and ensure compatibility with newer Python versions (>3.9) as referenced in issue #8561",
+  "Author": "dependabot[bot]",
+  "Status": "Decided",
+  "Description": "Repository: Project-MONAI/MONAI",
+  "Time stamp": "2026-04-02T18:11:19Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "dependency_version",
+  "Justification": "The decision involves updating a dependency tool ('black') for repository health and compatibility with Python versions, which is unrelated to ML lifecycle stages. Keywords like 'version' indicate a general software maintenance task."
+}

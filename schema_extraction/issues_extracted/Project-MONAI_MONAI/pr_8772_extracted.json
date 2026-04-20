@@ -1,0 +1,43 @@
+{
+  "Issue": "Enhance ExtractDataKeyFromMetaKeyd to work with MetaTensor objects",
+  "Decision": "Add __contains__ and __getitem__ to MetaTensor to enable string-key access into its internal meta",
+  "Rationale": "The trade-off is that it touches the core MetaTensor class (wider blast radius), whereas this PR's approach is scoped to a single transform. But for long-term maintainability the __contains__/__getitem__ approach is better since it avoids per-transform isinstance(meta_obj, MetaTensor) checks everywhere.",
+  "Author": "haoyu-haoyu",
+  "Status": "closed",
+  "Description": "ExtractDataKeyFromMetaKeyd transform and MetaTensor class",
+  "Time stamp": "2026-03-11T17:35:59Z",
+  "Cost": null,
+  "Risk": "Adding __getitem__ to MetaTensor causes infinite recursion in torch.as_tensor() \u2014 PyTorch internally calls __len__ and __getitem__ on inputs, which triggers __torch_function__ dispatch, creating a cycle",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-11T17:36:19Z",
+      "argument": "Reviews paused due to active development to avoid overwhelming review comments from influx of new commits."
+    },
+    {
+      "author": "aymuos15",
+      "timestamp": "2026-03-16T16:00:57Z",
+      "argument": "Suggests adding keys directly into MetaTensor itself for cleaner approach, avoiding per-transform isinstance checks."
+    },
+    {
+      "author": "haoyu-haoyu",
+      "timestamp": "2026-03-16T16:49:49Z",
+      "argument": "Acknowledges cleaner approach but notes trade-off of wider blast radius in core MetaTensor class vs scoped transform fix."
+    },
+    {
+      "author": "haoyu-haoyu",
+      "timestamp": "2026-03-16T19:39:39Z",
+      "argument": "Reverted to isinstance approach due to infinite recursion in torch.as_tensor() caused by __getitem__ delegation."
+    },
+    {
+      "author": "aymuos15",
+      "timestamp": "2026-03-16T21:26:59Z",
+      "argument": "Clarifies that the actual CI failure was TypeError: len() of a 0-d tensor, not infinite recursion, and suggests alternative fix."
+    },
+    {
+      "author": "haoyu-haoyu",
+      "timestamp": "2026-03-16T23:05:47Z",
+      "argument": "Acknowledges the TypeError and agrees that the maintainers should decide the better approach between isinstance and __getitem__ delegation."
+    }
+  ]
+}

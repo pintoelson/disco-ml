@@ -1,0 +1,26 @@
+{
+  "Issue": "Variable names `input_amplitude` and `target_amplitude` are swapped in `JukeboxLoss.forward()` method, causing semantic inversion and potential maintenance hazards.",
+  "Decision": "Swap the variable names `input_amplitude` and `target_amplitude` in `JukeboxLoss.forward()` to correctly compute amplitudes from their respective inputs.",
+  "Rationale": "The swap ensures semantic correctness and adherence to the principle of least surprise for PyTorch loss function contracts. It prevents misleading code and potential subtle training errors if asymmetric processing is added later.",
+  "Author": "Zeesejo",
+  "Status": "Closed",
+  "Description": "The `JukeboxLoss.forward()` method in `monai/losses/spectral_loss.py` (lines 55-56).",
+  "Time stamp": "2026-04-11T18:08:21Z",
+  "Cost": null,
+  "Risk": "Potential subtle, hard-to-debug training errors if asymmetric processing (e.g., normalization, weighting, gradient masking) is added based on input vs. target. Violates the principle of least surprise.",
+  "Argument": [
+    {
+      "author": "Zeesejo",
+      "timestamp": "2026-04-11T18:08:21Z",
+      "argument": "The swap makes the code misleading and confusing to anyone reading, extending, or debugging it, creating a silent maintenance hazard."
+    },
+    {
+      "author": "Zeesejo",
+      "timestamp": "2026-04-11T18:08:21Z",
+      "argument": "The standard `forward(input, target)` contract in PyTorch loss functions should not have semantically inverted variable names."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "PyTorch loss function code (`JukeboxLoss.forward()`)",
+  "Justification": "The issue involves correcting variable names in the `forward()` method of a PyTorch loss function (`JukeboxLoss.forward()`). This is a code-level correction in the model architecture/development phase, ensuring semantic correctness of the loss computation during training."
+}

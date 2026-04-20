@@ -1,0 +1,26 @@
+{
+  "Issue": "Incorrect minus sign in `rotate_range` parameter documentation for spatial transforms",
+  "Decision": "Removed incorrect negation in `uniform[f[0], f[1])` documentation for pair case in rotate_range",
+  "Rationale": "The incorrect negation was removed because the actual implementation uses `uniform(f[0], f[1])` without negation for the pair case, as shown in `_get_rand_param` (line 1908). The single value case correctly uses `uniform(-f, f)` for negation.",
+  "Author": "yunhaoli24",
+  "Status": "Decided",
+  "Description": "Spatial transforms (RandAffineGrid, RandAffine, Rand2DElastic, Rand3DElastic, RandAffined, Rand2DElasticd, Rand3DElasticd) in MONAI library",
+  "Time stamp": "2026-03-12T06:27:03Z (created), 2026-03-12T06:27:46Z (comment by coderabbitai[bot]), 2026-03-18T18:30:27Z (comment by ericspod), 2026-03-19T12:33:58Z (comment by yunhaoli24)",
+  "Cost": "Low (documentation update only, no code logic changes)",
+  "Risk": "None identified (documentation correction only)",
+  "Argument": [
+    {
+      "author": "ericspod",
+      "timestamp": "2026-03-18T18:30:27Z",
+      "argument": "The line `If not, uniform[-rotate_range[i], rotate_range[i])` should be checked for incorrect negation similar to the first line."
+    },
+    {
+      "author": "yunhaoli24",
+      "timestamp": "2026-03-19T12:33:58Z",
+      "argument": "The negative sign in the single value case (`uniform(-f, f)`) is correct as per implementation in `_get_rand_param` (line 1908), while the pair case (`uniform(f[0], f[1])`) correctly has no negation."
+    }
+  ],
+  "Mapped Stage": "Data Preparation",
+  "Primary Artifact": "Documentation of spatial transforms",
+  "Justification": "The ticket involves correcting a documentation error in the `rotate_range` parameter for spatial transforms (e.g., RandAffineGrid, RandAffine), which is part of data preprocessing configuration in the MONAI library. Keywords like 'documentation update', 'rotate_range', and 'spatial transforms' indicate this is related to data preparation rather than modeling or other stages."
+}

@@ -1,0 +1,23 @@
+{
+  "Issue": "Fix make_gaussian_kernel truncated parameter for kernel_size > 3",
+  "Decision": "Set truncated = (kernel_size // 2) / sigma in make_gaussian_kernel",
+  "Rationale": "The original implementation passed kernel_size // 2 directly to gaussian_1d, which interprets truncated as standard deviations, not pixel radius. This caused incorrect kernel sizing (e.g., kernel_size=15, sigma=5.0, truncated=7 resulted in 71-element kernel instead of 15). The fix normalizes truncated by dividing by sigma, converting pixel radius to standard deviation units before passing to gaussian_1d.",
+  "Author": "atharvajoshi01",
+  "Status": "Rejected",
+  "Description": "make_gaussian_kernel function in monai/losses/image_dissimilarity.py",
+  "Time stamp": "2026-04-11T18:21:30Z",
+  "Cost": "Minimal (only parameter calculation change in existing function)",
+  "Risk": "Low (fixes incorrect kernel sizing that caused LNCC of identical images to return ~0.0 instead of -1.0)",
+  "Argument": [
+    {
+      "author": "ericspod",
+      "timestamp": "2026-04-09T22:56:11Z",
+      "argument": "PR #8781 already addressed the same issue with an equivalent solution (inline Gaussian computation avoids truncated parameter issue entirely)"
+    },
+    {
+      "author": "atharvajoshi01",
+      "timestamp": "2026-04-10T02:58:36Z",
+      "argument": "Confirmed #8781's approach is cleaner and addresses the root cause better by avoiding gaussian_1d's truncated parameter issue"
+    }
+  ]
+}

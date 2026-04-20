@@ -1,0 +1,36 @@
+{
+  "Issue": "Add explicit spatial_ndim tracking to MetaTensor to prevent dimension-mismatch crashes when einops.rearrange() or other reshape operations change ndim",
+  "Decision": "Adds a `_spatial_ndim: int` attribute to `MetaTensor` that explicitly tracks the number of spatial dimensions",
+  "Rationale": "Prevents dimension-mismatch crashes when `einops.rearrange()` or other reshape operations change `ndim`; propagates through `copy_meta_from` and is preserved through arbitrary torch operations; updates transforms to use `spatial_ndim` instead of hardcoded 3",
+  "Author": "aymuos15",
+  "Status": "open",
+  "Description": "MetaTensor class and related transforms in monai/data/meta_obj.py, meta_tensor.py, utils.py, and monai/transforms/",
+  "Time stamp": "2026-03-03T18:54:14Z",
+  "Cost": "Moderate (involves changes to core classes and multiple transform files, but no new dependencies)",
+  "Risk": "Potential side effects from incorrect spatial_ndim propagation or edge cases in batched operations (e.g., `(1,4,4)` affine matrices)",
+  "Argument": [
+    {
+      "author": "aymuos15",
+      "timestamp": "2026-03-03T18:54:14Z",
+      "argument": "Constructor uses `spatial_ndim = min(affine.shape[-1] - 1, ndim - 1)` \u2014 clamped by actual tensor dims to prevent out-of-bounds errors"
+    },
+    {
+      "author": "aymuos15",
+      "timestamp": "2026-03-03T18:54:14Z",
+      "argument": "Affine setter uses `spatial_ndim = affine.shape[-1] - 1` \u2014 no clamping (user is explicit) to allow flexibility in affine transformations"
+    },
+    {
+      "author": "aymuos15",
+      "timestamp": "2026-03-03T18:54:14Z",
+      "argument": "`peek_pending_affine` uses affine's inner matrix shape to fix batched `(1,4,4)` case, ensuring correct spatial_ndim inference"
+    },
+    {
+      "author": "aymuos15",
+      "timestamp": "2026-03-03T18:54:14Z",
+      "argument": "`spatial_resample` uses `min(spatial_ndim, ndim - 1, 3)` \u2014 adds ndim-1 constraint as safety net to prevent invalid spatial dimensions"
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "MetaTensor class and spatial dimension tracking",
+  "Justification": "The changes involve core ML data structures (MetaTensor) and transformations used in model operations (e.g., einops.rearrange, affine transformations). Terms like 'spatial_ndim', 'reshape operations', and 'torch operations' indicate modifications to data handling during modeling workflows, not general infrastructure or deployment."
+}

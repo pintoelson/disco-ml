@@ -1,0 +1,18 @@
+{
+  "Issue": "In ZarrAvgMerger.__init__, when both value_store and count_store are None and zarr v3 is detected, a single self.tmpdir attribute was assigned twice sequentially, causing the first TemporaryDirectory to be garbage-collected and the value_store to point to a deleted directory.",
+  "Decision": "Introduce two separate attributes self.value_tmpdir and self.count_tmpdir so both TemporaryDirectory objects remain alive for the full lifetime of the ZarrAvgMerger instance.",
+  "Rationale": "The fix prevents the first TemporaryDirectory from being garbage-collected by ensuring it is not overwritten by the second assignment, thus maintaining the directory that value_store points to. This resolves the zarr ValueError seen in the issue.",
+  "Author": "Zeesejo",
+  "Status": "open",
+  "Description": "ZarrAvgMerger.__init__ in monai/inferers/merger.py",
+  "Time stamp": "2026-04-10T07:27:58Z",
+  "Cost": "Moderate (estimated ~20 minutes)",
+  "Risk": "The risk was the garbage collection of the first TemporaryDirectory due to overwriting self.tmpdir, leading to a zarr ValueError.",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-10T07:28:13Z",
+      "argument": "ZarrAvgMerger.__init__ in monai/inferers/merger.py refactors temporary directory and codec handling logic. For zarr v3 with unset value_store and/or count_store, independent TemporaryDirectory instances replace a single reusable instance. Zarr-version detection is performed once before use."
+    }
+  ]
+}

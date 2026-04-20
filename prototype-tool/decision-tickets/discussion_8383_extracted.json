@@ -1,0 +1,21 @@
+{
+  "Issue": "How to make tiffs where ITK from MONAI knows the pixel size?",
+  "Decision": "Save TIFF files with correct metadata (spacing, spacing_units, physical_size_x/y/z) for ITK/MONAI to read pixel size",
+  "Rationale": "Using OME-TIFF format with proper metadata extraction via MapTransform (OMEZSpacingFromFileD) to populate MONAI meta['spacing'] from file metadata. This avoids data duplication and ensures compatibility with ITK/MONAI transforms.",
+  "Author": "joaomamede",
+  "Status": "Decided",
+  "Description": "TIFF file metadata handling for pixel size (X,Y,Z) in MONAI/ITK pipeline, specifically for fluorescence microscopy data processing",
+  "Time stamp": "2025-03-10T20:50:30Z (Issue creation), 2025-03-12T05:33:19Z (Comment with solution)",
+  "Cost": "Implementation effort to modify TIFF saving functions and create MapTransform class for metadata extraction",
+  "Risk": "Potential compatibility issues between TIFF metadata formats and ITK/MONAI readers, requiring OME-TIFF standardization",
+  "Argument": [
+    {
+      "author": "joaomamede",
+      "timestamp": "2025-03-12T05:33:19Z",
+      "argument": "Using OME-TIFF format with proper metadata extraction via MapTransform (OMEZSpacingFromFileD) is better than raw TIFF because it ensures pixel size metadata is properly read by ITK/MONAI without data duplication."
+    }
+  ],
+  "Mapped Stage": "Data Preparation",
+  "Primary Artifact": "TIFF image metadata (spacing, physical_size)",
+  "Justification": "The decision involves modifying TIFF file metadata handling (spacing, physical_size_x/y/z) to ensure ITK/MONAI can read pixel size correctly, which falls under data preprocessing for image processing pipelines."
+}

@@ -1,0 +1,436 @@
+@prefix aicd: <https://example.com//aicd#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+aicd:AIFactory a owl:Class ;
+    rdfs:label "AI factory" ;
+    rdfs:comment "An industrialized organizational setup for scaling ML productionalization using standardized processes and reusable artifacts." ;
+    rdfs:subClassOf schema:Organization .
+
+aicd:CDActivity a owl:Class ;
+    rdfs:label "CD activity" ;
+    rdfs:comment "A continuous delivery or deployment activity that prepares or releases model artifacts into an environment." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:CIActivity a owl:Class ;
+    rdfs:label "CI activity" ;
+    rdfs:comment "A continuous integration activity that automatically validates or integrates changes." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:Collaboration a owl:Class ;
+    rdfs:label "collaboration" ;
+    rdfs:comment "Coordinated work among different roles or disciplines involved in ML development and operations." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ConceptDrift a owl:Class ;
+    rdfs:label "concept drift" ;
+    rdfs:comment "A change in the relationship between inputs and outputs or in the operating environment that can degrade model behavior over time." ;
+    rdfs:subClassOf aicd:ModelMonitoring .
+
+aicd:DataQualityConstraint a owl:Class ;
+    rdfs:label "data quality constraint" ;
+    rdfs:comment "A rule that constrains acceptable properties of data flowing through a recurring pipeline." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:DataScientistRole a owl:Class ;
+    rdfs:label "data scientist role" ;
+    rdfs:comment "A role focused on data analysis, model development, and model-related decision support." ;
+    rdfs:subClassOf aicd:Role .
+
+aicd:DataTransformation a owl:Class ;
+    rdfs:label "data transformation" ;
+    rdfs:comment "A transformation that adapts data for consumption by an ML model or surrounding software components." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:DevBranch a owl:Class ;
+    rdfs:label "dev branch" ;
+    rdfs:comment "A stable branch used to integrate changes before final release to production." ;
+    rdfs:subClassOf aicd:StableBranch .
+
+aicd:ExplainabilityConcern a owl:Class ;
+    rdfs:label "explainability concern" ;
+    rdfs:comment "A cross-cutting concern about making model behavior or decisions understandable." ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:FairnessConcern a owl:Class ;
+    rdfs:label "fairness concern" ;
+    rdfs:comment "A cross-cutting concern about bias and equitable behavior in ML systems." ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:FeatureBranch a owl:Class ;
+    rdfs:label "feature branch" ;
+    rdfs:comment "A short-lived branch used for isolated development work before integration." ;
+    rdfs:subClassOf aicd:Branch .
+
+aicd:ITOpsRole a owl:Class ;
+    rdfs:label "IT operations role" ;
+    rdfs:comment "A role responsible for operating and maintaining production systems and telemetry." ;
+    rdfs:subClassOf aicd:Role .
+
+aicd:IncidentResponse a owl:Class ;
+    rdfs:label "incident response" ;
+    rdfs:comment "Procedures for responding to operational or security incidents affecting ML systems." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:LiveInference a owl:Class ;
+    rdfs:label "live inference" ;
+    rdfs:comment "Inference performed on production traffic within a deployed environment." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:MLEngineerRole a owl:Class ;
+    rdfs:label "ML engineer role" ;
+    rdfs:comment "A role focused on building, deploying, and operationalizing machine learning systems." ;
+    rdfs:subClassOf aicd:Role .
+
+aicd:MLProductionalization a owl:Class ;
+    rdfs:label "ML productionalization" ;
+    rdfs:comment "The process of transitioning an ML model from a laboratory or experimental setting into a production environment." ;
+    rdfs:subClassOf aicd:MLOpsPractice .
+
+aicd:MainBranch a owl:Class ;
+    rdfs:label "main branch" ;
+    rdfs:comment "A stable branch used for the production-ready state of the project." ;
+    rdfs:subClassOf aicd:StableBranch .
+
+aicd:ModelDeployment a owl:Class ;
+    rdfs:label "model deployment" ;
+    rdfs:comment "The activity of packaging and releasing a trained model into an execution environment where it serves inference requests." ;
+    rdfs:subClassOf aicd:MLOpsPractice .
+
+aicd:ModelIntegration a owl:Class ;
+    rdfs:label "model integration" ;
+    rdfs:comment "The activity of connecting an ML model with surrounding software systems and data flows." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ModelMaintenance a owl:Class ;
+    rdfs:label "model maintenance" ;
+    rdfs:comment "The activity of sustaining deployed ML systems over time, including updates, fixes, and operational support." ;
+    rdfs:subClassOf aicd:MLOpsPractice .
+
+aicd:ModelPackaging a owl:Class ;
+    rdfs:label "model packaging" ;
+    rdfs:comment "The activity of preparing a trained model for deployment, often as a software container or comparable artifact." ;
+    rdfs:subClassOf aicd:PackagingActivity .
+
+aicd:ModelRetraining a owl:Class ;
+    rdfs:label "model retraining" ;
+    rdfs:comment "The activity of training a model again using new or updated data, often after drift or performance issues are detected." ;
+    rdfs:subClassOf aicd:MLOpsPractice .
+
+aicd:Ontology a owl:Ontology ;
+    rdfs:label "aicd ontology" ;
+    dcterms:created "2026-04-16T09:46:31.993070+00:00"^^xsd:dateTime ;
+    dcterms:description "This ontology models the abstract concepts involved in the continuous development of artificial intelligence systems. It captures recurring development pipelines, research and practice perspectives, and validation activities used to support iterative AI model improvement. The ontology is intentionally scoped one level above the document’s specific discussion, focusing on the general MLOps-style lifecycle of continuous AI development rather than any individual study or publication." ;
+    dcterms:identifier "hash:873d8b9be29330cdb46bc16090a6b8d851787c6df5bece23166a9e481290a80c" ;
+    dcterms:title "aicd" ;
+    rdfs:comment "This ontology models abstract concepts, roles, activities, and lifecycle relations involved in the continuous development and operation of AI systems, with emphasis on MLOps-style practices such as deployment, monitoring, retraining, validation, and cross-cutting governance concerns." ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasDerivedFrom <urn:hash:b05d1db5a4c8921244b2b1c7dc62d0f8bae8c5160f0c153de0b7627801b2a411> .
+
+aicd:PracticePerspective a owl:Class ;
+    rdfs:label "practice perspective" ;
+    rdfs:comment "A practitioner-oriented perspective on how MLOps is applied in operational settings." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:ProductionEnvironment a owl:Class ;
+    rdfs:label "production environment" ;
+    rdfs:comment "An operational environment where deployed ML models serve live traffic from real users." ;
+    rdfs:subClassOf schema:Place .
+
+aicd:RecurringDataPipeline a owl:Class ;
+    rdfs:label "recurring data pipeline" ;
+    rdfs:comment "A data pipeline that is executed repeatedly and whose outputs require repeated validation." ;
+    rdfs:subClassOf aicd:Pipeline .
+
+aicd:ResearchPerspective a owl:Class ;
+    rdfs:label "research perspective" ;
+    rdfs:comment "A viewpoint or strand of research used to understand MLOps practices, challenges, or solutions." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:SafetyConstraintViolation a owl:Class ;
+    rdfs:label "safety constraint violation" ;
+    rdfs:comment "A condition in which a model or system behavior breaches defined safety constraints." ;
+    rdfs:subClassOf aicd:ModelMonitoring .
+
+aicd:SecurityMonitoring a owl:Class ;
+    rdfs:label "security monitoring" ;
+    rdfs:comment "Monitoring activities that detect security-relevant events or failures in ML systems." ;
+    rdfs:subClassOf aicd:ModelMonitoring .
+
+aicd:SoftwareEngineerRole a owl:Class ;
+    rdfs:label "software engineer role" ;
+    rdfs:comment "A role focused on integrating ML components into surrounding software systems." ;
+    rdfs:subClassOf aicd:Role .
+
+aicd:StagingEnvironment a owl:Class ;
+    rdfs:label "staging environment" ;
+    rdfs:comment "An environment used to validate models or pipelines before production deployment." ;
+    rdfs:subClassOf schema:Place .
+
+aicd:TestingActivity a owl:Class ;
+    rdfs:label "testing activity" ;
+    rdfs:comment "An activity used to evaluate a model or pipeline before deployment or release." ;
+    rdfs:subClassOf aicd:ModelValidation .
+
+aicd:TrainingActivity a owl:Class ;
+    rdfs:label "training activity" ;
+    rdfs:comment "An activity in which a model is fit or updated using training data." ;
+    rdfs:subClassOf aicd:MLLifecycle .
+
+aicd:addressesConcern a owl:ObjectProperty ;
+    rdfs:label "addresses concern" ;
+    rdfs:comment "Links a practice or solution to a cross-cutting concern it is intended to address." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range aicd:CrossSiloConcern .
+
+aicd:continuousImprovementOf a owl:ObjectProperty ;
+    rdfs:label "continuous improvement of" ;
+    rdfs:comment "Links a practice or lifecycle to the AI system or model it continuously improves." ;
+    rdfs:domain aicd:ContinuousAIDevelopment ;
+    rdfs:range schema:Thing .
+
+aicd:deployedToEnvironment a owl:ObjectProperty ;
+    rdfs:label "deployed to environment" ;
+    rdfs:comment "Links a deployed model or service to the environment in which it runs." ;
+    rdfs:domain aicd:ModelArtifact ;
+    rdfs:range schema:Place ;
+    rdfs:subPropertyOf schema:location .
+
+aicd:detects a owl:ObjectProperty ;
+    rdfs:label "detects" ;
+    rdfs:comment "Links a monitoring or validation practice to the issue, drift, or violation it identifies." ;
+    rdfs:domain aicd:ModelMonitoring ;
+    rdfs:range schema:Thing .
+
+aicd:fromBranch a owl:ObjectProperty ;
+    rdfs:label "from branch" ;
+    rdfs:comment "Links a pull request to the source branch it originates from." ;
+    rdfs:domain aicd:PullRequest ;
+    rdfs:range aicd:Branch ;
+    rdfs:subPropertyOf schema:subjectOf .
+
+aicd:hasBranch a owl:ObjectProperty ;
+    rdfs:label "has branch" ;
+    rdfs:comment "Links a Git-based workflow to branches participating in that workflow." ;
+    rdfs:domain aicd:GitBasedWorkflow ;
+    rdfs:range aicd:Branch .
+
+aicd:hasChallenge a owl:ObjectProperty ;
+    rdfs:label "has challenge" ;
+    rdfs:comment "Links an MLOps perspective or lifecycle component to a challenge associated with it." ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range aicd:Challenge .
+
+aicd:hasSolution a owl:ObjectProperty ;
+    rdfs:label "has solution" ;
+    rdfs:comment "Links a challenge or concern to a solution pattern used to mitigate it." ;
+    rdfs:domain schema:Thing ;
+    rdfs:range aicd:Solution .
+
+aicd:hasUnitCode a owl:DatatypeProperty ;
+    rdfs:label "has unit code" ;
+    rdfs:comment "Associates a measurable property or quantity with a unit code when needed for explicit measurement semantics." ;
+    rdfs:domain schema:PropertyValue ;
+    rdfs:range rdfs:Literal .
+
+aicd:monitoringOf a owl:ObjectProperty ;
+    rdfs:label "monitoring of" ;
+    rdfs:comment "Inverse relation for monitoring links, connecting an observed entity to the monitoring practice or control that observes it." ;
+    rdfs:domain schema:Thing ;
+    rdfs:range aicd:ModelMonitoring ;
+    owl:inverseOf aicd:monitors .
+
+aicd:producesArtifact a owl:ObjectProperty ;
+    rdfs:label "produces artifact" ;
+    rdfs:comment "Links a development activity to the model artifact it produces." ;
+    rdfs:domain schema:Action ;
+    rdfs:range aicd:ModelArtifact .
+
+aicd:requiresActivity a owl:ObjectProperty ;
+    rdfs:label "requires activity" ;
+    rdfs:comment "Links a lifecycle stage, practice, or solution to an activity it depends on." ;
+    rdfs:domain aicd:MLLifecycle ;
+    rdfs:range schema:Action ;
+    owl:equivalentProperty aicd:includesActivity .
+
+aicd:requiresCollaborationBetween a owl:ObjectProperty ;
+    rdfs:label "requires collaboration between" ;
+    rdfs:comment "Links a challenge or practice to the roles that must coordinate to address it." ;
+    rdfs:domain schema:Thing ;
+    rdfs:range aicd:Role .
+
+aicd:requiresData a owl:ObjectProperty ;
+    rdfs:label "requires data" ;
+    rdfs:comment "Links an activity such as retraining or validation to the data it depends on." ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:Dataset .
+
+aicd:requiresSecurityControl a owl:ObjectProperty ;
+    rdfs:label "requires security control" ;
+    rdfs:comment "Links a security concern or lifecycle stage to a required security control." ;
+    rdfs:domain aicd:SecurityConcern ;
+    rdfs:range aicd:SecurityControl .
+
+aicd:servesTrafficFrom a owl:ObjectProperty ;
+    rdfs:label "serves traffic from" ;
+    rdfs:comment "Links an inference service to the production traffic it handles." ;
+    rdfs:domain aicd:InferenceService ;
+    rdfs:range aicd:ProductionTraffic .
+
+aicd:toBranch a owl:ObjectProperty ;
+    rdfs:label "to branch" ;
+    rdfs:comment "Links a pull request to the target branch it is proposed for." ;
+    rdfs:domain aicd:PullRequest ;
+    rdfs:range aicd:Branch .
+
+aicd:triggers a owl:ObjectProperty ;
+    rdfs:label "triggers" ;
+    rdfs:comment "Links a workflow event or control point to the activity it initiates." ;
+    rdfs:domain schema:Event ;
+    rdfs:range schema:Action .
+
+aicd:triggersActivity a owl:ObjectProperty ;
+    rdfs:label "triggers activity" ;
+    rdfs:comment "Links a pull request or event to the CI/CD activity it initiates." ;
+    rdfs:domain aicd:PullRequest ;
+    rdfs:range schema:Action .
+
+aicd:usesTelemetry a owl:ObjectProperty ;
+    rdfs:label "uses telemetry" ;
+    rdfs:comment "Links a monitoring or maintenance activity to the telemetry it consumes." ;
+    rdfs:domain aicd:ModelMonitoring ;
+    rdfs:range aicd:Telemetry .
+
+aicd:validatedBy a owl:ObjectProperty ;
+    rdfs:label "validated by" ;
+    rdfs:comment "Links a pipeline, model, or artifact to the validation activity or constraint used to assess it." ;
+    rdfs:domain schema:Thing ;
+    rdfs:range aicd:ModelValidation .
+
+aicd:versionControlBranching a owl:SymmetricProperty ;
+    rdfs:label "version control branching" ;
+    rdfs:comment "Relates branches that participate in the same branching structure within a Git-based workflow." ;
+    rdfs:domain aicd:Branch ;
+    rdfs:range aicd:Branch .
+
+aicd:Challenge a owl:Class ;
+    rdfs:label "challenge" ;
+    rdfs:comment "A recurring obstacle or difficulty encountered in the continuous development and operation of AI systems." ;
+    rdfs:subClassOf schema:Problem .
+
+aicd:ContinuousAIDevelopment a owl:Class ;
+    rdfs:label "continuous AI development" ;
+    rdfs:comment "A recurring, iterative development approach for improving AI systems through repeated build, test, deployment, monitoring, and retraining activities." ;
+    rdfs:subClassOf aicd:MLLifecycle .
+
+aicd:GitBasedWorkflow a owl:Class ;
+    rdfs:label "Git-based workflow" ;
+    rdfs:comment "A version-control-centered workflow for coordinating branching, integration, testing, and deployment activities." ;
+    rdfs:subClassOf aicd:MLOpsPractice .
+
+aicd:InferenceService a owl:Class ;
+    rdfs:label "inference service" ;
+    rdfs:comment "A deployed service that provides predictions or other model outputs to live requests at scale." ;
+    rdfs:subClassOf schema:Service .
+
+aicd:PackagingActivity a owl:Class ;
+    rdfs:label "packaging activity" ;
+    rdfs:comment "The activity of wrapping a trained model for distribution or deployment, such as into a software container." ;
+    rdfs:subClassOf aicd:MLOpsPractice .
+
+aicd:ProductionTraffic a owl:Class ;
+    rdfs:label "production traffic" ;
+    rdfs:comment "Live requests from real users served by deployed systems in production." ;
+    rdfs:subClassOf schema:Event .
+
+aicd:SecurityConcern a owl:Class ;
+    rdfs:label "security concern" ;
+    rdfs:comment "A cross-cutting concern about protecting data, models, infrastructure, and operations throughout the ML lifecycle." ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:SecurityControl a owl:Class ;
+    rdfs:label "security control" ;
+    rdfs:comment "A policy, safeguard, or mechanism used to manage security risks across the ML lifecycle." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:Solution a owl:Class ;
+    rdfs:label "solution" ;
+    rdfs:comment "A proposed method, pattern, or mechanism intended to address an MLOps challenge." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:Telemetry a owl:Class ;
+    rdfs:label "telemetry" ;
+    rdfs:comment "Operational observations and signals collected to assess the behavior of deployed AI or ML systems." ;
+    rdfs:subClassOf schema:Event .
+
+aicd:includesActivity a owl:ObjectProperty ;
+    rdfs:label "includes activity" ;
+    rdfs:comment "Links a lifecycle, pipeline, or workflow to an activity that it contains or orchestrates." ;
+    rdfs:domain aicd:Pipeline ;
+    rdfs:range schema:Action .
+
+aicd:monitors a owl:ObjectProperty ;
+    rdfs:label "monitors" ;
+    rdfs:comment "Links a monitoring practice, team, or control to the entity being observed." ;
+    rdfs:domain aicd:ModelMonitoring ;
+    rdfs:range schema:Thing .
+
+aicd:ModelArtifact a owl:Class ;
+    rdfs:label "model artifact" ;
+    rdfs:comment "A reusable output of the ML lifecycle such as a trained model, packaged component, or containerized deliverable." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:ModelValidation a owl:Class ;
+    rdfs:label "model validation" ;
+    rdfs:comment "The activity of checking model behavior, quality, or constraints before, during, or after training and deployment." ;
+    rdfs:subClassOf aicd:MLOpsPractice .
+
+aicd:Pipeline a owl:Class ;
+    rdfs:label "pipeline" ;
+    rdfs:comment "A recurring workflow that coordinates ordered ML development or operational activities." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:StableBranch a owl:Class ;
+    rdfs:label "stable branch" ;
+    rdfs:comment "A long-lived branch that represents a stable stage of the ML workflow." ;
+    rdfs:subClassOf aicd:Branch .
+
+aicd:MLLifecycle a owl:Class ;
+    rdfs:label "ML lifecycle" ;
+    rdfs:comment "An abstract end-to-end lifecycle for developing, deploying, operating, and improving machine learning systems." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:PullRequest a owl:Class ;
+    rdfs:label "pull request" ;
+    rdfs:comment "A proposed integration change used to trigger review, build, test, or deployment actions in a Git-based workflow." ;
+    rdfs:subClassOf schema:Action .
+
+aicd:CrossSiloConcern a owl:Class ;
+    rdfs:label "cross-silo concern" ;
+    rdfs:comment "A concern that must be addressed across multiple phases of the ML lifecycle rather than in only one phase." ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:Role a owl:Class ;
+    rdfs:label "role" ;
+    rdfs:comment "A functional role involved in the development, deployment, or operation of ML systems." ;
+    rdfs:subClassOf schema:Role .
+
+aicd:Branch a owl:Class ;
+    rdfs:label "branch" ;
+    rdfs:comment "A version-control branch used to isolate work or stabilize development stages in an ML project." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:ModelMonitoring a owl:Class ;
+    rdfs:label "model monitoring" ;
+    rdfs:comment "The activity of observing deployed model behavior in production to detect drift, constraint violations, and other operational issues." ;
+    rdfs:subClassOf aicd:MLOpsPractice .
+
+aicd:MLOpsPractice a owl:Class ;
+    rdfs:label "MLOps practice" ;
+    rdfs:comment "A repeatable operational or engineering practice used to support the productionalization and continuous improvement of ML-enabled systems." ;
+    rdfs:subClassOf schema:CreativeWork .
+

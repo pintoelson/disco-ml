@@ -1,0 +1,344 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mlops1: <https://example.com/mlopsa#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mlops1: a owl:Ontology ;
+    rdfs:label "MLOps Abstraction Ontology" ;
+    dcterms:created "2026-04-14T15:29:44.371268+00:00"^^xsd:dateTime ;
+    dcterms:description "An abstract ontology modeling the core concepts, roles, and processes in Machine Learning Operations (MLOps) across the ML lifecycle. It captures foundational entities such as MLOps practices, roles, compliance, governance, security, quality, automation, scalability, and infrastructure, while aligning with standard vocabularies to ensure interoperability and extensibility." ;
+    dcterms:identifier "hash:042a79c52277e7c608887186e6dd3caa1c74c31b6a6c9168b1dc6ed1fab5ad89" ;
+    dcterms:title "mlopsa" ;
+    rdfs:comment "An abstract ontology modeling the core concepts, roles, and processes in Machine Learning Operations (MLOps) across the ML lifecycle. It captures foundational entities such as MLOps practices, roles, compliance, governance, security, quality, automation, scalability, and infrastructure, while aligning with standard vocabularies to ensure interoperability and extensibility." ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasDerivedFrom <urn:hash:e44caed62dd992e17ba1faba1054c9e50121aebcd32640f1ae5db82519e3b327> .
+
+mlops1:AIExplainability rdfs:label "AIExplainability"@en ;
+    rdfs:comment "The practice of making AI and ML models interpretable and understandable to stakeholders."@en ;
+    rdfs:subClassOf mlops1:CrossSiloConcern .
+
+mlops1:AIFairness rdfs:label "AIFairness"@en ;
+    rdfs:comment "The practice of ensuring that AI and ML models are fair and do not discriminate against any group or individual."@en ;
+    rdfs:subClassOf mlops1:CrossSiloConcern .
+
+mlops1:DataPipeline rdfs:label "DataPipeline"@en ;
+    rdfs:comment "A pipeline that automates the collection, cleaning, transformation, and storage of data for machine learning."@en ;
+    rdfs:subClassOf mlops1:MLPipeline .
+
+mlops1:DataPreparationStage rdfs:label "DataPreparationStage"@en ;
+    rdfs:comment "A lifecycle stage focused on collecting, cleaning, transforming, and storing data for machine learning."@en ;
+    rdfs:subClassOf mlops1:MLLifecycleStage .
+
+mlops1:DataScientist rdfs:label "DataScientist"@en ;
+    rdfs:comment "A professional responsible for designing, training, and evaluating machine learning models."@en ;
+    rdfs:subClassOf mlops1:MLRole .
+
+mlops1:Dataset rdfs:label "Dataset"@en ;
+    rdfs:comment "A collection of data used for training, validation, or testing of machine learning models."@en ;
+    rdfs:subClassOf mlops1:MLArtifact .
+
+mlops1:DeploymentPipeline rdfs:label "DeploymentPipeline"@en ;
+    rdfs:comment "A pipeline that automates the packaging and deployment of trained models to production environments."@en ;
+    rdfs:subClassOf mlops1:MLPipeline .
+
+mlops1:DeploymentStage rdfs:label "DeploymentStage"@en ;
+    rdfs:comment "A lifecycle stage where trained models are packaged and deployed to production environments."@en ;
+    rdfs:subClassOf mlops1:MLLifecycleStage .
+
+mlops1:Experiment rdfs:label "Experiment"@en ;
+    rdfs:comment "A controlled process of training and evaluating a machine learning model with specific parameters and datasets."@en ;
+    rdfs:subClassOf schema:Event .
+
+mlops1:Feature rdfs:label "Feature"@en ;
+    rdfs:comment "A measurable property or characteristic used as input to a machine learning model."@en ;
+    rdfs:subClassOf schema:Property .
+
+mlops1:FeatureStore rdfs:label "FeatureStore"@en ;
+    rdfs:comment "A centralized repository for storing, managing, and serving features for machine learning models."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:ITOperations rdfs:label "ITOperations"@en ;
+    rdfs:comment "A professional responsible for monitoring, maintaining, and operating ML-enabled systems in production."@en ;
+    rdfs:subClassOf mlops1:MLRole .
+
+mlops1:MLAutomation rdfs:label "MLAutomation"@en ;
+    rdfs:comment "The use of automated tools and processes to manage and execute ML lifecycle stages."@en ;
+    rdfs:subClassOf schema:AutomatedAgent .
+
+mlops1:MLCI_CD rdfs:label "MLCI_CD"@en ;
+    rdfs:comment "The practice of integrating ML lifecycle stages with continuous integration and continuous deployment pipelines."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLCollaboration rdfs:label "MLCollaboration"@en ;
+    rdfs:comment "The practice of coordinating and communicating between different roles and teams involved in ML lifecycle stages."@en ;
+    rdfs:subClassOf schema:Collaboration .
+
+mlops1:MLCollaborationTool rdfs:label "MLCollaborationTool"@en ;
+    rdfs:comment "A tool that facilitates collaboration and communication between different roles and teams involved in ML lifecycle stages."@en ;
+    rdfs:subClassOf schema:SoftwareApplication .
+
+mlops1:MLCompliance rdfs:label "MLCompliance"@en ;
+    rdfs:comment "The adherence to laws, regulations, and standards relevant to ML systems and their operations."@en ;
+    rdfs:subClassOf mlops1:MLGovernance .
+
+mlops1:MLConceptDrift rdfs:label "MLConceptDrift"@en ;
+    rdfs:comment "A phenomenon where the statistical properties of the target variable change over time, leading to model performance degradation."@en ;
+    rdfs:subClassOf schema:Event .
+
+mlops1:MLContainerization rdfs:label "MLContainerization"@en ;
+    rdfs:comment "The practice of packaging ML models and their dependencies into containers for deployment."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLDataTransformation rdfs:label "MLDataTransformation"@en ;
+    rdfs:comment "The process of transforming data to meet the requirements of ML models."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLEngineer rdfs:label "MLEngineer"@en ;
+    rdfs:comment "A professional responsible for implementing and maintaining ML pipelines, infrastructure, and deployment processes."@en ;
+    rdfs:subClassOf mlops1:MLRole .
+
+mlops1:MLFeatureEngineering rdfs:label "MLFeatureEngineering"@en ;
+    rdfs:comment "The process of creating, selecting, and transforming features for machine learning models."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLIntegration rdfs:label "MLIntegration"@en ;
+    rdfs:comment "The process of integrating ML models with non-ML software systems."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLModelBehaviorMonitoring rdfs:label "MLModelBehaviorMonitoring"@en ;
+    rdfs:comment "The process of monitoring the behavior of deployed models to detect anomalies or violations of safety constraints."@en ;
+    rdfs:subClassOf mlops1:MLMonitoring .
+
+mlops1:MLModelDeploymentValidation rdfs:label "MLModelDeploymentValidation"@en ;
+    rdfs:comment "The process of validating that a model meets deployment requirements before being released to production."@en ;
+    rdfs:subClassOf mlops1:MLModelValidation .
+
+mlops1:MLModelInference rdfs:label "MLModelInference"@en ;
+    rdfs:comment "The process of using a trained model to make predictions or decisions on new data."@en ;
+    rdfs:subClassOf schema:Event .
+
+mlops1:MLModelPackaging rdfs:label "MLModelPackaging"@en ;
+    rdfs:comment "The process of packaging trained models into deployable artifacts, such as containers or libraries."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLModelPerformanceMonitoring rdfs:label "MLModelPerformanceMonitoring"@en ;
+    rdfs:comment "The process of monitoring the performance of deployed models to detect degradation or drift."@en ;
+    rdfs:subClassOf mlops1:MLMonitoring .
+
+mlops1:MLModelRetrainingDataSource rdfs:label "MLModelRetrainingDataSource"@en ;
+    rdfs:comment "A source of new data used for retraining models, such as production logs or user feedback."@en ;
+    rdfs:subClassOf schema:DataFeed .
+
+mlops1:MLModelRetrainingDeployment rdfs:label "MLModelRetrainingDeployment"@en ;
+    rdfs:comment "The process of deploying a retrained model to production."@en ;
+    rdfs:subClassOf mlops1:MLDeployment .
+
+mlops1:MLModelRetrainingEnvironment rdfs:label "MLModelRetrainingEnvironment"@en ;
+    rdfs:comment "An environment configured for retraining models, such as a staging or development environment."@en ;
+    rdfs:subClassOf mlops1:MLEnvironment .
+
+mlops1:MLModelRetrainingPipeline rdfs:label "MLModelRetrainingPipeline"@en ;
+    rdfs:comment "A pipeline that automates the retraining and updating of models based on triggers or schedules."@en ;
+    rdfs:subClassOf mlops1:MLPipeline .
+
+mlops1:MLModelRetrainingTrigger rdfs:label "MLModelRetrainingTrigger"@en ;
+    rdfs:comment "A condition or event that triggers the retraining of a model, such as performance degradation or concept drift."@en ;
+    rdfs:subClassOf schema:Trigger .
+
+mlops1:MLModelRetrainingValidation rdfs:label "MLModelRetrainingValidation"@en ;
+    rdfs:comment "The process of validating a retrained model before deploying it to production."@en ;
+    rdfs:subClassOf mlops1:MLModelValidation .
+
+mlops1:MLModelServing rdfs:label "MLModelServing"@en ;
+    rdfs:comment "The process of serving ML models to provide inference services in production."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLModelTesting rdfs:label "MLModelTesting"@en ;
+    rdfs:comment "The process of testing a trained model to ensure it performs as expected in production-like environments."@en ;
+    rdfs:subClassOf mlops1:MLModelEvaluation .
+
+mlops1:MLPlatform rdfs:label "MLPlatform"@en ;
+    rdfs:comment "A platform that provides tools, services, and infrastructure for ML lifecycle stages."@en ;
+    rdfs:subClassOf mlops1:MLInfrastructure .
+
+mlops1:MLQuality rdfs:label "MLQuality"@en ;
+    rdfs:comment "The degree to which ML systems meet specified requirements and standards for performance, reliability, and safety."@en ;
+    rdfs:subClassOf schema:Quality .
+
+mlops1:MLRetraining rdfs:label "MLRetraining"@en ;
+    rdfs:comment "The process of updating or retraining models based on new data or performance degradation."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLSafetyConstraint rdfs:label "MLSafetyConstraint"@en ;
+    rdfs:comment "A constraint that ensures the safe and reliable operation of ML systems in production."@en ;
+    rdfs:subClassOf schema:Constraint .
+
+mlops1:MLScalability rdfs:label "MLScalability"@en ;
+    rdfs:comment "The ability of ML systems to handle increasing workloads and data volumes efficiently."@en ;
+    rdfs:subClassOf schema:QuantitativeValue .
+
+mlops1:MLSecurity rdfs:label "MLSecurity"@en ;
+    rdfs:comment "The practice of integrating security controls and measures across the ML lifecycle to protect models, data, and infrastructure."@en ;
+    rdfs:subClassOf mlops1:CrossSiloConcern .
+
+mlops1:MLTelemetry rdfs:label "MLTelemetry"@en ;
+    rdfs:comment "The collection and transmission of data related to the performance and behavior of ML systems in production."@en ;
+    rdfs:subClassOf schema:Thing .
+
+mlops1:MLTransparency rdfs:label "MLTransparency"@en ;
+    rdfs:comment "The practice of making the ML lifecycle and its artifacts understandable and auditable."@en ;
+    rdfs:subClassOf schema:Thing .
+
+mlops1:MLVersionControlSystem rdfs:label "MLVersionControlSystem"@en ;
+    rdfs:comment "A system that tracks and manages versions of ML artifacts, such as datasets, models, and configurations."@en ;
+    rdfs:subClassOf schema:SoftwareApplication .
+
+mlops1:MLVersioning rdfs:label "MLVersioning"@en ;
+    rdfs:comment "The practice of tracking and managing versions of ML artifacts, such as datasets, models, and configurations."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:Model rdfs:label "Model"@en ;
+    rdfs:comment "A machine learning model, including its parameters, architecture, and metadata."@en ;
+    rdfs:subClassOf mlops1:MLArtifact .
+
+mlops1:ModelTrainingStage rdfs:label "ModelTrainingStage"@en ;
+    rdfs:comment "A lifecycle stage where machine learning models are trained, validated, and evaluated."@en ;
+    rdfs:subClassOf mlops1:MLLifecycleStage .
+
+mlops1:MonitoringPipeline rdfs:label "MonitoringPipeline"@en ;
+    rdfs:comment "A pipeline that automates the collection, analysis, and alerting of model performance and behavior in production."@en ;
+    rdfs:subClassOf mlops1:MLPipeline .
+
+mlops1:MonitoringStage rdfs:label "MonitoringStage"@en ;
+    rdfs:comment "A lifecycle stage focused on observing and evaluating the performance and behavior of deployed models in production."@en ;
+    rdfs:subClassOf mlops1:MLLifecycleStage .
+
+mlops1:RetrainingPipeline rdfs:label "RetrainingPipeline"@en ;
+    rdfs:comment "A pipeline that automates the retraining and updating of models based on new data or performance degradation."@en ;
+    rdfs:subClassOf mlops1:MLPipeline .
+
+mlops1:RetrainingStage rdfs:label "RetrainingStage"@en ;
+    rdfs:comment "A lifecycle stage where models are updated or retrained based on new data or performance degradation."@en ;
+    rdfs:subClassOf mlops1:MLLifecycleStage .
+
+mlops1:SecMLOps rdfs:label "SecMLOps"@en ;
+    rdfs:comment "A specialized MLOps practice that integrates security controls across the entire ML lifecycle using the PPTGC framework (People, Processes, Technology, Governance, and Compliance)."@en ;
+    rdfs:subClassOf mlops1:MLOps .
+
+mlops1:TrainingPipeline rdfs:label "TrainingPipeline"@en ;
+    rdfs:comment "A pipeline that automates the training, validation, and evaluation of machine learning models."@en ;
+    rdfs:subClassOf mlops1:MLPipeline .
+
+mlops1:appliesToStage rdfs:label "appliesToStage"@en ;
+    rdfs:comment "Relates a cross-silo concern to the lifecycle stages it applies to."@en ;
+    rdfs:domain mlops1:CrossSiloConcern ;
+    rdfs:range mlops1:MLLifecycleStage ;
+    rdfs:subPropertyOf schema:about .
+
+mlops1:hasArtifact rdfs:label "hasArtifact"@en ;
+    rdfs:comment "Relates an event in the ML lifecycle to the artifacts it produces or consumes."@en ;
+    rdfs:domain schema:Event ;
+    rdfs:range mlops1:MLArtifact ;
+    rdfs:subPropertyOf schema:hasPart .
+
+mlops1:hasCollaboration rdfs:label "hasCollaboration"@en ;
+    rdfs:comment "Relates a role to another role it collaborates with in the MLOps domain."@en ;
+    rdfs:domain mlops1:MLRole ;
+    rdfs:range mlops1:MLRole ;
+    rdfs:subPropertyOf schema:collaboratesWith .
+
+mlops1:hasEnvironment rdfs:label "hasEnvironment"@en ;
+    rdfs:comment "Relates a lifecycle stage to the environment in which it is executed."@en ;
+    rdfs:domain mlops1:MLLifecycleStage ;
+    rdfs:range mlops1:MLEnvironment ;
+    rdfs:subPropertyOf schema:hasPart .
+
+mlops1:hasInfrastructure rdfs:label "hasInfrastructure"@en ;
+    rdfs:comment "Relates a lifecycle stage to the infrastructure required to execute it."@en ;
+    rdfs:domain mlops1:MLLifecycleStage ;
+    rdfs:range mlops1:MLInfrastructure ;
+    rdfs:subPropertyOf schema:hasPart .
+
+mlops1:hasPipeline rdfs:label "hasPipeline"@en ;
+    rdfs:comment "Relates a lifecycle stage to the pipelines that implement it."@en ;
+    rdfs:domain mlops1:MLLifecycleStage ;
+    rdfs:range mlops1:MLPipeline ;
+    rdfs:subPropertyOf schema:hasPart .
+
+mlops1:hasProvenance rdfs:label "hasProvenance"@en ;
+    rdfs:comment "Relates an artifact to its provenance record."@en ;
+    rdfs:domain mlops1:MLArtifact ;
+    rdfs:range mlops1:MLProvenance ;
+    rdfs:subPropertyOf schema:isPartOf .
+
+mlops1:hasRole rdfs:label "hasRole"@en ;
+    rdfs:comment "Relates a person to their role in the MLOps domain."@en ;
+    rdfs:domain schema:Person ;
+    rdfs:range mlops1:MLRole ;
+    rdfs:subPropertyOf schema:role .
+
+mlops1:hasVersion rdfs:label "hasVersion"@en ;
+    rdfs:comment "Relates an artifact to its version identifier."@en ;
+    rdfs:domain mlops1:MLArtifact ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dcterms:hasVersion .
+
+mlops1:MLDeployment rdfs:label "MLDeployment"@en ;
+    rdfs:comment "The process of deploying ML models to production environments."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLGovernance rdfs:label "MLGovernance"@en ;
+    rdfs:comment "The framework and processes for managing and overseeing the ethical, legal, and operational aspects of ML systems."@en ;
+    rdfs:subClassOf schema:Government .
+
+mlops1:MLOps rdfs:label "MLOps"@en ;
+    rdfs:comment "A set of practices and principles for automating and managing the end-to-end machine learning lifecycle, integrating ML with software engineering and DevOps practices."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLProvenance rdfs:label "MLProvenance"@en ;
+    rdfs:comment "The practice of maintaining a record of the origins, transformations, and lineage of ML artifacts."@en ;
+    rdfs:subClassOf schema:Thing .
+
+mlops1:MLEnvironment rdfs:label "MLEnvironment"@en ;
+    rdfs:comment "A specific configuration of hardware, software, and network resources for ML operations."@en ;
+    rdfs:subClassOf mlops1:MLInfrastructure .
+
+mlops1:MLModelEvaluation rdfs:label "MLModelEvaluation"@en ;
+    rdfs:comment "The process of assessing the performance of a trained model on validation or test data."@en ;
+    rdfs:subClassOf schema:Event .
+
+mlops1:MLModelValidation rdfs:label "MLModelValidation"@en ;
+    rdfs:comment "The process of validating that a trained model meets specified requirements and standards."@en ;
+    rdfs:subClassOf mlops1:MLModelEvaluation .
+
+mlops1:MLMonitoring rdfs:label "MLMonitoring"@en ;
+    rdfs:comment "The process of observing and evaluating the performance and behavior of deployed models in production."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLInfrastructure rdfs:label "MLInfrastructure"@en ;
+    rdfs:comment "The hardware, software, and network resources required to support ML lifecycle stages."@en ;
+    rdfs:subClassOf schema:Thing .
+
+mlops1:CrossSiloConcern rdfs:label "CrossSiloConcern"@en ;
+    rdfs:comment "A concern that spans multiple stages of the ML lifecycle, such as fairness, explainability, or security."@en ;
+    rdfs:subClassOf schema:Thing .
+
+mlops1:MLArtifact rdfs:label "MLArtifact"@en ;
+    rdfs:comment "A digital artifact produced during the ML lifecycle, such as datasets, models, or configurations."@en ;
+    rdfs:subClassOf schema:CreativeWork .
+
+mlops1:MLRole rdfs:label "MLRole"@en ;
+    rdfs:comment "A role or responsibility within the MLOps domain, such as data scientist, ML engineer, or IT operations."@en ;
+    rdfs:subClassOf schema:Role .
+
+mlops1:MLPipeline rdfs:label "MLPipeline"@en ;
+    rdfs:comment "A sequence of automated steps that process data, train models, and deploy models in a reproducible and scalable manner."@en ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+mlops1:MLLifecycleStage rdfs:label "MLLifecycleStage"@en ;
+    rdfs:comment "A distinct phase in the machine learning lifecycle, such as data preparation, model training, deployment, or monitoring."@en ;
+    rdfs:subClassOf schema:Event .
+

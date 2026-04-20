@@ -1,0 +1,21 @@
+{
+  "Issue": "LoadImage with ensure_channel_first=True raises ValueError when set_track_meta(False) is active",
+  "Decision": "pass meta_data explicitly to EnsureChannelFirst when img is not a MetaTensor",
+  "Rationale": "EnsureChannelFirst.__call__ already accepts a meta_dict parameter; meta_data is always a validated dict at this point in LoadImage.__call__",
+  "Author": "williams145",
+  "Status": "open",
+  "Description": "LoadImage.__call__ method in LoadImage class",
+  "Time stamp": "2026-04-18T13:39:14Z (Issue creation), 2026-04-18T13:39:31Z (Comment by coderabbitai[bot]), 2026-04-18T20:03:24Z (Comment by williams145)",
+  "Cost": "Trivial (Estimated code review effort)",
+  "Risk": "Crash when set_track_meta(False) is used alongside ensure_channel_first=True",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-18T13:39:31Z",
+      "argument": "Modified LoadImage.__call__ to conditionally handle channel-first conversion based on whether the loaded image is a MetaTensor. When ensure_channel_first is enabled, the code now checks the image type: if not a MetaTensor, it passes the metadata dictionary to EnsureChannelFirst; if already a MetaTensor, it calls EnsureChannelFirst without the metadata argument. This addresses crashes that occur when set_track_meta(False) is used alongside ensure_channel_first=True."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "LoadImage class (__call__ method)",
+  "Justification": "The ticket involves modifying the LoadImage class's __call__ method to handle channel-first conversion logic (ensure_channel_first=True), which is directly related to model input processing in the modeling pipeline. Keywords like 'ensure_channel_first', 'LoadImage', and the focus on method modification in a core ML class indicate Modeling Development."
+}

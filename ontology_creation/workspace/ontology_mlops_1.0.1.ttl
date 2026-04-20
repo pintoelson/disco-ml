@@ -1,0 +1,154 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mlops: <https://example.com/mlops/mlops#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mlops: a owl:Ontology ;
+    rdfs:label "MLOps Domain Ontology" ;
+    dcterms:created "2026-04-20T12:23:12.152412+00:00"^^xsd:dateTime ;
+    dcterms:description "An ontology modeling the abstract concepts and relationships in Machine Learning Operations (MLOps), including lifecycle stages, infrastructure, orchestration, and domain-specific applications across industries such as space exploration, healthcare, IT, and telecommunications." ;
+    dcterms:identifier "hash:e214094840d9777fa05bbe604089c3784c9cff3f6701ac0d4263fc1cd8d37b83" ;
+    dcterms:title "mlops" ;
+    rdfs:comment "An ontology modeling the abstract concepts and relationships in Machine Learning Operations (MLOps), including lifecycle stages, infrastructure, orchestration, and domain-specific applications across industries such as space exploration, healthcare, IT, and telecommunications." ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasDerivedFrom <urn:hash:41613ec8a2b45aca95d4eeb0e0d9e9ca345bc80a777e1d53a92b293cce7d7af7> .
+
+mlops:CloudDeployment a owl:Class ;
+    rdfs:label "Cloud Deployment"@en ;
+    rdfs:comment "The deployment of machine learning models on cloud-based infrastructure for scalable and distributed inference."@en ;
+    rdfs:subClassOf schema:Action .
+
+mlops:DataPipeline a owl:Class ;
+    rdfs:label "Data Pipeline"@en ;
+    rdfs:comment "An automated sequence of data processing steps, including ingestion, transformation, and feature extraction, designed to prepare data for model training."@en ;
+    rdfs:subClassOf schema:Action .
+
+mlops:DataPreparationStage a owl:Class ;
+    rdfs:label "Data Preparation Stage"@en ;
+    rdfs:comment "A lifecycle stage focused on the acquisition, cleaning, transformation, and feature engineering of data required for model development."@en ;
+    rdfs:subClassOf mlops:MLLifecycleStage .
+
+mlops:EdgeDeployment a owl:Class ;
+    rdfs:label "Edge Deployment"@en ;
+    rdfs:comment "The deployment of machine learning models on edge devices or edge computing environments to reduce latency and enable real-time inference."@en ;
+    rdfs:subClassOf schema:Action .
+
+mlops:HybridDeployment a owl:Class ;
+    rdfs:label "Hybrid Deployment"@en ;
+    rdfs:comment "The deployment of machine learning models across both cloud and edge environments to leverage complementary benefits of each."@en ;
+    rdfs:subClassOf schema:Action .
+
+mlops:ModelDeploymentStage a owl:Class ;
+    rdfs:label "Model Deployment Stage"@en ;
+    rdfs:comment "A lifecycle stage responsible for deploying trained models into production environments for inference and serving."@en ;
+    rdfs:subClassOf mlops:MLLifecycleStage .
+
+mlops:ModelMonitoringStage a owl:Class ;
+    rdfs:label "Model Monitoring Stage"@en ;
+    rdfs:comment "A lifecycle stage focused on continuous evaluation, logging, and performance tracking of deployed models in production."@en ;
+    rdfs:subClassOf mlops:MLLifecycleStage .
+
+mlops:ModelTrainingStage a owl:Class ;
+    rdfs:label "Model Training Stage"@en ;
+    rdfs:comment "A lifecycle stage where machine learning models are trained, validated, and optimized using prepared datasets."@en ;
+    rdfs:subClassOf mlops:MLLifecycleStage .
+
+mlops:ResourceAllocation a owl:Class ;
+    rdfs:label "Resource Allocation"@en ;
+    rdfs:comment "The assignment and optimization of computational resources (CPU, GPU, memory) to MLOps workflows to meet performance, cost, and latency requirements."@en ;
+    rdfs:subClassOf mlops:InfrastructureManagement .
+
+mlops:ServerlessComputing a owl:Class ;
+    rdfs:label "Serverless Computing"@en ;
+    rdfs:comment "A paradigm where infrastructure management is abstracted from the user, enabling scalable and cost-efficient execution of MLOps workflows without manual provisioning."@en ;
+    rdfs:subClassOf mlops:InfrastructureManagement .
+
+mlops:deploysTo a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "deploys to"@en ;
+    rdfs:comment "Relates a deployment process to the target environment (e.g., cloud, edge, hybrid) where a model is deployed."@en ;
+    rdfs:domain schema:Action ;
+    rdfs:range schema:Thing ;
+    rdfs:subPropertyOf prov:used .
+
+mlops:enablesCollaboration a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "enables collaboration"@en ;
+    rdfs:comment "Relates a collaborative environment to the teams or stakeholders it brings together for MLOps workflows."@en ;
+    rdfs:domain mlops:CollaborativeEnvironment ;
+    rdfs:range schema:Organization .
+
+mlops:hasLifecycleStage a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has lifecycle stage"@en ;
+    rdfs:comment "Relates an MLOps process or workflow to a specific lifecycle stage it belongs to."@en ;
+    rdfs:domain schema:Action ;
+    rdfs:range mlops:MLLifecycleStage ;
+    rdfs:subPropertyOf prov:wasGeneratedBy .
+
+mlops:managesInfrastructure a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "manages infrastructure"@en ;
+    rdfs:comment "Relates an MLOps process or workflow to the infrastructure it manages or utilizes."@en ;
+    rdfs:domain mlops:InfrastructureManagement ;
+    rdfs:range schema:Thing .
+
+mlops:orchestrates a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "orchestrates"@en ;
+    rdfs:comment "Relates an orchestrator to the workflows or pipelines it manages and coordinates."@en ;
+    rdfs:domain mlops:MLWorkflowOrchestration ;
+    rdfs:range schema:Action .
+
+mlops:tracksModelVersion a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "tracks model version"@en ;
+    rdfs:comment "Relates a model registry or tracking system to the versions of models it manages."@en ;
+    rdfs:domain mlops:ModelRegistry ;
+    rdfs:range mlops:ModelVersioning .
+
+mlops:utilizesFeatureStore a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "utilizes feature store"@en ;
+    rdfs:comment "Relates a data pipeline or training process to a feature store it uses for feature management."@en ;
+    rdfs:domain schema:Action ;
+    rdfs:range mlops:FeatureStore .
+
+mlops:CollaborativeEnvironment a owl:Class ;
+    rdfs:label "Collaborative Environment"@en ;
+    rdfs:comment "A shared workspace enabling collaboration among data engineers, data scientists, and operations professionals to streamline MLOps workflows."@en ;
+    rdfs:subClassOf schema:Action .
+
+mlops:FeatureStore a owl:Class ;
+    rdfs:label "Feature Store"@en ;
+    rdfs:comment "A centralized repository for storing, managing, and serving features used in machine learning models to ensure consistency and reusability."@en ;
+    rdfs:subClassOf schema:Thing .
+
+mlops:MLWorkflowOrchestration a owl:Class ;
+    rdfs:label "ML Workflow Orchestration"@en ;
+    rdfs:comment "The coordination and scheduling of MLOps workflows, including data pipelines, training jobs, and deployment processes, to ensure end-to-end automation and reliability."@en ;
+    rdfs:subClassOf schema:Action .
+
+mlops:ModelRegistry a owl:Class ;
+    rdfs:label "Model Registry"@en ;
+    rdfs:comment "A centralized system for storing, cataloging, and managing machine learning models and their metadata for governance and deployment."@en ;
+    rdfs:subClassOf schema:Thing .
+
+mlops:ModelVersioning a owl:Class ;
+    rdfs:label "Model Versioning"@en ;
+    rdfs:comment "The systematic tracking and management of different versions of machine learning models to enable rollback, comparison, and reproducibility."@en ;
+    rdfs:subClassOf schema:Thing .
+
+mlops:InfrastructureManagement a owl:Class ;
+    rdfs:label "Infrastructure Management"@en ;
+    rdfs:comment "The process of provisioning, configuring, and maintaining computational resources required for MLOps workflows, including cloud, edge, and hybrid environments."@en ;
+    rdfs:subClassOf schema:Action .
+
+mlops:MLLifecycleStage a owl:Class ;
+    rdfs:label "ML Lifecycle Stage"@en ;
+    rdfs:comment "An abstract stage within the Machine Learning lifecycle, encompassing phases such as data preparation, model training, deployment, and monitoring."@en ;
+    rdfs:subClassOf schema:Event .
+

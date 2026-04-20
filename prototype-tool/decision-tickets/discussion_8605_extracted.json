@@ -1,0 +1,26 @@
+{
+  "Issue": "The `mean_batch` and `mean_channel` reduction modes in `DiceMetric.aggregate()` appear to be swapped. `mean_batch` returns one value per channel (instead of per batch), and `mean_channel` returns one value per batch (instead of per channel).",
+  "Decision": "The reduction modes `mean_batch` and `mean_channel` in `DiceMetric.aggregate()` are swapped.",
+  "Rationale": "The current implementation of `mean_batch` and `mean_channel` does not match their intended behavior as defined in the code comments. `MEAN_BATCH` is defined to calculate the average across the batch dimension, and `MEAN_CHANNEL` to calculate the average across the channel dimension, but the actual behavior is reversed.",
+  "Author": "gauthamk02",
+  "Status": "Tentative",
+  "Description": "The reduction modes (`mean_batch` and `mean_channel`) in the `DiceMetric.aggregate()` function of the MONAI library.",
+  "Time stamp": "2025-10-25T14:55:54Z",
+  "Cost": null,
+  "Risk": "The swapped reduction modes introduce potential confusion and incorrect results in the `DiceMetric` calculations, affecting the reliability of the metric's output.",
+  "Argument": [
+    {
+      "author": "gauthamk02",
+      "timestamp": "2025-10-25T14:55:54Z",
+      "argument": "The `mean_batch` and `mean_channel` reduction modes in `DiceMetric.aggregate()` appear to be swapped. `mean_batch` returns one value per channel (instead of per batch), and `mean_channel` returns one value per batch (instead of per channel)."
+    },
+    {
+      "author": "KumoLiu",
+      "timestamp": "2025-10-28T02:37:21Z",
+      "argument": "In this repo, we have defined `MEAN_BATCH` to calculate the average across the batch dimension, and `MEAN_CHANNEL` to calculate the average across the channel dimension."
+    }
+  ],
+  "Mapped Stage": "Model Evaluation",
+  "Primary Artifact": "DiceMetric.aggregate() reduction modes",
+  "Justification": "The issue involves swapped reduction modes (`mean_batch` and `mean_channel`) in the `DiceMetric.aggregate()` function from the MONAI library, which directly impacts the calculation and reliability of the model evaluation metric (Dice score)."
+}

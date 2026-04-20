@@ -1,0 +1,36 @@
+{
+  "Issue": "Failing deploy script action due to pip installation issues",
+  "Decision": "Add --no-build-isolation option for pip in deploy script",
+  "Rationale": "To resolve pip installation failures in the deploy script by preventing build isolation, which ensures dependencies are installed correctly without conflicts",
+  "Author": "ericspod",
+  "Status": "Decided",
+  "Description": "CI workflow updates for .github/workflows/setupapp.yml",
+  "Time stamp": "2026-02-21T23:53:18Z",
+  "Cost": "Minimal (only requires adding a pip flag)",
+  "Risk": "Low (no significant risks identified, resolves a critical CI failure)",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-21T23:53:32Z",
+      "argument": "Python test matrix shifted from versions 3.9-3.11 to 3.10-3.12, which may introduce compatibility issues with older dependencies but ensures better support for newer Python versions"
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-21T23:53:32Z",
+      "argument": "Caching consolidated from separate weekly-timestamp and pip/torch cache steps into a single inline pip cache directive, improving CI efficiency but potentially reducing cache granularity"
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-21T23:53:32Z",
+      "argument": "Dependency installation adds --no-build-isolation flag for requirements-dev.txt, which resolves pip installation failures but may limit build customization"
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-21T23:53:32Z",
+      "argument": "Coverage reporting enabled by adding --coverage flag to both BUILD_MONAI test invocations, improving test visibility but slightly increasing test execution time"
+    }
+  ],
+  "Mapped Stage": "Model Deployment",
+  "Primary Artifact": "CI workflow YML file (.github/workflows/setupapp.yml)",
+  "Justification": "The issue involves a failing deploy script action in CI workflow updates, with the decision to add a pip flag in .github/workflows/setupapp.yml. Keywords like 'deploy script', 'CI workflow', and '.github/workflows/setupapp.yml' indicate Model Deployment activities."
+}

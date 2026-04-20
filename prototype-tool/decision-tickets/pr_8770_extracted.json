@@ -1,0 +1,31 @@
+{
+  "Issue": "Silently incorrect spatial transform results on NVIDIA Blackwell GPUs (compute capability 12.x, sm_120) when MONAI is run with USE_COMPILED=True due to mismatched CUDA architectures in the compiled C extension.",
+  "Decision": "Add a private helper `_compiled_unsupported(device: torch.device) -> bool` to detect unsupported CUDA devices (compute capability major \u2265 12) and gate the compiled spatial resampling path, falling back to PyTorch-native `affine_grid + grid_sample` path on unsupported devices.",
+  "Rationale": "The compiled path for `spatial_resample` and `Warp` is now gated on `USE_COMPILED and not _compiled_unsupported(img.device)` to avoid incorrect results on Blackwell GPUs. Additionally, `Warp.__init__` now stores both compiled integer modes and native string modes to ensure correct fallback path execution.",
+  "Author": "garciadias",
+  "Status": "open",
+  "Description": "Spatial transforms (`spatial_resample`, `Resample`, `Warp`) and CUDA device detection in MONAI's compiled C extension (`monai._C`).",
+  "Time stamp": "2026-03-09T10:26:13Z (Issue creation), 2026-03-09T13:38:40Z (Tolerance tests passing), 2026-04-02T16:41:05Z (Test results shared)",
+  "Cost": "Low to moderate (implementation of device detection and fallback logic with minimal changes to existing code paths)",
+  "Risk": "Technical debt from maintaining separate code paths for compiled and native spatial transforms. Potential side effects from fallback behavior changes in `spatial_resample` and `Warp`.",
+  "Argument": [
+    {
+      "author": "garciadias",
+      "timestamp": "2026-03-09T10:26:13Z",
+      "argument": "Blackwell GPUs (sm_120) are not included in the default CUDA architectures build list (sm_75 through sm_90), causing `grid_pull` to execute against a mismatched PTX or JIT path and silently return wrong values."
+    },
+    {
+      "author": "garciadias",
+      "timestamp": "2026-03-09T13:38:40Z",
+      "argument": "Tolerance tests are passing, confirming the fix resolves the issue without breaking existing functionality."
+    },
+    {
+      "author": "garciadias",
+      "timestamp": "2026-04-02T16:41:05Z",
+      "argument": "The `--timeout` flag added to `runner.py` and `runtests.sh` prevents tests from hanging indefinitely, addressing the issue of GPU ops getting stuck on Blackwell GPUs."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "spatial transform path in MONAI's compiled C extension",
+  "Justification": "The issue involves modifications to the compiled spatial transform path (`spatial_resample`, `Warp`) to handle CUDA architecture mismatches on Blackwell GPUs, with keywords like 'compiled' and 'spatial_resample' indicating modeling-related code paths. The solution involves gating compiled paths and fallback behavior, which are modeling infrastructure concerns."
+}

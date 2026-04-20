@@ -1,0 +1,19 @@
+# Software Engineering Decision-Making (ADR/ADD) Instructions
+Goal: Extract an ontology representing the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and records (ADR).
+
+## Extraction Strategy:
+Search the text for decision-making logic, problem contexts, justifications, and the consequences of architectural choices.
+
+## Important Constraints:
+- **Source Grounding:** Extract only concepts and properties that are explicitly stated, named, or fundamentally described in the source text chunks. 
+- **No Hallucinations:** Do not use the examples below if they are not present in the document.
+- **Causality:** Focus on "Why" something was decided (Rationale) as much as "What" was decided.
+
+## Examples of what to look for (IF present in text):
+- *Domain Entities:* (e.g., Decision, Rationale, Constraint, Alternative Option, Stakeholder)
+- *Structural Roles:* (e.g., A Decision addressing a Problem, a newer Decision superseding an older one)
+- *Properties:* (e.g., addresses, implies, tradeOffWith, rejectedOver)
+
+## Formatting:
+- Use prefix `adr:`
+- Ensure the relationships capture the logic flow of the decision-making process.

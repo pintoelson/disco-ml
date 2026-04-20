@@ -1,0 +1,26 @@
+{
+  "Issue": "Fix using a non-tuple sequence for multidimensional indexing that will result in error in PyTorch 2.9",
+  "Decision": "Replace list- or slice-based indices with tuples using ensure_tuple in monai/inferers/utils.py",
+  "Rationale": "Using ensure_tuple ensures compatibility with PyTorch 2.9+ by converting sequences to tuples for safe multidimensional indexing. This approach standardizes internal indexing in sliding-window inference, covering buffered and non-buffered write paths, per-slice handling for sw_batch_size variants, and _compute_coords. Tests verified parity between buffered and non-buffered flows and confirmed _compute_coords accepts list-based indices.",
+  "Author": "aarpon",
+  "Status": "Decided",
+  "Description": "monai/inferers/utils.py (sliding-window inference logic)",
+  "Time stamp": "2026-02-05T15:10:36Z (issue creation), 2026-02-26T18:54:32Z (review comment), 2026-03-02T09:54:00Z (fix update)",
+  "Cost": "Low (code changes are localized and standardized using existing ensure_tuple utility)",
+  "Risk": "Low (no new risks introduced; addresses PyTorch 2.9+ compatibility issue)",
+  "Argument": [
+    {
+      "author": "ericspod",
+      "timestamp": "2026-02-26T18:54:32Z",
+      "argument": "Using ensure_tuple would be better than explicit casts like tuple(p) if isinstance(p, list) else p, as it handles other iterables and centralizes the conversion logic."
+    },
+    {
+      "author": "aarpon",
+      "timestamp": "2026-03-02T09:54:00Z",
+      "argument": "Replaced explicit casts with monai.utils.ensure_tuple and verified fixes with PyTorch 2.10 error-forcing tests."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "sliding-window inference logic in monai/inferers/utils.py",
+  "Justification": "The issue involves fixing a compatibility problem in multidimensional indexing logic (a core part of sliding-window inference), which is a technical implementation detail in the modeling component. Keywords like 'sliding-window inference' and references to buffer handling (_compute_coords, sw_batch_size) indicate it pertains to the modeling logic rather than other lifecycle stages."
+}

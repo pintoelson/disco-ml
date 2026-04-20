@@ -1,0 +1,12 @@
+{
+  "Issue": "Add `inspect_ckpt` CLI command to monai.bundle to load and inspect checkpoint files (.pt) for tensor names, shapes, and dtypes, optionally computing file hashes for model-zoo bundles.",
+  "Decision": "Add `python -m monai.bundle inspect_ckpt` CLI command to monai.bundle.",
+  "Rationale": "The new function `inspect_ckpt` follows existing bundle CLI command patterns and conventions, uses `_log_input_summary` for consistent logging, and provides utility for creating `large_files.yml` by computing file hashes (md5 or sha256).",
+  "Author": "Zeesejo",
+  "Status": "open",
+  "Description": "monai.bundle (specifically the `inspect_ckpt` CLI command and related functions in `monai/bundle/scripts.py`, `monai/bundle/__init__.py`, and `monai/bundle/__main__.py`)",
+  "Time stamp": "2026-04-17T19:48:14Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": []
+}

@@ -1,0 +1,18 @@
+{
+  "Issue": "Missing and incomplete docstring parameter documentation in loss files (hausdorff_loss.py and cldice.py)",
+  "Decision": "Added missing `alpha` parameter documentation to `HausdorffDTLoss.__init__` and default values to `SoftclDiceLoss.__init__` and `SoftDiceclDiceLoss.__init__`",
+  "Rationale": "Docstring fixes to align with established patterns (e.g., #8701) and improve documentation completeness without altering code logic",
+  "Author": "yushiran",
+  "Status": "Decided",
+  "Description": "Docstring documentation in `monai/losses/hausdorff_loss.py` and `monai/losses/cldice.py`",
+  "Time stamp": "2026-02-23T19:42:23Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-02-23T19:42:49Z",
+      "argument": "Docstring clarifications in three loss classes: SoftclDiceLoss and SoftDiceclDiceLoss docstrings now state default parameter values (iter_: 3; smooth: 1.0; and iter_: 3, alpha: 0.5, smooth: 1.0, respectively). HausdorffDTLoss __init__ docstring now documents the alpha parameter. No changes to function signatures, logic, behavior, or exported/public declarations."
+    }
+  ]
+}

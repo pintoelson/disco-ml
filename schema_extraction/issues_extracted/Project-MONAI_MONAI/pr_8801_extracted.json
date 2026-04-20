@@ -1,0 +1,68 @@
+{
+  "Issue": "Fix bug introduced by me on @benediktjohannes' PR#8708 where `using_cuda` was being ignored in `LabelStats.__call__()` when image and label tensors were on different devices",
+  "Decision": "Fixed device synchronization bug in `LabelStats.__call__()` by properly calculating `using_cuda` and moving tensors to CUDA (when either is on CUDA) or CPU otherwise when devices don't match",
+  "Rationale": "Replaced `# type: ignore` comments with proper `cast()` for type safety and preserved previous behavior of moving label to image device when neither tensor uses CUDA",
+  "Author": "garciadias",
+  "Status": "closed",
+  "Description": "Device synchronization in `LabelStats.__call__()` method within `monaiauto3dseganalyzerpy`",
+  "Time stamp": "2026-04-02T14:56:53Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-02T14:57:12Z",
+      "argument": "No actionable comments were generated in the recent review"
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-02T14:57:12Z",
+      "argument": "Title is confusing with poor formatting and lacks clarity; it reads like concatenated variable/file names rather than a clear change summary"
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-02T14:57:12Z",
+      "argument": "Docstring coverage is 50.00% which is insufficient. The required threshold is 80.00%"
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-02T14:57:12Z",
+      "argument": "Changes directly address issue `#8800`: using_cuda is now computed first, and device-mismatch handling moves both tensors to CUDA or CPU consistently, eliminating the state mismatch"
+    },
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-02T14:57:12Z",
+      "argument": "All changes are in-scope: device-mismatch fix in LabelStats.__call__(), type safety improvements via cast(), and a test comment addition are all aligned with issue `#8800` objectives"
+    },
+    {
+      "author": "benediktjohannes",
+      "timestamp": "2026-04-02T15:13:09Z",
+      "argument": "Thanks for addressing the device synchronization bug"
+    },
+    {
+      "author": "benediktjohannes",
+      "timestamp": "2026-04-02T15:13:45Z",
+      "argument": "Need to address lint"
+    },
+    {
+      "author": "benediktjohannes",
+      "timestamp": "2026-04-02T15:59:19Z",
+      "argument": "Don't have permissions to approve / merge, so could you please do this @ericspod?"
+    },
+    {
+      "author": "benediktjohannes",
+      "timestamp": "2026-04-02T16:46:55Z",
+      "argument": "Looks good now, can fix DCO issue with a remedial commit or mark it passed"
+    },
+    {
+      "author": "benediktjohannes",
+      "timestamp": "2026-04-02T17:25:58Z",
+      "argument": "Great work, keep it up!"
+    },
+    {
+      "author": "benediktjohannes",
+      "timestamp": "2026-04-02T17:26:58Z",
+      "argument": "Thank you for helping out so quick, very nice! I've worked for several other projects which took way longer for those things, so very nice that you directly addressed this"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "Issue": "Raise exception when user-specified reader package is not installed",
+  "Decision": "Raise OptionalImportError when user specifies a reader that isn't installed",
+  "Rationale": "Improves error messages by adding pip install hints to OptionalImportError for missing reader packages",
+  "Author": "haoyu-haoyu",
+  "Status": "open",
+  "Description": "LoadImage transform in MONAI",
+  "Time stamp": "2026-03-11T17:28:37Z",
+  "Cost": "Minimal resource cost (only changes error handling in user-specified reader path)",
+  "Risk": "Potential disruption to existing workflows that rely on silent fallback behavior",
+  "Argument": [
+    {
+      "author": "haoyu-haoyu",
+      "timestamp": "2026-03-16T23:24:25Z",
+      "argument": "Preserved the original error message while adding pip install hints by using str(e) to extract package name and prepending install command"
+    },
+    {
+      "author": "haoyu-haoyu",
+      "timestamp": "2026-04-14T15:58:39Z",
+      "argument": "Comparison of 5 PRs shows #8771 uniquely provides pip install hints in error messages, improving usability while maintaining MONAI's OptionalImportError convention"
+    }
+  ],
+  "Mapped Stage": "Deployment",
+  "Primary Artifact": "Error handling in LoadImage transform",
+  "Justification": "The issue focuses on improving user-facing error messages (OptionalImportError) with pip install hints, which is part of API/client interaction rather than core ML operations. This aligns better with Deployment (client-side usability) than Development/Engineering."
+}

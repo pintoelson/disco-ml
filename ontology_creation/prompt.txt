@@ -1,0 +1,4 @@
+FOCUS EXCLUSIVELY on MLOps (Machine Learning Operations). Your explicit objective is to extract a high-quality OWL ontology representing only elements critical to MLOps lifecycles and software engineering for AI. 
+
+
+IGNORE any details related to author biographical information, institutional affiliations, paper licensing, publishers, raw unrelated mathematical formulas, general web-development unrelated to MLOps, and generic document structure data unless they strictly define an MLOps construct. Do not create facts; generate exclusively high-level ontology schema classes and predicates (owl:Class, owl:ObjectProperty, owl:DatatypeProperty). Ensure adherence to rigorous naming conventions (PascalCase for classes, camelCase for properties).

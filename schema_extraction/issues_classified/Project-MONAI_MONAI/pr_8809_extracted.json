@@ -1,0 +1,26 @@
+{
+  "Issue": "ImageStats.__call__ crashes with UnboundLocalError when 'nda_croppeds' is pre-populated in the input dict",
+  "Decision": "Added the missing else branch to read the pre-computed 'nda_croppeds' value from the dict and wrapped the method body in try/finally to guarantee torch.set_grad_enabled is always restored",
+  "Rationale": "The fix ensures that when 'nda_croppeds' is provided in the input dict, it is read correctly instead of causing an UnboundLocalError. The try/finally block ensures proper restoration of torch.set_grad_enabled state, addressing a secondary issue.",
+  "Author": "williams145",
+  "Status": "closed",
+  "Description": "ImageStats.__call__ method in monai/auto3dseg/analyzer.py",
+  "Time stamp": "2026-04-08T16:38:55Z",
+  "Cost": "Minimal (bug fix with added validation)",
+  "Risk": "Potential silent failures if pre-computed 'nda_croppeds' has wrong type or mismatched channel count (addressed by explicit validation raising ValueError)",
+  "Argument": [
+    {
+      "author": "williams145",
+      "timestamp": "2026-04-09T21:49:49Z",
+      "argument": "PR #8803 by @bluehyena covers overlapping ground on issue #8802, but this PR adds explicit validation of the pre-computed nda_croppeds value, raising a clear ValueError for wrong type or mismatched channel count rather than propagating silently to a confusing downstream error"
+    },
+    {
+      "author": "williams145",
+      "timestamp": "2026-04-16T21:15:22Z",
+      "argument": "This PR also fixes an unrelated issue: the UnboundLocalError when nda_croppeds is pre-computed in the input dict, which is independent of the grad state discussion"
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "ImageStats.__call__ method",
+  "Justification": "The decision involves fixing a method ('ImageStats.__call__') in the modeling-related file ('monai/auto3dseg/analyzer.py'), with rationale centered on handling pre-computed data ('nda_croppeds') and torch gradient state, which are core to model execution. Keywords like 'method body' and 'torch.set_grad_enabled' align with modeling operations."
+}

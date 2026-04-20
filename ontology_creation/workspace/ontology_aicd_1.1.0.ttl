@@ -1,0 +1,3221 @@
+@prefix aicd: <https://example.com//aicd#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+aicd:AIFactory a owl:Class ;
+    rdfs:label "AI Factory" ;
+    rdfs:comment "An organizational model for scaling AI model productionalization through standardized processes, reusable patterns, and shared capabilities." ;
+    rdfs:subClassOf aicd:hasRole,
+        schema:Organization ;
+    aicd:requiresCapability aicd:MLOpsCapability ;
+    aicd:reusableArtifact aicd:MLOpsInfrastructure ;
+    aicd:reusablePattern aicd:RecurringPipeline ;
+    aicd:standardizedProcess aicd:ContinuousDevelopmentProcess ;
+    aicd:supportsScaling aicd:Productionalization .
+
+aicd:AdHocProcess a owl:Class ;
+    rdfs:label "Ad Hoc Process"^^xsd:string ;
+    rdfs:comment "A manually executed, non-standardized process with limited repeatability and automation."^^xsd:string ;
+    rdfs:subClassOf schema:Process .
+
+aicd:Adaptability a owl:Class ;
+    rdfs:label "Adaptability"^^xsd:string ;
+    rdfs:comment "The capability to adjust practices, workflows, or models in response to change within MLOps settings."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:Artifact a owl:Class ;
+    rdfs:label "Artifact"^^xsd:string ;
+    rdfs:comment "A reusable output or deliverable produced or consumed during the machine learning lifecycle, such as code, data, or configuration assets."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork ;
+    owl:sameAs aicd:ArtifactDefinition .
+
+aicd:AutomaticMLOps a owl:Class ;
+    rdfs:label "Automatic MLOps"^^xsd:string ;
+    rdfs:comment "A mature MLOps mode in which end-to-end tasks for data and models are fully automated."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        aicd:Productionalization .
+
+aicd:BestPractice a owl:Class ;
+    rdfs:label "Best Practice"^^xsd:string ;
+    rdfs:comment "A recommended pattern or method for improving the effectiveness, reliability, or scalability of AI continuous development and MLOps work."^^xsd:string ;
+    rdfs:subClassOf schema:Thing ;
+    owl:sameAs aicd:DevelopmentPractice,
+        aicd:ProgrammingPractice .
+
+aicd:BiasMonitoring a owl:Class ;
+    rdfs:label "Bias Monitoring"^^xsd:string ;
+    rdfs:comment "Monitoring activity focused on detecting bias or unfair behavior in ML systems and their outputs."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelMonitoring .
+
+aicd:BusinessGoalAlignment a owl:Class ;
+    rdfs:label "Business Goal Alignment"^^xsd:string ;
+    rdfs:comment "The alignment of technical objectives and operational activities with business goals and customer needs."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:CICDPipelineAutomation a owl:Class ;
+    rdfs:label "CI/CD Pipeline Automation"^^xsd:string ;
+    rdfs:comment "Automation of the continuous integration and continuous delivery pipeline for machine learning models."^^xsd:string ;
+    rdfs:subClassOf aicd:DevelopmentAutomation,
+        aicd:RecurringPipeline .
+
+aicd:Capability a owl:Class ;
+    rdfs:label "Capability"^^xsd:string ;
+    rdfs:comment "The ability of an organization, team, or process to perform MLOps-related activities effectively."^^xsd:string ;
+    rdfs:subClassOf schema:Thing ;
+    owl:sameAs aicd:MLOpsCapability,
+        aicd:MLOpsCapabilityMaturityAssessment .
+
+aicd:ClassificationScheme a owl:Class ;
+    rdfs:label "Classification Scheme"^^xsd:string ;
+    rdfs:comment "A scheme used to classify research studies or solutions according to predefined categories or dimensions."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:CodeQualityProblem a owl:Class ;
+    rdfs:label "Code Quality Problem"^^xsd:string ;
+    rdfs:comment "A deficiency in implementation quality that can arise in ML development when software engineering practices are not applied consistently."^^xsd:string ;
+    rdfs:subClassOf aicd:TechnicalDebt .
+
+aicd:Collaboration a owl:Class ;
+    rdfs:label "Collaboration"^^xsd:string ;
+    rdfs:comment "A general collaborative capability relevant to MLOps work across teams and organizational units."^^xsd:string,
+        "Cooperative work across product, model, and stakeholder roles in MLOps processes."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ConceptualLevel a owl:Class ;
+    rdfs:label "Conceptual Level"^^xsd:string ;
+    rdfs:comment "The abstraction level where objectives are defined to establish the purpose of a review or evaluation."^^xsd:string ;
+    rdfs:subClassOf aicd:AbstractionLevel .
+
+aicd:ConfidentialDataProtection a owl:Class ;
+    rdfs:label "Confidential Data Protection"^^xsd:string ;
+    rdfs:comment "Activities and controls for protecting confidential data used or produced within ML development and operations."^^xsd:string ;
+    rdfs:subClassOf aicd:SecurityConcern .
+
+aicd:ContinuousImprovement a owl:Class ;
+    rdfs:label "Continuous Improvement"^^xsd:string ;
+    rdfs:comment "An ongoing process of refining ML models, data, and workflows through repeated iteration and experimentation."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess .
+
+aicd:ContinuousLearning a owl:Class ;
+    rdfs:label "Continuous Learning"^^xsd:string ;
+    rdfs:comment "A cultural or organizational practice of ongoing skill and process improvement that supports MLOps adoption."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:CustomerRole a owl:Class ;
+    rdfs:label "Customer Role"^^xsd:string ;
+    rdfs:comment "A stakeholder role involved in requirement clarification and expectation setting for AI model development."^^xsd:string ;
+    rdfs:subClassOf schema:Role ;
+    owl:sameAs aicd:CustomerInvolvement ;
+    aicd:definesRequirements aicd:ProblemDefinition .
+
+aicd:DataCleaning a owl:Class ;
+    rdfs:label "Data Cleaning"^^xsd:string ;
+    rdfs:comment "An activity for improving data quality by removing errors, inconsistencies, or noise before model training or deployment."^^xsd:string,
+        "The activity of correcting, normalizing, and preparing data so it can be used reliably by ML models."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:DataDrift a owl:Class ;
+    rdfs:label "Data Drift"^^xsd:string ;
+    rdfs:comment "A change in the distribution of input data over time that can degrade model performance in production."^^xsd:string,
+        "A change in the distribution or characteristics of input data over time that can affect deployed model behavior."^^xsd:string ;
+    rdfs:subClassOf aicd:conceptDrift,
+        schema:Thing ;
+    owl:sameAs aicd:DataDrifting,
+        aicd:ModelDrift .
+
+aicd:DataQualityChallenge a owl:Class ;
+    rdfs:label "Data Quality Challenge"^^xsd:string ;
+    rdfs:comment "A challenge arising when data quality is insufficient for reliable model training, validation, or operational use."^^xsd:string ;
+    rdfs:subClassOf aicd:DataManagementChallenge ;
+    aicd:addressesConcern aicd:DataQualityAndQuantityChallenge .
+
+aicd:DataQuantityChallenge a owl:Class ;
+    rdfs:label "Data Quantity Challenge"^^xsd:string ;
+    rdfs:comment "A challenge arising when available data volume is insufficient for training, validation, or improvement of ML models."^^xsd:string ;
+    rdfs:subClassOf aicd:DataManagementChallenge ;
+    aicd:addressesConcern aicd:DataQualityAndQuantityChallenge .
+
+aicd:DevOps a owl:Class ;
+    rdfs:label "DevOps"^^xsd:string ;
+    rdfs:comment "A software engineering culture and practice set emphasizing collaboration, automation, continuous integration, and continuous delivery."^^xsd:string ;
+    rdfs:subClassOf schema:Organization .
+
+aicd:DevOpsEngineerRole a owl:Class ;
+    rdfs:label "DevOps Engineer Role"^^xsd:string ;
+    rdfs:comment "A role responsible for DevOps practices and operational support in MLOps settings."^^xsd:string ;
+    rdfs:subClassOf schema:Role .
+
+aicd:DevOpsWithoutMLOps a owl:Class ;
+    rdfs:label "DevOps without MLOps"^^xsd:string ;
+    rdfs:comment "A maturity level where DevOps practices exist for software development but have not been extended to ML workflows."^^xsd:string ;
+    rdfs:subClassOf aicd:MLOpsMaturityLevel .
+
+aicd:ErrorMonitoring a owl:Class ;
+    rdfs:label "Error Monitoring"^^xsd:string ;
+    rdfs:comment "Monitoring activity focused on detecting errors and operational degradations in ML systems."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelMonitoring .
+
+aicd:Evaluation a owl:Class ;
+    rdfs:label "Evaluation"^^xsd:string ;
+    rdfs:comment "An activity of assessing a machine learning model, dataset, or pipeline against defined criteria or requirements."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelValidation .
+
+aicd:ExpectationManagementChallenge a owl:Class ;
+    rdfs:label "Expectation Management Challenge"^^xsd:string ;
+    rdfs:comment "A challenge related to managing stakeholder expectations about MLOps outcomes, timing, and capabilities."^^xsd:string ;
+    rdfs:subClassOf aicd:Challenge .
+
+aicd:ExperimentalNature a owl:Class ;
+    rdfs:label "Experimental Nature"^^xsd:string ;
+    rdfs:comment "A characteristic of ML model development in which uncertainty, repeated trials, and exploratory work are fundamental."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ExperimentalNatureOfML a owl:Class ;
+    rdfs:label "Experimental Nature of ML"^^xsd:string ;
+    rdfs:comment "A challenge arising from the experimental, iterative, and uncertain character of machine learning development."^^xsd:string ;
+    rdfs:subClassOf aicd:Challenge .
+
+aicd:FullAutomatedOperations a owl:Class ;
+    rdfs:label "Full Automated Operations"^^xsd:string ;
+    rdfs:comment "A fully automated operational mode in which training, deployment, monitoring, and retraining are automated in production."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        aicd:ProductionOperations .
+
+aicd:GitBasedWorkflow a owl:Class ;
+    rdfs:label "Git-Based Workflow" ;
+    rdfs:comment "A development workflow based on Git branches and pull requests that supports coordination, automation, and CI/CD activities for ML projects." ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        aicd:ContinuousIntegration,
+        schema:Action ;
+    aicd:usesInfrastructure aicd:MLOpsInfrastructure ;
+    aicd:usesTool aicd:JenkinsTool .
+
+aicd:GoalQuestionMetricApproach a owl:Class ;
+    rdfs:label "Goal-Question-Metric Approach"^^xsd:string ;
+    rdfs:comment "A measurement and structuring approach that organizes objectives, questions, and metrics into abstraction levels for evaluation-oriented research."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:Governance a owl:Class ;
+    rdfs:label "Governance"^^xsd:string ;
+    rdfs:comment "A set of oversight activities, policies, and controls that guide responsible AI model development, deployment, and maintenance."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern,
+        schema:Thing ;
+    owl:sameAs aicd:DataGovernance,
+        aicd:GovernanceConcern,
+        aicd:ModelGovernance .
+
+aicd:GrayLiterature a owl:Class ;
+    rdfs:label "Gray Literature"^^xsd:string ;
+    rdfs:comment "Non-journal and non-conference material used as an information source for MLOps research and practice synthesis."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:HypothesisTesting a owl:Class ;
+    rdfs:label "Hypothesis Testing"^^xsd:string ;
+    rdfs:comment "An evaluative activity in which alternative assumptions or model strategies are examined as part of experimental ML development."^^xsd:string ;
+    rdfs:subClassOf aicd:Experimentation .
+
+aicd:ImplementationAttribute a owl:Class ;
+    rdfs:label "Implementation Attribute"^^xsd:string ;
+    rdfs:comment "An essential attribute or principle relevant to successful MLOps implementation."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:IncidentResponse a owl:Class ;
+    rdfs:label "Incident Response" ;
+    rdfs:comment "An operational response activity for handling detected issues affecting AI models in production." ;
+    rdfs:subClassOf aicd:ModelMonitoring,
+        schema:Action .
+
+aicd:KnowledgeSharing a owl:Class ;
+    rdfs:label "Knowledge Sharing"^^xsd:string ;
+    rdfs:comment "The practice of exchanging knowledge, methods, and best practices across teams involved in AI model development and operations."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        schema:Action ;
+    aicd:supportsScaling aicd:ContinuousDevelopmentProcess .
+
+aicd:KubeflowPlatform a owl:Class ;
+    rdfs:label "Kubeflow Platform"^^xsd:string ;
+    rdfs:comment "A platform for implementing MLOps workflows and reducing the burden of workflow implementation."^^xsd:string ;
+    rdfs:subClassOf aicd:WorkflowOrchestrationTool ;
+    owl:sameAs aicd:KubernetesPlatform .
+
+aicd:MLOpsConceptualDefinition a owl:Class ;
+    rdfs:label "MLOps Conceptual Definition"^^xsd:string ;
+    rdfs:comment "A conceptual definition used to characterize MLOps as a field, practice, or lifecycle-oriented approach."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:MLOpsGapAnalysis a owl:Class ;
+    rdfs:label "MLOps Gap Analysis"^^xsd:string ;
+    rdfs:comment "An analytical activity aimed at identifying gaps in the MLOps research domain or in organizational practice."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:MLOpsMaturityAssessment a owl:Class ;
+    rdfs:label "MLOps Maturity Assessment"^^xsd:string ;
+    rdfs:comment "An assessment activity for evaluating the maturity or capability level of MLOps processes, practices, and organizational readiness."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelValidation,
+        schema:Action ;
+    aicd:assessesCapability aicd:MLOpsCapability .
+
+aicd:MLOpsMaturityFramework a owl:Class ;
+    rdfs:label "MLOps Maturity Framework"^^xsd:string ;
+    rdfs:comment "A structured framework that defines levels, dimensions, or benchmarks used to assess and improve MLOps maturity."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork ;
+    aicd:hasBenchmark aicd:MLOpsPipeline ;
+    aicd:hasMaturityDimension aicd:Automation,
+        aicd:DataManagement,
+        aicd:InterdisciplinaryCollaboration,
+        aicd:ModelQualityMonitoring,
+        aicd:OrganizationalCulture,
+        aicd:ProcessIntegration .
+
+aicd:MLOpsPractice a owl:Class ;
+    rdfs:label "MLOps Practice"^^xsd:string ;
+    rdfs:comment "A practice, method, or operational capability used to support the continuous development and operation of AI models."^^xsd:string,
+        "A recurring operational or engineering practice used in MLOps, including automation, monitoring, governance, and lifecycle management."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    aicd:includesPractice aicd:ModelDeployment,
+        aicd:ModelMonitoring,
+        aicd:ModelRetraining,
+        aicd:ModelValidation .
+
+aicd:MLOpsResearchArea a owl:Class ;
+    rdfs:label "MLOps Research Area"^^xsd:string ;
+    rdfs:comment "A domain of research concerned with MLOps, software development, and ML productionization in practice."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:MLOpsResearchMethod a owl:Class ;
+    rdfs:label "MLOps Research Method"^^xsd:string ;
+    rdfs:comment "A method used to investigate MLOps in software engineering or software development research."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:MLOpsResearchObject a owl:Class ;
+    rdfs:label "MLOps Research Object"^^xsd:string ;
+    rdfs:comment "An abstract object of study in MLOps research, such as definitions, practices, artifacts, processes, or challenges."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:MLOpsResearchQuestion a owl:Class ;
+    rdfs:label "MLOps Research Question"^^xsd:string ;
+    rdfs:comment "A research question used to structure evidence gathering about MLOps implementation, maturity, adoption, benefits, or challenges."^^xsd:string ;
+    rdfs:subClassOf schema:Question .
+
+aicd:MLProject a owl:Class ;
+    rdfs:label "ML Project"^^xsd:string ;
+    rdfs:comment "A project centered on developing machine learning models and related lifecycle activities such as training, validation, deployment, and monitoring."^^xsd:string ;
+    rdfs:subClassOf aicd:DataScienceProject .
+
+aicd:MLWorkflow a owl:Class ;
+    rdfs:label "ML Workflow"^^xsd:string ;
+    rdfs:comment "A machine learning workflow that may be extended by MLOps practices for automation and operationalization."^^xsd:string ;
+    rdfs:subClassOf aicd:RecurringPipeline .
+
+aicd:MaintenanceConcern a owl:Class ;
+    rdfs:label "Maintenance Concern"^^xsd:string ;
+    rdfs:comment "A cross-silo concern related to sustaining model performance and operational reliability after deployment."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:ManualMLOps a owl:Class ;
+    rdfs:label "Manual MLOps"^^xsd:string ;
+    rdfs:comment "A low-maturity MLOps mode characterized by manually executed ML lifecycle activities with limited automation."^^xsd:string,
+        "An MLOps stage where the end-to-end lifecycle is standardized manually rather than fully automated."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        aicd:Productionalization ;
+    aicd:progressesTo aicd:AutomatedMLOps .
+
+aicd:MaturityModel a owl:Class ;
+    rdfs:label "Maturity Model"^^xsd:string ;
+    rdfs:comment "A reference model for assessing the capability or maturity of MLOps practices, processes, or organizational readiness."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork ;
+    owl:sameAs aicd:ModelObsolescence .
+
+aicd:Metric a owl:Class ;
+    rdfs:label "Metric"^^xsd:string ;
+    rdfs:comment "A quantitative measure associated with a research question or evaluation objective."^^xsd:string ;
+    rdfs:subClassOf schema:PropertyValue ;
+    owl:sameAs aicd:PerformanceMetric .
+
+aicd:ModelDrifting a owl:Class ;
+    rdfs:label "Model Drifting"^^xsd:string ;
+    rdfs:comment "A lifecycle condition in which a deployed or trained model no longer aligns well with current data or requirements, motivating monitoring and retraining."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ModelUpdate a owl:Class ;
+    rdfs:label "Model Update"^^xsd:string ;
+    rdfs:comment "An update applied to a model in production, typically through a deployment or retraining activity."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:Monitoring a owl:Class ;
+    rdfs:label "Monitoring"^^xsd:string ;
+    rdfs:comment "An ongoing activity of observing models, data, and operational signals in order to detect degradation, drift, or other issues."^^xsd:string,
+        "An ongoing observational activity in the AI lifecycle that tracks model behavior, performance, or operational conditions after deployment."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelMonitoring,
+        schema:Action ;
+    owl:sameAs aicd:MonitoringConcern,
+        aicd:MonitoringPhase .
+
+aicd:MultidisciplinaryIntegration a owl:Class ;
+    rdfs:label "Multidisciplinary Integration"^^xsd:string ;
+    rdfs:comment "The integration of multiple disciplines involved in MLOps, such as data science, software engineering, operations, data management, ethics, and business."^^xsd:string ;
+    rdfs:subClassOf schema:Thing ;
+    aicd:spansDiscipline schema:DefinedTerm .
+
+aicd:NoMLOps a owl:Class ;
+    rdfs:label "No MLOps"^^xsd:string ;
+    rdfs:comment "A maturity level in which no MLOps practices are in place."^^xsd:string ;
+    rdfs:subClassOf aicd:MLOpsMaturityLevel .
+
+aicd:Ontology a owl:Ontology ;
+    rdfs:label "AI Continuous Development Ontology" ;
+    dcterms:created "2026-04-16T13:12:38.684436+00:00"^^xsd:dateTime ;
+    dcterms:description "An ontology for the continuous development and maturity assessment of artificial intelligence models as a software engineering and MLOps-oriented lifecycle concept. It covers recurring pipelines, continuous development processes, validation, monitoring, governance, automation, and research/practice perspectives related to AI model evolution. The ontology is intentionally one level above a single pipeline example and is suitable for describing recurring AI development workflows and maturity frameworks across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as a software engineering and MLOps-oriented lifecycle concept. It captures recurring pipelines, lifecycle stages, validation, monitoring, maintenance, retraining, governance, maturity models, best practices, and research/practice perspectives related to AI model evolution. The ontology is intentionally one level above a single pipeline example and is suitable for describing recurring AI development workflows across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as a software engineering and MLOps-oriented lifecycle concept. It captures recurring pipelines, lifecycle stages, validation, monitoring, maintenance, retraining, governance, roles, artifacts, benefits, challenges, maturity models, and research/practice perspectives related to AI model evolution across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as a software engineering and MLOps-oriented lifecycle concept. It covers abstract notions such as recurring pipelines, continuous development processes, validation, and research/practice perspectives related to AI model evolution. The ontology is intentionally one level above a single pipeline example and is suitable for describing recurring AI development workflows across settings.",
+        "An ontology for the continuous development of artificial intelligence models as an MLOps-oriented lifecycle concept. It captures recurring pipelines, continuous integration and deployment, validation, monitoring, maintenance, retraining, governance, roles, and research/practice perspectives related to AI model evolution across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as an MLOps-oriented lifecycle concept. It covers recurring pipelines, continuous development processes, validation, monitoring, maintenance, retraining, governance, and research/practice perspectives related to AI model evolution across settings."^^xsd:string ;
+    dcterms:identifier "hash:55a25bbda9453396be81601140b2fa96d659268413b36c6707b5c01b3a405325" ;
+    dcterms:subject aicd:ContinuousDevelopmentProcess,
+        aicd:MLOpsAdoption,
+        aicd:MLOpsMaturityModel ;
+    dcterms:title "aicd" ;
+    rdfs:comment "An ontology for the continuous development and maturity assessment of artificial intelligence models as an MLOps-oriented lifecycle concept. It covers recurring pipelines, continuous training and deployment, validation, monitoring, maintenance, governance, automation, and organizational maturity frameworks related to AI model evolution across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as a software engineering and MLOps-oriented lifecycle concept. It captures recurring pipelines, lifecycle stages, validation, monitoring, maintenance, retraining, governance, roles, artifacts, benefits, challenges, maturity models, and research/practice perspectives related to AI model evolution across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as an MLOps-oriented lifecycle concept. It captures recurring pipelines, continuous development processes, validation, monitoring, maintenance, retraining, deployment automation, CI/CD-oriented workflows, data management maturity, and research/practice perspectives related to AI model evolution across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as an MLOps-oriented lifecycle concept. It covers recurring pipelines, continuous development processes, validation, monitoring, maintenance, retraining, governance, and research/practice perspectives related to AI model evolution across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as an MLOps-oriented lifecycle concept. It covers recurring pipelines, continuous development processes, validation, monitoring, maintenance, retraining, governance, and research/practice perspectives related to AI model evolution across settings.",
+        "An ontology for the continuous development of artificial intelligence models as an MLOps-oriented lifecycle concept. It covers recurring pipelines, continuous development processes, validation, monitoring, maintenance, retraining, governance, best practices, maturity models, and research/practice perspectives related to AI model evolution across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as an MLOps-oriented lifecycle concept. It covers recurring pipelines, continuous development processes, validation, monitoring, maintenance, retraining, governance, collaboration, and research/practice perspectives related to AI model evolution across settings."^^xsd:string,
+        "An ontology for the continuous development of artificial intelligence models as an MLOps-oriented lifecycle concept. It covers recurring pipelines, continuous monitoring and training, deployment, validation, retraining, infrastructure, roles, governance, and research/practice perspectives related to AI model evolution across settings."^^xsd:string ;
+    owl:versionInfo "1.1.0" ;
+    prov:wasDerivedFrom <urn:hash:6055ca7b72a34507d2583c975207b380ac252a79ed50544a64bde364f8534529> ;
+    aicd:integratesDiscipline schema:Thing .
+
+aicd:OperationalLevel a owl:Class ;
+    rdfs:label "Operational Level"^^xsd:string ;
+    rdfs:comment "The abstraction level where research questions are derived from objectives and used to structure evaluation."^^xsd:string ;
+    rdfs:subClassOf aicd:AbstractionLevel .
+
+aicd:Pipeline a owl:Class ;
+    rdfs:label "Pipeline"^^xsd:string ;
+    rdfs:comment "An organized sequence of machine learning development and operations activities executed to support continuous delivery and improvement."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    owl:sameAs aicd:DataPipeline .
+
+aicd:PracticePerspective a owl:Class ;
+    rdfs:label "Practice Perspective"^^xsd:string ;
+    rdfs:comment "A perspective grounded in practitioner experience, operational concerns, and applied MLOps usage."^^xsd:string,
+        "A perspective oriented toward operational adoption, implementation, and improvement of MLOps in real-world settings."^^xsd:string ;
+    rdfs:subClassOf aicd:LifecyclePerspective,
+        schema:Thing ;
+    owl:sameAs aicd:ResearchPerspective .
+
+aicd:PrivacyConcern a owl:Class ;
+    rdfs:label "Privacy Concern"^^xsd:string ;
+    rdfs:comment "A cross-silo concern related to protecting confidential or customer information throughout the ML lifecycle."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:ProductOwnerRole a owl:Class ;
+    rdfs:label "Product Owner Role"^^xsd:string ;
+    rdfs:comment "A role responsible for product-level direction and alignment in MLOps-driven development."^^xsd:string ;
+    rdfs:subClassOf schema:Role .
+
+aicd:ProductionEnvironment a owl:Class ;
+    rdfs:label "Production Environment"^^xsd:string ;
+    rdfs:comment "An operational environment in which an AI model is deployed and monitored in use."^^xsd:string,
+        "The operational environment in which ML models are deployed and monitored in use."^^xsd:string ;
+    rdfs:subClassOf schema:Place .
+
+aicd:ProductionReadiness a owl:Class ;
+    rdfs:label "Production Readiness"^^xsd:string ;
+    rdfs:comment "The state of a machine learning model, process, or project being prepared for reliable operational use in production."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ProgressDegree a owl:Class ;
+    rdfs:label "Progress Degree"^^xsd:string ;
+    rdfs:comment "An abstract measure of the extent of progress achieved by an initiative or research effort."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:QualifiedPersonnel a owl:Class ;
+    rdfs:label "Qualified Personnel"^^xsd:string ;
+    rdfs:comment "Personnel with the expertise required to build, maintain, and sustain ML models over time."^^xsd:string ;
+    rdfs:subClassOf schema:Person ;
+    owl:sameAs aicd:QualifiedPersonnelShortage .
+
+aicd:QualityCriterion a owl:Class ;
+    rdfs:label "Quality Criterion"^^xsd:string ;
+    rdfs:comment "A criterion used to assess or classify studies, solutions, or evidence according to relevance or quality."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:QualityModel a owl:Class ;
+    rdfs:label "Quality Model"^^xsd:string ;
+    rdfs:comment "A standard or model used to guide quality-oriented implementation and evaluation of MLOps practices."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork ;
+    aicd:supportsMLOpsAdoption aicd:MLOpsAdoption .
+
+aicd:QuantitativeLevel a owl:Class ;
+    rdfs:label "Quantitative Level"^^xsd:string ;
+    rdfs:comment "The abstraction level where metrics are defined to provide quantifiable answers to research questions."^^xsd:string ;
+    rdfs:subClassOf aicd:AbstractionLevel .
+
+aicd:Refactoring a owl:Class ;
+    rdfs:label "Refactoring"^^xsd:string ;
+    rdfs:comment "A code improvement activity that restructures software without changing its external behavior, supporting sustainable ML codebases."^^xsd:string ;
+    rdfs:subClassOf aicd:ProgrammingPractice .
+
+aicd:ResearchObjective a owl:Class ;
+    rdfs:label "Research Objective"^^xsd:string ;
+    rdfs:comment "An objective that guides an empirical or review-oriented study, such as defining the scope or purpose of a systematic review."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ResearchQuestion a owl:Class ;
+    rdfs:label "Research Question"^^xsd:string ;
+    rdfs:comment "A question formulated to focus and structure the evaluation of literature or evidence in a review process."^^xsd:string ;
+    rdfs:subClassOf schema:Question .
+
+aicd:ResourceConstraint a owl:Class ;
+    rdfs:label "Resource Constraint"^^xsd:string ;
+    rdfs:comment "A limitation on computing resources or infrastructure capacity that affects MLOps adoption and execution."^^xsd:string ;
+    rdfs:subClassOf schema:Thing ;
+    owl:sameAs aicd:ComputationalResource,
+        aicd:ComputationalResourceConstraint .
+
+aicd:ResourceManagement a owl:Class ;
+    rdfs:label "Resource Management"^^xsd:string ;
+    rdfs:comment "The planning and efficient use of computational resources, such as infrastructure and specialized hardware, in ML development and operations."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:RetrainingConcern a owl:Class ;
+    rdfs:label "Retraining Concern"^^xsd:string ;
+    rdfs:comment "A cross-silo concern related to deciding when and how to update a model using fresh data."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:SecurityMonitoring a owl:Class ;
+    rdfs:label "Security Monitoring" ;
+    rdfs:comment "Monitoring activity focused on detecting security issues affecting AI models or their operating environment." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty aicd:monitorsFor ;
+            owl:someValuesFrom aicd:SecurityConcern ],
+        aicd:ContinuousMonitoring,
+        aicd:ModelMonitoring,
+        aicd:MonitoringPhase ;
+    aicd:mitigatesConcern aicd:SecurityConcern .
+
+aicd:ServerlessResource a owl:Class ;
+    rdfs:label "Serverless Resource"^^xsd:string ;
+    rdfs:comment "A cloud resource model that reduces physical infrastructure burden by abstracting compute provisioning."^^xsd:string ;
+    rdfs:subClassOf aicd:CloudResource .
+
+aicd:SoftSkill a owl:Class ;
+    rdfs:label "Soft Skill"^^xsd:string ;
+    rdfs:comment "A non-technical interpersonal capability relevant to communication and collaboration in MLOps settings."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:SoftwareEngineerRole a owl:Class ;
+    rdfs:label "Software Engineer Role"^^xsd:string ;
+    rdfs:comment "A professional role concerned with software development and operational engineering tasks in ML-enabled systems."^^xsd:string ;
+    rdfs:subClassOf schema:Role ;
+    owl:sameAs aicd:SoftwareDeveloperRole ;
+    aicd:hasProfessionalDevelopment aicd:ProfessionalDevelopment ;
+    aicd:performsOutsideUsualRemit aicd:MLOpsRole .
+
+aicd:SoftwareEngineeringContext a owl:Class ;
+    rdfs:label "Software Engineering Context"^^xsd:string ;
+    rdfs:comment "A software engineering setting relevant to MLOps research, adoption, and process evaluation."^^xsd:string ;
+    rdfs:subClassOf schema:Thing ;
+    owl:sameAs aicd:SoftwareDevelopmentContext .
+
+aicd:SpecializedMLEngineeringTeam a owl:Class ;
+    rdfs:label "Specialized ML Engineering Team" ;
+    rdfs:comment "A team focused on deployment, operations, and maintenance capabilities common across multiple ML projects." ;
+    rdfs:subClassOf aicd:MLRole,
+        schema:Organization ;
+    aicd:hasResponsibility aicd:ModelDeployment,
+        aicd:ModelMaintenance,
+        aicd:ModelMonitoring ;
+    aicd:requiresCapability aicd:MLOpsCapability ;
+    aicd:supportsScaling aicd:Productionalization .
+
+aicd:StateOfTheArtAssessment a owl:Class ;
+    rdfs:label "State of the Art Assessment"^^xsd:string ;
+    rdfs:comment "An assessment activity aimed at characterizing the current state of the art in a given domain or process."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:SupportsResearch a owl:ObjectProperty ;
+    rdfs:label "supports research"^^xsd:string ;
+    rdfs:comment "Relates a concept, source type, or activity to the research work it supports."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:SystematicLiteratureReview a owl:Class ;
+    rdfs:label "Systematic Literature Review"^^xsd:string ;
+    rdfs:comment "A structured research method for identifying, evaluating, and analyzing literature relevant to a research problem or topic in MLOps."^^xsd:string ;
+    rdfs:subClassOf aicd:ResearchProtocol .
+
+aicd:TeamCollaboration a owl:Class ;
+    rdfs:label "Team Collaboration"^^xsd:string ;
+    rdfs:comment "Coordinated work across development, operations, and business teams to align technical work with business goals."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:TeamIntegrationChallenge a owl:Class ;
+    rdfs:label "Team Integration Challenge"^^xsd:string ;
+    rdfs:comment "A challenge related to integrating teams, roles, and responsibilities across MLOps activities."^^xsd:string ;
+    rdfs:subClassOf aicd:Challenge .
+
+aicd:TechnicalSkill a owl:Class ;
+    rdfs:label "Technical Skill"^^xsd:string ;
+    rdfs:comment "A technical capability relevant to successful MLOps practice, such as programming or data management."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:Training a owl:Class ;
+    rdfs:label "Training"^^xsd:string ;
+    rdfs:comment "An activity in which a machine learning model is fitted using data to learn predictive or generative behavior."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    owl:sameAs aicd:AutomatedTraining,
+        aicd:TrainingAutomation,
+        aicd:TrainingPhase .
+
+aicd:ValidationAutomation a owl:Class ;
+    rdfs:label "Validation Automation"^^xsd:string ;
+    rdfs:comment "Automation of validation steps in the AI development lifecycle."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelValidation .
+
+aicd:addressesResearchQuestion a owl:ObjectProperty ;
+    rdfs:label "addresses research question"^^xsd:string ;
+    rdfs:comment "Relates a research object, method, or result to a research question it addresses."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:addressesTrainingDataQuality a owl:ObjectProperty ;
+    rdfs:label "addresses training data quality"^^xsd:string ;
+    rdfs:comment "Relates a process or practice to attention to the quality of data used for model training."^^xsd:string ;
+    rdfs:subPropertyOf aicd:addressesConcern .
+
+aicd:alignsWithBusinessGoals a owl:ObjectProperty ;
+    rdfs:label "aligns with business goals"^^xsd:string ;
+    rdfs:comment "Relates a technical process or objective to the business goals it is intended to align with."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:appliesContinuousDeployment a owl:ObjectProperty ;
+    rdfs:label "applies continuous deployment"^^xsd:string ;
+    rdfs:comment "Relates an MLOps process to the continuous deployment practice it applies."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasDeploymentPhase .
+
+aicd:appliesContinuousIntegration a owl:ObjectProperty ;
+    rdfs:label "applies continuous integration"^^xsd:string ;
+    rdfs:comment "Relates an MLOps process to the continuous integration practice it applies."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasLifecycleStage .
+
+aicd:appliesDevOpsPrinciplesTo a owl:ObjectProperty ;
+    rdfs:label "applies DevOps principles to"^^xsd:string ;
+    rdfs:comment "Relates an MLOps-oriented process to the lifecycle or domain in which DevOps principles are applied."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:appliesToOrganizationType a owl:ObjectProperty ;
+    rdfs:label "applies to organization type"^^xsd:string ;
+    rdfs:comment "Relates an assessment, process, or practice to the organizational context in which it applies."^^xsd:string ;
+    rdfs:domain schema:Thing ;
+    rdfs:range aicd:SoftwareDevelopmentCompany ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:assessesCapability a owl:ObjectProperty ;
+    rdfs:label "assesses capability"^^xsd:string ;
+    rdfs:comment "Relates an assessment activity to the capability or capability area it evaluates."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:assessesQualityOf a owl:ObjectProperty ;
+    rdfs:label "assesses quality of"^^xsd:string ;
+    rdfs:comment "Relates a quality assessment activity to the study or publication being assessed."^^xsd:string ;
+    rdfs:domain aicd:QualityAssessment ;
+    rdfs:range schema:CreativeWork ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:assessesResearchImpactOf a owl:ObjectProperty ;
+    rdfs:label "assesses research impact of"^^xsd:string ;
+    rdfs:comment "Relates a research impact assessment activity to the publication or study being evaluated."^^xsd:string ;
+    rdfs:domain aicd:ResearchImpactAssessment ;
+    rdfs:range schema:CreativeWork ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:assessesStateOfTheArt a owl:ObjectProperty ;
+    rdfs:label "assesses state of the art"^^xsd:string ;
+    rdfs:comment "Relates a review activity to the domain or topic whose state of the art is being assessed."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:automatesTraining a owl:ObjectProperty ;
+    rdfs:label "automates training"^^xsd:string ;
+    rdfs:comment "Relates a maturity level or practice to training automation capability."^^xsd:string ;
+    rdfs:subPropertyOf schema:creativeWorkStatus .
+
+aicd:becomesObsoleteOverTime a owl:ObjectProperty ;
+    rdfs:label "becomes obsolete over time"^^xsd:string ;
+    rdfs:comment "Relates a deployed model to the temporal process by which it becomes outdated."^^xsd:string ;
+    rdfs:subPropertyOf schema:temporal .
+
+aicd:bestPractice a owl:ObjectProperty ;
+    rdfs:label "best practice"^^xsd:string ;
+    rdfs:comment "Relates an MLOps-oriented concept to a best-practice pattern or recommendation associated with it."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:categorizedAs a owl:ObjectProperty ;
+    rdfs:label "categorized as"^^xsd:string ;
+    rdfs:comment "Relates an abstract MLOps entity to a category used to organize or classify it."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:collaboratesWith a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "collaborates with"^^xsd:string ;
+    rdfs:comment "Relates MLOps roles or stakeholders that must coordinate during the lifecycle."^^xsd:string,
+        "Relates roles or organizational units that work together in the MLOps lifecycle."^^xsd:string,
+        "Relates two organizational actors that collaborate within the MLOps lifecycle, such as development, operations, and data science teams."^^xsd:string ;
+    rdfs:subPropertyOf schema:knows,
+        schema:relatedTo .
+
+aicd:communicatesTechnicalProcessToStakeholders a owl:ObjectProperty ;
+    rdfs:label "communicates technical process to stakeholders"^^xsd:string ;
+    rdfs:comment "Relates a data scientist or similar actor role to the communication of technical processes to customers and stakeholders."^^xsd:string ;
+    rdfs:subPropertyOf schema:communicatesWith .
+
+aicd:concernsAdoptionOf a owl:ObjectProperty ;
+    rdfs:label "concerns adoption of"^^xsd:string ;
+    rdfs:comment "Relates an adoption assessment to the MLOps approach, practice, or lifecycle concept being evaluated for adoption."^^xsd:string ;
+    rdfs:domain aicd:AdoptionAssessment ;
+    rdfs:range aicd:ContinuousDevelopmentProcess ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:contributesToProgressDegree a owl:ObjectProperty ;
+    rdfs:label "contributes to progress degree"^^xsd:string ;
+    rdfs:comment "Relates a research initiative or assessed object to the degree of progress it helps determine."^^xsd:string ;
+    rdfs:subPropertyOf schema:contributor .
+
+aicd:customerNeeds a owl:Class ;
+    rdfs:label "Customer Needs"^^xsd:string ;
+    rdfs:comment "The needs and expectations of customers that shape the goals and effectiveness of AI solutions."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:defines a owl:ObjectProperty ;
+    rdfs:label "defines"^^xsd:string ;
+    rdfs:comment "Relates a higher-level framework to the objectives, questions, or metrics it defines."^^xsd:string ;
+    rdfs:subPropertyOf schema:defines .
+
+aicd:definesRequirements a owl:ObjectProperty ;
+    rdfs:label "defines requirements"^^xsd:string ;
+    rdfs:comment "Relates a role or stakeholder to the activity of defining objectives and business requirements."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:degradesDueTo a owl:ObjectProperty ;
+    rdfs:label "degrades due to"^^xsd:string ;
+    rdfs:comment "Relates a model or lifecycle condition to the cause of degradation, such as changing data."^^xsd:string ;
+    rdfs:subPropertyOf schema:causedBy .
+
+aicd:dependsOnData a owl:ObjectProperty ;
+    rdfs:label "depends on data"^^xsd:string ;
+    rdfs:comment "Relates an ML project, process, or activity to data that is required for its execution."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:dependsOnDataManagement a owl:ObjectProperty ;
+    rdfs:label "depends on data management"^^xsd:string ;
+    rdfs:comment "Relates an ML lifecycle process to the data management capability it requires."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:deployedModel a owl:ObjectProperty ;
+    rdfs:label "deployed model"^^xsd:string ;
+    rdfs:comment "Relates a deployment activity to the model that is released into production."^^xsd:string ;
+    rdfs:subPropertyOf schema:produces .
+
+aicd:deploymentAndMaintenanceChallenge a owl:ObjectProperty ;
+    rdfs:label "deployment and maintenance challenge"^^xsd:string ;
+    rdfs:comment "Relates MLOps or ML project contexts to the challenge of deployment and maintenance in production settings."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:detectsDataDrift a owl:ObjectProperty ;
+    rdfs:label "detects data drift"^^xsd:string ;
+    rdfs:comment "Relates monitoring activity to data drift conditions it is intended to detect."^^xsd:string ;
+    rdfs:subPropertyOf aicd:monitorsFor ;
+    owl:sameAs aicd:addressesDataDrift,
+        aicd:addressesModelDrift,
+        aicd:detectsModelDrift,
+        aicd:mitigatesDataDrift .
+
+aicd:detectsPerformanceDeviation a owl:ObjectProperty ;
+    rdfs:label "detects performance deviation"^^xsd:string ;
+    rdfs:comment "Relates monitoring or evaluation activity to performance deviations it is intended to detect."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:developmentToProductionTransition a owl:ObjectProperty ;
+    rdfs:label "development to production transition"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to the transition it performs from development into production use."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:developsModel a owl:ObjectProperty ;
+    rdfs:label "develops model"^^xsd:string ;
+    rdfs:comment "Relates a role to work concerned with model construction or improvement."^^xsd:string ;
+    rdfs:subPropertyOf schema:creates .
+
+aicd:documentsBenefit a owl:ObjectProperty ;
+    rdfs:label "documents benefit"^^xsd:string ;
+    rdfs:comment "Relates a source, analysis, or research output to a benefit associated with MLOps adoption."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:documentsChallenge a owl:ObjectProperty ;
+    rdfs:label "documents challenge"^^xsd:string ;
+    rdfs:comment "Relates a source, analysis, or research output to a challenge associated with MLOps adoption."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:documentsPractice a owl:ObjectProperty ;
+    rdfs:label "documents practice"^^xsd:string ;
+    rdfs:comment "Relates a source, analysis, or research output to an MLOps practice or activity it describes."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:earlyProjectInvolvement a owl:ObjectProperty ;
+    rdfs:label "early project involvement"^^xsd:string ;
+    rdfs:comment "Relates a project, process, or workflow to participation that begins early in development."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:enablesProductionDeployment a owl:ObjectProperty ;
+    rdfs:label "enables production deployment"^^xsd:string ;
+    rdfs:comment "Relates infrastructure or tooling to the deployment of ML models into production."^^xsd:string ;
+    rdfs:subPropertyOf schema:enablesAction .
+
+aicd:enhancesOperationalEfficiencyOf a owl:ObjectProperty ;
+    rdfs:label "enhances operational efficiency of"^^xsd:string ;
+    rdfs:comment "Relates a benefit or practice to the workflow or lifecycle it makes more efficient."^^xsd:string ;
+    rdfs:subPropertyOf schema:improves .
+
+aicd:experimentalModel a owl:ObjectProperty ;
+    rdfs:label "experimental model"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or workflow to a model that is still in the experimental stage before production."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:extendsToMLWorkflows a owl:ObjectProperty ;
+    rdfs:label "extends to ML workflows"^^xsd:string ;
+    rdfs:comment "Relates a DevOps-oriented practice to ML workflows that it has been extended to support."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:extractsInformationFrom a owl:ObjectProperty ;
+    rdfs:label "extracts information from"^^xsd:string ;
+    rdfs:comment "Relates a review activity to the literature or papers from which information is extracted."^^xsd:string ;
+    rdfs:subPropertyOf prov:used .
+
+aicd:featureBranch a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "feature branch" ;
+    rdfs:comment "Relates a workflow or development process to a short-lived branch used for feature development and integration." ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:focusesOnDataQuality a owl:ObjectProperty ;
+    rdfs:label "focuses on data quality"^^xsd:string ;
+    rdfs:comment "Relates a data strategy, activity, or challenge to its data quality objective."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:focusesOnDataQuantity a owl:ObjectProperty ;
+    rdfs:label "focuses on data quantity"^^xsd:string ;
+    rdfs:comment "Relates a data strategy, activity, or challenge to its data volume objective."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:governsLifecycle a owl:ObjectProperty ;
+    rdfs:label "governs lifecycle"^^xsd:string ;
+    rdfs:comment "Relates a governance-oriented practice, concern, or organizational capability to the lifecycle process it oversees."^^xsd:string ;
+    rdfs:subPropertyOf schema:supervises ;
+    owl:sameAs aicd:hasLifecycleAutomation .
+
+aicd:guidesEvaluationOf a owl:ObjectProperty ;
+    rdfs:label "guides evaluation of"^^xsd:string ;
+    rdfs:comment "Relates a methodology, approach, or criterion to the studies or evidence it guides the evaluation of."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:hasAbstractionLevel a owl:ObjectProperty ;
+    rdfs:label "has abstraction level"^^xsd:string ;
+    rdfs:comment "Relates an evaluation framework to one of its abstraction levels."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasBenchmark a owl:ObjectProperty ;
+    rdfs:label "has benchmark"^^xsd:string ;
+    rdfs:comment "Relates a maturity framework or progression to a benchmark used for comparison or assessment."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasBenefit a owl:ObjectProperty ;
+    rdfs:label "has benefit"^^xsd:string ;
+    rdfs:comment "Relates an MLOps adoption effort, practice, or process to a benefit associated with it."^^xsd:string,
+        "Relates an adoption assessment or MLOps practice to a benefit associated with it."^^xsd:string ;
+    rdfs:domain aicd:AdoptionAssessment,
+        aicd:MLOpsAdoption ;
+    rdfs:range aicd:Benefit ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasBiasConcern a owl:ObjectProperty ;
+    rdfs:label "has bias concern"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle activity, process, or practice to a bias-related concern it addresses."^^xsd:string ;
+    rdfs:subPropertyOf aicd:addressesConcern .
+
+aicd:hasConfidentialDataProtection a owl:ObjectProperty ;
+    rdfs:label "has confidential data protection"^^xsd:string ;
+    rdfs:comment "Relates an MLOps lifecycle or process to measures for protecting confidential data."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasChallenge .
+
+aicd:hasContinuousDeployment a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has continuous deployment"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to a continuous deployment stage included within it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasContinuousDeploymentPhase a owl:ObjectProperty ;
+    rdfs:label "has continuous deployment phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a continuous deployment phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasDeploymentPhase .
+
+aicd:hasContinuousIntegrationPhase a owl:ObjectProperty ;
+    rdfs:label "has continuous integration phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a continuous integration phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasLifecycleStage .
+
+aicd:hasContinuousMonitoring a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has continuous monitoring"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to a continuous monitoring stage included within it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasContinuousMonitoringPhase a owl:ObjectProperty ;
+    rdfs:label "has continuous monitoring phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a continuous monitoring phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasMonitoringPhase .
+
+aicd:hasContinuousTraining a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has continuous training"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to a continuous training stage included within it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasContinuousTrainingPhase a owl:ObjectProperty ;
+    rdfs:label "has continuous training phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a continuous training phase included within it."^^xsd:string,
+        "Relates a lifecycle process or pipeline to a phase in which models are repeatedly retrained with new data."^^xsd:string,
+        "Relates a lifecycle process to a phase in which the model is repeatedly retrained with new data."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasRetrainingPhase,
+        aicd:hasTrainingPhase .
+
+aicd:hasDataCleaningPhase a owl:ObjectProperty ;
+    rdfs:label "has data cleaning phase"^^xsd:string ;
+    rdfs:comment "Relates a data pipeline or data management process to its data cleaning phase."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasDataCollectionPhase a owl:ObjectProperty ;
+    rdfs:label "has data collection phase"^^xsd:string ;
+    rdfs:comment "Relates a data pipeline or data management process to its data collection phase."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasDataEngineeringPhase a owl:ObjectProperty ;
+    rdfs:label "has data engineering phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a data engineering phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasDataManagementPhase a owl:ObjectProperty ;
+    rdfs:label "has data management phase"^^xsd:string ;
+    rdfs:comment "Relates a continuous development process or pipeline to a phase concerned with data management."^^xsd:string,
+        "Relates a lifecycle process to its data management phase or activity."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasDataPipeline a owl:ObjectProperty ;
+    rdfs:label "has data pipeline"^^xsd:string ;
+    rdfs:comment "Relates a data management or MLOps process to a constituent data pipeline."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart ;
+    owl:sameAs aicd:usesModelPipeline .
+
+aicd:hasDataStoragePhase a owl:ObjectProperty ;
+    rdfs:label "has data storage phase"^^xsd:string ;
+    rdfs:comment "Relates a data pipeline or data management process to its data storage phase."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasDebt a owl:ObjectProperty ;
+    rdfs:label "has debt"^^xsd:string ;
+    rdfs:comment "Relates an ML development activity or context to a resulting debt condition such as technical or social debt."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart ;
+    owl:sameAs aicd:causesSocialDebt,
+        aicd:causesTechnicalDebt .
+
+aicd:hasDeploymentAutomation a owl:ObjectProperty ;
+    rdfs:label "has deployment automation"^^xsd:string ;
+    rdfs:comment "Relates a process or pipeline to an automated deployment capability or phase."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasAutomationPhase .
+
+aicd:hasDeploymentMaintenanceChallenge a owl:ObjectProperty ;
+    rdfs:label "has deployment and maintenance challenge"^^xsd:string ;
+    rdfs:comment "Relates a domain, methodology, or project type to a challenge involving deployment and maintenance."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasDevelopmentPhase a owl:ObjectProperty ;
+    rdfs:label "has development phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to its model development phase or activity."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasErrorConcern a owl:ObjectProperty ;
+    rdfs:label "has error concern"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle activity, process, or practice to an error-related concern it addresses."^^xsd:string ;
+    rdfs:subPropertyOf aicd:addressesConcern ;
+    owl:sameAs aicd:hasProblemDefinition .
+
+aicd:hasExclusionCriterion a owl:ObjectProperty ;
+    rdfs:label "has exclusion criterion"^^xsd:string ;
+    rdfs:comment "Relates a review or screening process to an exclusion criterion used for candidate removal."^^xsd:string,
+        "Relates a selection process to a criterion used to exclude candidate studies."^^xsd:string ;
+    rdfs:domain aicd:LiteratureSearchProcess ;
+    rdfs:range aicd:ExclusionCriteria ;
+    rdfs:subPropertyOf schema:hasPart ;
+    owl:sameAs aicd:hasInclusionCriterion .
+
+aicd:hasExperimentalNature a owl:ObjectProperty ;
+    rdfs:label "has experimental nature"^^xsd:string ;
+    rdfs:comment "Relates an ML development process to its experimental and exploratory character."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasExperimentationPhase a owl:ObjectProperty ;
+    rdfs:label "has experimentation phase"^^xsd:string ;
+    rdfs:comment "Relates a continuous development process or pipeline to an experimentation phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart ;
+    owl:sameAs aicd:requiresExperimentationTime .
+
+aicd:hasGovernanceAspect a owl:ObjectProperty ;
+    rdfs:label "has governance aspect"^^xsd:string ;
+    rdfs:comment "Relates a process, workflow, or lifecycle concept to a governance-related aspect it includes or depends on."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasIncidentResponsePhase a owl:ObjectProperty ;
+    rdfs:label "has incident response phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to an incident response phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasMLOpsSourceType a owl:ObjectProperty ;
+    rdfs:label "has MLOps source type"^^xsd:string ;
+    rdfs:comment "Relates a research synthesis or review to a source type considered in evidence gathering, such as gray literature or scientific publications."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasMaintenancePhase a owl:ObjectProperty ;
+    rdfs:label "has maintenance phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a maintenance phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasLifecycleStage,
+        schema:hasPart .
+
+aicd:hasMaturityDimension a owl:ObjectProperty ;
+    rdfs:label "has maturity dimension"^^xsd:string ;
+    rdfs:comment "Relates a maturity framework or assessment to one of its dimensions, such as data management, monitoring, automation, or culture."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasMaturityLevel a owl:ObjectProperty ;
+    rdfs:label "has maturity level"^^xsd:string ;
+    rdfs:comment "Relates a maturity framework to one of its ordered levels or stages."^^xsd:string,
+        "Relates an MLOps maturity model to one of its maturity levels."^^xsd:string ;
+    rdfs:domain aicd:MLOpsMaturityModel ;
+    rdfs:range aicd:MLOpsMaturityLevel ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasMaturityModel a owl:ObjectProperty ;
+    rdfs:label "has maturity model"^^xsd:string ;
+    rdfs:comment "Relates a research area or lifecycle perspective to a maturity model used for assessment."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasMonitoringAspect a owl:ObjectProperty ;
+    rdfs:label "has monitoring aspect"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a monitoring aspect included within it."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasLifecycleStage .
+
+aicd:hasMonitoringMetric a owl:ObjectProperty ;
+    rdfs:label "has monitoring metric"^^xsd:string ;
+    rdfs:comment "Relates monitoring activity to a metric used for ongoing evaluation in production."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasOperationPhase a owl:ObjectProperty ;
+    rdfs:label "has operation phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to its operational phase, including deployment, monitoring, and maintenance."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasPracticePerspective a owl:ObjectProperty ;
+    rdfs:label "has practice perspective"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle concept or ontology to its practice-oriented framing."^^xsd:string,
+        "Relates an MLOps topic or research synthesis to a practitioner-oriented viewpoint."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasPerspective,
+        schema:hasPart .
+
+aicd:hasPrivacyConcern a owl:ObjectProperty ;
+    rdfs:label "has privacy concern"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle activity, process, or practice to a privacy-related concern it addresses."^^xsd:string ;
+    rdfs:subPropertyOf aicd:addressesConcern .
+
+aicd:hasProductionalizationPhase a owl:ObjectProperty ;
+    rdfs:label "has productionalization phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to the phase where a model is prepared for use in an operational environment."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasProfessionalDevelopment a owl:ObjectProperty ;
+    rdfs:label "has professional development"^^xsd:string ;
+    rdfs:comment "Relates a role or person-oriented context to professional development that improves competency for MLOps-related work."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:hasQualityCriterion a owl:ObjectProperty ;
+    rdfs:label "has quality criterion"^^xsd:string ;
+    rdfs:comment "Relates a classification or evaluation process to the quality criterion applied for assessing relevance or quality."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasQualityDimension a owl:ObjectProperty ;
+    rdfs:label "has quality dimension"^^xsd:string ;
+    rdfs:comment "Relates a model, validation activity, or lifecycle process to a quality dimension or criterion it targets."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasQualityOutcome a owl:ObjectProperty ;
+    rdfs:label "has quality outcome"^^xsd:string ;
+    rdfs:comment "Relates a process or practice to the quality outcome it contributes to, such as robustness, reliability, or accuracy."^^xsd:string ;
+    rdfs:subPropertyOf schema:result .
+
+aicd:hasResearchGap a owl:ObjectProperty ;
+    rdfs:label "has research gap"^^xsd:string ;
+    rdfs:comment "Relates a research area or synthesis to a gap identified within it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasResearchObjective a owl:ObjectProperty ;
+    rdfs:label "has research objective"^^xsd:string ;
+    rdfs:comment "Relates a study or review to one of its research or search objectives."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasResearchPerspective a owl:ObjectProperty ;
+    rdfs:label "has research perspective"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle concept or ontology to its research-oriented framing."^^xsd:string,
+        "Relates an MLOps topic or research synthesis to a research-oriented viewpoint."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasPerspective,
+        schema:hasPart .
+
+aicd:hasResearchProtocol a owl:ObjectProperty ;
+    rdfs:label "has research protocol"^^xsd:string ;
+    rdfs:comment "Relates a systematic review or study to the protocol used to conduct it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasResearchQuestion a owl:ObjectProperty ;
+    rdfs:label "has research question"^^xsd:string ;
+    rdfs:comment "Relates a study or objective to a research question derived from it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasResourceConstraint a owl:ObjectProperty ;
+    rdfs:label "has resource constraint"^^xsd:string ;
+    rdfs:comment "Relates an MLOps implementation context to a computing or infrastructure resource limitation."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasResourceManagementPhase a owl:ObjectProperty ;
+    rdfs:label "has resource management phase"^^xsd:string ;
+    rdfs:comment "Relates a continuous development process or pipeline to a phase concerned with computational resource management."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasResponsibility a owl:ObjectProperty ;
+    rdfs:label "has responsibility"^^xsd:string ;
+    rdfs:comment "Relates a role to a responsibility carried out within the MLOps lifecycle."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasReviewLevel a owl:ObjectProperty ;
+    rdfs:label "has review level"^^xsd:string ;
+    rdfs:comment "Relates a literature screening process to a constituent review level such as title review, abstract review, or full-text review."^^xsd:string ;
+    rdfs:domain aicd:ThreeLevelReview ;
+    rdfs:range schema:Action ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasRoleDefinition a owl:ObjectProperty ;
+    rdfs:label "has role definition"^^xsd:string ;
+    rdfs:comment "Relates an MLOps role or organizational context to the definition that clarifies responsibilities and boundaries."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasSpecificMetric a owl:ObjectProperty ;
+    rdfs:label "has specific metric"^^xsd:string ;
+    rdfs:comment "Relates a research question to a specific metric created to provide a quantifiable answer."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasMetric .
+
+aicd:identifiedByResearchQuestion a owl:ObjectProperty ;
+    rdfs:label "identified by research question"^^xsd:string ;
+    rdfs:comment "Relates a research object or domain gap to the question used to identify or characterize it."^^xsd:string ;
+    rdfs:subPropertyOf schema:isPartOf .
+
+aicd:impactsModelPerformance a owl:ObjectProperty ;
+    rdfs:label "impacts model performance"^^xsd:string ;
+    rdfs:comment "Relates a factor such as data quality or operational change to its effect on model performance."^^xsd:string ;
+    rdfs:subPropertyOf schema:affects .
+
+aicd:improves a owl:ObjectProperty ;
+    rdfs:label "improves"^^xsd:string ;
+    rdfs:comment "Relates a continuous development activity or process to the ML lifecycle capability or outcome it improves."^^xsd:string,
+        "Relates a lifecycle activity, process, or practice to a quality or outcome it aims to improve."^^xsd:string ;
+    rdfs:subPropertyOf schema:improves,
+        schema:potentialAction .
+
+aicd:improvesCapability a owl:ObjectProperty ;
+    rdfs:label "improves capability"^^xsd:string ;
+    rdfs:comment "Relates a framework, process, or practice to a capability it is intended to strengthen."^^xsd:string ;
+    rdfs:subPropertyOf schema:increases .
+
+aicd:improvesQualityOf a owl:ObjectProperty ;
+    rdfs:label "improves quality of"^^xsd:string ;
+    rdfs:comment "Relates a benefit or practice to the ML product quality it helps improve."^^xsd:string ;
+    rdfs:subPropertyOf schema:improves .
+
+aicd:improvesSpeedOf a owl:ObjectProperty ;
+    rdfs:label "improves speed of"^^xsd:string ;
+    rdfs:comment "Relates a process, workflow, or practice to the activity whose speed or turnaround time it improves."^^xsd:string ;
+    rdfs:subPropertyOf schema:improves .
+
+aicd:improvesTrust a owl:ObjectProperty ;
+    rdfs:label "improves trust"^^xsd:string ;
+    rdfs:comment "Relates a governance, privacy, or security practice to the trust it helps build in ML systems."^^xsd:string ;
+    rdfs:subPropertyOf schema:contributor .
+
+aicd:inProductionEnvironment a owl:ObjectProperty ;
+    rdfs:label "in production environment"^^xsd:string ;
+    rdfs:comment "Relates a deployed model, monitoring activity, or maintenance activity to the production environment in which it operates."^^xsd:string ;
+    rdfs:subPropertyOf schema:location .
+
+aicd:inSoftwareCompany a owl:ObjectProperty ;
+    rdfs:label "in software company"^^xsd:string ;
+    rdfs:comment "Relates an assessment or capability notion to the software company context in which it is evaluated."^^xsd:string ;
+    rdfs:subPropertyOf schema:isPartOf .
+
+aicd:inSoftwareDevelopment a owl:ObjectProperty ;
+    rdfs:label "in software development"^^xsd:string ;
+    rdfs:comment "Relates an MLOps concept or activity to the software development context in which it is considered."^^xsd:string ;
+    rdfs:subPropertyOf schema:isPartOf .
+
+aicd:inSoftwareDevelopmentIndustry a owl:ObjectProperty ;
+    rdfs:label "in software development industry"^^xsd:string ;
+    rdfs:comment "Relates an MLOps concept or activity to the software development industry context."^^xsd:string ;
+    rdfs:subPropertyOf schema:isPartOf .
+
+aicd:inSoftwareEngineering a owl:ObjectProperty ;
+    rdfs:label "in software engineering"^^xsd:string ;
+    rdfs:comment "Relates an MLOps concept or activity to the software engineering context in which it appears."^^xsd:string ;
+    rdfs:subPropertyOf schema:isPartOf .
+
+aicd:includesActivity a owl:ObjectProperty ;
+    rdfs:label "includes activity"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to an activity that is part of it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart ;
+    owl:sameAs aicd:usesExperimentalActivity .
+
+aicd:includesAdjustment a owl:ObjectProperty ;
+    rdfs:label "includes adjustment"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to iterative adjustment activities used to correct or refine models and operations."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:includesContinuousMonitoring a owl:ObjectProperty ;
+    rdfs:label "includes continuous monitoring"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to continuous monitoring as a constituent activity."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasMonitoringPhase .
+
+aicd:includesContinuousTesting a owl:ObjectProperty ;
+    rdfs:label "includes continuous testing"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to continuous testing activities that occur repeatedly during development or operations."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:includesDeploymentAutomation a owl:ObjectProperty ;
+    rdfs:label "includes deployment automation"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to the automation of deployment activities."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasDeploymentPhase .
+
+aicd:includesPhase a owl:ObjectProperty ;
+    rdfs:label "includes phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to one of its constituent phases."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:includesPractice a owl:ObjectProperty ;
+    rdfs:label "includes practice"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or framework to a practice that is part of it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:includesRetraining a owl:ObjectProperty ;
+    rdfs:label "includes retraining"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to retraining as one of its activities."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasRetrainingPhase .
+
+aicd:includesTraining a owl:ObjectProperty ;
+    rdfs:label "includes training"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to training as one of its activities."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasLifecycleStage .
+
+aicd:integratesWith a owl:ObjectProperty ;
+    rdfs:label "integrates with"^^xsd:string ;
+    rdfs:comment "Relates one discipline, role, workflow, or process to another with which it must be coordinated in an MLOps setting."^^xsd:string,
+        "Relates two practices, roles, or lifecycle capabilities that must work together in MLOps."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:integrationIntoExistingSystems a owl:ObjectProperty ;
+    rdfs:label "integration into existing systems"^^xsd:string ;
+    rdfs:comment "Relates a model, workflow, or engineering activity to the systems into which it is integrated."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:involvesCustomer a owl:ObjectProperty ;
+    rdfs:label "involves customer"^^xsd:string ;
+    rdfs:comment "Relates an MLOps phase, project, or workflow to customer participation in it."^^xsd:string ;
+    rdfs:subPropertyOf schema:involves .
+
+aicd:involvesDataScientist a owl:ObjectProperty ;
+    rdfs:label "involves data scientist"^^xsd:string ;
+    rdfs:comment "Relates an MLOps phase, project, or workflow to data scientist participation in it."^^xsd:string ;
+    rdfs:subPropertyOf schema:involves .
+
+aicd:involvesRole a owl:ObjectProperty ;
+    rdfs:label "involves role"^^xsd:string ;
+    rdfs:comment "Relates a process or project to a role required for carrying it out."^^xsd:string ;
+    rdfs:subPropertyOf schema:participant .
+
+aicd:involvesTeamIntegration a owl:ObjectProperty ;
+    rdfs:label "involves team integration"^^xsd:string ;
+    rdfs:comment "Relates an MLOps practice or adoption effort to team integration concerns."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:involvesTool a owl:ObjectProperty ;
+    rdfs:label "involves tool"^^xsd:string ;
+    rdfs:comment "Relates a process or project to a tool used in its execution."^^xsd:string ;
+    rdfs:subPropertyOf schema:instrument .
+
+aicd:isRecurring a owl:ObjectProperty ;
+    rdfs:label "is recurring"^^xsd:string ;
+    rdfs:comment "Relates a process or pipeline to the fact that it is executed repeatedly as part of continuous development."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo ;
+    owl:sameAs aicd:enablesRecurringExecution .
+
+aicd:maintainsAndEvolvesAIolution a owl:ObjectProperty ;
+    rdfs:label "maintains and evolves AI solution"^^xsd:string ;
+    rdfs:comment "Relates a software engineering activity or role to the AI solution it maintains or evolves."^^xsd:string ;
+    rdfs:subPropertyOf schema:maintains .
+
+aicd:manages a owl:ObjectProperty ;
+    rdfs:label "manages"^^xsd:string ;
+    rdfs:comment "Relates an organizational capability or process to the lifecycle activities it manages."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports ;
+    owl:sameAs aicd:managesData .
+
+aicd:managesExpectations a owl:ObjectProperty ;
+    rdfs:label "manages expectations"^^xsd:string ;
+    rdfs:comment "Relates an MLOps adoption effort or governance activity to stakeholder expectation management."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:measuresCapability a owl:ObjectProperty ;
+    rdfs:label "measures capability"^^xsd:string ;
+    rdfs:comment "Relates an assessment to the capability dimension it evaluates."^^xsd:string ;
+    rdfs:subPropertyOf schema:measuredProperty .
+
+aicd:measuresMaturity a owl:ObjectProperty ;
+    rdfs:label "measures maturity"^^xsd:string ;
+    rdfs:comment "Relates an assessment to the maturity dimension it evaluates."^^xsd:string ;
+    rdfs:subPropertyOf schema:measuredProperty .
+
+aicd:metricAtLevel a owl:ObjectProperty ;
+    rdfs:label "metric at level"^^xsd:string ;
+    rdfs:comment "Relates a metric to the abstraction level at which it is defined."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:mitigatesConcern a owl:ObjectProperty ;
+    rdfs:label "mitigates concern"^^xsd:string ;
+    rdfs:comment "Relates a process, practice, or stage to a concern it is intended to reduce or address."^^xsd:string ;
+    rdfs:subPropertyOf aicd:addressesConcern .
+
+aicd:monitorsForConceptDrift a owl:Class ;
+    rdfs:label "Concept Drift Monitoring" ;
+    rdfs:comment "Monitoring activity focused on detecting concept drift in deployed AI models." ;
+    rdfs:subClassOf aicd:ModelMonitoring .
+
+aicd:monitorsModel a owl:ObjectProperty ;
+    rdfs:label "monitors model"^^xsd:string ;
+    rdfs:comment "Relates a monitoring activity to the model being observed in the operational environment."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:motivatesResearchQuestion a owl:ObjectProperty ;
+    rdfs:label "motivates research question"^^xsd:string ;
+    rdfs:comment "Relates a search objective or analytical need to the research question formulated from it."^^xsd:string ;
+    rdfs:subPropertyOf schema:motivatedBy .
+
+aicd:needsSoftwareEngineeringSupport a owl:ObjectProperty ;
+    rdfs:label "needs software engineering support"^^xsd:string ;
+    rdfs:comment "Relates a data science activity or role to the software engineering capabilities required for maintenance and evolution."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:needsSpecializedHardware a owl:ObjectProperty ;
+    rdfs:label "needs specialized hardware"^^xsd:string ;
+    rdfs:comment "Relates an ML project or activity to specialized hardware needed for execution or deployment."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:objectiveAtLevel a owl:ObjectProperty ;
+    rdfs:label "objective at level"^^xsd:string ;
+    rdfs:comment "Relates a research objective to the abstraction level at which it is defined."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:orchestrates a owl:ObjectProperty ;
+    rdfs:label "orchestrates"^^xsd:string ;
+    rdfs:comment "Relates a pipeline, team, or process to the activity or component it coordinates and controls."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:partiallyAutomates a owl:ObjectProperty ;
+    rdfs:label "partially automates"^^xsd:string ;
+    rdfs:comment "Relates a maturity stage or process to activities that are automated only in part."^^xsd:string ;
+    rdfs:subPropertyOf aicd:automates .
+
+aicd:performsDataCleaning a owl:ObjectProperty ;
+    rdfs:label "performs data cleaning"^^xsd:string ;
+    rdfs:comment "Relates a data engineer or data preparation process to the cleaning activity it performs."^^xsd:string ;
+    rdfs:subPropertyOf schema:agent .
+
+aicd:performsDataLabeling a owl:ObjectProperty ;
+    rdfs:label "performs data labeling"^^xsd:string ;
+    rdfs:comment "Relates a data engineer, data scientist, or process to the labeling activity it performs."^^xsd:string ;
+    rdfs:subPropertyOf schema:agent .
+
+aicd:performsDataPreparation a owl:ObjectProperty ;
+    rdfs:label "performs data preparation"^^xsd:string ;
+    rdfs:comment "Relates a data engineer or workflow to the preparation activity it performs."^^xsd:string ;
+    rdfs:subPropertyOf schema:agent .
+
+aicd:preparesData a owl:ObjectProperty ;
+    rdfs:label "prepares data"^^xsd:string ;
+    rdfs:comment "Relates a data-focused role to the activity of data preparation and transformation."^^xsd:string ;
+    rdfs:subPropertyOf schema:workExample .
+
+aicd:producesInferenceService a owl:ObjectProperty ;
+    rdfs:label "produces inference service" ;
+    rdfs:comment "Relates deployment activity to an inference service made available by the deployed model." ;
+    rdfs:subPropertyOf schema:produces .
+
+aicd:productionImplementation a owl:ObjectProperty ;
+    rdfs:label "production implementation"^^xsd:string ;
+    rdfs:comment "Relates a development or pipeline stage to the implementation or update of models in production."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:productionalization rdfs:subClassOf aicd:ContinuousDevelopmentProcess .
+
+aicd:progressesTo a owl:ObjectProperty ;
+    rdfs:label "progresses to"^^xsd:string ;
+    rdfs:comment "Relates a maturity stage or process state to a later stage in the progression toward higher MLOps maturity."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:promotesCollaborationAcross a owl:ObjectProperty ;
+    rdfs:label "promotes collaboration across"^^xsd:string ;
+    rdfs:comment "Relates a process or practice to the set of teams or disciplines whose collaboration it promotes."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:proposesContinuousTraining a owl:ObjectProperty ;
+    rdfs:label "proposes continuous training"^^xsd:string ;
+    rdfs:comment "Relates a publication, study, or methodology to continuous training as part of the MLOps lifecycle."^^xsd:string ;
+    rdfs:subPropertyOf schema:mentions .
+
+aicd:proposesMonitoring a owl:ObjectProperty ;
+    rdfs:label "proposes monitoring"^^xsd:string ;
+    rdfs:comment "Relates a publication, study, or methodology to monitoring as part of the MLOps lifecycle."^^xsd:string ;
+    rdfs:subPropertyOf schema:mentions .
+
+aicd:protocolStage a owl:ObjectProperty ;
+    rdfs:label "protocol stage"^^xsd:string ;
+    rdfs:comment "Relates a research protocol to one of its constituent stages, such as defining questions or extracting information."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:questionAtLevel a owl:ObjectProperty ;
+    rdfs:label "question at level"^^xsd:string ;
+    rdfs:comment "Relates a research question to the abstraction level at which it is formulated."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:relatedToAdoption a owl:ObjectProperty ;
+    rdfs:label "related to adoption"^^xsd:string ;
+    rdfs:comment "Relates a concept, challenge, benefit, or practice to MLOps adoption."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:relatedToImplementation a owl:ObjectProperty ;
+    rdfs:label "related to implementation"^^xsd:string ;
+    rdfs:comment "Relates a concept, attribute, or process to successful MLOps implementation."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:releasesToProduction a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "releases to production"^^xsd:string ;
+    rdfs:comment "Relates a deployment activity to the production environment where the model is made available."^^xsd:string ;
+    rdfs:subPropertyOf schema:potentialAction .
+
+aicd:remit a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "remit"^^xsd:string ;
+    rdfs:comment "Relates a role to the scope of work, duties, or responsibilities expected of that role."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart ;
+    owl:sameAs aicd:performsOutsideUsualRemit .
+
+aicd:requiresAutomation a owl:ObjectProperty ;
+    rdfs:label "requires automation"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or practice to automation needed to support repeatable execution."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:requiresCapability a owl:ObjectProperty ;
+    rdfs:label "requires capability"^^xsd:string ;
+    rdfs:comment "Relates an AI development process, pipeline, or practice to a capability needed for its execution."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:requiresCollaboration a owl:ObjectProperty ;
+    rdfs:label "requires collaboration"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or practice to collaboration among participants involved in the work."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:requiresCommunication a owl:ObjectProperty ;
+    rdfs:label "requires communication"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or practice to communication among participants involved in the work."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:requiresCrossDisciplinaryCollaboration a owl:ObjectProperty ;
+    rdfs:label "requires cross-disciplinary collaboration"^^xsd:string ;
+    rdfs:comment "Relates an MLOps activity or lifecycle stage to the collaboration across data science, software engineering, operations, and other stakeholders that it requires."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:requiresData a owl:ObjectProperty ;
+    rdfs:label "requires data"^^xsd:string ;
+    rdfs:comment "Relates a model development or operational activity to the data it depends on."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:requiresDataCleaning a owl:ObjectProperty ;
+    rdfs:label "requires data cleaning"^^xsd:string ;
+    rdfs:comment "Relates a data pipeline or data management process to its need for data cleaning."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:requiresDataCollection a owl:ObjectProperty ;
+    rdfs:label "requires data collection"^^xsd:string ;
+    rdfs:comment "Relates a data pipeline or data management process to its need for data collection."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:requiresDataStorage a owl:ObjectProperty ;
+    rdfs:label "requires data storage"^^xsd:string ;
+    rdfs:comment "Relates a data pipeline or data management process to its need for data storage."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:requiresDataStrategy a owl:ObjectProperty ;
+    rdfs:label "requires data strategy"^^xsd:string ;
+    rdfs:comment "Relates an MLOps challenge, process, or activity to the data strategy needed to address it."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:requiresDomainExpertise a owl:ObjectProperty ;
+    rdfs:label "requires domain expertise"^^xsd:string ;
+    rdfs:comment "Relates an AI development activity or team to application domain expertise needed to extract value from data appropriately."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:requiresMonitoringMetrics a owl:ObjectProperty ;
+    rdfs:label "requires monitoring metrics"^^xsd:string ;
+    rdfs:comment "Relates monitoring or lifecycle governance to the performance metrics that must be tracked."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresProperty .
+
+aicd:requiresMultidisciplinaryCollaboration a owl:ObjectProperty ;
+    rdfs:label "requires multidisciplinary collaboration"^^xsd:string ;
+    rdfs:comment "Relates an ML lifecycle process to the collaboration across multiple disciplines that it requires."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:requiresQualifiedPersonnel a owl:ObjectProperty ;
+    rdfs:label "requires qualified personnel"^^xsd:string ;
+    rdfs:comment "Relates an MLOps-related process or organizational capability to the skilled personnel needed to perform it."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresSkill .
+
+aicd:requiresQualityModel a owl:ObjectProperty ;
+    rdfs:label "requires quality model"^^xsd:string ;
+    rdfs:comment "Relates an organization or project to a quality model or standard needed for effective implementation."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:requiresRole a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "requires role"^^xsd:string ;
+    rdfs:comment "Relates an MLOps process or stage to a role needed for its execution or support."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:requiresRoleDefinition a owl:ObjectProperty ;
+    rdfs:label "requires role definition"^^xsd:string ;
+    rdfs:comment "Relates an MLOps context to the need to define involved roles clearly."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:requiresSpecializedTalent a owl:ObjectProperty ;
+    rdfs:label "requires specialized talent"^^xsd:string ;
+    rdfs:comment "Relates an MLOps practice or capability to the specialized talent needed to perform it."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:requiresStandardization a owl:ObjectProperty ;
+    rdfs:label "requires standardization"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or practice to standardization as a prerequisite or supporting capability."^^xsd:string ;
+    rdfs:subPropertyOf schema:requires .
+
+aicd:researchPracticePerspective a owl:ObjectProperty ;
+    rdfs:label "research-practice perspective"^^xsd:string ;
+    rdfs:comment "Relates a concept, methodology, or lifecycle issue to the perspective of research, practice, or both."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:researches a owl:ObjectProperty ;
+    rdfs:label "researches"^^xsd:string ;
+    rdfs:comment "Relates a research effort to the MLOps topic or object it investigates."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:respondsToMarketDemands a owl:ObjectProperty ;
+    rdfs:label "responds to market demands"^^xsd:string ;
+    rdfs:comment "Relates a process or capability to the market demands it helps an organization respond to more quickly."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:responsibleFor a owl:ObjectProperty ;
+    rdfs:label "responsible for"^^xsd:string ;
+    rdfs:comment "Relates a team or organizational role to an activity, stage, or artifact for which it has responsibility."^^xsd:string ;
+    rdfs:subPropertyOf schema:agent .
+
+aicd:retrainingUsingProductionData a owl:ObjectProperty ;
+    rdfs:label "retraining using production data"^^xsd:string ;
+    rdfs:comment "Relates a continuous training or retraining activity to data sourced from production environments."^^xsd:string ;
+    rdfs:subPropertyOf aicd:usesProductionData .
+
+aicd:reusableArtifact a owl:ObjectProperty ;
+    rdfs:label "reusable artifact" ;
+    rdfs:comment "Relates an AI Factory or specialized team to reusable artifacts used across ML projects." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:reusablePattern a owl:ObjectProperty ;
+    rdfs:label "reusable pattern" ;
+    rdfs:comment "Relates an AI Factory or specialized team to reusable patterns used to scale AI operations." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:reusesArtifact a owl:ObjectProperty ;
+    rdfs:label "reuses artifact"^^xsd:string ;
+    rdfs:comment "Relates a team, workflow, or process to an artifact reused across ML projects or lifecycle iterations."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart ;
+    owl:sameAs aicd:consumesArtifact,
+        aicd:involvesArtifact,
+        aicd:producesArtifact,
+        aicd:requiresArtifactDefinition .
+
+aicd:screenedByReviewLevel a owl:ObjectProperty ;
+    rdfs:label "screened by review level"^^xsd:string ;
+    rdfs:comment "Relates a candidate study or publication to the review level that screens it."^^xsd:string ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range schema:Action ;
+    rdfs:subPropertyOf prov:wasAssociatedWith .
+
+aicd:screensFor a owl:ObjectProperty ;
+    rdfs:label "screens for"^^xsd:string ;
+    rdfs:comment "Relates a screening or review activity to the type of papers, studies, or publications it is intended to identify."^^xsd:string ;
+    rdfs:domain aicd:PublicationScreening ;
+    rdfs:range schema:CreativeWork ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:searchesForRelevantPapers a owl:ObjectProperty ;
+    rdfs:label "searches for relevant papers"^^xsd:string ;
+    rdfs:comment "Relates a review protocol to the search activity used to identify relevant literature."^^xsd:string ;
+    rdfs:subPropertyOf schema:search .
+
+aicd:selectsPrimaryPapers a owl:ObjectProperty ;
+    rdfs:label "selects primary papers"^^xsd:string ;
+    rdfs:comment "Relates a review protocol to the selection activity used to identify primary studies that satisfy inclusion and exclusion criteria."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:spansDiscipline a owl:ObjectProperty ;
+    rdfs:label "spans discipline"^^xsd:string ;
+    rdfs:comment "Relates a cross-silo concern or integration challenge to a discipline involved in the MLOps lifecycle."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo ;
+    owl:sameAs aicd:integratesDiscipline .
+
+aicd:standardizedProcess a owl:ObjectProperty ;
+    rdfs:label "standardized process" ;
+    rdfs:comment "Relates an AI Factory or specialized team to standardized operational processes it relies on or establishes." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:standardizes a owl:ObjectProperty ;
+    rdfs:label "standardizes"^^xsd:string ;
+    rdfs:comment "Relates a maturity stage, organization, or process to the practices it standardizes."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:successfulImplementationPrinciple a owl:ObjectProperty ;
+    rdfs:label "successful implementation principle"^^xsd:string ;
+    rdfs:comment "Relates an implementation-oriented MLOps concept to a principle contributing to success."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:supportsCrossTeamCollaboration a owl:ObjectProperty ;
+    rdfs:label "supports cross-team collaboration"^^xsd:string ;
+    rdfs:comment "Relates a practice, workflow, or organizational pattern to collaboration across teams."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:supportsDataManagement a owl:ObjectProperty ;
+    rdfs:label "supports data management"^^xsd:string ;
+    rdfs:comment "Relates a process or maturity stage to data management activities that it supports."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:supportsDeployability a owl:ObjectProperty ;
+    rdfs:label "supports deployability"^^xsd:string ;
+    rdfs:comment "Relates a practice, artifact, or process to easier or more reliable deployment of an ML model in production."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:supportsMLOpsAdoption a owl:ObjectProperty ;
+    rdfs:label "supports MLOps adoption"^^xsd:string ;
+    rdfs:comment "Relates a practice, skill, or organizational capability to its role in supporting MLOps adoption."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:supportsMaintainability a owl:ObjectProperty ;
+    rdfs:label "supports maintainability"^^xsd:string ;
+    rdfs:comment "Relates a practice, artifact, or process to improved maintainability of an ML codebase or deployed model."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:supportsModelEvolution a owl:ObjectProperty ;
+    rdfs:label "supports model evolution"^^xsd:string ;
+    rdfs:comment "Relates a workflow, team, or process to its role in iterative AI model improvement and evolution over time."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:supportsScalability a owl:ObjectProperty ;
+    rdfs:label "supports scalability"^^xsd:string ;
+    rdfs:comment "Relates a practice, artifact, or process to improved scalability of an ML system or codebase."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:supportsScaling a owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "supports scaling" ;
+    rdfs:comment "Relates a team, workflow, or organizational pattern to its role in scaling AI productionalization." ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:tailorsSolutionsTo a owl:ObjectProperty ;
+    rdfs:label "tailors solutions to"^^xsd:string ;
+    rdfs:comment "Relates an AI development process or solution to the needs it is adapted to satisfy."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:trainsModel a owl:ObjectProperty ;
+    rdfs:label "trains model"^^xsd:string ;
+    rdfs:comment "Relates a training activity to the machine learning model it trains."^^xsd:string ;
+    rdfs:subPropertyOf schema:object .
+
+aicd:triggeredByPullRequest a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "triggered by pull request" ;
+    rdfs:comment "Relates a process or activity to the pull request event that initiates it." ;
+    rdfs:subPropertyOf schema:actionStatus .
+
+aicd:updatesModel a owl:ObjectProperty ;
+    rdfs:label "updates model"^^xsd:string ;
+    rdfs:comment "Relates a retraining or maintenance activity to the model being updated."^^xsd:string ;
+    rdfs:subPropertyOf schema:object ;
+    owl:sameAs aicd:supportsModelUpdates .
+
+aicd:usesCICD a owl:ObjectProperty ;
+    rdfs:label "uses CI/CD"^^xsd:string ;
+    rdfs:comment "Relates an MLOps process or pipeline to continuous integration and continuous delivery practices."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesClassificationScheme a owl:ObjectProperty ;
+    rdfs:label "uses classification scheme"^^xsd:string ;
+    rdfs:comment "Relates a review or analysis to the classification scheme used to categorize studies or solutions."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesCloudResource a owl:ObjectProperty ;
+    rdfs:label "uses cloud resource"^^xsd:string ;
+    rdfs:comment "Relates an ML activity to a cloud resource used to support training, validation, or deployment."^^xsd:string ;
+    rdfs:subPropertyOf aicd:usesComputationalResource .
+
+aicd:usesDataOpsPrinciple a owl:ObjectProperty ;
+    rdfs:label "uses DataOps principle"^^xsd:string ;
+    rdfs:comment "Relates a process, framework, or pipeline to the DataOps principle it incorporates."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesDataset a owl:ObjectProperty ;
+    rdfs:label "uses dataset"^^xsd:string ;
+    rdfs:comment "Relates a machine learning activity or project to a dataset used as input or reference material."^^xsd:string,
+        "Relates an ML lifecycle activity to a dataset that it consumes."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesDevOpsPrinciple a owl:ObjectProperty ;
+    rdfs:label "uses DevOps principle"^^xsd:string ;
+    rdfs:comment "Relates a process, framework, or pipeline to the DevOps principle it incorporates."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesGoalQuestionMetricApproach a owl:ObjectProperty ;
+    rdfs:label "uses Goal-Question-Metric approach"^^xsd:string ;
+    rdfs:comment "Relates a study or evaluation process to the GQM approach used to structure goals, questions, and metrics."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesInfrastructure a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "uses infrastructure"^^xsd:string ;
+    rdfs:comment "Relates an MLOps process, stage, or tool-mediated activity to the infrastructure it relies on."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses ;
+    owl:sameAs aicd:operatesInfrastructure .
+
+aicd:usesPerformanceMetric a owl:ObjectProperty ;
+    rdfs:label "uses performance metric"^^xsd:string ;
+    rdfs:comment "Relates monitoring or validation activity to the metrics used to assess model effectiveness."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesProductionEnvironment a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "uses production environment"^^xsd:string ;
+    rdfs:comment "Relates deployment, monitoring, or retraining activities to the production environment in which they occur."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesResearchMethod a owl:ObjectProperty ;
+    rdfs:label "uses research method"^^xsd:string ;
+    rdfs:comment "Relates a research synthesis or study to the method used to examine MLOps evidence."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesTool a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "uses tool"^^xsd:string ;
+    rdfs:comment "Relates an MLOps process or activity to a software tool used for orchestration or automation."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesTrainingData a owl:ObjectProperty ;
+    rdfs:label "uses training data"^^xsd:string ;
+    rdfs:comment "Relates a training or retraining activity to the data used to fit or update the model."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:validatedBy a owl:ObjectProperty ;
+    rdfs:label "validated by"^^xsd:string ;
+    rdfs:comment "Relates a concept, proposal, or approach to validation evidence or activity supporting it."^^xsd:string ;
+    rdfs:subPropertyOf schema:isBasedOn .
+
+aicd:validationAfterTraining a owl:ObjectProperty ;
+    rdfs:label "validation after training" ;
+    rdfs:comment "Relates a lifecycle process to validation performed after model training." ;
+    rdfs:subPropertyOf aicd:hasValidationPhase ;
+    owl:sameAs aicd:validationBeforeTraining,
+        aicd:validationDuringTraining .
+
+<https://example.com/doc/67afa5c93210/0a8ea2497a8a> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.657671+00:00"^^xsd:dateTime ;
+    schema:identifier "0a8ea2497a8a"^^xsd:string ;
+    schema:position 15 .
+
+<https://example.com/doc/67afa5c93210/123438b28c48> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.624597+00:00"^^xsd:dateTime ;
+    schema:identifier "123438b28c48"^^xsd:string ;
+    schema:position 1 .
+
+<https://example.com/doc/67afa5c93210/44cdad75f3ae> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.654001+00:00"^^xsd:dateTime ;
+    schema:identifier "44cdad75f3ae"^^xsd:string ;
+    schema:position 13 .
+
+<https://example.com/doc/67afa5c93210/470a1a024c63> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.667555+00:00"^^xsd:dateTime ;
+    schema:identifier "470a1a024c63"^^xsd:string ;
+    schema:position 19 .
+
+<https://example.com/doc/67afa5c93210/692c6e229fbb> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.663670+00:00"^^xsd:dateTime ;
+    schema:identifier "692c6e229fbb"^^xsd:string ;
+    schema:position 17 .
+
+<https://example.com/doc/67afa5c93210/799edcdcde8e> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.650065+00:00"^^xsd:dateTime ;
+    schema:identifier "799edcdcde8e"^^xsd:string ;
+    schema:position 10 .
+
+<https://example.com/doc/67afa5c93210/7b37430ddbe8> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.637084+00:00"^^xsd:dateTime ;
+    schema:identifier "7b37430ddbe8"^^xsd:string ;
+    schema:position 5 .
+
+<https://example.com/doc/67afa5c93210/84f1a3ba0c62> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.651565+00:00"^^xsd:dateTime ;
+    schema:identifier "84f1a3ba0c62"^^xsd:string ;
+    schema:position 11 .
+
+<https://example.com/doc/67afa5c93210/87a1c16d2cf3> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.659868+00:00"^^xsd:dateTime ;
+    schema:identifier "87a1c16d2cf3"^^xsd:string ;
+    schema:position 16 .
+
+<https://example.com/doc/67afa5c93210/8f2a02f99689> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.620460+00:00"^^xsd:dateTime ;
+    schema:identifier "8f2a02f99689"^^xsd:string ;
+    schema:position 0 .
+
+<https://example.com/doc/67afa5c93210/9d5fac238431> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.639038+00:00"^^xsd:dateTime ;
+    schema:identifier "9d5fac238431"^^xsd:string ;
+    schema:position 6 .
+
+<https://example.com/doc/67afa5c93210/9dcacd41cb3f> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.631000+00:00"^^xsd:dateTime ;
+    schema:identifier "9dcacd41cb3f"^^xsd:string ;
+    schema:position 3 .
+
+<https://example.com/doc/67afa5c93210/aa0cf82da4a2> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.647415+00:00"^^xsd:dateTime ;
+    schema:identifier "aa0cf82da4a2"^^xsd:string ;
+    schema:position 9 .
+
+<https://example.com/doc/67afa5c93210/b2d933cc8c85> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.641848+00:00"^^xsd:dateTime ;
+    schema:identifier "b2d933cc8c85"^^xsd:string ;
+    schema:position 7 .
+
+<https://example.com/doc/67afa5c93210/c18f58c44613> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.666325+00:00"^^xsd:dateTime ;
+    schema:identifier "c18f58c44613"^^xsd:string ;
+    schema:position 18 .
+
+<https://example.com/doc/67afa5c93210/cb35a774ba4b> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.645133+00:00"^^xsd:dateTime ;
+    schema:identifier "cb35a774ba4b"^^xsd:string ;
+    schema:position 8 .
+
+<https://example.com/doc/67afa5c93210/ec8eec237d2d> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.634898+00:00"^^xsd:dateTime ;
+    schema:identifier "ec8eec237d2d"^^xsd:string ;
+    schema:position 4 .
+
+<https://example.com/doc/67afa5c93210/ed0c75c35eee> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.655506+00:00"^^xsd:dateTime ;
+    schema:identifier "ed0c75c35eee"^^xsd:string ;
+    schema:position 14 .
+
+<https://example.com/doc/67afa5c93210/f04c1afe9280> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.627649+00:00"^^xsd:dateTime ;
+    schema:identifier "f04c1afe9280"^^xsd:string ;
+    schema:position 2 .
+
+<https://example.com/doc/67afa5c93210/f867beb08569> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.652838+00:00"^^xsd:dateTime ;
+    schema:identifier "f867beb08569"^^xsd:string ;
+    schema:position 12 .
+
+<https://example.com/doc/67afa5c93210/faf01e78b6c0> a prov:Entity,
+        schema:text ;
+    prov:generatedAtTime "2026-04-16T13:12:17.669150+00:00"^^xsd:dateTime ;
+    schema:identifier "faf01e78b6c0"^^xsd:string ;
+    schema:position 20 .
+
+schema:DataEngineering a owl:Class ;
+    rdfs:label "Data Engineering"^^xsd:string ;
+    rdfs:comment "The discipline of preparing, transforming, integrating, and managing data used in AI and ML workflows."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    owl:sameAs aicd:DataCollection,
+        aicd:DataEngineer,
+        aicd:DataEngineerRole,
+        aicd:DataEngineeringTeam,
+        aicd:DataLabeling,
+        aicd:DataManagement,
+        aicd:DataManagementChallenge,
+        aicd:DataManagementMaturity,
+        aicd:DataOps,
+        aicd:DataOpsPrinciple,
+        aicd:DataPreparation,
+        aicd:DataScienceProject,
+        aicd:DataScienceTeam,
+        aicd:DataScientist,
+        aicd:DataScientistInvolvement,
+        aicd:DataScientistRole,
+        aicd:DataStorage,
+        aicd:DataStrategy,
+        aicd:MLEngineeringTeam,
+        aicd:TrainingDataQuality,
+        aicd:integratesDataScienceAndSoftwareEngineering .
+
+schema:duration rdfs:comment "Duration of a process or activity; when used for lifecycle stages, it should be interpreted using standard time units such as days."^^xsd:string .
+
+aicd:Accuracy a owl:Class ;
+    rdfs:label "Accuracy"^^xsd:string ;
+    rdfs:comment "A quality dimension indicating how correctly a model produces expected outputs relative to a reference or target."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:Adjustment a owl:Class ;
+    rdfs:label "Adjustment"^^xsd:string ;
+    rdfs:comment "An iterative corrective activity used to adapt models or related processes in response to validation or monitoring feedback."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ArtifactDefinition a owl:Class ;
+    rdfs:label "Artifact Definition"^^xsd:string ;
+    rdfs:comment "The activity of specifying and clarifying the artifacts used in ML development and MLOps workflows."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:Assessment a owl:Class ;
+    rdfs:label "Assessment"^^xsd:string ;
+    rdfs:comment "An evaluative activity used to examine MLOps-related practices, processes, or capabilities against defined criteria."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    owl:sameAs aicd:QualityAssessment .
+
+aicd:AutomatedMLOps a owl:Class ;
+    rdfs:label "Automated MLOps"^^xsd:string ;
+    rdfs:comment "A higher-maturity MLOps mode characterized by automated lifecycle activities and integrated pipelines."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess ;
+    aicd:hasLifecycleStage aicd:ModelDeployment,
+        aicd:ModelMonitoring,
+        aicd:ModelRetraining,
+        aicd:ModelValidation .
+
+aicd:AutomatedModelDeployment a owl:Class ;
+    rdfs:label "Automated Model Deployment"^^xsd:string ;
+    rdfs:comment "The automated release of trained AI models into production as part of an MLOps lifecycle."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelDeployment,
+        aicd:ProductionOperations .
+
+aicd:AutomatedTraining a owl:Class ;
+    rdfs:label "Automated Training"^^xsd:string ;
+    rdfs:comment "A maturity level emphasizing automation of model training within ML workflows."^^xsd:string ;
+    rdfs:subClassOf aicd:MLOpsMaturityLevel .
+
+aicd:CI_CDWorkflow a owl:Class ;
+    rdfs:label "CI/CD Workflow"^^xsd:string ;
+    rdfs:comment "A recurring software delivery workflow that automates integration and deployment activities for AI and ML systems within the lifecycle."^^xsd:string ;
+    rdfs:subClassOf aicd:RecurringPipeline .
+
+aicd:CloudResource a owl:Class ;
+    rdfs:label "Cloud Resource"^^xsd:string ;
+    rdfs:comment "A computational resource provided through cloud infrastructure to support scalable and cost-aware ML development or operations."^^xsd:string,
+        "Computational resources provided by a cloud environment to support training or deployment workloads."^^xsd:string ;
+    rdfs:subClassOf aicd:ComputationalResource,
+        schema:Thing .
+
+aicd:CrossTeamCollaboration a owl:Class ;
+    rdfs:label "Cross-Team Collaboration"^^xsd:string ;
+    rdfs:comment "A collaborative capability involving coordination across multiple teams in MLOps-oriented work."^^xsd:string ;
+    rdfs:subClassOf aicd:Benefit ;
+    aicd:supportsCrossTeamCollaboration aicd:DataScienceTeam,
+        aicd:DevelopmentTeam,
+        aicd:OperationsTeam .
+
+aicd:CustomerInvolvement a owl:Class ;
+    rdfs:label "Customer Involvement"^^xsd:string ;
+    rdfs:comment "The participation of customers across MLOps phases to improve alignment, expectations, and delivery coordination."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:DataCollection a owl:Class ;
+    rdfs:label "Data Collection"^^xsd:string ;
+    rdfs:comment "The activity of acquiring data for use in ML model development, validation, or operation."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:DataDrifting a owl:Class ;
+    rdfs:label "Data Drifting"^^xsd:string ;
+    rdfs:comment "A change in the properties or distribution of input data over time that can affect model behavior and lifecycle decisions."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:DataEngineer a owl:Class ;
+    rdfs:label "Data Engineer"^^xsd:string ;
+    rdfs:comment "A professional role responsible for data cleaning, preparation, and pipeline support in MLOps workflows."^^xsd:string ;
+    rdfs:subClassOf schema:Person .
+
+aicd:DataEngineeringTeam a owl:Class ;
+    rdfs:label "Data Engineering Team"^^xsd:string ;
+    rdfs:comment "A team responsible for data engineering capabilities in MLOps-oriented AI development workflows."^^xsd:string ;
+    rdfs:subClassOf schema:Organization .
+
+aicd:DataGovernance a owl:Class ;
+    rdfs:label "Data Governance"^^xsd:string ;
+    rdfs:comment "Governance activity covering policies, controls, and accountability for data used in ML lifecycle processes."^^xsd:string ;
+    rdfs:subClassOf aicd:DataManagement ;
+    aicd:addressesConcern aicd:FairnessConcern,
+        aicd:SecurityConcern .
+
+aicd:DataLabeling a owl:Class ;
+    rdfs:label "Data Labeling"^^xsd:string ;
+    rdfs:comment "An activity for assigning labels or annotations to data so it can be used for model training and evaluation."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:DataManagementMaturity a owl:Class ;
+    rdfs:label "Data Management Maturity"^^xsd:string ;
+    rdfs:comment "The maturity of data management practices within an MLOps lifecycle, ranging from ad hoc to standardized and automated approaches."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:DataOps a owl:Class ;
+    rdfs:label "DataOps"^^xsd:string ;
+    rdfs:comment "A stage in which data management processes are standardized and automated to support model development and operations."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess .
+
+aicd:DataPipeline a owl:Class ;
+    rdfs:label "Data Pipeline"^^xsd:string ;
+    rdfs:comment "A pipeline that moves, transforms, and prepares data for use in ML development and operational workflows."^^xsd:string ;
+    rdfs:subClassOf aicd:RecurringPipeline .
+
+aicd:DataPreparation a owl:Class ;
+    rdfs:label "Data Preparation"^^xsd:string ;
+    rdfs:comment "An activity for transforming raw data into a form suitable for model training, validation, or operational use."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:DataScientist a owl:Class ;
+    rdfs:label "Data Scientist"^^xsd:string ;
+    rdfs:comment "A professional role responsible for model development and experimentation, often collaborating with software engineering and data engineering teams."^^xsd:string ;
+    rdfs:subClassOf schema:Person .
+
+aicd:DataScientistInvolvement a owl:Class ;
+    rdfs:label "Data Scientist Involvement"^^xsd:string ;
+    rdfs:comment "The participation of data scientists throughout the project lifecycle, including early-stage development and iteration."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:DataStorage a owl:Class ;
+    rdfs:label "Data Storage"^^xsd:string ;
+    rdfs:comment "The activity or capability of persisting data in a form that supports access and use in ML workflows."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:DeployedMLProductQuality a owl:Class ;
+    rdfs:label "Deployed ML Product Quality"^^xsd:string ;
+    rdfs:comment "A benefit concerned with the quality of deployed machine learning products."^^xsd:string ;
+    rdfs:subClassOf aicd:Benefit ;
+    aicd:improvesQualityOf aicd:MLModel .
+
+aicd:Deployment a owl:Class ;
+    rdfs:label "Deployment"^^xsd:string ;
+    rdfs:comment "An activity in which a trained machine learning model is released into an operational environment for use."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelDeployment ;
+    owl:sameAs aicd:AutomatedModelDeployment,
+        aicd:ContinuousDeployment,
+        aicd:DeploymentMaintenanceChallenge,
+        aicd:DeploymentPhase .
+
+aicd:DevOpsPrinciple a owl:Class ;
+    rdfs:label "DevOps Principle"^^xsd:string ;
+    rdfs:comment "A principle from DevOps that can be applied to the ML lifecycle to improve automation, collaboration, and delivery speed."^^xsd:string,
+        "A principle of integrating development and operations practices to improve delivery speed, reliability, and feedback loops."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:DevOpsTeam a owl:Class ;
+    rdfs:label "DevOps Team"^^xsd:string ;
+    rdfs:comment "A team responsible for operational automation, delivery, and infrastructure practices supporting AI model lifecycles."^^xsd:string ;
+    rdfs:subClassOf schema:Organization .
+
+aicd:DevelopmentPractice a owl:Class ;
+    rdfs:label "Development Practice"^^xsd:string ;
+    rdfs:comment "A software development practice that supports MLOps adoption, integration, or recurring delivery of ML functionality."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:EndToEndMLOpsLifecycle a owl:Class ;
+    rdfs:label "End-to-End MLOps Lifecycle"^^xsd:string ;
+    rdfs:comment "The complete lifecycle spanning data, experimentation, training, deployment, monitoring, and retraining activities for ML systems."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        aicd:RecurringPipeline .
+
+aicd:Experimentation a owl:Class ;
+    rdfs:label "Experimentation"^^xsd:string ;
+    rdfs:comment "An exploratory activity that allocates time for trying alternatives and learning during MLOps-oriented development."^^xsd:string,
+        "An iterative exploratory activity in ML development that supports testing hypotheses, comparing alternatives, and managing uncertainty."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:GeneralPurposeFramework a owl:Class ;
+    rdfs:label "General-Purpose Framework"^^xsd:string ;
+    rdfs:comment "A framework that can support ML projects but is not specialized specifically for ML workflows."^^xsd:string ;
+    rdfs:subClassOf schema:SoftwareApplication .
+
+aicd:GovernanceConcern a owl:Class ;
+    rdfs:label "Governance Concern"^^xsd:string ;
+    rdfs:comment "A cross-silo concern related to oversight, accountability, and controlled operation across the AI lifecycle."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:InclusionCriteria a owl:Class ;
+    rdfs:label "Inclusion Criteria"^^xsd:string ;
+    rdfs:comment "A set of conditions used to determine whether a publication or study is eligible for consideration in an MLOps-related review or selection process."^^xsd:string ;
+    rdfs:subClassOf schema:Thing ;
+    owl:sameAs aicd:ExclusionCriteria .
+
+aicd:InterdisciplinaryCollaboration a owl:Class ;
+    rdfs:label "Interdisciplinary Collaboration"^^xsd:string ;
+    rdfs:comment "Collaboration across disciplines involved in ML lifecycle activities, including development, data, and operations functions."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    aicd:supportsScaling aicd:Productionalization .
+
+aicd:MLEngineeringTeam a owl:Class ;
+    rdfs:label "ML Engineering Team"^^xsd:string ;
+    rdfs:comment "A team responsible for machine learning engineering activities such as model development, validation, and operationalization."^^xsd:string ;
+    rdfs:subClassOf schema:Organization .
+
+aicd:MLOpsCapabilityMaturityAssessment a owl:Class ;
+    rdfs:label "MLOps Capability Maturity Assessment"^^xsd:string ;
+    rdfs:comment "An assessment activity focused on determining the maturity or capability level of MLOps processes in an organization."^^xsd:string ;
+    rdfs:subClassOf aicd:Assessment .
+
+aicd:MLProjectLifecycle a owl:Class ;
+    rdfs:label "ML Project Lifecycle"^^xsd:string ;
+    rdfs:comment "The lifecycle of an ML project spanning analysis, development, validation, operationalization, and ongoing improvement activities."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelLifecycle .
+
+aicd:ModelDrift a owl:Class ;
+    rdfs:label "Model Drift"^^xsd:string ;
+    rdfs:comment "A change in deployed model behavior or performance over time that can indicate the need for update or retraining."^^xsd:string ;
+    rdfs:subClassOf aicd:conceptDrift,
+        schema:Thing .
+
+aicd:ModelGovernance a owl:Class ;
+    rdfs:label "Model Governance"^^xsd:string ;
+    rdfs:comment "Governance activity covering oversight, controls, and decision-making for AI model development, validation, deployment, and updates."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    aicd:addressesConcern aicd:ExplainabilityConcern,
+        aicd:FairnessConcern,
+        aicd:SecurityConcern .
+
+aicd:ModelObsolescence a owl:Class ;
+    rdfs:label "Model Obsolescence"^^xsd:string ;
+    rdfs:comment "A lifecycle condition in which a deployed ML model becomes outdated because the underlying data or operating context changes."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ModelPerformanceMonitoring a owl:Class ;
+    rdfs:label "Model Performance Monitoring"^^xsd:string ;
+    rdfs:comment "Monitoring activity focused on tracking performance metrics of deployed ML models over time."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelMonitoring .
+
+aicd:ModelQualityMonitoring a owl:Class ;
+    rdfs:label "Model Quality Monitoring"^^xsd:string ;
+    rdfs:comment "Monitoring activity focused on assessing model quality over time, including performance degradation and related quality signals."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelMonitoring ;
+    owl:sameAs aicd:ModelPerformanceMonitoring ;
+    aicd:monitorsFor aicd:conceptDrift,
+        aicd:safetyConstraintViolation .
+
+aicd:MonitoringConcern a owl:Class ;
+    rdfs:label "Monitoring Concern"^^xsd:string ;
+    rdfs:comment "A cross-silo concern related to observing model behavior and operational health over time."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:OperationalEfficiency a owl:Class ;
+    rdfs:label "Operational Efficiency"^^xsd:string ;
+    rdfs:comment "A benefit concerned with improved efficiency in AI model development, deployment, and operations."^^xsd:string ;
+    rdfs:subClassOf aicd:Benefit ;
+    aicd:enhancesOperationalEfficiencyOf aicd:MLOpsPipeline .
+
+aicd:OrganizationalCulture a owl:Class ;
+    rdfs:label "Organizational Culture"^^xsd:string ;
+    rdfs:comment "The shared norms and practices that influence how MLOps processes are adopted, coordinated, and sustained in an organization."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ProcessIntegration a owl:Class ;
+    rdfs:label "Process Integration"^^xsd:string ;
+    rdfs:comment "The coordination and coupling of ML lifecycle activities into an integrated development and operations workflow."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    aicd:usesDataOpsPrinciple aicd:DataOpsPrinciple ;
+    aicd:usesDevOpsPrinciple aicd:DevOpsPrinciple .
+
+aicd:PublicationScreening a owl:Class ;
+    rdfs:label "Publication Screening"^^xsd:string ;
+    rdfs:comment "The activity of checking candidate publications against inclusion and exclusion criteria during a review workflow."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        schema:Action .
+
+aicd:QualifiedPersonnelShortage a owl:Class ;
+    rdfs:label "Qualified Personnel Shortage"^^xsd:string ;
+    rdfs:comment "A lack of sufficiently qualified personnel, especially in data science areas, affecting MLOps implementation."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ResearchImpactAssessment a owl:Class ;
+    rdfs:label "Research Impact Assessment"^^xsd:string ;
+    rdfs:comment "The activity of evaluating studies with respect to publication venue standing, peer review, or related research impact considerations."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ResearchPerspective a owl:Class ;
+    rdfs:label "Research Perspective"^^xsd:string ;
+    rdfs:comment "A perspective oriented toward scholarly investigation, evidence synthesis, and research-driven understanding of MLOps."^^xsd:string,
+        "A perspective oriented toward systematic study, surveys, and synthesis of MLOps challenges, opportunities, practices, and maturity models."^^xsd:string ;
+    rdfs:subClassOf aicd:LifecyclePerspective,
+        schema:Thing .
+
+aicd:ResearchProtocol a owl:Class ;
+    rdfs:label "Research Protocol"^^xsd:string ;
+    rdfs:comment "A structured plan or methodology used to conduct a systematic literature review or similar evidence-gathering study within MLOps research."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:RoleAmbiguityConcern a owl:Class ;
+    rdfs:label "Role Ambiguity Concern"^^xsd:string ;
+    rdfs:comment "A concern related to unclear role definitions and overlapping responsibilities in an MLOps process."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern ;
+    aicd:hasRoleDefinition aicd:RoleDefinition .
+
+aicd:SmallAndMediumSizedSoftwareDevelopmentCompany a owl:Class ;
+    rdfs:label "Small and Medium-Sized Software Development Company"^^xsd:string ;
+    rdfs:comment "A software development organization of small or medium size considered as a context for MLOps adoption and evaluation."^^xsd:string ;
+    rdfs:subClassOf aicd:SoftwareDevelopmentCompany .
+
+aicd:SocialDebt a owl:Class ;
+    rdfs:label "Social Debt"^^xsd:string ;
+    rdfs:comment "A form of organizational or role-definition debt that can arise when MLOps responsibilities are unclear or misaligned."^^xsd:string,
+        "Coordination and workload problems that arise when roles and artifacts are ambiguous in ML development work."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:SoftwareDeveloperRole a owl:Class ;
+    rdfs:label "Software Developer Role"^^xsd:string ;
+    rdfs:comment "A role contributing software engineering work to the MLOps process, often in coordination with other lifecycle roles."^^xsd:string ;
+    rdfs:subClassOf aicd:MLOpsRole ;
+    aicd:collaboratesWith aicd:DevOpsRole,
+        aicd:MLEngineerRole .
+
+aicd:SoftwareDevelopmentContext a owl:Class ;
+    rdfs:label "Software Development Context"^^xsd:string ;
+    rdfs:comment "A software development setting in which MLOps concepts, practices, and adoption challenges are considered."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:SoftwareDevelopmentIndustry a owl:Class ;
+    rdfs:label "Software Development Industry"^^xsd:string ;
+    rdfs:comment "The industrial context in which MLOps practices, activities, and approaches are applied."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:Standardization a owl:Class ;
+    rdfs:label "Standardization"^^xsd:string ;
+    rdfs:comment "The practice of defining and applying common development and operational processes to improve consistency across AI lifecycle activities."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        schema:Action ;
+    aicd:hasQualityOutcome aicd:ModelQuality ;
+    aicd:supportsScaling aicd:ContinuousDevelopmentProcess .
+
+aicd:TechnicalDebtConcern a owl:Class ;
+    rdfs:label "Technical Debt Concern"^^xsd:string ;
+    rdfs:comment "A cross-silo concern related to accumulated implementation or process debt that can hinder scaling and lifecycle automation."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:ThreeLevelReview a owl:Class ;
+    rdfs:label "Three-Level Review"^^xsd:string ;
+    rdfs:comment "A staged review procedure that screens publications across title, abstract and introductory material, and full text."^^xsd:string ;
+    rdfs:subClassOf aicd:LiteratureSearchProcess .
+
+aicd:TrainingAutomation a owl:Class ;
+    rdfs:label "Training Automation"^^xsd:string ;
+    rdfs:comment "Automation of the model training activity within a recurring ML pipeline."^^xsd:string ;
+    rdfs:subClassOf aicd:DevelopmentAutomation,
+        aicd:RecurringPipeline .
+
+aicd:TrainingDataQuality a owl:Class ;
+    rdfs:label "Training Data Quality"^^xsd:string ;
+    rdfs:comment "The quality characteristics of data used to train ML models, which influence model performance."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:addressesDataDrift a owl:ObjectProperty ;
+    rdfs:label "addresses data drift"^^xsd:string ;
+    rdfs:comment "Relates a monitoring or retraining activity to data drift conditions it is intended to address."^^xsd:string ;
+    rdfs:subPropertyOf aicd:monitorsFor .
+
+aicd:addressesModelDrift a owl:ObjectProperty ;
+    rdfs:label "addresses model drift"^^xsd:string ;
+    rdfs:comment "Relates a monitoring, maintenance, or retraining activity to model drift conditions it is intended to address."^^xsd:string ;
+    rdfs:subPropertyOf aicd:monitorsFor .
+
+aicd:automates a owl:ObjectProperty ;
+    rdfs:label "automates"^^xsd:string ;
+    rdfs:comment "Relates a process, pipeline, or maturity stage to the activity it automates."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:causesSocialDebt a owl:ObjectProperty ;
+    rdfs:label "causes social debt"^^xsd:string ;
+    rdfs:comment "Relates a process, practice, or condition to social debt that it contributes to or creates."^^xsd:string ;
+    rdfs:subPropertyOf schema:causes .
+
+aicd:causesTechnicalDebt a owl:ObjectProperty ;
+    rdfs:label "causes technical debt"^^xsd:string ;
+    rdfs:comment "Relates a development practice or omission to technical debt that accumulates in an ML codebase."^^xsd:string,
+        "Relates a process, practice, or condition to technical debt that it contributes to or creates."^^xsd:string ;
+    rdfs:subPropertyOf schema:causes .
+
+aicd:consumesArtifact a owl:ObjectProperty ;
+    rdfs:label "consumes artifact"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle activity to an artifact it consumes as input."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:continuousMonitoring a owl:ObjectProperty ;
+    rdfs:label "continuous monitoring"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to ongoing monitoring activities performed repeatedly over time."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasMonitoringPhase .
+
+aicd:continuousTraining a owl:ObjectProperty ;
+    rdfs:label "continuous training"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to repeated or ongoing retraining activities performed over time."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasRetrainingPhase .
+
+aicd:detectsModelDrift a owl:ObjectProperty ;
+    rdfs:label "detects model drift"^^xsd:string ;
+    rdfs:comment "Relates monitoring activity to model drift conditions it is intended to detect."^^xsd:string ;
+    rdfs:subPropertyOf aicd:monitorsFor .
+
+aicd:diagnosesOperationalAnomaly a owl:ObjectProperty ;
+    rdfs:label "diagnoses operational anomaly"^^xsd:string ;
+    rdfs:comment "Relates an interpretability or validation activity to the operational anomaly it helps diagnose."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:enablesRecurringExecution a owl:ObjectProperty ;
+    rdfs:label "enables recurring execution"^^xsd:string ;
+    rdfs:comment "Relates a workflow, process, or organizational capability to the repeated execution characteristic of continuous development."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:evaluatesModel a owl:ObjectProperty ;
+    rdfs:label "evaluates model"^^xsd:string ;
+    rdfs:comment "Relates an evaluation activity to the model being assessed."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:hasChallenge a owl:ObjectProperty ;
+    rdfs:label "has challenge"^^xsd:string ;
+    rdfs:comment "Relates an MLOps adoption effort, practice, or process to a challenge associated with it."^^xsd:string,
+        "Relates an MLOps context or process to a challenge affecting its implementation or operation."^^xsd:string,
+        "Relates an adoption assessment or MLOps practice to a challenge associated with it."^^xsd:string ;
+    rdfs:domain aicd:AdoptionAssessment,
+        aicd:MLOpsAdoption ;
+    rdfs:range aicd:Challenge ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasEvaluationPhase a owl:ObjectProperty ;
+    rdfs:label "has evaluation phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to an evaluation phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasValidationPhase,
+        schema:hasPart .
+
+aicd:hasInclusionCriterion a owl:ObjectProperty ;
+    rdfs:label "has inclusion criterion"^^xsd:string ;
+    rdfs:comment "Relates a review or screening process to an inclusion criterion used for candidate selection."^^xsd:string,
+        "Relates a selection process to a criterion used to include primary studies."^^xsd:string ;
+    rdfs:domain aicd:LiteratureSearchProcess ;
+    rdfs:range aicd:InclusionCriteria ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasLifecycleAutomation a owl:ObjectProperty ;
+    rdfs:label "has lifecycle automation"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to automation spanning multiple lifecycle stages."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasAutomationPhase .
+
+aicd:hasMetric a owl:ObjectProperty ;
+    rdfs:label "has metric"^^xsd:string ;
+    rdfs:comment "Relates a research question or evaluation framework to a metric used to answer or quantify it."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasProblemDefinition a owl:AsymmetricProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has problem definition"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process to its problem definition stage."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasRole a owl:ObjectProperty ;
+    rdfs:label "has role"^^xsd:string ;
+    rdfs:comment "Relates an MLOps activity, process, or organizational context to an involved role."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasTrainingPhase a owl:ObjectProperty ;
+    rdfs:label "has training phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a phase centered on model training or retraining."^^xsd:string,
+        "Relates a lifecycle process or pipeline to a training phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasLifecycleStage,
+        schema:hasPart .
+
+aicd:includesStage a owl:ObjectProperty ;
+    rdfs:label "includes stage"^^xsd:string ;
+    rdfs:comment "Relates a continuous development process or pipeline to a constituent stage such as training, evaluation, deployment, or monitoring."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:integratesDataScienceAndSoftwareEngineering a owl:Class ;
+    rdfs:label "Integrating Data Science and Software Engineering Work"^^xsd:string ;
+    rdfs:comment "A challenge in MLOps arising from the need to coordinate data science and software engineering practices for sustaining AI solutions."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:integratesDiscipline a owl:ObjectProperty ;
+    rdfs:label "integrates discipline"^^xsd:string ;
+    rdfs:comment "Relates the MLOps lifecycle perspective to a discipline that it integrates across the development and operational workflow."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:involvesArtifact a owl:ObjectProperty ;
+    rdfs:label "involves artifact"^^xsd:string ;
+    rdfs:comment "Relates a process or project to an artifact produced or used during its execution."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:managesData a owl:ObjectProperty ;
+    rdfs:label "manages data"^^xsd:string ;
+    rdfs:comment "Relates an activity or process to data that it manages, governs, or prepares for ML lifecycle use."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:mitigatesDataDrift a owl:ObjectProperty ;
+    rdfs:label "mitigates data drift"^^xsd:string ;
+    rdfs:comment "Relates a retraining or maintenance activity to the data drift it is intended to mitigate."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:operatesInfrastructure a owl:ObjectProperty ;
+    rdfs:label "operates infrastructure"^^xsd:string ;
+    rdfs:comment "Relates a DevOps or operations role to infrastructure operation and support."^^xsd:string ;
+    rdfs:subPropertyOf schema:operatesOn .
+
+aicd:performsOutsideUsualRemit a owl:ObjectProperty ;
+    rdfs:label "performs outside usual remit"^^xsd:string ;
+    rdfs:comment "Relates an agent or role to activities undertaken beyond its typical responsibilities."^^xsd:string ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:producesArtifact a owl:ObjectProperty ;
+    rdfs:label "produces artifact"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle activity to an artifact it creates, such as a trained model, configuration, or packaged output."^^xsd:string ;
+    rdfs:subPropertyOf schema:produces .
+
+aicd:requiresArtifactDefinition a owl:ObjectProperty ;
+    rdfs:label "requires artifact definition"^^xsd:string ;
+    rdfs:comment "Relates an MLOps context to the need to define involved artifacts clearly."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:requiresDataTransformation a owl:ObjectProperty ;
+    rdfs:label "requires data transformation" ;
+    rdfs:comment "Relates an integration or deployment activity to the data transformation logic needed to align source data with model expectations." ;
+    rdfs:subPropertyOf aicd:requiresActivity,
+        schema:requiresActivity .
+
+aicd:requiresExperimentationTime a owl:ObjectProperty ;
+    rdfs:label "requires experimentation time"^^xsd:string ;
+    rdfs:comment "Relates a project or development phase to additional time allocated for experimentation."^^xsd:string ;
+    rdfs:subPropertyOf schema:requiresActivity .
+
+aicd:retrainedUsing a owl:ObjectProperty ;
+    rdfs:label "retrained using" ;
+    rdfs:comment "Relates a retraining activity to the data used for the update." ;
+    rdfs:subPropertyOf schema:object,
+        schema:uses .
+
+aicd:supportsModelUpdates a owl:ObjectProperty ;
+    rdfs:label "supports model updates"^^xsd:string ;
+    rdfs:comment "Relates a process, workflow, or maturity stage to recurring model updates in production."^^xsd:string ;
+    rdfs:subPropertyOf schema:supports .
+
+aicd:usesComputationalResource a owl:ObjectProperty ;
+    rdfs:label "uses computational resource"^^xsd:string ;
+    rdfs:comment "Relates an ML activity to the computational resource it consumes."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesExperimentalActivity a owl:ObjectProperty ;
+    rdfs:label "uses experimental activity"^^xsd:string ;
+    rdfs:comment "Relates a development process or pipeline to experimentation activities used in model development."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesModelPipeline a owl:ObjectProperty ;
+    rdfs:label "uses model pipeline"^^xsd:string ;
+    rdfs:comment "Relates a maturity stage or lifecycle process to the machine learning pipeline it relies on."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:usesProductionData a owl:ObjectProperty ;
+    rdfs:label "uses production data" ;
+    rdfs:comment "Relates retraining activity to data sourced from the production environment." ;
+    rdfs:subPropertyOf aicd:retrainedUsing,
+        schema:uses .
+
+aicd:usesRecentData a owl:ObjectProperty ;
+    rdfs:label "uses recent data"^^xsd:string ;
+    rdfs:comment "Relates a retraining or maintenance activity to the recent data used to update a model."^^xsd:string ;
+    rdfs:subPropertyOf schema:uses .
+
+aicd:validationBeforeTraining a owl:ObjectProperty ;
+    rdfs:label "validation before training" ;
+    rdfs:comment "Relates a lifecycle process to validation performed before model training." ;
+    rdfs:subPropertyOf aicd:hasValidationPhase .
+
+aicd:validationDuringTraining a owl:ObjectProperty ;
+    rdfs:label "validation during training" ;
+    rdfs:comment "Relates a lifecycle process to validation performed during model training." ;
+    rdfs:subPropertyOf aicd:hasValidationPhase .
+
+aicd:Automation a owl:Class ;
+    rdfs:label "Automation"^^xsd:string ;
+    rdfs:comment "The use of automated execution in MLOps processes, including continuous integration, continuous delivery, and continuous training."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    aicd:supportsScaling aicd:Productionalization .
+
+aicd:ComputationalResourceConstraint a owl:Class ;
+    rdfs:label "Computational Resource Constraint"^^xsd:string ;
+    rdfs:comment "A constraint arising from the high computational cost of training, deployment, or retraining workflows."^^xsd:string ;
+    rdfs:subClassOf schema:Thing ;
+    aicd:requiresCapability aicd:ComputationalResource .
+
+aicd:ContinuousIntegration a owl:Class ;
+    rdfs:label "Continuous Integration"^^xsd:string ;
+    rdfs:comment "A practice of frequently integrating changes and verifying them through automated checks."^^xsd:string,
+        "An integration practice in which code and model-related changes are frequently merged and validated as part of an MLOps lifecycle."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        schema:Action .
+
+aicd:ContinuousTesting a owl:Class ;
+    rdfs:label "Continuous Testing"^^xsd:string ;
+    rdfs:comment "Repeated testing activity carried out throughout the AI lifecycle to detect errors and preserve model quality over time."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    aicd:hasQualityOutcome aicd:ModelQuality .
+
+aicd:ContinuousTraining a owl:Class ;
+    rdfs:label "Continuous Training"^^xsd:string ;
+    rdfs:comment "A recurring training practice in which a model is repeatedly updated as new data becomes available."^^xsd:string,
+        "An ongoing retraining-oriented activity in which deployed models are updated with newly available data to sustain performance in production."^^xsd:string,
+        "An ongoing training activity in which model updates are repeatedly performed to keep an ML model aligned with changing data or requirements."^^xsd:string,
+        "An ongoing training activity in which models are retrained repeatedly as new data or conditions become available."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelRetraining ;
+    aicd:addressesConcern aicd:ConceptDrift,
+        aicd:SustainabilityConcern ;
+    aicd:hasContinuousTrainingPhase aicd:ModelRetraining ;
+    aicd:usesTrainingData aicd:Dataset .
+
+aicd:CostConcern a owl:Class ;
+    rdfs:label "Cost Concern"^^xsd:string ;
+    rdfs:comment "A cross-silo concern related to financial cost generated by training, deployment, retraining, or infrastructure use."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:DataEngineerRole a owl:Class ;
+    rdfs:label "Data Engineer Role"^^xsd:string ;
+    rdfs:comment "A role responsible for data engineering work supporting ML pipelines and MLOps operations."^^xsd:string,
+        "A role responsible for data preparation, transformation, and data pipeline support in the MLOps lifecycle."^^xsd:string ;
+    rdfs:subClassOf aicd:MLOpsRole,
+        aicd:MLRole ;
+    aicd:hasResponsibility aicd:requiresDataTransformation ;
+    aicd:preparesData aicd:ModelRetraining .
+
+aicd:DataOpsPrinciple a owl:Class ;
+    rdfs:label "DataOps Principle"^^xsd:string ;
+    rdfs:comment "A principle focused on operationalizing data management workflows with collaboration, automation, and quality controls."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:DataQualityAndQuantityChallenge a owl:Class ;
+    rdfs:label "Data Quality and Quantity Challenge"^^xsd:string ;
+    rdfs:comment "A challenge in MLOps related to insufficient, low-quality, or poorly prepared data for training AI models."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern ;
+    aicd:requiresDataStrategy aicd:DataStrategy .
+
+aicd:DataScienceProject a owl:Class ;
+    rdfs:label "Data Science Project"^^xsd:string ;
+    rdfs:comment "A project that applies data science methods to extract value from data and develop analytical or machine learning solutions."^^xsd:string ;
+    rdfs:subClassOf schema:Project .
+
+aicd:DataScientistRole a owl:Class ;
+    rdfs:label "Data Scientist Role"^^xsd:string ;
+    rdfs:comment "A professional role concerned with developing ML solutions and often participating in model creation and experimentation."^^xsd:string,
+        "A role responsible for data science and model development activities in MLOps settings."^^xsd:string,
+        "A role responsible for problem framing, experimentation, and model development within the MLOps lifecycle."^^xsd:string ;
+    rdfs:subClassOf aicd:MLOpsRole,
+        aicd:MLRole,
+        schema:Role ;
+    aicd:definesRequirements aicd:ProblemDefinition ;
+    aicd:developsModel aicd:ModelValidation ;
+    aicd:hasProfessionalDevelopment aicd:ProfessionalDevelopment .
+
+aicd:DataStrategy a owl:Class ;
+    rdfs:label "Data Strategy"^^xsd:string ;
+    rdfs:comment "A planned approach for governing, collecting, cleaning, labeling, and preparing data to support MLOps and model development."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:Dataset a owl:Class ;
+    rdfs:label "Dataset"^^xsd:string ;
+    rdfs:comment "A collection of data used as input to machine learning development, training, validation, or retraining activities."^^xsd:string,
+        "A collection of data used for training, validation, retraining, or evaluation of machine learning models."^^xsd:string ;
+    rdfs:subClassOf schema:Dataset .
+
+aicd:DevOpsRole a owl:Class ;
+    rdfs:label "DevOps Role"^^xsd:string ;
+    rdfs:comment "A role responsible for infrastructure, automation, integration, and deployment support in an MLOps process."^^xsd:string ;
+    rdfs:subClassOf aicd:MLOpsRole ;
+    aicd:hasResponsibility aicd:ModelDeployment ;
+    aicd:operatesInfrastructure aicd:MLOpsInfrastructure .
+
+aicd:DevelopmentAutomation a owl:Class ;
+    rdfs:label "Development Automation"^^xsd:string ;
+    rdfs:comment "Automation of experimentation and model development activities within an ML pipeline."^^xsd:string ;
+    rdfs:subClassOf aicd:RecurringPipeline .
+
+aicd:ExclusionCriteria a owl:Class ;
+    rdfs:label "Exclusion Criteria"^^xsd:string ;
+    rdfs:comment "A set of conditions used to discard publications or studies that do not meet the requirements of an MLOps-related review or selection process."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:JenkinsTool a owl:Class ;
+    rdfs:label "Jenkins Tool"^^xsd:string ;
+    rdfs:comment "A workflow automation tool used to support integration and deployment activities in MLOps."^^xsd:string ;
+    rdfs:subClassOf aicd:WorkflowOrchestrationTool .
+
+aicd:KubernetesPlatform a owl:Class ;
+    rdfs:label "Kubernetes Platform"^^xsd:string ;
+    rdfs:comment "A general-purpose container orchestration platform used as infrastructure for ML project execution."^^xsd:string ;
+    rdfs:subClassOf aicd:GeneralPurposeFramework .
+
+aicd:MLEngineerRole a owl:Class ;
+    rdfs:label "ML Engineer Role"^^xsd:string ;
+    rdfs:comment "A role focused on engineering ML systems, operationalizing models, and supporting production lifecycle workflows."^^xsd:string,
+        "A role responsible for ML engineering work, including implementation and operationalization of models."^^xsd:string ;
+    rdfs:subClassOf aicd:MLOpsRole,
+        aicd:MLRole ;
+    aicd:developsModel aicd:ModelDeployment ;
+    aicd:hasResponsibility aicd:ModelMaintenance,
+        aicd:ModelMonitoring .
+
+aicd:MLLifecycle a owl:Class ;
+    rdfs:label "ML Lifecycle"^^xsd:string ;
+    rdfs:comment "The lifecycle of machine learning systems from experimentation and development through production operation and ongoing improvement."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork ;
+    owl:sameAs aicd:EndToEndMLOpsLifecycle,
+        aicd:LifecycleConcern,
+        aicd:LifecyclePerspective,
+        aicd:LifecycleStage,
+        aicd:MLProjectLifecycle,
+        aicd:ModelLifecycle .
+
+aicd:MLOpsMaturityModel a owl:Class ;
+    rdfs:label "MLOps Maturity Model"^^xsd:string ;
+    rdfs:comment "A maturity framework used to describe progressive levels of MLOps capability in an organization."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork .
+
+aicd:MLOpsPipeline a owl:Class ;
+    rdfs:label "MLOps Pipeline"^^xsd:string ;
+    rdfs:comment "An integrated pipeline that supports machine learning lifecycle automation, including training, deployment, and continuous updating."^^xsd:string,
+        "An integrated recurring pipeline that supports model development, training, validation, deployment, monitoring, and retraining in production-oriented ML workflows."^^xsd:string ;
+    rdfs:subClassOf aicd:RecurringPipeline ;
+    aicd:hasLifecycleAutomation aicd:Automation ;
+    aicd:hasLifecycleStage aicd:ModelDeployment,
+        aicd:ModelMonitoring,
+        aicd:ModelRetraining,
+        aicd:ModelValidation ;
+    aicd:includesStage aicd:DataManagement,
+        aicd:DeploymentPhase,
+        aicd:MonitoringPhase,
+        aicd:ProblemDefinition,
+        aicd:RetrainingPhase,
+        aicd:TrainingPhase,
+        aicd:ValidationPhase .
+
+aicd:MaintenancePhase a owl:Class ;
+    rdfs:label "Maintenance Phase"^^xsd:string ;
+    rdfs:comment "A phase in which a deployed model is sustained through fixes, updates, and operational support."^^xsd:string ;
+    rdfs:subClassOf aicd:LifecycleStage .
+
+aicd:ModelEvaluation a owl:Class ;
+    rdfs:label "Model Evaluation"^^xsd:string ;
+    rdfs:comment "The activity of assessing model quality, behavior, or performance against criteria during the AI lifecycle."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:ModelLifecycle a owl:Class ;
+    rdfs:label "Model Lifecycle"^^xsd:string ;
+    rdfs:comment "A recurring lifecycle framing that encompasses development, validation, deployment, monitoring, maintenance, and retraining of AI models."^^xsd:string,
+        "The end-to-end lifecycle of an AI model spanning development, validation, deployment, monitoring, maintenance, and retraining activities."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        schema:Process ;
+    aicd:hasLifecycleStage aicd:DataManagement,
+        aicd:DeploymentPhase,
+        aicd:MaintenancePhase,
+        aicd:MonitoringPhase,
+        aicd:ProblemDefinition,
+        aicd:RetrainingPhase,
+        aicd:TrainingPhase,
+        aicd:ValidationPhase .
+
+aicd:OperationalAnomaly a owl:Class ;
+    rdfs:label "Operational Anomaly"^^xsd:string ;
+    rdfs:comment "An irregular condition detected during operation of an AI system or model in production."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:OperationsTeam a owl:Class ;
+    rdfs:label "Operations Team"^^xsd:string ;
+    rdfs:comment "A team responsible for deploying, operating, and maintaining machine learning systems in production environments."^^xsd:string ;
+    rdfs:subClassOf schema:Organization ;
+    aicd:collaboratesWith aicd:DataScienceTeam,
+        aicd:DevelopmentTeam .
+
+aicd:PerformanceDegradation a owl:Class ;
+    rdfs:label "Performance Degradation"^^xsd:string ;
+    rdfs:comment "A deterioration in the effectiveness of an AI model during its operational lifecycle."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:PerformanceMetric a owl:Class ;
+    rdfs:label "Performance Metric"^^xsd:string ;
+    rdfs:comment "A measurable criterion used to evaluate model effectiveness or operational behavior in context."^^xsd:string ;
+    rdfs:subClassOf schema:PropertyValue .
+
+aicd:ProductionOperations a owl:Class ;
+    rdfs:label "Production Operations"^^xsd:string ;
+    rdfs:comment "Operational activities that keep AI models running effectively in production, including monitoring and retraining."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        schema:Action .
+
+aicd:ProfessionalDevelopment a owl:Class ;
+    rdfs:label "Professional Development"^^xsd:string ;
+    rdfs:comment "Preparation or training that builds professional competence in software engineering, computer science, or related MLOps capabilities."^^xsd:string ;
+    rdfs:subClassOf schema:Action ;
+    aicd:hasRoleDefinition aicd:RoleDefinition .
+
+aicd:ProgrammingPractice a owl:Class ;
+    rdfs:label "Programming Practice"^^xsd:string ;
+    rdfs:comment "A software engineering practice applied during model development to improve code quality, maintainability, and deployability."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:QualityAssessment a owl:Class ;
+    rdfs:label "Quality Assessment"^^xsd:string ;
+    rdfs:comment "The activity of assessing the quality or relevance of studies using a set of evaluation criteria."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelValidation,
+        schema:Action .
+
+aicd:SoftwareDevelopmentCompany a owl:Class ;
+    rdfs:label "Software Development Company"^^xsd:string ;
+    rdfs:comment "An organization context in which MLOps adoption and continuous model development practices are evaluated or applied."^^xsd:string,
+        "An organization context used for evaluating MLOps maturity and capability in software engineering practice."^^xsd:string ;
+    rdfs:subClassOf schema:Organization ;
+    owl:sameAs aicd:SmallAndMediumSizedSoftwareDevelopmentCompany,
+        aicd:SoftwareDevelopmentIndustry ;
+    aicd:hasChallenge aicd:CostConcern,
+        aicd:DeploymentMaintenanceChallenge,
+        aicd:SpecializedTalentShortage ;
+    aicd:usesCICD aicd:CI_CDWorkflow .
+
+aicd:SpecializedTalentShortage a owl:Class ;
+    rdfs:label "Specialized Talent Shortage"^^xsd:string ;
+    rdfs:comment "A challenge related to insufficient availability of specialized skills and expertise for MLOps adoption."^^xsd:string,
+        "A shortage of specialized personnel and skills required to support MLOps adoption and lifecycle execution."^^xsd:string ;
+    rdfs:subClassOf aicd:Challenge .
+
+aicd:TechnicalDebt a owl:Class ;
+    rdfs:label "Technical Debt"^^xsd:string ;
+    rdfs:comment "A condition in which expedient implementation choices create future maintenance, scalability, or integration costs in ML software."^^xsd:string,
+        "A form of accumulated implementation or design debt that can arise during the creation and operationalization of ML models."^^xsd:string,
+        "Accumulated implementation and code-quality shortcomings that increase future maintenance and rewriting effort in ML development."^^xsd:string ;
+    rdfs:subClassOf schema:Thing ;
+    owl:sameAs aicd:TechnicalDebtConcern .
+
+aicd:WorkflowOrchestrationTool a owl:Class ;
+    rdfs:label "Workflow Orchestration Tool"^^xsd:string ;
+    rdfs:comment "A tool used to orchestrate and automate MLOps workflows across lifecycle stages."^^xsd:string ;
+    rdfs:subClassOf schema:SoftwareApplication .
+
+aicd:hasAutomationPhase a owl:ObjectProperty ;
+    rdfs:label "has automation phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or maturity progression to a phase in which automation is introduced or increased."^^xsd:string ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:hasPerspective a owl:ObjectProperty ;
+    rdfs:label "has perspective"^^xsd:string ;
+    rdfs:comment "Relates an ontology, process, or knowledge artifact to a perspective used to frame it."^^xsd:string ;
+    rdfs:subPropertyOf schema:about .
+
+schema:Question rdfs:subClassOf schema:Thing .
+
+aicd:AbstractionLevel a owl:Class ;
+    rdfs:label "Abstraction Level"^^xsd:string ;
+    rdfs:comment "A level in a structured evaluation framework, such as conceptual, operational, or quantitative abstraction."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ComputationalResource a owl:Class ;
+    rdfs:label "Computational Resource"^^xsd:string ;
+    rdfs:comment "A computational asset used to build, train, validate, or operate ML systems, including specialized hardware and cloud resources."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ContinuousMonitoring a owl:Class ;
+    rdfs:label "Continuous Monitoring"^^xsd:string ;
+    rdfs:comment "A recurring monitoring practice used to observe model behavior, performance, and operational conditions over time."^^xsd:string,
+        "An ongoing monitoring activity for observing ML models in production and detecting drift, degradation, or other operational issues."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelMonitoring ;
+    aicd:monitorsFor aicd:conceptDrift,
+        aicd:safetyConstraintViolation .
+
+aicd:DataScienceTeam a owl:Class ;
+    rdfs:label "Data Science Team"^^xsd:string ;
+    rdfs:comment "A team responsible for data analysis, model experimentation, and scientific aspects of machine learning development within an MLOps setting."^^xsd:string ;
+    rdfs:subClassOf schema:Organization ;
+    aicd:collaboratesWith aicd:DevOpsTeam,
+        aicd:DevelopmentTeam,
+        aicd:OperationsTeam .
+
+aicd:DevelopmentTeam a owl:Class ;
+    rdfs:label "Development Team"^^xsd:string ;
+    rdfs:comment "A software development team involved in integrating machine learning capabilities into products and services."^^xsd:string ;
+    rdfs:subClassOf schema:Organization .
+
+aicd:ExplainabilityConcern a owl:Class ;
+    rdfs:label "Explainability Concern" ;
+    rdfs:comment "A cross-silo concern related to making AI model behavior understandable across the lifecycle." ;
+    rdfs:subClassOf aicd:CrossSiloConcern,
+        aicd:LifecycleConcern .
+
+aicd:LifecyclePerspective a owl:Class ;
+    rdfs:label "Lifecycle Perspective"^^xsd:string ;
+    rdfs:comment "A viewpoint used to characterize AI model development and operations as a recurring lifecycle rather than a single isolated pipeline."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:LiteratureSearchProcess a owl:Class ;
+    rdfs:label "Literature Search Process"^^xsd:string ;
+    rdfs:comment "An abstract process for identifying, screening, and evaluating studies related to MLOps in a research synthesis workflow."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        schema:Process .
+
+aicd:ModelMaintenance a owl:Class ;
+    rdfs:label "Model Maintenance" ;
+    rdfs:comment "The activity of sustaining deployed AI models through updates, fixes, and operational support." ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        aicd:MLOpsCapability,
+        aicd:MaintenancePhase,
+        schema:Action ;
+    aicd:mitigatesConcern aicd:OperationalConcern .
+
+aicd:ModelQuality a owl:Class ;
+    rdfs:label "Model Quality"^^xsd:string ;
+    rdfs:comment "A high-level quality concept capturing robustness, reliability, correctness, and related desirable model properties across the lifecycle."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:OperationalConcern a owl:Class ;
+    rdfs:label "Operational Concern"^^xsd:string ;
+    rdfs:comment "A concern related to operational execution of AI systems, including reliability, pipeline failures, data quality issues, and specialized personnel needs."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:RetrainingPhase a owl:Class ;
+    rdfs:label "Retraining Phase"^^xsd:string ;
+    rdfs:comment "A phase in which an existing model is updated with new or refreshed data to restore or improve performance."^^xsd:string ;
+    rdfs:subClassOf aicd:LifecycleStage .
+
+aicd:RoleDefinition a owl:Class ;
+    rdfs:label "Role Definition"^^xsd:string ;
+    rdfs:comment "An abstract specification of responsibilities and remit associated with a role in an MLOps-oriented organization."^^xsd:string,
+        "The activity of specifying responsibilities and roles involved in MLOps work and ML development."^^xsd:string ;
+    rdfs:subClassOf schema:Action,
+        schema:Thing .
+
+aicd:SustainabilityConcern a owl:Class ;
+    rdfs:label "Sustainability Concern"^^xsd:string ;
+    rdfs:comment "A concern related to sustaining model usefulness over time through monitoring, retraining, and operational support."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:TrainingPhase a owl:Class ;
+    rdfs:label "Training Phase"^^xsd:string ;
+    rdfs:comment "A phase in which a model is fitted or optimized using training data."^^xsd:string ;
+    rdfs:subClassOf aicd:LifecycleStage .
+
+aicd:ValidationPhase a owl:Class ;
+    rdfs:label "Validation Phase"^^xsd:string ;
+    rdfs:comment "A phase in which a model, data, or pipeline is checked against requirements, constraints, or quality criteria."^^xsd:string ;
+    rdfs:subClassOf aicd:LifecycleStage .
+
+aicd:hasMonitoringPhase a owl:ObjectProperty ;
+    rdfs:label "has monitoring phase"^^xsd:string,
+        "has monitoring phase" ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a monitoring phase included within it.",
+        "Relates a lifecycle process or pipeline to a monitoring phase included within it."^^xsd:string ;
+    rdfs:subPropertyOf aicd:hasLifecycleStage,
+        schema:hasPart .
+
+aicd:hasRetrainingPhase a owl:ObjectProperty ;
+    rdfs:label "has retraining phase" ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a retraining phase included within it." ;
+    rdfs:subPropertyOf aicd:hasLifecycleStage,
+        schema:hasPart .
+
+aicd:safetyConstraintViolation a owl:Class ;
+    rdfs:label "Safety Constraint Violation" ;
+    rdfs:comment "A condition in which a deployed AI model violates expected safety constraints." ;
+    rdfs:subClassOf aicd:OperationalConcern,
+        schema:Thing .
+
+aicd:AdoptionAssessment a owl:Class ;
+    rdfs:label "Adoption Assessment"^^xsd:string ;
+    rdfs:comment "An abstract analysis of the benefits and challenges involved in adopting MLOps in software development organizations."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:Benefit a owl:Class ;
+    rdfs:label "Benefit"^^xsd:string ;
+    rdfs:comment "A positive outcome or advantage associated with adopting MLOps practices."^^xsd:string,
+        "A positive outcome or advantage associated with adopting or applying MLOps in software development."^^xsd:string,
+        "A positive outcome or advantage associated with the adoption and implementation of MLOps practices."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:ContinuousDeployment a owl:Class ;
+    rdfs:label "Continuous Deployment"^^xsd:string ;
+    rdfs:comment "A deployment practice in which validated ML changes are automatically or repeatedly released to production as part of an MLOps lifecycle."^^xsd:string,
+        "A practice of automatically releasing validated changes into an operational environment."^^xsd:string,
+        "An MLOps activity for repeatedly integrating and deploying an ML model into production through automated or semi-automated workflows."^^xsd:string,
+        "An automated deployment activity that releases updated models into operational environments as part of an MLOps pipeline."^^xsd:string ;
+    rdfs:subClassOf aicd:ModelDeployment,
+        schema:Action ;
+    aicd:hasDeploymentPhase aicd:ModelDeployment .
+
+aicd:DataManagementChallenge a owl:Class ;
+    rdfs:label "Data Management Challenge"^^xsd:string ;
+    rdfs:comment "A challenge related to handling, organizing, and governing data in MLOps workflows."^^xsd:string,
+        "A challenge related to handling, organizing, governing, and maintaining data used in MLOps workflows."^^xsd:string ;
+    rdfs:subClassOf aicd:Challenge .
+
+aicd:DeploymentMaintenanceChallenge a owl:Class ;
+    rdfs:label "Deployment and Maintenance Challenge"^^xsd:string ;
+    rdfs:comment "A challenge related to deploying machine learning models to production and sustaining them through maintenance."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern ;
+    aicd:relatedToImplementation aicd:Productionalization .
+
+aicd:DeploymentPhase a owl:Class ;
+    rdfs:label "Deployment Phase"^^xsd:string ;
+    rdfs:comment "A phase in which a validated AI model is packaged, released, and made available for operational use."^^xsd:string ;
+    rdfs:subClassOf aicd:LifecycleStage .
+
+aicd:FairnessConcern a owl:Class ;
+    rdfs:label "Fairness Concern" ;
+    rdfs:comment "A cross-silo concern related to bias and fairness assessment across the lifecycle of AI model development and deployment." ;
+    rdfs:subClassOf aicd:CrossSiloConcern,
+        aicd:LifecycleConcern .
+
+aicd:MLOpsAdoption a owl:Class ;
+    rdfs:label "MLOps Adoption"^^xsd:string ;
+    rdfs:comment "The organizational adoption and implementation of MLOps practices in software development contexts."^^xsd:string,
+        "The organizational adoption and implementation of MLOps practices."^^xsd:string,
+        "The process of taking up and integrating MLOps in a software development context."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        aicd:Productionalization ;
+    owl:sameAs aicd:AdoptionAssessment ;
+    aicd:hasBenefit aicd:CrossTeamCollaboration,
+        aicd:DeployedMLProductQuality,
+        aicd:OperationalEfficiency ;
+    aicd:hasChallenge aicd:ComputationalResourceConstraint,
+        aicd:DataManagementChallenge,
+        aicd:DeploymentMaintenanceChallenge,
+        aicd:RoleAmbiguityConcern,
+        aicd:SpecializedTalentShortage ;
+    aicd:involvesRole aicd:DataEngineerRole,
+        aicd:DataScientistRole,
+        aicd:DevOpsRole,
+        aicd:MLEngineerRole .
+
+aicd:MLOpsInfrastructure a owl:Class ;
+    rdfs:label "MLOps Infrastructure"^^xsd:string ;
+    rdfs:comment "Infrastructure supporting integration, continuous deployment, monitoring, and training of ML models."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:MLOpsMaturityLevel a owl:Class ;
+    rdfs:label "MLOps Maturity Level"^^xsd:string ;
+    rdfs:comment "A level within an MLOps maturity model representing a degree of practice adoption or capability."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:MLRole a owl:Class ;
+    rdfs:label "ML Role"^^xsd:string ;
+    rdfs:comment "A role involved in MLOps or ML development work."^^xsd:string ;
+    rdfs:subClassOf schema:Role .
+
+aicd:hasDeploymentPhase a owl:ObjectProperty ;
+    rdfs:label "has deployment phase",
+        "has deployment phase"^^xsd:string ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a deployment phase included within it."^^xsd:string,
+        "Relates a lifecycle process or pipeline to a deployment phase included within it." ;
+    rdfs:subPropertyOf aicd:hasLifecycleStage,
+        schema:hasPart .
+
+aicd:DataManagement a owl:Class ;
+    rdfs:label "Data Management"^^xsd:string ;
+    rdfs:comment "The coordinated handling of data collection, cleaning, storage, and accessibility within MLOps practices."^^xsd:string,
+        "The governance, preparation, storage, and handling of data used across the ML product lifecycle, including concerns about data quality, availability, and access."^^xsd:string,
+        "The management of data assets, including acquisition, preparation, quality, and lifecycle handling for MLOps workflows."^^xsd:string,
+        "The management of data assets, including organization, governance, access, and handling, within MLOps workflows."^^xsd:string,
+        "The set of activities concerned with acquiring, preparing, governing, and maintaining training and operational data for ML systems."^^xsd:string ;
+    rdfs:subClassOf aicd:ContinuousDevelopmentProcess,
+        schema:Action,
+        schema:Process,
+        schema:Thing .
+
+aicd:LifecycleConcern a owl:Class ;
+    rdfs:label "Lifecycle Concern"^^xsd:string ;
+    rdfs:comment "A concern that arises across stages of the AI model continuous development lifecycle, including development, validation, deployment, monitoring, maintenance, and retraining."^^xsd:string ;
+    rdfs:subClassOf aicd:CrossSiloConcern .
+
+aicd:MLModel a owl:Class ;
+    rdfs:label "ML Model"^^xsd:string ;
+    rdfs:comment "An abstract machine learning artifact that is developed, validated, deployed, monitored, and updated within the continuous development lifecycle."^^xsd:string ;
+    rdfs:subClassOf schema:SoftwareSourceCode .
+
+aicd:MonitoringPhase a owl:Class ;
+    rdfs:label "Monitoring Phase"^^xsd:string ;
+    rdfs:comment "A phase in which deployed models are observed for drift, degradation, safety issues, and operational anomalies."^^xsd:string ;
+    rdfs:subClassOf aicd:LifecycleStage .
+
+aicd:ProblemDefinition a owl:Class ;
+    rdfs:label "Problem Definition"^^xsd:string ;
+    rdfs:comment "The initial lifecycle stage in which the AI problem, objectives, and business requirements are defined before model development begins."^^xsd:string ;
+    rdfs:subClassOf schema:Action .
+
+aicd:addressesConcern a owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "addresses concern" ;
+    rdfs:comment "Relates a lifecycle activity, practice, or process to a cross-silo concern it addresses." ;
+    rdfs:subPropertyOf schema:about .
+
+aicd:hasValidationPhase a owl:ObjectProperty ;
+    rdfs:label "has validation phase" ;
+    rdfs:comment "Relates a lifecycle process or pipeline to a validation phase included within it." ;
+    rdfs:subPropertyOf aicd:hasEvaluationPhase,
+        aicd:hasLifecycleStage,
+        schema:hasPart .
+
+aicd:Challenge a owl:Class ;
+    rdfs:label "Challenge"^^xsd:string ;
+    rdfs:comment "A difficulty or obstacle associated with the adoption and implementation of MLOps practices."^^xsd:string,
+        "A difficulty, limitation, or obstacle associated with adopting MLOps practices."^^xsd:string,
+        "A difficulty, obstacle, or limiting factor encountered when adopting or implementing MLOps."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:MLOpsRole a owl:Class ;
+    rdfs:label "MLOps Role"^^xsd:string ;
+    rdfs:comment "A role concerned with the operational lifecycle of machine learning systems, including deployment, monitoring, maintenance, and related coordination tasks."^^xsd:string,
+        "A role participating in an MLOps process with defined responsibilities across development, operations, and collaboration."^^xsd:string ;
+    rdfs:subClassOf schema:Role ;
+    aicd:causesSocialDebt aicd:SocialDebt ;
+    aicd:hasRoleDefinition aicd:RoleDefinition .
+
+aicd:SecurityConcern a owl:Class ;
+    rdfs:label "Security Concern" ;
+    rdfs:comment "A cross-silo concern related to protecting AI models, data, infrastructure, and operations throughout the lifecycle." ;
+    rdfs:subClassOf aicd:CrossSiloConcern,
+        aicd:LifecycleConcern .
+
+aicd:ModelRetraining a owl:Class ;
+    rdfs:label "Model Retraining" ;
+    rdfs:comment "The activity of training an existing AI model again using new or refreshed data to address drift or change." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty aicd:usesRecentData ;
+            owl:someValuesFrom schema:Dataset ],
+        aicd:ContinuousDevelopmentProcess,
+        aicd:ContinuousTraining,
+        aicd:MLOpsCapability,
+        aicd:RetrainingPhase,
+        aicd:continuousTraining,
+        schema:Action ;
+    aicd:addressesConcern aicd:CostConcern,
+        aicd:SustainabilityConcern ;
+    aicd:mitigatesConcern aicd:conceptDrift ;
+    aicd:updatesModel aicd:MLModel ;
+    aicd:usesRecentData aicd:Dataset .
+
+aicd:conceptDrift a owl:Class ;
+    rdfs:label "Concept Drift" ;
+    rdfs:comment "A change in the relationship between input data and target behavior that can degrade deployed model performance." ;
+    rdfs:subClassOf aicd:OperationalConcern,
+        schema:Thing .
+
+aicd:monitorsFor a owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "monitors for" ;
+    rdfs:comment "Relates monitoring activity to a condition or issue it is intended to detect, such as drift or safety violations." ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+aicd:LifecycleStage a owl:Class ;
+    rdfs:label "Lifecycle Stage"^^xsd:string ;
+    rdfs:comment "A stage or phase within a continuous AI development process, such as validation, deployment, monitoring, or retraining."^^xsd:string,
+        "An abstract stage within a continuous AI development lifecycle, such as training, validation, deployment, monitoring, or retraining."^^xsd:string ;
+    rdfs:subClassOf schema:Thing .
+
+aicd:Productionalization a owl:Class ;
+    rdfs:label "Productionalization" ;
+    rdfs:comment "The broader process of transitioning an AI or ML model from a laboratory or experimental setting into production use." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty aicd:hasDeploymentPhase ;
+            owl:someValuesFrom aicd:Deployment ],
+        aicd:ContinuousDeployment,
+        aicd:ContinuousDevelopmentProcess,
+        aicd:DeploymentMaintenanceChallenge ;
+    aicd:causesTechnicalDebt aicd:TechnicalDebt ;
+    aicd:hasContinuousDeployment aicd:ContinuousDeployment ;
+    aicd:hasContinuousMonitoring aicd:ContinuousMonitoring ;
+    aicd:hasContinuousTraining aicd:ContinuousTraining ;
+    aicd:hasProblemDefinition aicd:ProblemDefinition ;
+    aicd:usesInfrastructure aicd:MLOpsInfrastructure ;
+    aicd:usesTool aicd:JenkinsTool,
+        aicd:KubernetesPlatform .
+
+aicd:RecurringPipeline a owl:Class ;
+    rdfs:label "Recurring Pipeline" ;
+    rdfs:comment "A pipeline that is repeatedly executed to support continuous development and operationalization of AI models." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty aicd:includesStage ;
+            owl:someValuesFrom schema:Action ],
+        aicd:ContinuousDevelopmentProcess,
+        aicd:LifecycleStage,
+        aicd:MLLifecycle,
+        schema:Action ;
+    aicd:isRecurring true ;
+    aicd:requiresCapability aicd:MLOpsCapability .
+
+aicd:ModelValidation a owl:Class ;
+    rdfs:label "Model Validation" ;
+    rdfs:comment "The activity of evaluating an AI model, data, or pipeline behavior against requirements, constraints, or quality criteria." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty aicd:diagnosesOperationalAnomaly ;
+            owl:someValuesFrom aicd:OperationalAnomaly ],
+        [ a owl:Restriction ;
+            owl:onProperty aicd:evaluatesModel ;
+            owl:someValuesFrom aicd:MLModel ],
+        aicd:ContinuousDevelopmentProcess,
+        aicd:ContinuousIntegration,
+        aicd:ContinuousTesting,
+        aicd:MLOpsCapability,
+        aicd:ModelEvaluation,
+        aicd:ValidationPhase,
+        schema:Action ;
+    aicd:addressesConcern aicd:ExplainabilityConcern,
+        aicd:FairnessConcern ;
+    aicd:evaluatesModel aicd:MLModel ;
+    aicd:hasQualityDimension aicd:Accuracy ;
+    aicd:hasQualityOutcome aicd:ModelQuality ;
+    aicd:mitigatesConcern aicd:ExplainabilityConcern,
+        aicd:FairnessConcern ;
+    aicd:usesPerformanceMetric aicd:PerformanceMetric .
+
+aicd:MLOpsCapability a owl:Class ;
+    rdfs:label "MLOps Capability"^^xsd:string ;
+    rdfs:comment "A capability needed to support recurring AI development workflows, such as orchestration, validation, monitoring, deployment, or maintenance."^^xsd:string,
+        "An organizational or process capability relevant to operating machine learning systems, such as automation, monitoring, governance, or collaboration."^^xsd:string ;
+    rdfs:subClassOf schema:CreativeWork,
+        schema:Thing ;
+    aicd:improvesCapability aicd:ContinuousDevelopmentProcess .
+
+aicd:ModelDeployment a owl:Class ;
+    rdfs:label "Model Deployment" ;
+    rdfs:comment "The activity of packaging and releasing an AI model into an operational environment for inference services." ;
+    rdfs:subClassOf aicd:ContinuousDeployment,
+        aicd:ContinuousDevelopmentProcess,
+        aicd:DeploymentPhase,
+        aicd:MLOpsCapability,
+        schema:Action .
+
+aicd:hasLifecycleStage a owl:ObjectProperty ;
+    rdfs:label "has lifecycle stage",
+        "has lifecycle stage"^^xsd:string ;
+    rdfs:comment "Relates a continuous development process to one of its constituent lifecycle stages or activities."^^xsd:string,
+        "Relates a continuous development process to one of its constituent lifecycle stages or activities." ;
+    rdfs:subPropertyOf schema:hasPart .
+
+aicd:ModelMonitoring a owl:Class ;
+    rdfs:label "Model Monitoring" ;
+    rdfs:comment "The activity of observing deployed AI models and their behavior in production to detect drift, safety issues, or performance degradation." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty aicd:monitorsFor ;
+            owl:someValuesFrom aicd:PerformanceDegradation ],
+        [ a owl:Restriction ;
+            owl:onProperty aicd:monitorsFor ;
+            owl:someValuesFrom schema:Thing ],
+        aicd:ContinuousDevelopmentProcess,
+        aicd:ContinuousMonitoring,
+        aicd:MLOpsCapability,
+        aicd:ModelEvaluation,
+        aicd:MonitoringPhase,
+        aicd:continuousMonitoring,
+        schema:Action ;
+    aicd:addressesConcern aicd:SecurityConcern,
+        aicd:SustainabilityConcern ;
+    aicd:mitigatesConcern aicd:conceptDrift ;
+    aicd:monitorsFor aicd:OperationalAnomaly,
+        aicd:PerformanceDegradation,
+        aicd:conceptDrift,
+        aicd:safetyConstraintViolation ;
+    aicd:monitorsModel aicd:MLModel .
+
+schema:CreativeWork a owl:Class .
+
+aicd:CrossSiloConcern a owl:Class ;
+    rdfs:label "Cross-Silo Concern" ;
+    rdfs:comment "A concern that must be addressed across multiple phases of the AI lifecycle rather than within only a single stage." ;
+    rdfs:subClassOf aicd:LifecycleConcern,
+        schema:Thing .
+
+aicd:ContinuousDevelopmentProcess a owl:Class ;
+    rdfs:label "Continuous Development Process" ;
+    rdfs:comment "An ongoing process for iteratively developing, validating, deploying, and updating AI models within an operational lifecycle." ;
+    rdfs:subClassOf [ a owl:Class ;
+            rdfs:label "MLOps Lifecycle Process"^^xsd:string ;
+            rdfs:comment "An abstract lifecycle process for continuous AI model development, deployment, monitoring, and retraining."^^xsd:string ;
+            rdfs:subClassOf schema:Process ],
+        [ a owl:Restriction ;
+            owl:onProperty aicd:hasValidationPhase ;
+            owl:someValuesFrom aicd:ModelValidation ],
+        [ a owl:Restriction ;
+            owl:onProperty aicd:hasLifecycleStage ;
+            owl:someValuesFrom schema:Action ],
+        aicd:LifecycleStage,
+        aicd:MLLifecycle,
+        aicd:Productionalization,
+        schema:Process ;
+    aicd:hasLifecycleStage aicd:ModelDeployment,
+        aicd:ModelMaintenance,
+        aicd:ModelMonitoring,
+        aicd:ModelRetraining,
+        aicd:ModelValidation ;
+    aicd:includesAdjustment aicd:Adjustment ;
+    aicd:includesContinuousTesting aicd:ContinuousTesting ;
+    aicd:isRecurring true ;
+    aicd:requiresCapability aicd:MLOpsCapability ;
+    aicd:requiresStandardization aicd:Standardization .
+

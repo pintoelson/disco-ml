@@ -1,0 +1,1620 @@
+@prefix doc: <https://example.com/mlops/doc/67afa5c93210/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix mlopsmeta: <https://example.com/mlops/mlopsmeta#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mlopsmf: <https://example.com/mlops/mlopsmf#> .
+@prefix mlopsmm: <https://example.com/mlops/mlopsmm#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mlops: <https://example.com/mlops/mlops#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org1: <https://www.w3.org/ns/org#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <https://schema.org/> .
+doc:5af22d80c027 a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.747245Z"^^xsd:dateTime ;
+	schema:position 0 ;
+	schema:identifier "5af22d80c027" .
+mlops:hasRole rdfs:domain _:na35d33c9e2ac41ce9cf24b57814a1905b4 .
+mlops:MLOps a owl:Class .
+mlops:monitors rdfs:range _:na35d33c9e2ac41ce9cf24b57814a1905b1 .
+mlops: dcterms:description "An ontology modeling the core concepts, roles, artifacts, and processes involved in Machine Learning Operations (MLOps) within software development companies."@en .
+mlops:hasArtifact rdfs:label "has artifact"@en .
+_:na35d33c9e2ac41ce9cf24b57814a1905b3 rdf:first mlops:Deployment .
+mlops:MLMethodology a owl:Class .
+mlops:producesModelVersion a owl:ObjectProperty .
+_:na35d33c9e2ac41ce9cf24b57814a1905b10 rdf:first mlops:TrainingRun .
+mlops:DataScientist a owl:Class .
+mlops:MLModel rdfs:label "ML Model"@en .
+mlops:hasPerformanceMetric rdfs:comment "Indicates a performance metric associated with a model version."@en .
+mlops: rdfs:label "Machine Learning Operations Ontology"@en .
+mlops:monitors rdfs:comment "Relates an MLOps role or system to the model version or deployment it monitors."@en .
+mlops:MLProject rdfs:comment "A project that involves the development and deployment of machine learning models, including data science activities and operational considerations."@en .
+_:na35d33c9e2ac41ce9cf24b57814a1905b4 owl:unionOf _:na35d33c9e2ac41ce9cf24b57814a1905b5 .
+mlops:Dataset rdfs:comment "A collection of data used for training, validation, or testing of ML models."@en .
+mlops:DataEngineer rdfs:subClassOf mlops:MLOpsRole .
+mlops:monitors a owl:ObjectProperty .
+_:na35d33c9e2ac41ce9cf24b57814a1905b7 owl:unionOf _:na35d33c9e2ac41ce9cf24b57814a1905b8 .
+_:na35d33c9e2ac41ce9cf24b57814a1905b12 rdf:rest _:na35d33c9e2ac41ce9cf24b57814a1905b13 .
+mlops:MLBenefit rdfs:label "ML Benefit"@en .
+mlops:MLOps rdfs:subClassOf schema:SoftwareSourceCode .
+mlops:hasPerformanceMetric rdfs:label "has performance metric"@en .
+mlops:DataScientist rdfs:label "Data Scientist"@en .
+mlops:hasInfrastructure rdfs:range xsd:string .
+_:na35d33c9e2ac41ce9cf24b57814a1905b6 rdf:rest rdf:nil .
+mlops:DataEngineer rdfs:comment "A role responsible for designing, building, and maintaining data pipelines and infrastructure for ML projects."@en .
+_:na35d33c9e2ac41ce9cf24b57814a1905b11 owl:unionOf _:na35d33c9e2ac41ce9cf24b57814a1905b12 .
+mlops:usesDataset rdfs:domain mlops:MLProject .
+mlops:producesModelVersion rdfs:range mlops:ModelVersion .
+mlops:MLChallenge rdfs:comment "A challenge encountered during the adoption or implementation of MLOps, such as data quality issues or model drift."@en .
+mlops:MLBenefit rdfs:subClassOf schema:Thing .
+_:na35d33c9e2ac41ce9cf24b57814a1905b5 rdf:first mlops:MLProject .
+mlops:followsMethodology rdfs:range mlops:MLMethodology .
+mlops:MLModel rdfs:comment "A machine learning model, including its parameters, architecture, and trained state, used for making predictions or decisions."@en .
+mlops:ModelVersion rdfs:label "Model Version"@en .
+_:na35d33c9e2ac41ce9cf24b57814a1905b8 rdf:first mlops:MLProject .
+mlops:MLOps rdfs:label "MLOps"@en .
+mlops:followsMethodology a owl:ObjectProperty .
+mlops:hasBenefit rdfs:comment "Relates an MLOps adoption or implementation to the benefits it provides."@en .
+mlops:MLOps rdfs:comment "A discipline that integrates machine learning (ML) with DevOps practices to streamline the deployment, monitoring, and maintenance of ML models in production environments."@en .
+mlops:MLProject rdfs:subClassOf schema:Project .
+mlops:hasPerformanceMetric rdfs:range xsd:decimal .
+mlops:hasChallenge rdfs:comment "Relates an MLOps adoption or implementation to the challenges it faces."@en .
+mlops:hasSuccessRate rdfs:range xsd:decimal .
+mlops:deploysTo rdfs:range schema:SoftwareSourceCode .
+mlops: a owl:Ontology .
+mlops:Deployment rdfs:subClassOf schema:Action .
+mlops:MLMethodology rdfs:label "ML Methodology"@en .
+mlops:producesModelVersion rdfs:subPropertyOf prov:generated .
+mlops:DataPipeline rdfs:label "Data Pipeline"@en .
+mlops:DataEngineer rdfs:label "Data Engineer"@en .
+_:na35d33c9e2ac41ce9cf24b57814a1905b12 rdf:first mlops:TrainingRun .
+mlops:MLBenefit rdfs:comment "A benefit derived from the adoption of MLOps, such as reduced time-to-market or improved model reliability."@en .
+mlops: owl:versionInfo "1.0.0" .
+mlops:TrainingRun a owl:Class .
+mlops:DataEngineer a owl:Class .
+mlops:hasBenefit a owl:ObjectProperty .
+mlops:hasArtifact rdfs:range mlops:MLArtifact .
+mlops:usesDataset rdfs:range mlops:Dataset .
+mlops:hasPerformanceMetric rdfs:domain mlops:ModelVersion .
+mlops:MLOpsRole rdfs:label "MLOps Role"@en .
+mlops:MLArtifact a owl:Class .
+mlops:hasRole rdfs:label "has role"@en .
+mlops:followsMethodology rdfs:comment "Relates an ML project to the methodology it follows."@en .
+mlops:MLChallenge rdfs:subClassOf schema:Thing .
+mlops:MLArtifact rdfs:label "ML Artifact"@en .
+mlops:ModelVersion a owl:Class .
+mlops:hasInfrastructure a owl:DatatypeProperty .
+mlops:MLOpsEngineer rdfs:comment "A role responsible for integrating ML models into production environments, ensuring scalability, reliability, and monitoring."@en .
+mlops:hasRole rdfs:subPropertyOf schema:hasOccupation .
+_:na35d33c9e2ac41ce9cf24b57814a1905b1 owl:unionOf _:na35d33c9e2ac41ce9cf24b57814a1905b2 .
+mlops:hasChallenge a owl:ObjectProperty .
+mlops:TrainingRun rdfs:label "Training Run"@en .
+mlops:followsMethodology rdfs:label "follows methodology"@en .
+mlops:MLModel rdfs:subClassOf schema:Thing .
+mlops:MLArtifact rdfs:comment "An artifact produced or consumed during MLOps activities, such as datasets, models, or pipelines."@en .
+mlops:hasInfrastructure rdfs:label "has infrastructure"@en .
+mlops:usesDataset rdfs:label "uses dataset"@en .
+mlops:MLOpsEngineer a owl:Class .
+mlops:hasSuccessRate rdfs:label "has success rate"@en .
+mlops:MLArtifact rdfs:subClassOf schema:CreativeWork .
+mlops:hasInfrastructure rdfs:domain _:na35d33c9e2ac41ce9cf24b57814a1905b11 .
+mlops:monitors rdfs:domain mlops:MLOpsRole .
+mlops:MLOpsRole rdfs:comment "A role within an organization responsible for MLOps activities, such as data engineering, model deployment, or monitoring."@en .
+mlops:MLModel a owl:Class .
+mlops:Dataset rdfs:label "Dataset"@en .
+mlops:deploysTo a owl:ObjectProperty .
+mlops:hasArtifact rdfs:subPropertyOf prov:hadMember .
+mlops:usesDataset rdfs:subPropertyOf prov:used .
+mlops:followsMethodology rdfs:subPropertyOf schema:hasOccupation .
+mlops:hasMaturityLevel rdfs:comment "Indicates the maturity level of an MLOps adoption or implementation."@en ;
+	rdfs:domain mlops:MLOps .
+mlops:deploysTo rdfs:domain mlops:Deployment .
+mlops:hasBenefit rdfs:label "has benefit"@en .
+mlops:MLProject rdfs:label "ML Project"@en .
+mlops:deploysTo rdfs:comment "Relates a deployment to the environment or system it targets."@en .
+_:na35d33c9e2ac41ce9cf24b57814a1905b9 rdf:rest _:na35d33c9e2ac41ce9cf24b57814a1905b10 .
+mlops:hasBenefit rdfs:range mlops:MLBenefit .
+_:na35d33c9e2ac41ce9cf24b57814a1905b6 rdf:first schema:Organization .
+_:na35d33c9e2ac41ce9cf24b57814a1905b10 rdf:rest rdf:nil .
+mlops:DataPipeline a owl:Class .
+mlops:MLMethodology rdfs:comment "A methodology or framework used to guide ML projects, such as CRISP-DM or DDS."@en .
+mlops:hasBenefit rdfs:domain mlops:MLOps .
+mlops:DataScienceProject rdfs:subClassOf mlops:MLProject .
+mlops:MLOpsRole a owl:Class .
+mlops:hasSuccessRate a owl:DatatypeProperty .
+mlops:MLProject a owl:Class .
+mlops:usesDataset a owl:ObjectProperty .
+mlops:producesModelVersion rdfs:domain mlops:TrainingRun .
+mlops:hasMaturityLevel rdfs:range xsd:string .
+mlops:MLMethodology rdfs:subClassOf schema:Thing .
+mlops:hasArtifact rdfs:comment "Relates an ML project or process to the artifacts it produces or consumes."@en .
+mlops:hasMaturityLevel rdfs:label "has maturity level"@en .
+mlops:hasRole rdfs:range mlops:MLOpsRole .
+mlops:MLBenefit a owl:Class .
+mlops:hasChallenge rdfs:domain mlops:MLOps .
+mlops:DataScienceProject rdfs:label "Data Science Project"@en .
+mlops:followsMethodology rdfs:domain mlops:MLProject .
+_:na35d33c9e2ac41ce9cf24b57814a1905b13 rdf:rest rdf:nil .
+mlops:MLOpsEngineer rdfs:label "MLOps Engineer"@en .
+mlops:hasInfrastructure rdfs:comment "Indicates the infrastructure used for training or deployment, such as GPUs or TPUs."@en .
+mlops:hasArtifact a owl:ObjectProperty .
+mlops:producesModelVersion rdfs:label "produces model version"@en .
+mlops:DataPipeline rdfs:comment "A sequence of processes that transform, clean, and prepare data for use in ML models."@en .
+mlops:TrainingRun rdfs:subClassOf schema:Action .
+_:na35d33c9e2ac41ce9cf24b57814a1905b2 rdf:first mlops:ModelVersion .
+_:na35d33c9e2ac41ce9cf24b57814a1905b9 rdf:first mlops:DataPipeline .
+mlops:DataScienceProject a owl:Class .
+mlops:DataPipeline rdfs:subClassOf schema:Action .
+mlops:deploysTo rdfs:label "deploys to"@en .
+_:na35d33c9e2ac41ce9cf24b57814a1905b13 rdf:first mlops:Deployment .
+mlops:hasRole rdfs:comment "Relates an ML project or organization to the MLOps roles involved."@en .
+mlops:usesDataset rdfs:comment "Relates an ML project or model to the dataset it uses."@en .
+mlops:hasChallenge rdfs:label "has challenge"@en .
+mlops:hasArtifact rdfs:domain _:na35d33c9e2ac41ce9cf24b57814a1905b7 .
+mlops:hasSuccessRate rdfs:domain mlops:DataScienceProject .
+_:na35d33c9e2ac41ce9cf24b57814a1905b2 rdf:rest _:na35d33c9e2ac41ce9cf24b57814a1905b3 .
+mlops:Deployment a owl:Class .
+mlops:hasRole a owl:ObjectProperty .
+mlops:ModelVersion rdfs:subClassOf schema:Thing .
+mlops:DataScientist rdfs:subClassOf mlops:MLOpsRole .
+mlops:producesModelVersion rdfs:comment "Relates a training run to the model version it produces."@en .
+mlops:hasChallenge rdfs:range mlops:MLChallenge .
+mlops:ModelVersion rdfs:comment "A specific version of an ML model, including its metadata, performance metrics, and associated artifacts."@en .
+mlops:Deployment rdfs:label "Deployment"@en .
+mlops:MLOpsRole rdfs:subClassOf schema:Role .
+mlops:hasSuccessRate rdfs:comment "Indicates the success rate of data science projects in reaching production."@en .
+mlops:DataScientist rdfs:comment "A role responsible for developing ML models, including data analysis, feature engineering, and model training."@en .
+mlops: dcterms:title "Machine Learning Operations (MLOps) Ontology"@en ;
+	dcterms:identifier "hash:658e704f119da1c06ea015a16dd21a4db484962cc57927eabc577d9d8b7757d5" .
+mlops:hasBenefit rdfs:subPropertyOf schema:hasOccupation .
+mlops:monitors rdfs:label "monitors"@en .
+mlops:MLChallenge a owl:Class .
+mlops:DataScienceProject rdfs:comment "A project focused on extracting value from data through statistical and programming techniques, typically following methodologies like CRISP-DM or DDS."@en .
+mlops:hasMaturityLevel a owl:DatatypeProperty .
+mlops:Dataset a owl:Class .
+mlops:Deployment rdfs:comment "The process of deploying an ML model to a production environment for inference or decision-making."@en .
+mlops:MLChallenge rdfs:label "ML Challenge"@en .
+_:na35d33c9e2ac41ce9cf24b57814a1905b8 rdf:rest _:na35d33c9e2ac41ce9cf24b57814a1905b9 .
+mlops: rdfs:comment "An ontology modeling the core concepts, roles, artifacts, and processes involved in Machine Learning Operations (MLOps) within software development companies."@en .
+mlops:hasPerformanceMetric a owl:DatatypeProperty .
+_:na35d33c9e2ac41ce9cf24b57814a1905b3 rdf:rest rdf:nil .
+mlops:Dataset rdfs:subClassOf schema:Dataset .
+mlops:hasChallenge rdfs:subPropertyOf schema:hasOccupation .
+_:na35d33c9e2ac41ce9cf24b57814a1905b5 rdf:rest _:na35d33c9e2ac41ce9cf24b57814a1905b6 .
+mlops:TrainingRun rdfs:comment "An instance of training an ML model on a dataset, resulting in a model version."@en .
+mlops:MLOpsEngineer rdfs:subClassOf mlops:MLOpsRole .
+doc:a8d15e7c1a0f a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.753035Z"^^xsd:dateTime ;
+	schema:position 1 ;
+	schema:identifier "a8d15e7c1a0f" .
+mlops:requiresRole rdfs:domain _:n60852886fea941468c679348bc7c6f3db11 .
+mlops:trainsModel rdfs:domain mlops:MLTraining .
+mlops:MLProcess rdfs:comment "A defined sequence of activities and tasks within the ML lifecycle, such as data preparation, model training, or deployment."@en .
+mlops:MLMonitoring rdfs:comment "The continuous observation and evaluation of ML systems to detect performance degradation or data drift."@en .
+mlops:MLLifecycle rdfs:comment "A structured sequence of processes and activities involved in developing, deploying, monitoring, and maintaining machine learning models and systems."@en .
+mlops:hasOrchestrator rdfs:label "has orchestrator"@en .
+mlops:monitorsSystem a owl:AsymmetricProperty .
+mlops:MLTask rdfs:subClassOf mlops:MLProcess ;
+	a owl:Class .
+mlops:MLOrchestrator a owl:Class .
+mlops:requiresCompetency rdfs:range mlops:MLCompetency .
+mlops:hasTask rdfs:subPropertyOf mlops:hasActivity .
+mlops:monitorsSystem a owl:ObjectProperty .
+mlops:MLTraining rdfs:label "ML Training"@en .
+mlops:producesArtifact rdfs:subPropertyOf prov:generated .
+mlops:trainsModel a owl:AsymmetricProperty .
+mlops:monitorsSystem rdfs:label "monitors system"@en .
+mlops:hasPipeline rdfs:comment "Relates an ML system to a pipeline that orchestrates its lifecycle."@en .
+<https://example.com/mlops/mlops> dcterms:description "An ontology modeling the abstract concepts, processes, and roles involved in Machine Learning Operations (MLOps). It captures the lifecycle of ML systems, including development, deployment, monitoring, and maintenance, while distinguishing MLOps from traditional DevOps due to the probabilistic nature of ML outputs. The ontology is designed to support SMEs and other organizations in structuring MLOps processes, roles, tools, and artifacts." .
+mlops:MLLifecycle rdfs:label "ML Lifecycle"@en .
+mlops:MLTask rdfs:label "ML Task"@en .
+mlops:MLPipeline rdfs:subClassOf schema:Action .
+mlops:hasProcess rdfs:comment "Relates an MLOps paradigm or system to a process within its lifecycle."@en .
+_:n60852886fea941468c679348bc7c6f3db4 rdf:first mlops:MLActivity .
+_:n60852886fea941468c679348bc7c6f3db8 rdf:first mlops:MLProcess .
+mlops:trainsModel a owl:ObjectProperty .
+<https://example.com/mlops/mlops> a owl:Ontology .
+_:n60852886fea941468c679348bc7c6f3db21 rdfs:subClassOf _:n60852886fea941468c679348bc7c6f3db22 .
+mlops:hasProcess rdfs:subPropertyOf prov:used .
+_:n60852886fea941468c679348bc7c6f3db8 rdf:rest _:n60852886fea941468c679348bc7c6f3db9 .
+_:n60852886fea941468c679348bc7c6f3db11 rdfs:subClassOf _:n60852886fea941468c679348bc7c6f3db12 .
+mlops:trainsModel rdfs:range mlops:MLModel .
+mlops:producesArtifact rdfs:range mlops:MLArtifact .
+mlops:MLActivity a owl:Class .
+mlops:MLCompetency a owl:Class .
+mlops:hasUncertainty rdfs:subPropertyOf schema:uncertainty .
+mlops:hasCost rdfs:subPropertyOf schema:cost .
+mlops:MLTask rdfs:comment "A granular unit of work within an ML activity, such as feature extraction or hyperparameter tuning."@en .
+mlops:requiresRole rdfs:comment "Relates a process, activity, or task to a role required to perform it."@en .
+mlops:hasUncertainty rdfs:range xsd:decimal .
+mlops:MLProcess a owl:Class .
+_:n60852886fea941468c679348bc7c6f3db7 owl:unionOf _:n60852886fea941468c679348bc7c6f3db8 .
+mlops:hasCost a owl:DatatypeProperty .
+mlops:MLOps rdfs:comment "A paradigm and set of practices extending DevOps principles to manage the lifecycle of machine learning systems, including continuous integration, deployment, monitoring, and training."@en .
+mlops:hasProcess rdfs:label "has process"@en .
+_:n60852886fea941468c679348bc7c6f3db10 rdf:rest rdf:nil .
+mlops:hasTask rdfs:domain mlops:MLActivity .
+_:n60852886fea941468c679348bc7c6f3db17 owl:unionOf _:n60852886fea941468c679348bc7c6f3db18 .
+mlops:MLTraining rdfs:subClassOf schema:Event .
+mlops:hasOrchestrator rdfs:comment "Relates an ML pipeline to the orchestrator tool that manages it."@en .
+mlops:MLPipeline rdfs:label "ML Pipeline"@en .
+mlops:requiresCompetency a owl:ObjectProperty .
+_:n60852886fea941468c679348bc7c6f3db19 rdf:first mlops:MLProcess .
+mlops:MLTool a owl:Class .
+mlops:MLCompetency rdfs:comment "A skill or capability required to perform an ML role, including technical and soft competencies."@en .
+_:n60852886fea941468c679348bc7c6f3db22 owl:unionOf _:n60852886fea941468c679348bc7c6f3db23 .
+mlops:usesTool rdfs:comment "Relates a process, activity, or task to a tool it employs."@en .
+mlops:MLArtifact rdfs:comment "A tangible or digital output produced during the ML lifecycle, such as datasets, models, or reports."@en .
+mlops:hasProcess a owl:ObjectProperty .
+mlops:hasCost rdfs:domain _:n60852886fea941468c679348bc7c6f3db16 .
+mlops:hasUncertainty rdfs:comment "The level of uncertainty associated with applying an MLOps approach in a given context."@en .
+mlops:requiresCompetency rdfs:label "requires competency"@en .
+mlops:MLMonitoring rdfs:label "ML Monitoring"@en .
+mlops:hasOrchestrator rdfs:domain mlops:MLPipeline .
+mlops:usesTool rdfs:domain _:n60852886fea941468c679348bc7c6f3db6 .
+mlops:trainsModel rdfs:comment "Relates an ML training process to an ML model it produces."@en .
+mlops:producesArtifact rdfs:label "produces artifact"@en .
+mlops:monitorsSystem rdfs:range mlops:MLSystem .
+_:n60852886fea941468c679348bc7c6f3db15 rdf:rest rdf:nil .
+mlops:hasOrchestrator a owl:ObjectProperty .
+mlops:MLMonitoring rdfs:subClassOf schema:Event .
+_:n60852886fea941468c679348bc7c6f3db10 rdf:first mlops:MLTask .
+mlops:hasActivity rdfs:subPropertyOf mlops:hasProcess .
+_:n60852886fea941468c679348bc7c6f3db9 rdf:rest _:n60852886fea941468c679348bc7c6f3db10 .
+_:n60852886fea941468c679348bc7c6f3db3 rdf:rest _:n60852886fea941468c679348bc7c6f3db4 .
+mlops:managesSystem rdfs:range mlops:MLSystem .
+mlops:MLTool rdfs:label "ML Tool"@en .
+mlops:producesArtifact rdfs:domain _:n60852886fea941468c679348bc7c6f3db1 .
+mlops:MLRole rdfs:comment "A defined function or responsibility within an MLOps team, such as Data Scientist, ML Engineer, or MLOps Engineer."@en .
+_:n60852886fea941468c679348bc7c6f3db9 rdf:first mlops:MLActivity .
+_:n60852886fea941468c679348bc7c6f3db20 rdf:rest rdf:nil .
+_:n60852886fea941468c679348bc7c6f3db16 rdfs:subClassOf _:n60852886fea941468c679348bc7c6f3db17 .
+mlops:SME rdfs:comment "A small or medium-sized enterprise, characterized by limited resources and capacity for adopting complex processes."@en .
+mlops:hasPipeline a owl:ObjectProperty .
+<https://example.com/mlops/mlops> owl:versionInfo "1.0.0" .
+mlops:hasProcess rdfs:range mlops:MLProcess .
+_:n60852886fea941468c679348bc7c6f3db2 owl:unionOf _:n60852886fea941468c679348bc7c6f3db3 .
+mlops:hasUncertainty a owl:FunctionalProperty .
+mlops:MLLifecycle rdfs:subClassOf schema:Event .
+mlops:MLModel rdfs:subClassOf mlops:MLArtifact .
+_:n60852886fea941468c679348bc7c6f3db15 rdf:first mlops:MLTask .
+mlops:hasActivity rdfs:label "has activity"@en .
+_:n60852886fea941468c679348bc7c6f3db5 rdf:rest rdf:nil .
+_:n60852886fea941468c679348bc7c6f3db14 rdf:rest _:n60852886fea941468c679348bc7c6f3db15 .
+mlops:MLTool rdfs:comment "A software tool used to support ML processes, such as version control systems, orchestration platforms, or monitoring dashboards."@en .
+mlops:managesSystem rdfs:comment "Relates an MLOps paradigm to an ML system it manages."@en .
+mlops:MLProcess rdfs:label "ML Process"@en .
+mlops:hasPipeline rdfs:subPropertyOf prov:used .
+mlops:usesTool rdfs:label "uses tool"@en .
+mlops:hasUncertainty rdfs:label "has uncertainty"@en .
+mlops:MLMonitoring a owl:Class .
+mlops:MLTool rdfs:subClassOf schema:SoftwareApplication .
+mlops:hasTask rdfs:range mlops:MLTask .
+mlops:requiresRole rdfs:subPropertyOf org1:hasRole .
+mlops:hasUncertainty rdfs:domain _:n60852886fea941468c679348bc7c6f3db21 .
+mlops:hasActivity rdfs:range mlops:MLActivity .
+mlops:requiresCompetency rdfs:comment "Relates a role to a competency required to perform that role."@en .
+mlops:MLSystem rdfs:label "ML System"@en .
+mlops:usesTool rdfs:range mlops:MLTool .
+_:n60852886fea941468c679348bc7c6f3db20 rdf:first mlops:MLSystem .
+mlops:requiresRole rdfs:range mlops:MLRole .
+<https://example.com/mlops/mlops> rdfs:label "Machine Learning Operations (MLOps) Ontology" ;
+	dcterms:title "mlops" .
+_:n60852886fea941468c679348bc7c6f3db5 rdf:first mlops:MLTask .
+mlops:hasPipeline rdfs:domain mlops:MLSystem .
+mlops:MLOrchestrator rdfs:label "ML Orchestrator"@en .
+mlops:hasProcess rdfs:domain mlops:MLOps .
+mlops:producesArtifact rdfs:comment "Relates a process, activity, or task to an artifact it produces."@en .
+mlops:MLLifecycle a owl:Class .
+mlops:monitorsSystem rdfs:subPropertyOf prov:wasDerivedFrom .
+mlops:MLRole rdfs:subClassOf org1:Role .
+mlops:hasCost rdfs:label "has cost"@en .
+_:n60852886fea941468c679348bc7c6f3db24 rdf:rest rdf:nil .
+_:n60852886fea941468c679348bc7c6f3db1 rdfs:subClassOf _:n60852886fea941468c679348bc7c6f3db2 .
+mlops:hasActivity rdfs:comment "Relates a process to an activity within that process."@en .
+_:n60852886fea941468c679348bc7c6f3db23 rdf:first mlops:MLOps .
+mlops:SME rdfs:label "SME"@en .
+mlops:hasOrchestrator rdfs:subPropertyOf mlops:usesTool .
+mlops:requiresCompetency rdfs:domain mlops:MLRole .
+mlops:managesSystem rdfs:subPropertyOf prov:wasAssociatedWith .
+_:n60852886fea941468c679348bc7c6f3db18 rdf:rest _:n60852886fea941468c679348bc7c6f3db19 .
+_:n60852886fea941468c679348bc7c6f3db4 rdf:rest _:n60852886fea941468c679348bc7c6f3db5 .
+mlops:MLActivity rdfs:subClassOf mlops:MLProcess .
+mlops:hasActivity rdfs:domain mlops:MLProcess .
+mlops:requiresCompetency rdfs:subPropertyOf schema:requiresSkill .
+mlops:MLProcess rdfs:subClassOf schema:Action .
+_:n60852886fea941468c679348bc7c6f3db6 rdfs:subClassOf _:n60852886fea941468c679348bc7c6f3db7 .
+_:n60852886fea941468c679348bc7c6f3db12 owl:unionOf _:n60852886fea941468c679348bc7c6f3db13 .
+mlops:monitorsSystem rdfs:comment "Relates an ML monitoring process to an ML system it observes."@en .
+mlops:MLTraining rdfs:comment "The process of retraining an ML model to adapt to new data or performance requirements."@en .
+mlops:MLPipeline a owl:Class .
+mlops:hasOrchestrator rdfs:range mlops:MLOrchestrator .
+mlops:trainsModel rdfs:label "trains model"@en .
+_:n60852886fea941468c679348bc7c6f3db19 rdf:rest _:n60852886fea941468c679348bc7c6f3db20 .
+<https://example.com/mlops/mlops> rdfs:comment "An ontology modeling the abstract concepts, processes, and roles involved in Machine Learning Operations (MLOps). It captures the lifecycle of ML systems, including development, deployment, monitoring, and maintenance, while distinguishing MLOps from traditional DevOps due to the probabilistic nature of ML outputs. The ontology is designed to support SMEs and other organizations in structuring MLOps processes, roles, tools, and artifacts." .
+mlops:hasCost a owl:FunctionalProperty .
+_:n60852886fea941468c679348bc7c6f3db23 rdf:rest _:n60852886fea941468c679348bc7c6f3db24 .
+mlops:MLOrchestrator rdfs:comment "A tool responsible for managing and executing ML pipelines."@en .
+mlops:managesSystem rdfs:label "manages system"@en .
+mlops:hasTask a owl:ObjectProperty .
+_:n60852886fea941468c679348bc7c6f3db14 rdf:first mlops:MLActivity .
+mlops:MLRole rdfs:label "ML Role"@en .
+mlops:hasCost rdfs:range xsd:decimal .
+mlops:MLSystem rdfs:comment "A system composed of software and models that delivers probabilistic outputs, managed through MLOps practices."@en .
+mlops:SME a owl:Class .
+mlops:producesArtifact a owl:ObjectProperty .
+mlops:MLActivity rdfs:comment "A specific task or operation within an ML process, such as data validation or model evaluation."@en .
+mlops:MLSystem rdfs:subClassOf schema:SoftwareSourceCode .
+mlops:requiresRole a owl:ObjectProperty .
+_:n60852886fea941468c679348bc7c6f3db13 rdf:rest _:n60852886fea941468c679348bc7c6f3db14 .
+mlops:requiresRole rdfs:label "requires role"@en .
+mlops:MLOrchestrator rdfs:subClassOf mlops:MLTool .
+mlops:hasActivity a owl:ObjectProperty .
+mlops:hasUncertainty a owl:DatatypeProperty .
+<https://example.com/mlops/mlops> dcterms:identifier "hash:ca614fad6988b597353bbbc77915f09b65333b6d88424d4f5195975c58893a34" .
+mlops:MLRole a owl:Class .
+_:n60852886fea941468c679348bc7c6f3db3 rdf:first mlops:MLProcess .
+mlops:hasCost rdfs:comment "The cost associated with implementing or maintaining an MLOps process or system."@en .
+_:n60852886fea941468c679348bc7c6f3db24 rdf:first mlops:SME .
+mlops:MLPipeline rdfs:comment "An automated workflow that orchestrates the sequence of activities and tasks in the ML lifecycle."@en .
+mlops:managesSystem a owl:ObjectProperty .
+mlops:hasPipeline rdfs:range mlops:MLPipeline .
+mlops:hasTask rdfs:comment "Relates an activity to a task within that activity."@en .
+_:n60852886fea941468c679348bc7c6f3db13 rdf:first mlops:MLProcess .
+mlops:MLCompetency rdfs:subClassOf schema:DefinedTerm ;
+	rdfs:label "ML Competency"@en .
+mlops:trainsModel rdfs:subPropertyOf prov:used .
+mlops:usesTool a owl:ObjectProperty .
+mlops:hasPipeline rdfs:label "has pipeline"@en .
+mlops:MLTraining a owl:Class .
+mlops:managesSystem rdfs:domain mlops:MLOps .
+mlops:hasTask rdfs:label "has task"@en .
+mlops:MLSystem a owl:Class .
+mlops:monitorsSystem rdfs:domain mlops:MLMonitoring .
+_:n60852886fea941468c679348bc7c6f3db18 rdf:first mlops:MLOps .
+mlops:MLActivity rdfs:label "ML Activity"@en .
+mlops:SME rdfs:subClassOf schema:Organization .
+mlops:MLModel rdfs:comment "A trained machine learning model that produces probabilistic outputs."@en .
+mlops:usesTool rdfs:subPropertyOf prov:used .
+doc:bc803b4005ee a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.758948Z"^^xsd:dateTime ;
+	schema:position 2 ;
+	schema:identifier "bc803b4005ee" .
+mlopsmeta:ResearchMetric a owl:Class .
+mlopsmeta:hasInclusionCriterionId rdfs:subPropertyOf dcterms:identifier .
+mlopsmeta:hasResearchMetric rdfs:subPropertyOf prov:used .
+mlopsmeta:hasResearchMethodology rdfs:subPropertyOf prov:used .
+mlopsmeta:SearchStrategy rdfs:label "Search Strategy"@en .
+mlopsmeta:hasMaturityLevelValue a owl:DatatypeProperty .
+mlopsmeta:SearchObjective rdfs:label "Search Objective"@en .
+mlopsmeta:MaturityLevel rdfs:comment "A categorical representation of the degree of advancement or capability of an MLOps process or organization."@en .
+mlopsmeta:hasExclusionCriterion rdfs:label "has exclusion criterion"@en .
+mlopsmeta:hasResearchMetric rdfs:label "has research metric"@en .
+mlopsmeta:isMotivatedBy rdfs:comment "Relates a research question to the search objective that motivates it."@en .
+mlopsmeta:ResearchDatabase a owl:Class .
+mlopsmeta:ResearchPaper rdfs:subClassOf schema:ScholarlyArticle .
+mlopsmeta:hasResearchDatabase rdfs:comment "Relates a search strategy to the databases used for paper identification."@en .
+mlopsmeta:ResearchObjective rdfs:comment "A specific aim or purpose guiding the conduct of a systematic literature review."@en .
+mlopsmeta:ResearchPaper rdfs:label "Research Paper"@en .
+mlopsmeta:hasResearchDomain rdfs:subPropertyOf prov:used .
+mlopsmeta:hasInclusionCriterionId rdfs:comment "Assigns a unique identifier to an inclusion criterion."@en .
+mlopsmeta:InclusionCriterion rdfs:label "Inclusion Criterion"@en .
+mlopsmeta:ExclusionCriterion a owl:Class .
+mlopsmeta:hasResearchMethodology rdfs:label "has research methodology"@en .
+mlopsmeta:SystematicLiteratureReview rdfs:comment "A structured methodology for identifying, evaluating, and synthesizing research papers related to a specific topic, such as MLOps."@en .
+mlopsmeta:MLOpsMetaOntology dcterms:created "2024-01-01"^^xsd:date .
+mlopsmeta:hasMaturityLevelValue rdfs:comment "Assigns a categorical value to a maturity level, e.g., 'low', 'medium', 'high'."@en .
+mlopsmeta:hasResearchObjective rdfs:comment "Relates a research protocol to its research objectives."@en .
+mlopsmeta:hasResearchDatabase rdfs:subPropertyOf prov:used .
+mlopsmeta:MLOpsMetaOntology dcterms:title "mlopsmeta" .
+mlopsmeta:hasInclusionCriterion rdfs:subPropertyOf prov:qualifiedInfluence .
+mlopsmeta:ResearchMethodology rdfs:label "Research Methodology"@en .
+mlopsmeta:hasResearchObjective rdfs:label "has research objective"@en .
+mlopsmeta:hasSearchStrategy rdfs:comment "Relates a research protocol to its search strategy."@en .
+mlopsmeta:hasResearchDomain rdfs:label "has research domain"@en .
+mlopsmeta:hasResearchQuestion a owl:ObjectProperty .
+mlopsmeta:hasEvaluationFramework rdfs:comment "Relates a research protocol to its evaluation framework."@en .
+mlopsmeta:hasResearchQuestionId rdfs:label "has research question identifier"@en .
+mlopsmeta:ResearchObjective a owl:Class .
+mlopsmeta:hasResearchPaper a owl:ObjectProperty .
+mlopsmeta:isMotivatedBy rdfs:label "is motivated by"@en .
+mlopsmeta:InclusionCriterion a owl:Class .
+mlopsmeta:hasResearchObjective rdfs:subPropertyOf prov:used .
+mlopsmeta:hasSearchObjectiveId a owl:FunctionalProperty .
+mlopsmeta:hasResearchDomain a owl:ObjectProperty .
+mlopsmeta:hasExclusionCriterion a owl:ObjectProperty .
+mlopsmeta:hasResearchDatabase rdfs:label "has research database"@en .
+mlopsmeta:InclusionCriterion rdfs:comment "A condition that must be met for a research paper to be included in a systematic literature review."@en .
+mlopsmeta:hasResearchQuestion rdfs:subPropertyOf prov:used .
+mlopsmeta:SearchStrategy a owl:Class .
+mlopsmeta:ResearchQuestion rdfs:subClassOf schema:Question .
+mlopsmeta:hasExclusionCriterion rdfs:subPropertyOf prov:qualifiedInfluence .
+mlopsmeta:EvaluationFramework a owl:Class .
+mlopsmeta:SearchStrategy rdfs:subClassOf prov:Plan .
+mlopsmeta:MLOpsMetaOntology a owl:Ontology .
+mlopsmeta:hasExclusionCriterionId rdfs:label "has exclusion criterion identifier"@en .
+mlopsmeta:hasResearchPaper rdfs:subPropertyOf prov:used .
+mlopsmeta:SystematicLiteratureReview a owl:Class .
+mlopsmeta:ResearchPaper rdfs:comment "A scholarly publication that contributes to the understanding or practice of MLOps."@en .
+mlopsmeta:hasExclusionCriterion rdfs:comment "Relates a research protocol to its exclusion criteria."@en .
+mlopsmeta:ExclusionCriterion rdfs:subClassOf schema:Thing .
+mlopsmeta:hasSearchObjective rdfs:subPropertyOf prov:used .
+mlopsmeta:MaturityLevel rdfs:label "Maturity Level"@en .
+mlopsmeta:ResearchObjective rdfs:label "Research Objective"@en .
+mlopsmeta:hasResearchQuestionId a owl:FunctionalProperty .
+mlopsmeta:ResearchProtocol rdfs:comment "A predefined plan outlining the stages and criteria for conducting a systematic literature review or study."@en .
+mlopsmeta:hasResearchMetric rdfs:comment "Relates a research objective to its associated metrics."@en .
+mlopsmeta:ResearchDatabase rdfs:comment "A repository or collection of research papers, such as IEEE Xplore or Scopus."@en .
+mlopsmeta:hasResearchDatabase a owl:ObjectProperty .
+mlopsmeta:hasSearchStrategy rdfs:subPropertyOf prov:used .
+mlopsmeta:ResearchDomain a owl:Class .
+mlopsmeta:hasInclusionCriterionId a owl:FunctionalProperty .
+mlopsmeta:hasResearchObjective a owl:ObjectProperty .
+mlopsmeta:MaturityLevel a owl:Class .
+mlopsmeta:ResearchMethodology rdfs:comment "A systematic approach or technique used to conduct research, such as the Goal-Question-Metric (GQM) approach."@en .
+mlopsmeta:InclusionCriterion rdfs:subClassOf schema:Thing .
+mlopsmeta:ResearchQuestion a owl:Class .
+mlopsmeta:hasInclusionCriterion a owl:ObjectProperty .
+mlopsmeta:hasMaturityLevel rdfs:label "has maturity level"@en .
+mlopsmeta:hasEvaluationFramework rdfs:label "has evaluation framework"@en .
+mlopsmeta:hasResearchDomain rdfs:comment "Relates a research protocol or objective to its thematic research domain."@en .
+mlopsmeta:ResearchProtocol a owl:Class .
+mlopsmeta:EvaluationFramework rdfs:label "Evaluation Framework"@en .
+mlopsmeta:isMotivatedBy rdfs:subPropertyOf prov:wasDerivedFrom .
+mlopsmeta:ResearchDomain rdfs:label "Research Domain"@en .
+mlopsmeta:hasSearchObjective a owl:ObjectProperty .
+mlopsmeta:hasResearchPaper rdfs:comment "Relates a research protocol to the papers identified or analyzed."@en .
+mlopsmeta:hasResearchQuestion rdfs:label "has research question"@en .
+mlopsmeta:hasResearchQuestionId a owl:DatatypeProperty .
+mlopsmeta:ResearchMethodology rdfs:subClassOf prov:Plan .
+mlopsmeta:hasResearchPaper rdfs:label "has research paper"@en .
+mlopsmeta:hasResearchMethodology rdfs:comment "Relates a research protocol to the methodology used to guide its conduct."@en .
+mlopsmeta:hasExclusionCriterionId a owl:FunctionalProperty .
+mlopsmeta:EvaluationFramework rdfs:comment "A structured approach for assessing the maturity, capability, or relevance of MLOps implementations."@en .
+mlopsmeta:hasMaturityLevelValue rdfs:label "has maturity level value"@en .
+mlopsmeta:hasSearchObjectiveId rdfs:comment "Assigns a unique identifier to a search objective."@en .
+mlopsmeta:MaturityLevel rdfs:subClassOf schema:Thing .
+mlopsmeta:MLOpsMetaOntology owl:versionInfo "1.0.0" .
+mlopsmeta:hasSearchObjective rdfs:comment "Relates a research protocol to its associated search objectives."@en .
+mlopsmeta:MLOpsMetaOntology rdfs:label "MLOps Meta-Ontology"@en .
+mlopsmeta:hasEvaluationFramework rdfs:subPropertyOf prov:used .
+mlopsmeta:ResearchDomain rdfs:comment "A thematic area of study, such as MLOps in software development companies."@en .
+mlopsmeta:ResearchProtocol rdfs:label "Research Protocol"@en .
+mlopsmeta:hasResearchQuestion rdfs:comment "Relates a research protocol to its associated research questions."@en .
+mlopsmeta:hasMaturityLevel rdfs:comment "Relates an entity to its maturity level within an evaluation framework."@en .
+mlopsmeta:MLOpsMetaOntology dcterms:description "An abstract ontology modeling the meta-level concepts, processes, and evaluation frameworks related to Machine Learning Operations (MLOps) in software development contexts. This ontology captures systematic literature review methodologies, research protocols, and evaluation criteria for MLOps implementations." .
+mlopsmeta:ResearchQuestion rdfs:comment "A specific inquiry formulated to guide the evaluation or analysis of MLOps-related research."@en .
+mlopsmeta:hasSearchObjectiveId a owl:DatatypeProperty .
+mlopsmeta:hasExclusionCriterionId rdfs:comment "Assigns a unique identifier to an exclusion criterion."@en .
+mlopsmeta:ResearchObjective rdfs:subClassOf schema:Thing .
+mlopsmeta:isMotivatedBy a owl:ObjectProperty .
+mlopsmeta:EvaluationFramework rdfs:subClassOf schema:Thing .
+mlopsmeta:ResearchQuestion rdfs:label "Research Question"@en .
+mlopsmeta:hasExclusionCriterionId a owl:DatatypeProperty .
+mlopsmeta:hasInclusionCriterion rdfs:comment "Relates a research protocol to its inclusion criteria."@en .
+mlopsmeta:hasEvaluationFramework a owl:ObjectProperty .
+mlopsmeta:ResearchPaper a owl:Class .
+mlopsmeta:hasSearchObjective rdfs:label "has search objective"@en .
+mlopsmeta:ResearchMetric rdfs:label "Research Metric"@en .
+mlopsmeta:hasMaturityLevelValue rdfs:subPropertyOf schema:value .
+mlopsmeta:ExclusionCriterion rdfs:label "Exclusion Criterion"@en .
+mlopsmeta:ResearchMetric rdfs:comment "A quantifiable measure used to evaluate research questions or objectives in a systematic literature review."@en .
+mlopsmeta:ResearchMethodology a owl:Class .
+mlopsmeta:SearchObjective rdfs:subClassOf schema:Thing .
+mlopsmeta:hasInclusionCriterionId a owl:DatatypeProperty .
+mlopsmeta:hasMaturityLevel rdfs:subPropertyOf schema:additionalProperty .
+mlopsmeta:SearchObjective rdfs:comment "A high-level goal guiding the selection and evaluation of research papers in a systematic literature review."@en .
+mlopsmeta:ResearchDomain rdfs:subClassOf schema:Thing .
+mlopsmeta:hasSearchStrategy a owl:ObjectProperty .
+mlopsmeta:SystematicLiteratureReview rdfs:subClassOf prov:Activity .
+mlopsmeta:hasSearchObjectiveId rdfs:label "has search objective identifier"@en ;
+	rdfs:subPropertyOf dcterms:identifier .
+mlopsmeta:hasInclusionCriterionId rdfs:label "has inclusion criterion identifier"@en .
+mlopsmeta:ResearchDatabase rdfs:label "Research Database"@en .
+mlopsmeta:MLOpsMetaOntology rdfs:comment "An abstract ontology modeling meta-level concepts and evaluation frameworks for MLOps in software development contexts."@en .
+mlopsmeta:SearchObjective a owl:Class .
+mlopsmeta:SearchStrategy rdfs:comment "A plan outlining the methods and criteria for identifying and selecting research papers."@en .
+mlopsmeta:ResearchMetric rdfs:subClassOf schema:Thing .
+mlopsmeta:ResearchProtocol rdfs:subClassOf prov:Plan .
+mlopsmeta:SystematicLiteratureReview rdfs:label "Systematic Literature Review"@en .
+mlopsmeta:ResearchDatabase rdfs:subClassOf schema:DefinedTerm .
+mlopsmeta:hasResearchMetric a owl:ObjectProperty .
+mlopsmeta:hasResearchMethodology a owl:ObjectProperty .
+mlopsmeta:MLOpsMetaOntology dcterms:identifier "hash:d07f2b5db912fe3d202196750a9a413a845327c6cb6dd62963e3786725a1770b" .
+mlopsmeta:hasSearchStrategy rdfs:label "has search strategy"@en .
+mlopsmeta:hasResearchQuestionId rdfs:comment "Assigns a unique identifier to a research question."@en ;
+	rdfs:subPropertyOf dcterms:identifier .
+mlopsmeta:hasExclusionCriterionId rdfs:subPropertyOf dcterms:identifier .
+mlopsmeta:ExclusionCriterion rdfs:comment "A condition that disqualifies a research paper from inclusion in a systematic literature review."@en .
+mlopsmeta:hasMaturityLevel a owl:ObjectProperty .
+mlopsmeta:hasInclusionCriterion rdfs:label "has inclusion criterion"@en .
+doc:85064ca8529d a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.763773Z"^^xsd:dateTime ;
+	schema:position 3 ;
+	schema:identifier "85064ca8529d" .
+mlops:SoftwareEngineeringPractice rdfs:subClassOf schema:CreativeWork .
+mlops:hasSoftwareEngineeringPractice rdfs:domain mlops:MLOpsImplementation ;
+	rdfs:range mlops:SoftwareEngineeringPractice .
+mlops:requiresMonitoring rdfs:label "requires monitoring"@en .
+mlops:MLLifecycleCoverage rdfs:comment "The extent to which a study or process addresses key phases of the machine learning project lifecycle, including data preparation, model development, deployment, monitoring, and continuous training."@en .
+mlops:ModelMonitoring rdfs:label "Model Monitoring"@en .
+mlops:ModelDeployment rdfs:label "Model Deployment"@en .
+mlops:DataManagement rdfs:subClassOf schema:Thing .
+mlops:ContinuousTraining a owl:Class .
+mlops:TechnicalDebt rdfs:label "Technical Debt"@en .
+mlops:requiresDeployment rdfs:domain mlops:MLOpsImplementation .
+mlops:requiresContinuousTraining a rdf:Property .
+mlops:requiresDeployment a rdf:Property .
+mlops:hasSoftwareEngineeringPractice rdfs:comment "Relates an MLOps implementation to the software engineering practices applied during model development."@en .
+mlops:hasCollaborationScope rdfs:subPropertyOf schema:about .
+mlops:coversLifecyclePhase rdfs:subPropertyOf schema:about .
+mlops:requiresMonitoring rdfs:domain mlops:MLOpsImplementation ;
+	rdfs:range mlops:ModelMonitoring .
+mlops:CrossDisciplinaryCollaboration a owl:Class .
+mlops:hasDataManagementComponent rdfs:range mlops:DataManagement .
+mlops:ModelDeployment rdfs:subClassOf schema:Action .
+mlops:TechnicalDebt a owl:Class .
+mlops:hasDataQualityMetric rdfs:range schema:DefinedTerm .
+mlops:ModelMonitoring rdfs:comment "The continuous observation and evaluation of deployed machine learning models to detect performance degradation, data drift, or other issues requiring intervention."@en .
+mlops:coversLifecyclePhase rdfs:domain schema:CreativeWork .
+mlops:CrossDisciplinaryCollaboration rdfs:subClassOf mlops:MLOpsImplementation .
+mlops:hasSoftwareEngineeringPractice rdfs:label "has software engineering practice"@en .
+mlops:ModelDeployment rdfs:comment "The process of integrating a trained machine learning model into a production environment for inference and operational use."@en .
+mlops:hasCollaboratorRole rdfs:label "has collaborator role"@en .
+mlops:requiresDeployment rdfs:subPropertyOf schema:potentialAction .
+mlops:requiresMonitoring rdfs:comment "Indicates that an MLOps implementation necessitates continuous monitoring of deployed models."@en .
+mlops:hasDataManagementComponent rdfs:label "has data management component"@en .
+mlops:ContinuousTraining rdfs:comment "The iterative process of retraining machine learning models using updated data to maintain performance and relevance in production environments."@en .
+mlops:requiresDeployment rdfs:comment "Indicates that an MLOps implementation necessitates the deployment of a machine learning model into a production environment."@en .
+mlops:ModelDeployment a owl:Class .
+mlops:hasCollaborationScope rdfs:domain mlops:MLOpsImplementation .
+mlops:MLLifecycleCoverage rdfs:subClassOf schema:Thing .
+mlops:requiresMonitoring rdfs:subPropertyOf schema:potentialAction .
+mlops:TechnicalDebt rdfs:comment "Accumulated deficiencies in software or system design that result in increased maintenance costs, reduced scalability, or compromised long-term viability, often due to neglect of software engineering principles."@en .
+mlops:coversLifecyclePhase a rdf:Property .
+mlops:hasTechnicalDebt rdfs:range mlops:TechnicalDebt .
+mlops:hasCollaborationScope a rdf:Property .
+mlops:hasDataManagementComponent rdfs:subPropertyOf schema:hasPart .
+mlops:CrossDisciplinaryCollaboration rdfs:comment "A principle requiring the involvement of data scientists, software engineers, operations experts, and other stakeholders to align machine learning models with business objectives and ensure proper integration into existing systems."@en .
+mlops:hasCollaborationScope rdfs:range mlops:CrossDisciplinaryCollaboration .
+mlops:ModelMonitoring a owl:Class .
+mlops:hasTechnicalDebt rdfs:comment "Relates an MLOps implementation to the technical debt accumulated due to neglect of software engineering principles."@en .
+mlops:hasCollaboratorRole rdfs:comment "Relates a cross-disciplinary collaboration to the specific roles of stakeholders involved, such as data scientists, software engineers, or operations experts."@en .
+mlops:MLOpsImplementation a owl:Class .
+mlops:MLLifecycleCoverage a owl:Class .
+mlops:hasCollaboratorRole rdfs:domain mlops:CrossDisciplinaryCollaboration .
+mlops:SoftwareEngineeringPractice a owl:Class .
+mlops:hasDataQualityMetric rdfs:label "has data quality metric"@en .
+mlops:ContinuousTraining rdfs:subClassOf schema:Action .
+mlops:hasTechnicalDebt a rdf:Property .
+mlops:ContinuousTraining rdfs:label "Continuous Training"@en .
+mlops:requiresContinuousTraining rdfs:domain mlops:MLOpsImplementation .
+mlops:requiresDeployment rdfs:label "requires deployment"@en .
+mlops:hasDataQualityMetric rdfs:comment "Relates data management to specific metrics or criteria used to evaluate the quality of data for training machine learning models."@en .
+mlops:MLLifecycleCoverage rdfs:label "ML Lifecycle Coverage"@en .
+mlops:hasTechnicalDebt rdfs:label "has technical debt"@en .
+<https://example.com/mlops/mlops> rdfs:comment "An ontology modeling the core principles, processes, and components of Machine Learning Operations (MLOps) in software development contexts. It captures cross-disciplinary collaboration, software engineering practices, data management, and lifecycle aspects essential for MLOps implementation." .
+mlops:coversLifecyclePhase rdfs:label "covers lifecycle phase"@en .
+mlops:hasSoftwareEngineeringPractice a rdf:Property .
+mlops:coversLifecyclePhase rdfs:range mlops:MLLifecycleCoverage .
+mlops:TechnicalDebt rdfs:subClassOf schema:Thing .
+mlops:requiresDeployment rdfs:range mlops:ModelDeployment .
+mlops:DataManagement rdfs:comment "The systematic process of acquiring, validating, storing, protecting, and processing data to ensure quality and suitability for training machine learning models, directly impacting model performance."@en .
+mlops:hasDataManagementComponent rdfs:domain mlops:MLOpsImplementation ;
+	a rdf:Property .
+mlops:MLOpsImplementation rdfs:label "MLOps Implementation"@en .
+mlops:hasCollaboratorRole a rdf:Property .
+mlops:hasDataQualityMetric rdfs:domain mlops:DataManagement ;
+	a rdf:Property .
+mlops:DataManagement rdfs:label "Data Management"@en ;
+	a owl:Class .
+mlops:hasDataQualityMetric rdfs:subPropertyOf schema:metric .
+mlops:hasTechnicalDebt rdfs:subPropertyOf schema:hasPart .
+mlops:hasCollaborationScope rdfs:comment "Relates an MLOps implementation to the scope of cross-disciplinary collaboration involved."@en .
+mlops:requiresMonitoring a rdf:Property .
+mlops:coversLifecyclePhase rdfs:comment "Relates an MLOps implementation or study to the specific phases of the machine learning lifecycle it addresses."@en .
+mlops:requiresContinuousTraining rdfs:comment "Indicates that an MLOps implementation necessitates continuous training of models using updated data."@en ;
+	rdfs:subPropertyOf schema:potentialAction .
+mlops:hasSoftwareEngineeringPractice rdfs:subPropertyOf schema:hasPart .
+<https://example.com/mlops/mlops> dcterms:description "An ontology modeling the core principles, processes, and components of Machine Learning Operations (MLOps) in software development contexts. It captures cross-disciplinary collaboration, software engineering practices, data management, and lifecycle aspects essential for MLOps implementation." .
+mlops:ModelMonitoring rdfs:subClassOf schema:Action .
+mlops:MLOpsImplementation rdfs:subClassOf schema:Action .
+mlops:hasCollaborationScope rdfs:label "has collaboration scope"@en .
+mlops:CrossDisciplinaryCollaboration rdfs:label "Cross-Disciplinary Collaboration"@en .
+mlops:requiresContinuousTraining rdfs:range mlops:ContinuousTraining .
+mlops:hasDataManagementComponent rdfs:comment "Relates an MLOps implementation to the data management processes involved."@en .
+mlops:hasCollaboratorRole rdfs:range schema:Role .
+mlops:hasTechnicalDebt rdfs:domain mlops:MLOpsImplementation .
+mlops:SoftwareEngineeringPractice rdfs:comment "A set of principles and techniques applied during model development to ensure code quality, maintainability, scalability, and integration in production environments, addressing technical debt and facilitating deployment."@en .
+mlops:hasCollaboratorRole rdfs:subPropertyOf schema:role .
+mlops:SoftwareEngineeringPractice rdfs:label "Software Engineering Practice"@en .
+mlops:requiresContinuousTraining rdfs:label "requires continuous training"@en .
+mlops:MLOpsImplementation rdfs:comment "A systematic approach to integrating machine learning models into software development and operations workflows, emphasizing cross-disciplinary collaboration, software engineering practices, and lifecycle management."@en .
+<https://example.com/mlops/mlops> dcterms:identifier "hash:892a5d84a65b53c44bb89562cb419e86b34cc70171c4547eda9055a62c3ba36f" .
+doc:39d975b7a606 a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.766904Z"^^xsd:dateTime ;
+	schema:position 4 ;
+	schema:identifier "39d975b7a606" .
+mlopsmf:MaturityFramework a owl:Class .
+mlopsmf:hasChallenge rdfs:label "has challenge"@en .
+mlopsmf:experimentationTime rdfs:range xsd:duration .
+mlopsmf:CollaborationPractice rdfs:label "Collaboration Practice"@en .
+mlopsmf:CustomerInvolvement rdfs:comment "A collaboration practice emphasizing continuous engagement of customers throughout the MLOps lifecycle."@en .
+mlopsmf:hasBenefit a owl:ObjectProperty .
+mlopsmf:hasDimension rdfs:comment "Relates a maturity framework or assessment to a specific maturity dimension being evaluated."@en .
+mlopsmf:PerformanceMetric rdfs:comment "A quantitative measure used to evaluate the effectiveness of a model or process in an operational context."@en .
+mlopsmf:ModelDrift rdfs:label "Model Drift"@en .
+mlopsmf:DataDrift rdfs:comment "A phenomenon where the statistical properties of the input data change over time, potentially degrading model performance."@en .
+mlopsmf:ModelDrift rdfs:subClassOf schema:Event .
+mlopsmf:hasMaturityLevel rdfs:comment "Relates an entity (e.g., organization, process) to its assessed maturity level within a maturity framework."@en .
+mlopsmf:earlyDataScientistInvolvement a owl:NamedIndividual .
+mlopsmf:hasChallenge rdfs:subPropertyOf schema:potentialAction .
+mlopsmf:hasDimension rdfs:subPropertyOf dcterms:hasPart .
+mlopsmf:DataPipeline a owl:Class .
+mlopsmf:MaturityCriterion rdfs:comment "A specific requirement or practice used to evaluate a maturity dimension within a maturity framework."@en .
+mlopsmf:PerformanceMetric a owl:Class .
+mlopsmf:MaturityCriterion rdfs:subClassOf schema:DefinedTerm .
+mlopsmf:customerAwareness rdfs:label "customer awareness"@en .
+mlopsmf:meetsCriterion rdfs:subPropertyOf prov:qualifiedAttribution .
+mlopsmf:hasBenefit rdfs:comment "Relates an MLOps practice or capability to a positive outcome or advantage it yields."@en .
+mlopsmf:ContinuousTraining rdfs:label "Continuous Training"@en .
+mlopsmf:involves rdfs:label "involves"@en .
+mlopsmf:MaturityFramework rdfs:label "Maturity Framework"@en .
+mlopsmf:tracksMetric rdfs:label "tracks metric"@en .
+mlopsmf:DataManagement rdfs:comment "A maturity dimension focused on the governance, quality, and lifecycle management of data used in ML systems."@en .
+mlopsmf:hasProcess rdfs:subPropertyOf prov:used .
+mlopsmf:ContinuousTraining a owl:Class .
+mlopsmf:experimentationTime a owl:DatatypeProperty .
+mlopsmf:earlyDataScientistInvolvement rdfs:comment "A maturity criterion emphasizing the inclusion of data scientists from the beginning of a project."@en .
+mlopsmf:MLOpsMaturityLevel rdfs:comment "A discrete stage in a maturity framework that quantifies the current capability of an organization's MLOps processes."@en .
+<https://example.com/mlops/mlopsmf> rdfs:comment "An ontology modeling the abstract concepts and relationships involved in MLOps maturity frameworks, processes, and organizational capabilities. It captures dimensions such as data management, model monitoring, CI/CD/CT integration, automation levels, and cultural factors, abstracted from specific implementations or vendors." .
+mlopsmf:CI_CD_CT rdfs:label "CI/CD/CT"@en .
+mlopsmf:DataDrift rdfs:label "Data Drift"@en .
+mlopsmf:ModelDrift a owl:Class .
+mlopsmf:hasDimension a owl:ObjectProperty .
+mlopsmf:MaturityCriterion rdfs:label "Maturity Criterion"@en .
+mlopsmf:CollaborationPractice rdfs:comment "A structured interaction or workflow that fosters cross-functional collaboration between teams (e.g., product, data science, engineering)."@en .
+mlopsmf:MaturityDimension rdfs:label "Maturity Dimension"@en .
+mlopsmf:CustomerInvolvement rdfs:label "Customer Involvement"@en .
+mlopsmf:hasMaturityLevel rdfs:subPropertyOf schema:assesses .
+mlopsmf:MLOpsProcess a owl:Class .
+mlopsmf:earlyDataScientistInvolvement rdfs:subClassOf mlopsmf:MaturityCriterion .
+mlopsmf:MaturityCriterion a owl:Class .
+mlopsmf:DataDrift a owl:Class .
+mlopsmf:DataScientistInvolvement a owl:Class .
+mlopsmf:meetsCriterion a owl:ObjectProperty .
+mlopsmf:ModelMonitoring rdfs:label "Model Monitoring"@en .
+mlopsmf:experimentationTime rdfs:comment "A maturity criterion indicating the allocation of dedicated time at the start of a project for exploration and experimentation."@en .
+mlopsmf:MaturityDimension rdfs:comment "A distinct aspect or domain (e.g., data management, model monitoring) evaluated within a maturity framework."@en .
+mlopsmf:hasProcess a owl:ObjectProperty .
+<https://example.com/mlops/mlopsmf> dcterms:identifier "hash:09d824be78c1825da002616b2f9448e85666fe401dfe1ff4c6c0dd6e40cc2e37" .
+mlopsmf:DataScientistInvolvement rdfs:comment "A collaboration practice ensuring data scientists participate early and continuously in product and ML development."@en .
+mlopsmf:experimentationTime rdfs:subPropertyOf mlopsmf:meetsCriterion .
+mlopsmf:CI_CD_CT rdfs:subClassOf mlopsmf:ProcessIntegration .
+mlopsmf:AutomationLevel a owl:Class .
+mlopsmf:DataPipeline rdfs:comment "An automated workflow that prepares, transforms, and delivers data for use in ML models."@en .
+mlopsmf:hasMaturityLevel a owl:ObjectProperty .
+mlopsmf:MLOpsProcess rdfs:subClassOf prov:Activity .
+mlopsmf:MaturityFramework rdfs:subClassOf schema:DefinedTermSet .
+mlopsmf:MLOpsMaturityLevel rdfs:label "MLOps Maturity Level"@en .
+mlopsmf:customerAwareness rdfs:comment "A maturity criterion focused on keeping customers informed of project progress and potential risks."@en .
+mlopsmf:DataManagement rdfs:label "Data Management"@en ;
+	a owl:Class .
+mlopsmf:DataScientistInvolvement rdfs:label "Data Scientist Involvement"@en .
+mlopsmf:detectsDrift a owl:ObjectProperty .
+mlopsmf:DataPipeline rdfs:subClassOf mlopsmf:MLOpsProcess .
+<https://example.com/mlops/mlopsmf> dcterms:title "mlopsmf" .
+mlopsmf:MLOpsMaturityLevel a owl:Class .
+mlopsmf:hasProcess rdfs:comment "Relates an entity (e.g., organization) to an MLOps process it performs or manages."@en .
+mlopsmf:AutomationLevel rdfs:label "Automation Level"@en .
+mlopsmf:detectsDrift rdfs:comment "Relates a monitoring process to a drift event it identifies."@en .
+mlopsmf:CollaborationPractice rdfs:subClassOf schema:Action .
+mlopsmf:tracksMetric rdfs:subPropertyOf prov:wasGeneratedBy .
+mlopsmf:ModelDeployment a owl:Class .
+mlopsmf:ModelDrift rdfs:comment "A degradation in model performance due to changes in data distribution or model decay, detectable via monitoring."@en .
+mlopsmf:MLOpsProcess rdfs:comment "A systematic procedure or workflow within MLOps, such as data collection, model training, deployment, or monitoring."@en .
+mlopsmf:DataManagement rdfs:subClassOf mlopsmf:MaturityDimension .
+mlopsmf:ModelMonitoring a owl:Class .
+mlopsmf:ProcessIntegration rdfs:label "Process Integration"@en .
+mlopsmf:MLOpsProcess rdfs:label "MLOps Process"@en .
+mlopsmf:ContinuousTraining rdfs:subClassOf mlopsmf:MLOpsProcess .
+mlopsmf:detectsDrift rdfs:subPropertyOf prov:qualifiedAttribution .
+mlopsmf:MLOpsMaturityLevel rdfs:subClassOf schema:CategoryCode .
+mlopsmf:involves a owl:ObjectProperty .
+mlopsmf:ModelDeployment rdfs:subClassOf mlopsmf:MLOpsProcess .
+<https://example.com/mlops/mlopsmf> a owl:Ontology .
+mlopsmf:hasBenefit rdfs:subPropertyOf schema:potentialAction .
+<https://example.com/mlops/mlopsmf> rdfs:label "MLOps Maturity Framework Ontology" .
+mlopsmf:ModelDeployment rdfs:comment "The process of making a trained model available for inference in a production environment."@en .
+mlopsmf:hasMaturityLevel rdfs:label "has maturity level"@en .
+mlopsmf:meetsCriterion rdfs:comment "Relates an assessed entity to a maturity criterion that it satisfies or fulfills."@en .
+mlopsmf:hasChallenge a owl:ObjectProperty .
+mlopsmf:tracksMetric a owl:ObjectProperty .
+mlopsmf:ModelMonitoring rdfs:subClassOf mlopsmf:MaturityDimension .
+<https://example.com/mlops/mlopsmf> dcterms:description "An ontology modeling the abstract concepts and relationships involved in MLOps maturity frameworks, processes, and organizational capabilities. It captures dimensions such as data management, model monitoring, CI/CD/CT integration, automation levels, and cultural factors, abstracted from specific implementations or vendors." .
+mlopsmf:PerformanceMetric rdfs:subClassOf schema:QuantitativeValue .
+mlopsmf:MaturityFramework rdfs:comment "A structured model used to assess and guide the progression of MLOps capabilities within an organization, typically comprising discrete levels or stages."@en .
+mlopsmf:meetsCriterion rdfs:label "meets criterion"@en .
+mlopsmf:CustomerInvolvement rdfs:subClassOf mlopsmf:CollaborationPractice .
+mlopsmf:earlyDataScientistInvolvement rdfs:label "early data scientist involvement"@en .
+mlopsmf:experimentationTime rdfs:label "experimentation time"@en .
+mlopsmf:MaturityDimension a owl:Class .
+mlopsmf:customerAwareness a owl:Class .
+mlopsmf:hasChallenge rdfs:comment "Relates an MLOps practice or capability to a difficulty or obstacle it presents."@en .
+mlopsmf:OrganizationalCulture a owl:Class .
+mlopsmf:DataScientistInvolvement rdfs:subClassOf mlopsmf:CollaborationPractice .
+mlopsmf:hasBenefit rdfs:label "has benefit"@en .
+mlopsmf:OrganizationalCulture rdfs:subClassOf mlopsmf:MaturityDimension .
+mlopsmf:ModelMonitoring rdfs:comment "A maturity dimension concerned with the continuous observation and evaluation of model performance and data drift in production."@en .
+mlopsmf:ProcessIntegration a owl:Class .
+mlopsmf:customerAwareness a owl:NamedIndividual .
+mlopsmf:ProcessIntegration rdfs:comment "A maturity dimension addressing the automation and integration of MLOps workflows with CI/CD and CT pipelines."@en .
+mlopsmf:tracksMetric rdfs:comment "Relates a monitoring process to a performance metric it observes or records."@en .
+mlopsmf:CollaborationPractice a owl:Class .
+mlopsmf:hasDimension rdfs:label "has dimension"@en .
+mlopsmf:DataPipeline rdfs:label "Data Pipeline"@en .
+mlopsmf:CI_CD_CT a owl:Class .
+<https://example.com/mlops/mlopsmf> owl:versionInfo "1.0.0" .
+mlopsmf:ContinuousTraining rdfs:comment "A maturity level or process characterized by ongoing, automated retraining of models in response to data or environment changes."@en .
+mlopsmf:involves rdfs:comment "Relates an MLOps process or framework to a collaboration practice it incorporates."@en .
+mlopsmf:AutomationLevel rdfs:subClassOf mlopsmf:MLOpsMaturityLevel .
+mlopsmf:involves rdfs:subPropertyOf prov:qualifiedAttribution .
+mlopsmf:ProcessIntegration rdfs:subClassOf mlopsmf:MaturityDimension .
+mlopsmf:ModelDeployment rdfs:label "Model Deployment"@en .
+mlopsmf:AutomationLevel rdfs:comment "A maturity level that specifically measures the degree of automation in MLOps processes, often ranging from manual to fully automated."@en .
+mlopsmf:DataDrift rdfs:subClassOf schema:Event .
+mlopsmf:detectsDrift rdfs:label "detects drift"@en .
+mlopsmf:PerformanceMetric rdfs:label "Performance Metric"@en .
+mlopsmf:CI_CD_CT rdfs:comment "A maturity dimension addressing continuous integration, delivery, and training practices within MLOps."@en .
+mlopsmf:customerAwareness rdfs:subClassOf mlopsmf:MaturityCriterion .
+mlopsmf:MaturityDimension rdfs:subClassOf schema:Enumeration .
+mlopsmf:OrganizationalCulture rdfs:label "Organizational Culture"@en ;
+	rdfs:comment "A maturity dimension reflecting the cultural practices, collaboration, and learning orientation that support MLOps adoption."@en .
+mlopsmf:CustomerInvolvement a owl:Class .
+mlopsmf:hasProcess rdfs:label "has process"@en .
+mlopsmf:earlyDataScientistInvolvement a owl:Class .
+doc:c7cb81fb4d05 a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.77109Z"^^xsd:dateTime ;
+	schema:position 5 ;
+	schema:identifier "c7cb81fb4d05" .
+mlopsmm:OperationalReliability rdfs:comment "Increased operational reliability and reduced downtime through automated monitoring, retraining, and deployment practices."@en .
+mlopsmm:hasMaturityLevel rdfs:domain mlopsmm:MLOpsMaturityModel .
+mlopsmm:CDAutomation rdfs:comment "Continuous Delivery/Deployment practices for ML models enabling automated updates in production."@en .
+mlopsmm:MaturityLevel rdfs:subClassOf schema:DefinedTerm .
+mlopsmm:MaturityLevel3 rdfs:label "Level3"@en .
+mlopsmm:hasDataManagementPractice a owl:ObjectProperty .
+mlopsmm:CollaborationImprovement a mlopsmm:MLOpsBenefit .
+mlopsmm:ChallengeCategory rdfs:subClassOf skos:Concept .
+mlopsmm:hasBenefit rdfs:comment "Relates an MLOps maturity model or level to the benefits it enables."@en .
+mlopsmm:hasChallengeCategory rdfs:label "hasChallengeCategory"@en .
+mlopsmm:CDAutomation rdfs:label "CDAutomation"@en .
+mlopsmm:hasDataManagementPractice rdfs:domain mlopsmm:MaturityLevel .
+mlopsmm:DataManagementPractice a owl:Class .
+mlopsmm:hasAutomationStage a owl:ObjectProperty ;
+	rdfs:comment "Relates a maturity level to the automation stage it represents."@en .
+mlopsmm:MLOpsMaturityModel a owl:Class .
+_:n52587c4299fd4a748daeede278b1e166b2 rdfs:subClassOf schema:Organization .
+mlopsmm:MaturityLevel1 rdfs:label "Level1"@en .
+mlopsmm:hasAutomationStage rdfs:subPropertyOf dcterms:hasPart .
+mlopsmm:OperationalReliability a mlopsmm:MLOpsBenefit .
+mlopsmm:hasBenefit rdfs:range mlopsmm:MLOpsBenefit .
+mlopsmm:hasMaturityLevel rdfs:comment "Relates an MLOps maturity model to a specific maturity level."@en .
+_:n52587c4299fd4a748daeede278b1e166b2 a owl:Class .
+mlopsmm:MLOpsMaturityModel rdfs:label "MLOpsMaturityModel"@en .
+mlopsmm:hasPipelineAutomation rdfs:domain mlopsmm:MaturityLevel .
+mlopsmm:MaturityLevel1 rdfs:comment "Organizations have adopted DevOps practices for traditional software but have not extended these to ML workflows."@en .
+mlopsmm:PipelineAutomation rdfs:label "PipelineAutomation"@en .
+<https://example.com/mlops/mlopsmm> dcterms:description "An ontology modeling the maturity levels, components, and benefits of MLOps adoption in organizations. It abstracts maturity models from major frameworks (Microsoft, Google, Kaisen, GigaOm) into a unified conceptual model for MLOps maturity assessment, covering automation stages, operational practices, and organizational benefits." .
+mlopsmm:DataManagementPractice rdfs:subClassOf schema:Action .
+mlopsmm:hasAutomationStage rdfs:label "hasAutomationStage"@en .
+mlopsmm:reflects rdfs:label "reflects"@en .
+mlopsmm:hasPipelineAutomation rdfs:comment "Relates a maturity level to the pipeline automation practices it includes."@en .
+mlopsmm:hasDataManagementPractice rdfs:subPropertyOf prov:qualifiedAssociation .
+mlopsmm:LifecycleEfficiency a mlopsmm:MLOpsBenefit .
+mlopsmm:hasMaturityLevel rdfs:subPropertyOf dcterms:hasPart .
+mlopsmm:hasBenefit rdfs:label "hasBenefit"@en .
+mlopsmm:DeploymentAutomation a mlopsmm:AutomationStage .
+mlopsmm:StandardizedDataOps rdfs:label "StandardizedDataOps"@en .
+mlopsmm:adoptedBy rdfs:range _:n52587c4299fd4a748daeede278b1e166b2 .
+mlopsmm:TrainingAutomation a mlopsmm:AutomationStage .
+mlopsmm:MaturityLevel rdfs:comment "A discrete stage in the evolution of MLOps practices within an organization, characterized by specific capabilities, automation levels, and operational practices."@en .
+mlopsmm:MLOpsMaturityModel rdfs:comment "A structured framework that defines a sequence of maturity levels for assessing and guiding the adoption of MLOps practices in an organization."@en .
+mlopsmm:hasChallengeCategory rdfs:domain mlopsmm:MLOpsMaturityModel .
+mlopsmm:hasAutomationStage rdfs:range mlopsmm:AutomationStage .
+_:n52587c4299fd4a748daeede278b1e166b3 rdfs:subClassOf skos:Concept .
+mlopsmm:MaturityLevel1 a mlopsmm:MaturityLevel .
+mlopsmm:hasAutomationStage rdfs:domain mlopsmm:MaturityLevel .
+mlopsmm:ChallengeCategory a owl:Class .
+mlopsmm:hasDataManagementPractice rdfs:comment "Relates a maturity level to the data management practices it includes."@en .
+mlopsmm:adoptedBy rdfs:domain _:n52587c4299fd4a748daeede278b1e166b1 .
+mlopsmm:reflects rdfs:subPropertyOf prov:wasDerivedFrom .
+mlopsmm:MaturityLevel0 a mlopsmm:MaturityLevel .
+mlopsmm:adoptedBy rdfs:label "adoptedBy"@en .
+mlopsmm:hasPipelineAutomation rdfs:subPropertyOf prov:qualifiedAssociation .
+<https://example.com/mlops/mlopsmm> dcterms:title "mlopsmm" .
+mlopsmm:CIAutomation rdfs:label "CIAutomation"@en .
+mlopsmm:hasBenefit a owl:ObjectProperty .
+mlopsmm:CollaborationImprovement rdfs:comment "Enhanced collaboration between data science, operations, and software engineering teams through standardized practices and automation."@en .
+mlopsmm:hasBenefit rdfs:subPropertyOf dcterms:hasPart .
+mlopsmm:reflects rdfs:domain mlopsmm:MLOpsMaturityModel .
+mlopsmm:PipelineAutomation rdfs:subClassOf schema:Action .
+mlopsmm:LifecycleEfficiency rdfs:label "LifecycleEfficiency"@en .
+mlopsmm:DeploymentAutomation rdfs:label "DeploymentAutomation"@en .
+mlopsmm:MLOpsBenefit rdfs:subClassOf schema:Benefit .
+mlopsmm:MaturityLevel2 rdfs:subClassOf mlopsmm:MaturityLevel .
+mlopsmm:reflects rdfs:range mlopsmm:MaturityLevel .
+mlopsmm:MaturityLevel2 rdfs:label "Level2"@en .
+mlopsmm:MaturityLevel4 rdfs:label "Level4"@en .
+mlopsmm:StandardizedDataOps a mlopsmm:DataManagementPractice .
+mlopsmm:MLOpsBenefit rdfs:comment "A measurable or qualitative benefit resulting from the adoption of MLOps practices in an organization."@en .
+mlopsmm:MaturityLevel4 rdfs:comment "The highest maturity level where operations of ML models are fully automated, including training, deployment, continuous monitoring, and automated retraining in production."@en .
+mlopsmm:ChallengeCategory rdfs:label "ChallengeCategory"@en .
+_:n52587c4299fd4a748daeede278b1e166b1 rdfs:subClassOf schema:Organization .
+mlopsmm:StandardizedDataOps rdfs:comment "Standardized and automated processes for data management as part of MLOps adoption."@en .
+mlopsmm:MaturityLevel2 a mlopsmm:MaturityLevel .
+mlopsmm:LifecycleEfficiency rdfs:comment "Improved efficiency in the ML model lifecycle, including faster implementation and deployment of models in production."@en .
+mlopsmm:hasMaturityLevel rdfs:range mlopsmm:MaturityLevel .
+mlopsmm:MaturityLevel3 rdfs:comment "In addition to automated training, deployment processes of trained models are also automated, enabling faster and more efficient deployment into production."@en .
+mlopsmm:hasChallengeCategory rdfs:comment "Relates an MLOps maturity model to the categories of challenges encountered during adoption."@en .
+mlopsmm:AutomationStage rdfs:subClassOf schema:DefinedTerm .
+mlopsmm:MaturityLevel1 rdfs:subClassOf mlopsmm:MaturityLevel .
+mlopsmm:hasChallengeCategory rdfs:subPropertyOf dcterms:hasPart ;
+	rdfs:range _:n52587c4299fd4a748daeede278b1e166b3 .
+mlopsmm:OperationalReliability rdfs:label "OperationalReliability"@en .
+mlopsmm:CIAutomation rdfs:comment "Continuous Integration practices applied to ML components, including code reviews and iterative development."@en .
+mlopsmm:CDAutomation a mlopsmm:PipelineAutomation .
+mlopsmm:hasPipelineAutomation rdfs:range mlopsmm:PipelineAutomation .
+<https://example.com/mlops/mlopsmm> rdfs:comment "An ontology modeling the maturity levels, components, and benefits of MLOps adoption in organizations. It abstracts maturity models from major frameworks (Microsoft, Google, Kaisen, GigaOm) into a unified conceptual model for MLOps maturity assessment, covering automation stages, operational practices, and organizational benefits." .
+_:n52587c4299fd4a748daeede278b1e166b3 a owl:Class .
+mlopsmm:MaturityLevel3 rdfs:subClassOf mlopsmm:MaturityLevel .
+mlopsmm:MaturityLevel rdfs:label "MaturityLevel"@en .
+mlopsmm:hasMaturityLevel a owl:ObjectProperty .
+mlopsmm:MLOpsBenefit a owl:Class .
+mlopsmm:reflects rdfs:comment "Relates a maturity model to the maturity levels it defines."@en .
+mlopsmm:ChallengeCategory rdfs:comment "A category of challenges encountered during the adoption of MLOps practices, such as data inconsistencies or lack of specialized personnel."@en .
+mlopsmm:hasPipelineAutomation rdfs:label "hasPipelineAutomation"@en .
+mlopsmm:hasDataManagementPractice rdfs:range mlopsmm:DataManagementPractice .
+mlopsmm:PipelineAutomation a owl:Class .
+mlopsmm:hasChallengeCategory a owl:ObjectProperty .
+mlopsmm:adoptedBy rdfs:comment "Relates an MLOps maturity model or level to the organization that has adopted it."@en .
+mlopsmm:PipelineAutomation rdfs:comment "A class representing the automation of ML pipelines, including CI/CD for ML components."@en .
+mlopsmm:DataManagementPractice rdfs:comment "A practice related to data management within the MLOps lifecycle, including standardization and automation."@en .
+mlopsmm:adoptedBy a owl:ObjectProperty .
+mlopsmm:MLOpsMaturityModel rdfs:subClassOf schema:DefinedTermSet .
+mlopsmm:CIAutomation a mlopsmm:PipelineAutomation .
+mlopsmm:DataManagementPractice rdfs:label "DataManagementPractice"@en .
+mlopsmm:hasDataManagementPractice rdfs:label "hasDataManagementPractice"@en .
+mlopsmm:MLOpsBenefit rdfs:label "MLOpsBenefit"@en .
+mlopsmm:MaturityLevel4 rdfs:subClassOf mlopsmm:MaturityLevel .
+mlopsmm:MaturityLevel0 rdfs:label "Level0"@en .
+mlopsmm:hasMaturityLevel rdfs:label "hasMaturityLevel"@en .
+<https://example.com/mlops/mlopsmm> a owl:Ontology .
+_:n52587c4299fd4a748daeede278b1e166b1 a owl:Class .
+<https://example.com/mlops/mlopsmm> rdfs:label "MLOps Maturity Model Ontology" .
+mlopsmm:MaturityLevel4 a mlopsmm:MaturityLevel .
+mlopsmm:AutomationStage rdfs:label "AutomationStage"@en .
+mlopsmm:DeploymentAutomation rdfs:comment "Automation of the deployment process for trained models into production environments."@en .
+<https://example.com/mlops/mlopsmm> dcterms:identifier "hash:1a97b87628c20d955e8de0f6748c94a5fa9a6e482754221921263a7fefb81e2b" .
+mlopsmm:reflects a owl:ObjectProperty .
+mlopsmm:MaturityLevel a owl:Class .
+mlopsmm:MaturityLevel0 rdfs:comment "The initial stage where no MLOps practices are adopted; teams are disparate and releases are complicated."@en .
+mlopsmm:TrainingAutomation rdfs:label "TrainingAutomation"@en .
+mlopsmm:hasPipelineAutomation a owl:ObjectProperty .
+mlopsmm:AutomationStage rdfs:comment "A phase in the MLOps maturity model characterized by the degree of automation in ML pipeline components such as training, deployment, and monitoring."@en .
+mlopsmm:TrainingAutomation rdfs:comment "Automation of the training environment and model replication processes."@en .
+mlopsmm:hasBenefit rdfs:domain mlopsmm:MLOpsMaturityModel .
+mlopsmm:MaturityLevel3 a mlopsmm:MaturityLevel .
+mlopsmm:MaturityLevel2 rdfs:comment "Automated training environments are in place; models are easy to replicate."@en .
+mlopsmm:AutomationStage a owl:Class .
+mlopsmm:adoptedBy rdfs:subPropertyOf prov:wasAssociatedWith .
+mlopsmm:CollaborationImprovement rdfs:label "CollaborationImprovement"@en .
+doc:59ee1c4164b2 a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.775013Z"^^xsd:dateTime ;
+	schema:position 6 ;
+	schema:identifier "59ee1c4164b2" .
+mlops:alignsWith rdfs:range schema:Thing .
+mlops:promotes rdfs:comment "Relates a process to the adoption or enhancement of a practice or environment."@en .
+mlops:hasModel rdfs:label "has model"@en .
+mlops: dcterms:title "mlops" .
+mlops:promotes a owl:ObjectProperty .
+mlops:Model rdfs:label "Model"@en .
+mlops:hasTeam rdfs:domain mlops:MLOpsProcess .
+mlops:CollaborationProcess rdfs:label "Collaboration Process"@en .
+mlops:MLLifecycle rdfs:subClassOf schema:Thing .
+mlops:improvesQualityOf rdfs:subPropertyOf mlops:enables .
+mlops:hasModel rdfs:domain mlops:MLLifecycle .
+mlops:MLOpsProcess rdfs:subClassOf schema:Action .
+mlops:promotes rdfs:subPropertyOf prov:wasInfluencedBy .
+mlops:CI_CDProcess rdfs:subClassOf mlops:MLOpsProcess .
+mlops:MLOpsProcess rdfs:label "MLOps Process"@en .
+mlops:MonitoringProcess rdfs:subClassOf mlops:MLOpsProcess .
+mlops:reducesTimeTo rdfs:label "reduces time to"@en .
+mlops:improvesQualityOf a owl:ObjectProperty .
+mlops:MonitoringProcess rdfs:comment "A process that involves continuous monitoring and validation to identify and correct errors, ensuring model relevance and effectiveness over time."@en .
+mlops:hasEnvironment rdfs:range mlops:ProductionEnvironment ;
+	rdfs:label "has environment"@en .
+mlops:CI_CDProcess a owl:Class .
+mlops:hasModel rdfs:range mlops:Model .
+mlops:improvesQualityOf rdfs:domain mlops:MLOpsProcess .
+mlops:StandardizationProcess rdfs:subClassOf mlops:MLOpsProcess .
+mlops:enables rdfs:range schema:Thing .
+mlops:appliesTo rdfs:subPropertyOf prov:used .
+mlops:hasTeam rdfs:comment "Relates a process to the team(s) involved in its execution."@en ;
+	rdfs:range mlops:Team .
+mlops:reducesTimeTo rdfs:comment "Relates a process to the reduction in time required to achieve a goal (e.g., from development to production)."@en .
+mlops:Model rdfs:subClassOf schema:Thing .
+mlops:alignsWith a owl:ObjectProperty .
+mlops:ProductionEnvironment rdfs:label "Production Environment"@en .
+mlops:CollaborationProcess rdfs:comment "A process that facilitates collaboration between teams from different disciplines (e.g., development, operations, business) to align technical and business objectives."@en .
+mlops:Team a owl:Class .
+mlops:hasModel a owl:ObjectProperty .
+mlops:ProductionEnvironment rdfs:subClassOf schema:Place .
+mlops:reducesTimeTo rdfs:domain mlops:MLOpsProcess .
+mlops: dcterms:identifier "hash:7626f2e30cfdb8e73a7a5f46c213ee06966c2861e51b3a27d197511610ced01c" .
+mlops:ProductionEnvironment rdfs:comment "The operational environment where models are deployed and serve predictions."@en .
+mlops:CollaborationProcess a owl:Class .
+mlops:StandardizationProcess rdfs:comment "A process that enforces standardization of development practices to improve robustness and reliability of models."@en .
+mlops:hasEnvironment rdfs:comment "Relates a model to the environment where it is deployed."@en .
+mlops:Team rdfs:label "Team"@en .
+mlops:alignsWith rdfs:comment "Relates a process to business or technical objectives it aligns with."@en .
+mlops:CollaborationProcess rdfs:subClassOf mlops:MLOpsProcess .
+mlops:alignsWith rdfs:subPropertyOf prov:wasInfluencedBy .
+mlops:hasEnvironment a owl:ObjectProperty .
+mlops: dcterms:description "This ontology captures the lifecycle of ML systems including development, deployment, monitoring, and collaboration practices, aligned with DevOps principles."@en .
+mlops:alignsWith rdfs:domain mlops:CollaborationProcess .
+mlops:promotes rdfs:range schema:Thing ;
+	rdfs:domain mlops:MLOpsProcess .
+mlops:MonitoringProcess rdfs:label "Monitoring Process"@en .
+mlops:Model a owl:Class .
+mlops:enables rdfs:label "enables"@en .
+mlops:improvesQualityOf rdfs:range mlops:Model .
+mlops:appliesTo a owl:ObjectProperty .
+mlops:StandardizationProcess rdfs:label "Standardization Process"@en .
+mlops:hasModel rdfs:comment "Relates a process to the model(s) it involves or affects."@en .
+mlops:Model rdfs:comment "A machine learning model, including its parameters, architecture, and associated metadata."@en .
+mlops:enables a owl:ObjectProperty .
+mlops:improvesQualityOf rdfs:comment "Relates a process to the improvement in quality of models or systems."@en .
+mlops:appliesTo rdfs:label "applies to"@en .
+mlops:ProductionEnvironment a owl:Class .
+mlops:Team rdfs:subClassOf schema:Organization .
+mlops:enables rdfs:comment "Relates a process to the outcome or capability it enables."@en .
+mlops:MLOpsProcess a owl:Class .
+mlops:enables rdfs:domain mlops:MLOpsProcess .
+mlops:reducesTimeTo rdfs:subPropertyOf mlops:enables .
+mlops:CI_CDProcess rdfs:comment "A process that automates continuous integration and continuous deployment, enabling faster transition of models from development to production."@en .
+mlops:Team rdfs:comment "A group of individuals collaborating within the MLOps context, such as development, operations, or business teams."@en .
+mlops:hasEnvironment rdfs:domain mlops:Model .
+mlops:CI_CDProcess rdfs:label "CI/CD Process"@en .
+mlops:hasTeam rdfs:label "has team"@en .
+mlops:StandardizationProcess a owl:Class .
+mlops:MonitoringProcess a owl:Class .
+mlops:promotes rdfs:label "promotes"@en .
+mlops:improvesQualityOf rdfs:label "improves quality of"@en .
+mlops:reducesTimeTo a owl:ObjectProperty .
+mlops:MLOpsProcess rdfs:comment "A process or practice within the MLOps domain, encompassing activities such as continuous integration, continuous deployment, monitoring, and validation."@en .
+mlops:enables rdfs:subPropertyOf prov:wasInfluencedBy .
+mlops:appliesTo rdfs:comment "Relates a process to the lifecycle stage or system it applies to."@en .
+mlops:reducesTimeTo rdfs:range schema:Duration .
+mlops:MLLifecycle rdfs:comment "The overarching lifecycle encompassing all stages of a machine learning system from development to deployment and monitoring."@en .
+mlops:alignsWith rdfs:label "aligns with"@en .
+mlops: rdfs:comment "An ontology modeling the core concepts, processes, and relationships in Machine Learning Operations (MLOps)."@en ;
+	rdfs:label "MLOps Ontology"@en .
+mlops:hasTeam a owl:ObjectProperty .
+doc:44cdad75f3ae a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.777704Z"^^xsd:dateTime ;
+	schema:position 7 ;
+	schema:identifier "44cdad75f3ae" .
+mlops:IntegrationChallenge rdfs:label "Integration Challenge"@en .
+mlops:addressesDataQualityIssue a owl:ObjectProperty .
+mlops:performedBy rdfs:comment "Relates an MLOps process to the team role responsible for its execution."@en .
+mlops:requiresDataStrategy rdfs:label "requires data strategy"@en .
+mlops:DeploymentProcess rdfs:label "Deployment Process"@en .
+mlops:requiresDataStrategy a owl:FunctionalProperty .
+mlops:hasDataQualityIssue a owl:AsymmetricProperty ;
+	rdfs:range mlops:DataQualityIssue .
+mlops:performedBy rdfs:label "performed by"@en .
+mlops:hasDataQualityIssue a owl:ObjectProperty .
+mlops:governedBy rdfs:label "governed by"@en .
+mlops:hasIntegrationChallenge rdfs:comment "Relates a process or role to an integration challenge arising from cross-disciplinary practices."@en .
+mlops:governedBy rdfs:subPropertyOf prov:wasInfluencedBy .
+mlops:addressesDataQualityIssue rdfs:label "addresses data quality issue"@en .
+mlops:hasIntegrationChallenge a owl:ObjectProperty .
+mlops:requiresDataStrategy rdfs:range mlops:DataStrategy .
+mlops:DataStrategy rdfs:subClassOf schema:Thing .
+mlops:DeploymentProcess a owl:Class .
+mlops:ModelDevelopmentProcess rdfs:label "Model Development Process"@en .
+mlops:hasDataQualityIssue rdfs:domain mlops:MLOpsProcess ;
+	rdfs:subPropertyOf prov:wasInfluencedBy .
+mlops:hasIntegrationChallenge rdfs:domain mlops:MLOpsProcess .
+mlops:DataManagementProcess rdfs:label "Data Management Process"@en .
+mlops:DataQualityIssue rdfs:subClassOf schema:Thing .
+mlops:performedBy rdfs:range mlops:TeamRole .
+mlops:IntegrationChallenge a owl:Class .
+mlops:DataManagementProcess rdfs:subClassOf mlops:MLOpsProcess .
+mlops:hasDataQualityIssue rdfs:label "has data quality issue"@en .
+<https://example.com/mlops/mlops> rdfs:comment "An ontology modeling abstract concepts and relationships in Machine Learning Operations (MLOps), focusing on the lifecycle of ML systems including data management, model development, deployment, and operational challenges. This ontology abstracts over concrete tools, teams, and instances to capture the structural and semantic relationships inherent to MLOps practices." .
+mlops:DataManagementProcess rdfs:comment "A process focused on the acquisition, cleaning, labeling, storage, and governance of data used in MLOps workflows."@en .
+mlops:performedBy a owl:ObjectProperty .
+mlops:hasIntegrationChallenge rdfs:range mlops:IntegrationChallenge .
+mlops:DataStrategy a owl:Class .
+mlops:TeamRole rdfs:label "Team Role"@en .
+mlops:addressesDataQualityIssue rdfs:comment "Relates a data management process to a data quality issue it aims to resolve or mitigate."@en .
+mlops:performedBy rdfs:subPropertyOf prov:wasAssociatedWith ;
+	rdfs:domain mlops:MLOpsProcess .
+mlops:DataQualityIssue a owl:Class .
+mlops:governedBy a owl:ObjectProperty .
+mlops:TeamRole a owl:Class .
+mlops:requiresDataStrategy rdfs:comment "Relates an MLOps process to the data strategy it depends on for execution."@en .
+mlops:DeploymentProcess rdfs:comment "A process responsible for packaging, deploying, and serving machine learning models to production environments."@en .
+mlops:MonitoringProcess rdfs:comment "A process that observes and evaluates the performance, drift, and operational health of deployed models and data pipelines."@en .
+mlops:addressesDataQualityIssue rdfs:range mlops:DataQualityIssue .
+<https://example.com/mlops/mlops> dcterms:description "An ontology modeling abstract concepts and relationships in Machine Learning Operations (MLOps), focusing on the lifecycle of ML systems including data management, model development, deployment, and operational challenges. This ontology abstracts over concrete tools, teams, and instances to capture the structural and semantic relationships inherent to MLOps practices." .
+mlops:requiresDataStrategy a owl:ObjectProperty .
+mlops:ModelDevelopmentProcess rdfs:comment "A process involving the design, training, evaluation, and versioning of machine learning models within an MLOps pipeline."@en .
+mlops:governedBy rdfs:range mlops:DataStrategy .
+mlops:hasIntegrationChallenge a owl:AsymmetricProperty .
+mlops:requiresDataStrategy rdfs:domain mlops:MLOpsProcess .
+mlops:DeploymentProcess rdfs:subClassOf mlops:MLOpsProcess .
+mlops:IntegrationChallenge rdfs:subClassOf schema:Thing .
+mlops:DataQualityIssue rdfs:label "Data Quality Issue"@en .
+mlops:addressesDataQualityIssue rdfs:subPropertyOf prov:used .
+mlops:ModelDevelopmentProcess rdfs:subClassOf mlops:MLOpsProcess .
+mlops:requiresDataStrategy rdfs:subPropertyOf prov:used .
+mlops:DataStrategy rdfs:comment "A formalized plan or framework governing the collection, quality, lifecycle, and governance of data used in MLOps processes."@en .
+mlops:hasIntegrationChallenge rdfs:label "has integration challenge"@en .
+mlops:governedBy rdfs:comment "Relates a data management process to the data strategy that governs its execution."@en .
+mlops:ModelDevelopmentProcess a owl:Class .
+mlops:governedBy rdfs:domain mlops:DataManagementProcess .
+mlops:MLOpsProcess rdfs:comment "An abstract process or workflow within the MLOps lifecycle, encompassing activities such as data preparation, model training, evaluation, deployment, and monitoring."@en .
+mlops:DataManagementProcess a owl:Class .
+mlops:hasIntegrationChallenge rdfs:subPropertyOf prov:wasInfluencedBy .
+<https://example.com/mlops/mlops> dcterms:identifier "hash:e61cc0379ec988654583b9ba1db48df19bf39c94526e05f539207ac7c53718fd" .
+mlops:TeamRole rdfs:comment "A role within an MLOps team, such as Data Scientist, Data Engineer, or Software Engineer, representing responsibilities and competencies."@en ;
+	rdfs:subClassOf foaf:Agent .
+mlops:DataQualityIssue rdfs:comment "An abstract representation of a problem or deficiency in data quality that impacts MLOps workflows, such as insufficient volume, labeling errors, or schema mismatches."@en .
+mlops:addressesDataQualityIssue rdfs:domain mlops:DataManagementProcess .
+mlops:DataStrategy rdfs:label "Data Strategy"@en .
+mlops:hasDataQualityIssue rdfs:comment "Relates an MLOps process to a data quality issue affecting it."@en .
+mlops:addressesDataQualityIssue a owl:AsymmetricProperty .
+mlops:IntegrationChallenge rdfs:comment "An abstract challenge arising from the intersection of data science and software engineering practices, such as misalignment of tooling, processes, or skill sets."@en .
+doc:254974c3978e a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.780002Z"^^xsd:dateTime ;
+	schema:position 8 ;
+	schema:identifier "254974c3978e" .
+mlops:ModelEvaluation a mlops:MLLifecycleStage .
+mlops:ResourceOptimization rdfs:label "Resource Optimization"@en .
+mlops:hasLifecycle a owl:ObjectProperty .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb2 rdf:first mlops:MLOpsProcess .
+mlops:ModelObsolescence a mlops:MLChallenge .
+mlops:ModelTraining rdfs:comment "The stage where a machine learning model is trained on prepared data to learn patterns and make predictions."@en .
+mlops:ModelMaintenance rdfs:label "Model Maintenance"@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb8 rdf:first mlops:MLOpsProcess .
+mlops:ResourceConstraint rdfs:label "Resource Constraint"@en .
+mlops:addressesChallenge rdfs:subPropertyOf schema:potentialAction .
+mlops:ResourceConstraint rdfs:comment "Limitation in computational, financial, or human resources that constrains the execution or scalability of MLOps processes."@en .
+mlops:ExperimentManagement rdfs:label "Experiment Management"@en .
+mlops:hasPractice rdfs:comment "Relates an MLOps process or system to a recommended practice applied within it."@en .
+mlops:requiresRole rdfs:range mlops:MLTeamRole .
+mlops:MLLifecycleStage rdfs:comment "A distinct phase within the machine learning lifecycle, such as data preparation, model training, deployment, or monitoring."@en ;
+	rdfs:subClassOf schema:Action .
+mlops:DataDrift rdfs:label "Data Drift"@en .
+mlops:hasLifecycleStage rdfs:subPropertyOf schema:hasPart .
+mlops:hasPipeline rdfs:range mlops:DataPipeline .
+mlops:hasLifecycleStage rdfs:comment "Relates an MLOps process or system to a specific stage in the machine learning lifecycle."@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb11 rdf:rest _:n6dbda44b3c024605a8cf85f4dc51e87cb12 .
+mlops:ModelMonitoring rdfs:comment "The stage involving ongoing observation of model behavior and performance in production environments."@en .
+mlops:ModelObsolescence rdfs:label "Model Obsolescence"@en .
+mlops:ModelEvaluation rdfs:label "Model Evaluation"@en .
+mlops:MLResource rdfs:comment "A computational or infrastructural asset required for machine learning operations, such as compute, storage, or specialized hardware."@en .
+mlops:MLLifecycle rdfs:comment "The comprehensive sequence of stages and activities from conception to retirement of a machine learning system."@en .
+mlops:hasExperiment rdfs:domain mlops:MLOpsProcess .
+mlops:hasPipeline rdfs:subPropertyOf schema:hasPart .
+mlops:addressesChallenge rdfs:domain mlops:MLPractice .
+mlops:hasLifecycle rdfs:label "has lifecycle"@en .
+<https://example.com/mlops/mlops> rdfs:comment "An ontology modeling the core concepts, processes, and challenges in Machine Learning Operations (MLOps), including lifecycle management, experimental practices, resource constraints, and organizational considerations. It abstracts domain-specific patterns to provide a foundational vocabulary for MLOps across industries and scales." .
+mlops:MLResource rdfs:label "ML Resource"@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb10 owl:unionOf _:n6dbda44b3c024605a8cf85f4dc51e87cb11 .
+mlops:DomainExpert rdfs:comment "A professional with deep knowledge of the application domain, providing context and requirements for ML projects."@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb8 rdf:rest _:n6dbda44b3c024605a8cf85f4dc51e87cb9 .
+mlops:producesModel rdfs:label "produces model"@en .
+mlops:DevOpsEngineer a mlops:MLTeamRole .
+mlops:addressesChallenge rdfs:label "addresses challenge"@en .
+mlops:ModelMaintenance a mlops:MLLifecycleStage .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb3 rdf:first mlops:MLExperiment .
+mlops:DataDrift a mlops:MLChallenge .
+mlops:PrivacyByDesign a mlops:MLPractice .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb11 rdf:first mlops:MLSystem .
+mlops:MLLifecycle rdfs:subClassOf schema:Action .
+mlops:TalentShortage rdfs:label "Talent Shortage"@en .
+mlops:hasLifecycleStage a owl:ObjectProperty .
+mlops:usesResource rdfs:label "uses resource"@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb7 owl:unionOf _:n6dbda44b3c024605a8cf85f4dc51e87cb8 .
+mlops:MLModel rdfs:comment "A computational representation learned from data that can make predictions or decisions based on input features."@en .
+mlops:requiresRole rdfs:domain _:n6dbda44b3c024605a8cf85f4dc51e87cb4 .
+mlops:producesModel rdfs:comment "Relates an ML experiment or training process to the resulting machine learning model."@en .
+mlops:DomainExpert rdfs:label "Domain Expert"@en .
+mlops:CrossfunctionalCollaboration rdfs:comment "The coordinated involvement of diverse stakeholders, including data scientists, engineers, and domain experts, throughout the ML lifecycle."@en .
+mlops:MLPractice rdfs:comment "A recommended method, technique, or procedure applied within MLOps to address challenges or improve outcomes."@en .
+mlops:ContinuousMonitoring rdfs:label "Continuous Monitoring"@en .
+mlops:hasExperiment rdfs:subPropertyOf schema:hasPart .
+mlops:MLTeamRole rdfs:label "ML Team Role"@en .
+mlops:hasPractice rdfs:domain mlops:MLOpsProcess .
+mlops:ResourceConstraint a mlops:MLChallenge .
+mlops:DevOpsEngineer rdfs:comment "A professional responsible for automating deployment, monitoring, and maintenance of ML systems and infrastructure."@en .
+mlops:ModelObsolescence rdfs:comment "The decline in model performance due to outdated training data, changing environments, or evolving requirements."@en .
+mlops:DomainExpert a mlops:MLTeamRole .
+mlops:MLLifecycleStage a owl:Class .
+mlops:ResourceOptimization rdfs:comment "The practice of efficiently allocating and utilizing computational and infrastructural resources to maximize performance and minimize cost."@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb1 owl:unionOf _:n6dbda44b3c024605a8cf85f4dc51e87cb2 .
+mlops:PrivacyByDesign rdfs:label "Privacy by Design"@en .
+mlops:MLExperiment rdfs:subClassOf prov:Activity ;
+	rdfs:label "ML Experiment"@en .
+mlops:MLEngineer a mlops:MLTeamRole ;
+	rdfs:comment "A professional focused on developing, training, and deploying machine learning models and systems."@en .
+mlops:hasLifecycle rdfs:comment "Relates an ML system or process to its encompassing lifecycle."@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb12 rdf:rest rdf:nil .
+mlops:DataPreparation rdfs:comment "The stage involving data collection, cleaning, transformation, and feature engineering for ML."@en .
+mlops:monitors rdfs:comment "Relates an MLOps process or system to the entity it observes or evaluates, such as a model or data distribution."@en .
+mlops:KnowledgeGap rdfs:comment "A disparity in understanding or expertise among stakeholders regarding ML capabilities, limitations, or processes."@en .
+mlops:MLLifecycleStage rdfs:label "ML Lifecycle Stage"@en .
+mlops:addressesChallenge a owl:ObjectProperty .
+mlops:DevOpsEngineer rdfs:label "DevOps Engineer"@en .
+mlops:ModelMonitoring a mlops:MLLifecycleStage .
+mlops:hasExperiment rdfs:comment "Relates an MLOps process or system to an experiment conducted within it."@en .
+mlops:DataDrift rdfs:comment "The phenomenon where the statistical properties of the input data change over time, leading to model performance degradation."@en .
+mlops:DataPipeline rdfs:comment "An automated workflow that ingests, transforms, and delivers data for machine learning or operational use."@en .
+mlops:requiresRole rdfs:comment "Relates an MLOps process or system to the team roles necessary for its execution."@en .
+mlops:MLTeamRole rdfs:subClassOf schema:Role .
+mlops:hasPipeline rdfs:comment "Relates an MLOps process or system to a data pipeline it utilizes."@en .
+mlops:ContinuousMonitoring rdfs:comment "The practice of continuously observing model and system behavior in production to detect performance deviations or anomalies."@en .
+mlops:DataPreparation rdfs:label "Data Preparation"@en .
+mlops:usesResource rdfs:range mlops:MLResource .
+mlops:producesModel rdfs:domain mlops:MLExperiment .
+mlops:ResourceOptimization a mlops:MLPractice .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb5 rdf:first mlops:MLOpsProcess .
+mlops:MLPractice a owl:Class .
+mlops:MLExperiment rdfs:comment "A controlled trial or iteration in the development of a machine learning model, involving hypothesis testing, data selection, training, and evaluation."@en .
+mlops:ModelDeployment rdfs:comment "The stage where a trained model is integrated into production systems for inference."@en .
+mlops:DataPreparation a mlops:MLLifecycleStage .
+mlops:MLExperiment a owl:Class .
+mlops:MLTeamRole a owl:Class .
+mlops:hasPractice rdfs:label "has practice"@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb3 rdf:rest rdf:nil .
+mlops:hasPractice rdfs:subPropertyOf schema:hasPart .
+mlops:DataEngineer rdfs:comment "A professional responsible for designing, building, and maintaining data pipelines and infrastructure."@en .
+mlops:requiresRole rdfs:subPropertyOf schema:role .
+mlops:MLChallenge rdfs:comment "A recurring problem or obstacle in the practice of machine learning operations, such as data drift, model obsolescence, or resource constraints."@en .
+mlops:hasChallenge rdfs:subPropertyOf schema:potentialAction .
+mlops:usesResource rdfs:subPropertyOf schema:uses .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb6 rdf:first mlops:MLSystem .
+mlops:hasExperiment rdfs:label "has experiment"@en .
+mlops:hasPipeline rdfs:domain mlops:MLOpsProcess .
+mlops:hasLifecycle rdfs:domain _:n6dbda44b3c024605a8cf85f4dc51e87cb10 .
+mlops:KnowledgeGap rdfs:label "Knowledge Gap"@en .
+mlops:PrivacyRisk rdfs:label "Privacy Risk"@en .
+mlops:usesResource rdfs:comment "Relates an MLOps process or activity to the resources it consumes or requires."@en .
+mlops:MLOpsProcess rdfs:comment "A systematic sequence of activities and practices aimed at operationalizing machine learning systems throughout their lifecycle, including development, deployment, monitoring, and maintenance."@en .
+mlops:ExperimentManagement a mlops:MLPractice .
+mlops:PrivacyRisk a mlops:MLChallenge .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb5 rdf:rest _:n6dbda44b3c024605a8cf85f4dc51e87cb6 .
+mlops:hasLifecycleStage rdfs:label "has lifecycle stage"@en .
+mlops:producesModel a owl:ObjectProperty .
+mlops:CrossfunctionalCollaboration rdfs:label "Cross-functional Collaboration"@en .
+mlops:ModelMaintenance rdfs:comment "The stage involving updates, retraining, and optimization of models to sustain performance over time."@en .
+mlops:MLSystem rdfs:comment "A software system that incorporates one or more machine learning models to perform tasks in production environments."@en .
+mlops:producesModel rdfs:range mlops:MLModel .
+mlops:hasLifecycle rdfs:subPropertyOf schema:isPartOf .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb6 rdf:rest rdf:nil .
+mlops:hasExperiment rdfs:range mlops:MLExperiment .
+mlops:KnowledgeGap a mlops:MLChallenge .
+mlops:addressesChallenge rdfs:range mlops:MLChallenge .
+mlops:hasChallenge rdfs:domain _:n6dbda44b3c024605a8cf85f4dc51e87cb7 .
+mlops:hasPractice rdfs:range mlops:MLPractice .
+mlops:PrivacyRisk rdfs:comment "The potential for unauthorized access, misuse, or ethical violation of sensitive or personal data used in ML systems."@en .
+mlops:MLTeamRole rdfs:comment "A functional position within an organization responsible for activities related to machine learning operations, such as data engineer, ML engineer, or DevOps engineer."@en .
+mlops:hasChallenge rdfs:comment "Relates an MLOps process or system to a challenge it faces or must address."@en .
+mlops:ModelTraining a mlops:MLLifecycleStage .
+mlops:ModelDeployment a mlops:MLLifecycleStage .
+mlops:DataEngineer a mlops:MLTeamRole .
+<https://example.com/mlops/mlops> dcterms:description "An ontology modeling the core concepts, processes, and challenges in Machine Learning Operations (MLOps), including lifecycle management, experimental practices, resource constraints, and organizational considerations. It abstracts domain-specific patterns to provide a foundational vocabulary for MLOps across industries and scales." .
+mlops:producesModel rdfs:subPropertyOf prov:used .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb12 rdf:first mlops:MLOpsProcess .
+mlops:ExperimentManagement rdfs:comment "The systematic planning, execution, tracking, and analysis of ML experiments to ensure reproducibility and comparability."@en .
+mlops:usesResource a owl:ObjectProperty .
+mlops:PrivacyByDesign rdfs:comment "The integration of privacy and data protection principles into the design and operation of ML systems from the outset."@en .
+mlops:addressesChallenge rdfs:comment "Relates an MLOps practice or process to a challenge it aims to mitigate or resolve."@en .
+mlops:CrossfunctionalCollaboration a mlops:MLPractice .
+mlops:hasExperiment a owl:ObjectProperty .
+mlops:MLEngineer rdfs:label "ML Engineer"@en .
+mlops:MLPractice rdfs:label "ML Practice"@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb2 rdf:rest _:n6dbda44b3c024605a8cf85f4dc51e87cb3 .
+mlops:ModelEvaluation rdfs:comment "The stage assessing model performance using metrics and validation techniques before deployment."@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb4 owl:unionOf _:n6dbda44b3c024605a8cf85f4dc51e87cb5 .
+mlops:hasLifecycleStage rdfs:domain mlops:MLOpsProcess .
+mlops:hasPractice a owl:ObjectProperty .
+mlops:TalentShortage a mlops:MLChallenge .
+mlops:usesResource rdfs:domain _:n6dbda44b3c024605a8cf85f4dc51e87cb1 .
+mlops:MLResource rdfs:subClassOf schema:Thing .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb9 rdf:first mlops:MLSystem .
+<https://example.com/mlops/mlops> dcterms:identifier "hash:d778f5ca3e47ce424ae61e33817fbb66eb4af4609654aa3598192569181030ae" .
+mlops:hasLifecycle rdfs:range mlops:MLLifecycle .
+mlops:ModelTraining rdfs:label "Model Training"@en .
+_:n6dbda44b3c024605a8cf85f4dc51e87cb9 rdf:rest rdf:nil .
+mlops:ContinuousMonitoring a mlops:MLPractice .
+mlops:TalentShortage rdfs:comment "Insufficient availability of skilled professionals to design, implement, and maintain MLOps systems and processes."@en .
+mlops:monitors rdfs:subPropertyOf schema:monitor .
+mlops:hasLifecycleStage rdfs:range mlops:MLLifecycleStage .
+mlops:MLPractice rdfs:subClassOf schema:Action .
+mlops:MLResource a owl:Class .
+doc:4ad04f74106d a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.78556Z"^^xsd:dateTime ;
+	schema:position 9 ;
+	schema:identifier "4ad04f74106d" .
+mlops:hasRequirement rdfs:label "has requirement"@en .
+mlops:MLOpsTool rdfs:subClassOf schema:SoftwareApplication .
+mlops:ModelTraining rdfs:comment "The stage of an MLOps process where a model is trained on prepared data."@en .
+mlops:Infrastructure rdfs:comment "The underlying systems and resources required to support MLOps processes, including compute, storage, and orchestration tools."@en .
+mlops:DataScientist rdfs:comment "A role responsible for developing and evaluating machine learning models."@en .
+mlops:CloudResource rdfs:label "Cloud Resource"@en .
+mlops:DevOps rdfs:comment "A role responsible for deploying, monitoring, and maintaining infrastructure and applications."@en .
+mlops:isSupportedBy rdfs:label "is supported by"@en .
+mlops:isMonitoredBy a owl:ObjectProperty .
+mlops:Collaboration rdfs:subClassOf prov:Activity .
+mlops:Role a owl:Class .
+mlops:hasInfrastructureRequirement a owl:ObjectProperty .
+mlops:Monitoring rdfs:subClassOf schema:Action .
+mlops:MLOpsTool rdfs:comment "A software tool designed to support MLOps processes, such as orchestration, monitoring, or deployment."@en .
+mlops:hasTool rdfs:comment "Relates an MLOps process to a tool used in its execution."@en .
+mlops:usesInfrastructure rdfs:comment "Relates an MLOps process to the infrastructure it relies on."@en .
+mlops:hasInfrastructure rdfs:comment "Relates an MLOps process to the infrastructure it uses."@en .
+mlops:isCollaborativeWith a owl:SymmetricProperty .
+mlops:DataPreparation rdfs:comment "The stage of an MLOps process involving data collection, cleaning, and feature engineering."@en .
+mlops:hasRequirement a owl:ObjectProperty .
+mlops:isEvaluatedBy rdfs:comment "Relates a model to the evaluation process assessing it."@en .
+mlops:hasOutcome a owl:ObjectProperty .
+mlops:requiresRetraining rdfs:comment "Relates a model degradation event to the need for retraining the model."@en .
+mlops:Monitoring rdfs:comment "The continuous observation of model performance and data quality to detect degradation or drift."@en .
+mlops:usesInfrastructure a owl:ObjectProperty .
+mlops:hasTool rdfs:label "has tool"@en .
+<https://example.com/mlops/mlops> rdfs:comment "An ontology modeling the abstract concepts and relationships in Machine Learning Operations (MLOps), including lifecycle stages, roles, infrastructure, and best practices for deploying and maintaining ML models in production environments." .
+mlops:Training a owl:Class .
+mlops:ModelTraining a owl:Class ;
+	rdfs:subClassOf mlops:LifecycleStage .
+mlops:isCollaborativeWith rdfs:label "is collaborative with"@en .
+mlops:hasToolSupport a owl:ObjectProperty .
+mlops:isDeployedTo rdfs:subPropertyOf prov:wasGeneratedBy .
+mlops:hasRequirement rdfs:comment "Relates an MLOps process to a requirement it imposes, such as infrastructure or tooling."@en .
+mlops:DataEngineer rdfs:subClassOf mlops:Role .
+mlops:Kubeflow rdfs:label "Kubeflow"@en .
+mlops:requiresRetraining rdfs:subPropertyOf prov:wasDerivedFrom .
+mlops:Collaboration a owl:Class .
+mlops:Infrastructure rdfs:subClassOf schema:Thing .
+mlops:Role rdfs:label "Role"@en .
+mlops:Training rdfs:comment "The process of fitting a machine learning model to data."@en .
+mlops:Kubeflow a owl:Class .
+mlops:LifecycleStage rdfs:subClassOf schema:Action .
+mlops:hasToolSupport rdfs:subPropertyOf prov:used .
+mlops:Jenkins a owl:Class .
+mlops:DevOps rdfs:subClassOf mlops:Role .
+mlops:isTrainedOn rdfs:comment "Relates a model to the data it was trained on."@en .
+mlops:hasCollaboration rdfs:label "has collaboration"@en .
+mlops:ModelLifecycle rdfs:label "Model Lifecycle"@en .
+mlops:ModelMonitoring rdfs:subClassOf mlops:LifecycleStage .
+mlops:ModelLifecycle a owl:Class .
+mlops:Jenkins rdfs:label "Jenkins"@en .
+mlops:ProblemDefinition rdfs:label "Problem Definition"@en .
+mlops:isDeployedTo a owl:ObjectProperty .
+mlops:requiresRetraining rdfs:label "requires retraining"@en .
+mlops:Jenkins rdfs:comment "A continuous integration and continuous delivery tool used in MLOps workflows."@en .
+mlops:MLOpsTool a owl:Class .
+mlops:Training rdfs:subClassOf schema:Action .
+mlops:hasInfrastructureRequirement rdfs:comment "Relates an MLOps process to the infrastructure requirements it imposes."@en .
+_:n5e3e7e582fac4b9393bc0004626162abb1 owl:onProperty mlops:hasStage .
+mlops:isTrainedOn rdfs:subPropertyOf prov:used .
+mlops:DataDrift rdfs:comment "A change in the statistical properties of input data over time, potentially degrading model performance."@en .
+mlops:isSupportedBy rdfs:comment "Relates an MLOps process to the infrastructure or tools that support it."@en .
+mlops:ModelEvaluation a owl:Class .
+mlops:Deployment rdfs:comment "The process of making a trained model available for inference in production."@en .
+mlops:hasRole rdfs:comment "Relates an MLOps process to a role involved in its execution."@en .
+mlops:Kubeflow rdfs:subClassOf mlops:Infrastructure .
+mlops:isMonitoredBy rdfs:label "is monitored by"@en .
+mlops:ModelDeployment rdfs:comment "The stage of an MLOps process where a model is deployed to production for inference."@en .
+mlops:Kubernetes rdfs:subClassOf mlops:Infrastructure .
+mlops:DataEngineer rdfs:comment "A role responsible for designing, building, and maintaining data pipelines and infrastructure."@en .
+mlops:DataDrift rdfs:subClassOf schema:Event .
+mlops:ModelLifecycle rdfs:comment "The entire process through which a machine learning model is developed, deployed, monitored, and updated."@en .
+_:n5e3e7e582fac4b9393bc0004626162abb1 owl:someValuesFrom mlops:LifecycleStage .
+mlops:DataPreparation rdfs:subClassOf mlops:LifecycleStage .
+mlops:isTrainedOn rdfs:label "is trained on"@en .
+mlops:hasStage rdfs:label "has stage"@en .
+mlops:LifecycleStage rdfs:label "Lifecycle Stage"@en .
+mlops:hasCollaboration rdfs:comment "Relates an MLOps process to a collaboration activity."@en ;
+	rdfs:subPropertyOf prov:wasAssociatedWith .
+mlops:ModelEvaluation rdfs:subClassOf mlops:LifecycleStage .
+mlops:ModelLifecycle rdfs:subClassOf _:n5e3e7e582fac4b9393bc0004626162abb1 .
+mlops:usesInfrastructure rdfs:label "uses infrastructure"@en .
+mlops:Collaboration rdfs:label "Collaboration"@en .
+<https://example.com/mlops/mlops> dcterms:identifier "hash:1fa5f5d0180b0bb88414cbaf3a2165abce2980051cc58b861fff7fdb3dd454fe" .
+mlops:MLOpsTool rdfs:label "MLOps Tool"@en .
+mlops:isEvaluatedBy rdfs:label "is evaluated by"@en .
+mlops:isTrainedOn a owl:ObjectProperty .
+mlops:MLOpsProcess rdfs:comment "A systematic approach to deploying and maintaining machine learning models in production, encompassing lifecycle stages, roles, and infrastructure."@en .
+mlops:Kubernetes rdfs:comment "A container orchestration platform used as infrastructure for MLOps workflows."@en ;
+	a owl:Class .
+mlops:ModelUpdate rdfs:comment "The stage of an MLOps process where a model is retrained or updated based on new data or performance feedback."@en .
+mlops:hasToolSupport rdfs:comment "Relates an MLOps process to a tool that supports its execution."@en .
+mlops:CloudResource rdfs:subClassOf mlops:Infrastructure .
+mlops:hasOutcome rdfs:comment "Relates an MLOps process to its outcome, such as a deployed model or monitoring report."@en .
+mlops:LifecycleStage a owl:Class .
+mlops:isUpdatedBy rdfs:subPropertyOf prov:wasGeneratedBy .
+mlops:hasInfrastructure rdfs:subPropertyOf prov:used .
+mlops:ModelDegradation rdfs:comment "A reduction in model performance due to factors such as data drift or concept drift."@en .
+mlops:requiresRetraining a owl:IrreflexiveProperty .
+mlops:hasStage rdfs:comment "Relates an MLOps process to a specific lifecycle stage."@en .
+mlops:hasOutcome rdfs:subPropertyOf prov:generated .
+mlops:hasRole rdfs:subPropertyOf prov:wasAssociatedWith .
+mlops:hasCollaborator rdfs:subPropertyOf prov:wasAssociatedWith .
+mlops:hasTool a owl:ObjectProperty .
+mlops:DataPreparation a owl:Class .
+mlops:isDeployedTo rdfs:comment "Relates a model to the infrastructure or environment it is deployed to."@en .
+mlops:Monitoring a owl:Class .
+mlops:DataScientist rdfs:subClassOf mlops:Role .
+mlops:requiresRetraining a owl:AsymmetricProperty .
+mlops:hasToolSupport rdfs:label "has tool support"@en .
+mlops:isUpdatedBy a owl:ObjectProperty .
+mlops:ModelUpdate a owl:Class .
+mlops:hasCollaboration a owl:ObjectProperty .
+mlops:requiresRetraining a owl:ObjectProperty .
+mlops:isSupportedBy rdfs:subPropertyOf prov:wasAssociatedWith .
+mlops:Infrastructure rdfs:label "Infrastructure"@en .
+mlops:Role rdfs:comment "A defined function or responsibility within an MLOps process, such as data scientist, data engineer, or DevOps."@en .
+mlops:ModelUpdate rdfs:label "Model Update"@en .
+mlops:isUpdatedBy rdfs:label "is updated by"@en ;
+	rdfs:comment "Relates a model to the update process modifying it."@en .
+mlops:isCollaborativeWith a owl:ObjectProperty .
+mlops:hasTool rdfs:subPropertyOf prov:used .
+mlops:hasOutcome rdfs:label "has outcome"@en .
+mlops:DevOps rdfs:label "DevOps"@en .
+mlops:hasInfrastructure a owl:ObjectProperty .
+_:n5e3e7e582fac4b9393bc0004626162abb1 a owl:Restriction .
+mlops:Kubernetes rdfs:label "Kubernetes"@en .
+mlops:ModelLifecycle rdfs:subClassOf schema:Action .
+mlops:DevOps a owl:Class .
+mlops:isCollaborativeWith rdfs:comment "Relates a role to another role it collaborates with in an MLOps process."@en .
+mlops:ProblemDefinition a owl:Class .
+mlops:hasStage rdfs:subPropertyOf prov:used .
+mlops:CloudResource rdfs:comment "Computational or storage resources provided by a cloud provider, such as serverless functions or managed Kubernetes."@en .
+mlops:ModelUpdate rdfs:subClassOf mlops:LifecycleStage .
+mlops:isEvaluatedBy rdfs:subPropertyOf prov:wasAssociatedWith .
+<https://example.com/mlops/mlops> dcterms:description "An ontology modeling the abstract concepts and relationships in Machine Learning Operations (MLOps), including lifecycle stages, roles, infrastructure, and best practices for deploying and maintaining ML models in production environments." .
+mlops:isDeployedTo rdfs:label "is deployed to"@en .
+mlops:hasInfrastructureRequirement rdfs:subPropertyOf schema:subjectOf .
+mlops:ModelEvaluation rdfs:comment "The stage of an MLOps process where a trained model is evaluated for performance and quality."@en .
+mlops:Infrastructure a owl:Class .
+mlops:ModelDegradation rdfs:subClassOf schema:Event .
+mlops:hasCollaborator rdfs:label "has collaborator"@en .
+mlops:ModelDegradation rdfs:label "Model Degradation"@en .
+mlops:ProblemDefinition rdfs:subClassOf mlops:LifecycleStage .
+mlops:Collaboration rdfs:comment "A cooperative interaction between roles or teams within an MLOps process."@en .
+mlops:hasRequirement rdfs:subPropertyOf schema:subjectOf .
+mlops:Role rdfs:subClassOf foaf:Agent .
+mlops:LifecycleStage rdfs:comment "A distinct phase in the MLOps lifecycle, such as problem definition, data preparation, model training, deployment, or monitoring."@en .
+mlops:isMonitoredBy rdfs:subPropertyOf prov:wasAssociatedWith .
+mlops:hasCollaborator a owl:ObjectProperty .
+mlops:ProblemDefinition rdfs:comment "The initial stage of an MLOps process where business requirements and objectives are defined."@en .
+mlops:isMonitoredBy rdfs:comment "Relates a model or process to the monitoring activity observing it."@en .
+mlops:DataDrift a owl:Class .
+mlops:Jenkins rdfs:subClassOf mlops:Infrastructure .
+mlops:Monitoring rdfs:label "Monitoring"@en .
+mlops:ModelMonitoring rdfs:comment "The stage of an MLOps process involving continuous observation of model performance and data quality."@en .
+mlops:hasCollaborator rdfs:comment "Relates a collaboration to a role or agent participating in it."@en .
+mlops:hasStage a owl:ObjectProperty .
+mlops:Kubeflow rdfs:comment "A platform designed to ease the implementation of MLOps workflows on Kubernetes."@en .
+mlops:isSupportedBy a owl:ObjectProperty .
+mlops:hasInfrastructureRequirement rdfs:label "has infrastructure requirement"@en .
+mlops:CloudResource a owl:Class .
+mlops:ModelDegradation a owl:Class .
+mlops:usesInfrastructure rdfs:subPropertyOf prov:used .
+mlops:Training rdfs:label "Training"@en .
+mlops:ModelDeployment rdfs:subClassOf mlops:LifecycleStage .
+mlops:isEvaluatedBy a owl:ObjectProperty .
+doc:840cccc0b915 a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.788038Z"^^xsd:dateTime ;
+	schema:position 10 ;
+	schema:identifier "840cccc0b915" .
+mlops:MLOps rdfs:comment "A paradigm that extends DevOps practices to machine learning systems, focusing on the deployment, monitoring, and continuous improvement of ML models in production through techniques such as continuous integration, continuous deployment, continuous monitoring, and continuous training."@en .
+mlops:ContinuousDeployment rdfs:comment "A practice within MLOps that automates the deployment of validated models to production environments."@en .
+mlops:MLEngineer rdfs:comment "A professional responsible for designing, implementing, and operationalizing machine learning systems, including model deployment and monitoring infrastructure."@en .
+mlops:addressesChallenge a owl:AsymmetricProperty .
+mlops:ContinuousTraining rdfs:subClassOf mlops:MLLifecycleActivity .
+mlops:requiresRole rdfs:subPropertyOf prov:qualifiedAssociation .
+mlops:generates rdfs:label "generates"@en ;
+	rdfs:range mlops:TechnicalDebt .
+mlops:isInstanceOf a owl:AsymmetricProperty .
+mlops:ProductOwner rdfs:comment "A professional responsible for defining the vision, priorities, and requirements for an ML-enabled product or feature."@en .
+mlops:addressesChallenge rdfs:domain mlops:MLLifecycleActivity .
+mlops:isInstanceOf a owl:ObjectProperty .
+mlops:hasChallenge rdfs:domain schema:SoftwareSourceCode .
+mlops:generates a owl:AsymmetricProperty .
+mlops:requiresRole rdfs:domain mlops:MLLifecycleActivity .
+mlops:DevOpsEngineer rdfs:comment "A professional responsible for automating and managing the deployment, scaling, and operations of software and ML systems."@en .
+mlops:TechnicalDebt rdfs:comment "Accumulated suboptimal decisions or shortcuts in ML development that increase future maintenance costs and risks."@en .
+mlops:isInstanceOf rdfs:label "is instance of"@en .
+mlops:generates a owl:ObjectProperty .
+<https://example.com/mlops/mlops> rdfs:comment "An ontology modeling abstract concepts and relationships in Machine Learning Operations (MLOps), including roles, processes, challenges, and lifecycle activities. It abstracts over MLOps practices such as continuous integration, deployment, monitoring, and training, and identifies key challenges like personnel shortages, infrastructure costs, and model degradation. The ontology is designed to support semantic interoperability in MLOps tooling and research." .
+mlops:MLLifecycleActivity rdfs:subClassOf schema:Action .
+mlops:MLEngineer rdfs:subClassOf mlops:MLRole .
+mlops:DevOpsEngineer rdfs:subClassOf mlops:MLRole .
+mlops:ProductOwner rdfs:label "Product Owner"@en .
+mlops:InfrastructureCost rdfs:subClassOf mlops:MLChallenge .
+mlops:hasChallenge rdfs:subPropertyOf schema:hasOccurrence .
+mlops:MLLifecycleActivity a owl:Class .
+mlops:DataEngineer rdfs:subClassOf mlops:MLRole .
+mlops:MLLifecycleActivity rdfs:label "ML Lifecycle Activity"@en .
+mlops:isInstanceOf rdfs:subPropertyOf rdf:type .
+mlops:ContinuousTraining rdfs:comment "A practice within MLOps that involves automatically retraining models in response to data drift or performance degradation."@en .
+mlops:isInstanceOf rdfs:domain schema:SoftwareSourceCode .
+mlops:requiresRole rdfs:comment "Relates an MLOps activity or process to the role(s) required to perform it."@en .
+mlops:ContinuousDeployment rdfs:subClassOf mlops:MLLifecycleActivity ;
+	a owl:Class .
+mlops:InfrastructureCost rdfs:label "Infrastructure Cost"@en .
+mlops:hasChallenge rdfs:comment "Relates an MLOps practice or system to a challenge it faces or must address."@en .
+mlops:isInstanceOf rdfs:comment "Relates a specific MLOps practice or system to the general MLOps concept it instantiates."@en .
+mlops:MLEngineer a owl:Class .
+<https://example.com/mlops/mlops> dcterms:description "An ontology modeling abstract concepts and relationships in Machine Learning Operations (MLOps), including roles, processes, challenges, and lifecycle activities. It abstracts over MLOps practices such as continuous integration, deployment, monitoring, and training, and identifies key challenges like personnel shortages, infrastructure costs, and model degradation. The ontology is designed to support semantic interoperability in MLOps tooling and research." .
+mlops:DataScientist rdfs:comment "A professional responsible for developing and evaluating machine learning models, often with domain expertise but not necessarily formal computer science training."@en .
+mlops:requiresRole a owl:AsymmetricProperty .
+mlops:DevOpsEngineer a owl:Class .
+mlops:MLRole rdfs:subClassOf schema:Role .
+mlops:PersonnelShortage rdfs:label "Personnel Shortage"@en .
+mlops:ContinuousMonitoring rdfs:subClassOf mlops:MLLifecycleActivity .
+mlops:ModelDegradation rdfs:subClassOf mlops:MLChallenge .
+mlops:PersonnelShortage rdfs:comment "A lack of qualified personnel necessary to sustain ML model development, deployment, and maintenance over time."@en .
+mlops:ContinuousMonitoring a owl:Class .
+mlops:ProductOwner rdfs:subClassOf mlops:MLRole .
+mlops:InfrastructureCost a owl:Class .
+<https://example.com/mlops/mlops> dcterms:identifier "hash:a8e1f14cd9b25e60b1e616b3f372360e6df79f6a3c48351df57120e847ef6f58" .
+mlops:ContinuousIntegration rdfs:comment "A practice within MLOps that involves integrating code and model changes frequently and automatically to detect issues early."@en .
+mlops:generates rdfs:comment "Relates an MLOps activity or process to the technical debt it may generate."@en .
+mlops:ContinuousDeployment rdfs:label "Continuous Deployment"@en .
+mlops:ContinuousIntegration rdfs:subClassOf mlops:MLLifecycleActivity .
+mlops:PersonnelShortage rdfs:subClassOf mlops:MLChallenge .
+mlops:ContinuousIntegration a owl:Class .
+mlops:hasChallenge a owl:AsymmetricProperty .
+mlops:ContinuousIntegration rdfs:label "Continuous Integration"@en .
+mlops:addressesChallenge rdfs:comment "Relates an MLOps practice or activity to the challenge it aims to mitigate or resolve."@en .
+mlops:MLLifecycleActivity rdfs:comment "An abstract activity within the MLOps lifecycle, such as model training, deployment, monitoring, or retraining."@en .
+mlops:DataEngineer rdfs:comment "A professional responsible for designing, building, and maintaining data pipelines and infrastructure to support ML workflows."@en .
+mlops:ProductOwner a owl:Class .
+mlops:DataScientist rdfs:subClassOf mlops:MLRole .
+mlops:generates rdfs:domain mlops:MLLifecycleActivity .
+mlops:InfrastructureCost rdfs:comment "The financial burden associated with acquiring, maintaining, and scaling computing resources required for ML operations."@en .
+mlops:MLRole rdfs:comment "A professional role involved in MLOps activities, such as data scientist, ML engineer, data engineer, product owner, or DevOps engineer."@en .
+mlops:generates rdfs:subPropertyOf prov:qualifiedInfluence .
+mlops:isInstanceOf rdfs:range mlops:MLOps .
+mlops:ModelDegradation rdfs:comment "The phenomenon where a deployed ML model's performance deteriorates over time due to changing data distributions or other factors."@en .
+mlops:ContinuousMonitoring rdfs:comment "A practice within MLOps focused on observing model performance and data drift in production to ensure model reliability over time."@en .
+mlops:MLChallenge rdfs:comment "A common obstacle or difficulty encountered in the implementation and operation of MLOps, such as personnel shortages, infrastructure costs, or model degradation."@en .
+mlops:PersonnelShortage a owl:Class .
+doc:a19d23eb0e05 a prov:Entity , schema:text ;
+	prov:generatedAtTime "2026-04-14T09:13:18.789265Z"^^xsd:dateTime ;
+	schema:position 11 ;
+	schema:identifier "a19d23eb0e05" .
+mlops:roleName a owl:DatatypeProperty .
+mlops:hasMonitoringActivity rdfs:comment "Relates a system or process to a monitoring-related activity within its lifecycle." .
+mlops:hasGovernanceActivity rdfs:subPropertyOf mlops:hasLifecycleStage .
+mlops:MLSystem rdfs:comment "A software system that incorporates machine learning components, including training pipelines, inference services, and orchestration logic." .
+mlops:hasTrainingActivity rdfs:comment "Relates a system or process to a training-related activity within its lifecycle." .
+mlops:hasGovernanceActivity a owl:ObjectProperty .
+mlops:hasDeploymentActivity rdfs:comment "Relates a system or process to a deployment-related activity within its lifecycle." .
+mlops:usesTool rdfs:comment "Relates a process or activity to a tool it utilizes." .
+mlops:MLChallenge rdfs:subClassOf schema:DefinedTerm .
+mlops:hasDeploymentActivity a owl:AsymmetricProperty .
+mlops:MLTrainingActivity a owl:Class .
+mlops:toolCategory rdfs:label "tool category"@en .
+mlops:hasResponsibility rdfs:label "has responsibility"@en .
+mlops:MLMonitoringActivity rdfs:subClassOf mlops:MLOpsProcess .
+mlops:hasDeploymentActivity rdfs:subPropertyOf mlops:hasLifecycleStage .
+<https://example.com/mlops/mlops> dcterms:description "An ontology modeling the abstract concepts, roles, processes, and artifacts involved in Machine Learning Operations (MLOps). This ontology captures the lifecycle of ML systems, including development, deployment, monitoring, and governance, while abstracting away domain-specific or instance-level details. It serves as a foundational framework for representing MLOps practices, challenges, and relationships across teams, tools, and processes." .
+mlops:MLArtifact rdfs:comment "A tangible or digital output produced during MLOps, including datasets, models, pipelines, configurations, and documentation." .
+mlops:MLRole rdfs:comment "A defined role within an MLOps context, such as Data Scientist, ML Engineer, or MLOps Engineer, associated with specific responsibilities and activities." .
+<https://example.com/mlops/mlops> dcterms:identifier "hash:68bf685550b7a7e6795e10b22d0739eaa87bbc18fd50e506ded5c121a3fad5bb" .
+mlops:hasGovernanceActivity rdfs:comment "Relates a system or process to a governance-related activity within its lifecycle." .
+mlops:roleName a owl:FunctionalProperty .
+mlops:hasRole a owl:AsymmetricProperty .
+mlops:MLMonitoringActivity rdfs:comment "An activity aimed at observing and evaluating the performance, behavior, and reliability of ML systems in production." .
+mlops:MLLifecycleStage rdfs:subClassOf skos:Concept .
+mlops:MLMonitoringActivity a owl:Class .
+mlops:hasTrainingActivity rdfs:label "has training activity"@en .
+mlops:hasGovernanceActivity rdfs:label "has governance activity"@en .
+mlops:MLRole rdfs:subClassOf foaf:Agent .
+mlops:MLGovernanceActivity rdfs:subClassOf mlops:MLOpsProcess .
+mlops:MLDeploymentActivity rdfs:label "ML Deployment Activity"@en .
+mlops:hasDataActivity a owl:AsymmetricProperty .
+mlops:hasRole rdfs:subPropertyOf prov:qualifiedAttribution .
+mlops:roleName rdfs:comment "The name of an MLOps role." .
+mlops:MLDataActivity rdfs:label "ML Data Activity"@en ;
+	a owl:Class .
+mlops:artifactType rdfs:label "artifact type"@en .
+mlops:hasDataActivity rdfs:subPropertyOf mlops:hasLifecycleStage .
+mlops:hasLifecycleStage rdfs:subPropertyOf skos:related .
+mlops:hasDataActivity a owl:ObjectProperty .
+mlops:hasLifecycleStage rdfs:comment "Relates a system or process to a stage in the MLOps lifecycle." .
+mlops:hasResponsibility rdfs:comment "Relates a role to the responsibilities it holds within MLOps." .
+mlops:MLTrainingActivity rdfs:label "ML Training Activity"@en .
+mlops:MLLifecycleStage rdfs:comment "A distinct phase in the MLOps lifecycle, such as Data Ingestion, Model Training, Deployment, Monitoring, or Governance." .
+mlops:addressesChallenge rdfs:comment "Relates a process, role, or activity to a challenge it aims to mitigate or resolve." .
+mlops:challengeType a owl:DatatypeProperty ;
+	rdfs:label "challenge type"@en .
+mlops:hasMonitoringActivity a owl:AsymmetricProperty .
+mlops:MLMonitoringActivity rdfs:label "ML Monitoring Activity"@en .
+mlops:hasMonitoringActivity rdfs:subPropertyOf mlops:hasLifecycleStage .
+mlops:MLDeploymentActivity rdfs:comment "An activity focused on deploying trained models into production environments for inference or decision-making." .
+mlops:hasMonitoringActivity a owl:ObjectProperty .
+mlops:producesArtifact rdfs:comment "Relates a process or activity to an artifact it produces." .
+mlops:hasTool rdfs:comment "Relates a process or activity to a tool it employs." .
+mlops:artifactType rdfs:comment "The type or category of an ML artifact, such as dataset, model, pipeline, or configuration." .
+mlops:hasTool rdfs:subPropertyOf schema:tool .
+mlops:producesArtifact a owl:AsymmetricProperty .
+mlops:hasLifecycleStage a owl:AsymmetricProperty .
+mlops:hasDataActivity rdfs:comment "Relates a system or process to a data-related activity within its lifecycle." .
+mlops:roleName rdfs:label "role name"@en .
+mlops:MLTrainingActivity rdfs:subClassOf mlops:MLOpsProcess .
+mlops:hasDeploymentActivity a owl:ObjectProperty .
+mlops:MLDeploymentActivity a owl:Class .
+mlops:MLChallenge rdfs:comment "A recognized challenge or issue in MLOps, such as technical debt, social debt, role ambiguity, or tooling gaps." .
+mlops:MLDeploymentActivity rdfs:subClassOf mlops:MLOpsProcess .
+mlops:MLDataActivity rdfs:comment "An activity related to the preparation, transformation, or management of data used in ML systems." .
+mlops:hasResponsibility rdfs:subPropertyOf schema:responsibility .
+mlops:hasDataActivity rdfs:label "has data activity"@en .
+mlops:MLTrainingActivity rdfs:comment "An activity involving the training of machine learning models using datasets and computational resources." .
+mlops:MLGovernanceActivity a owl:Class ;
+	rdfs:label "ML Governance Activity"@en .
+mlops:addressesChallenge rdfs:subPropertyOf prov:wasInfluencedBy .
+mlops:hasTrainingActivity a owl:AsymmetricProperty .
+mlops:toolCategory rdfs:comment "The category of an MLOps tool, such as orchestration, monitoring, or feature store." .
+mlops:hasTrainingActivity rdfs:subPropertyOf mlops:hasLifecycleStage .
+mlops:hasRole rdfs:comment "Relates an agent or system to a specific MLOps role it fulfills." .
+mlops:hasTrainingActivity a owl:ObjectProperty .
+mlops:usesTool a owl:AsymmetricProperty .
+mlops:MLDataActivity rdfs:subClassOf mlops:MLOpsProcess .
+mlops:MLGovernanceActivity rdfs:comment "An activity focused on ensuring compliance, quality, and accountability in MLOps, including audits, documentation, and policy enforcement." .
+mlops:MLOpsProcess rdfs:comment "An abstract process or workflow within the MLOps lifecycle, encompassing activities such as data preparation, model training, deployment, monitoring, and governance." .
+<https://example.com/mlops/mlops> rdfs:comment "An ontology modeling the abstract concepts, roles, processes, and artifacts involved in Machine Learning Operations (MLOps). This ontology captures the lifecycle of ML systems, including development, deployment, monitoring, and governance, while abstracting away domain-specific or instance-level details. It serves as a foundational framework for representing MLOps practices, challenges, and relationships across teams, tools, and processes." .
+mlops:hasMonitoringActivity rdfs:label "has monitoring activity"@en .
+mlops:hasResponsibility a owl:ObjectProperty .
+mlops:toolCategory a owl:DatatypeProperty .
+mlops:challengeType rdfs:comment "The type or category of an MLOps challenge, such as technical debt or social debt." .
+mlops:hasGovernanceActivity a owl:AsymmetricProperty .
+mlops:MLTool rdfs:comment "A software tool used within MLOps, such as version control systems, orchestrators, feature stores, or monitoring platforms." .
+mlops:artifactType a owl:DatatypeProperty .
+mlops:hasDeploymentActivity rdfs:label "has deployment activity"@en .
+mlops:Team owl:sameAs mlops:TeamRole , mlops:MLTeamRole .
+mlops:DataDrift owl:sameAs mlopsmf:DataDrift , mlopsmf:ModelDrift .
+mlops:Collaboration owl:sameAs mlopsmf:CollaborationPractice , mlops:CollaborationProcess .
+mlops:MLLifecycle owl:sameAs mlops:ModelLifecycle , mlops:LifecycleStage , mlops:MLLifecycleCoverage , mlops:MLLifecycleStage , mlops:MLLifecycleActivity .
+mlops:Monitoring owl:sameAs mlops:ContinuousMonitoring , mlops:MonitoringProcess , mlops:ModelMonitoring , mlopsmf:ModelMonitoring .
+mlops:Training owl:sameAs mlops:ModelTraining , mlopsmf:ContinuousTraining , mlops:ContinuousTraining .
+mlops:Infrastructure owl:sameAs mlops:InfrastructureCost .
+mlops:MLPipeline owl:sameAs mlopsmf:DataPipeline , mlops:DataPipeline .
+mlopsmeta:InclusionCriterion owl:sameAs mlopsmeta:ExclusionCriterion .
+mlopsmm:AutomationStage owl:sameAs mlopsmf:AutomationLevel .
+mlops:MLChallenge owl:sameAs mlopsmm:ChallengeCategory .
+schema:Role owl:sameAs org1:Role , schema:role .
+mlopsmm:MaturityLevel1 owl:sameAs mlopsmm:MaturityLevel4 , mlopsmm:MaturityLevel2 , mlopsmm:MaturityLevel3 , mlopsmm:MaturityLevel0 .
+schema:Duration owl:sameAs xsd:duration .
+<https://example.com/mlops/mlops> owl:sameAs <https://example.com/mlops/mlopsmm> , <https://example.com/mlops/mlopsmf> .
+mlops:hasArtifact owl:sameAs mlops:producesArtifact .
+mlopsmeta:hasResearchPaper owl:sameAs mlopsmeta:hasResearchObjective , mlopsmeta:hasResearchMetric , mlopsmeta:hasResearchMethodology , mlopsmeta:hasSearchObjective , mlopsmeta:hasSearchStrategy , mlopsmeta:hasResearchDatabase , mlopsmeta:hasResearchQuestion , mlopsmeta:hasResearchDomain .
+mlops:hasRole owl:sameAs mlops:hasIntegrationChallenge , mlops:hasToolSupport , mlops:hasGovernanceActivity , mlops:hasProcess , mlops:requiresRole , mlops:hasMonitoringActivity , mlops:hasBenefit , mlopsmm:hasDataManagementPractice , mlops:hasDeploymentActivity , mlops:hasPractice , mlopsmf:hasBenefit , mlopsmf:hasChallenge , mlops:hasTool , mlops:hasDataActivity , mlopsmf:hasProcess , mlops:hasTask , mlops:hasActivity , mlopsmm:hasBenefit , mlops:hasOrchestrator , mlops:hasChallenge , mlopsmm:hasChallengeCategory , mlops:hasDataQualityIssue , mlops:hasTrainingActivity , mlops:hasModel .
+mlops:hasRequirement owl:sameAs mlops:hasInfrastructure , mlops:hasInfrastructureRequirement .
+mlops:hasCollaborator owl:sameAs mlops:hasCollaboration .
+mlops:hasMaturityLevel owl:sameAs mlopsmeta:hasMaturityLevelValue .
+mlops:hasStage owl:sameAs mlopsmm:hasAutomationStage .
+mlopsmeta:hasExclusionCriterion owl:sameAs mlopsmeta:hasInclusionCriterion .
+mlops:hasLifecycle owl:sameAs mlops:hasLifecycleStage .
+mlops:hasPipeline owl:sameAs mlopsmm:hasPipelineAutomation .
+<https://example.com/mlops/mlopsmm> owl:versionInfo "1.0.1" .

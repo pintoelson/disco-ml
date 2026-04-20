@@ -1,0 +1,21 @@
+{
+  "Issue": "AutoencoderKlMaisi transfers to cuda even if input and model are on CPU",
+  "Decision": "Fix the transfer to CUDA when input and autoencoder are on CPU",
+  "Rationale": "The issue occurs because the code unconditionally transfers tensors to CUDA in the _concatenate_tensors method, even when the input and model are on CPU. The fix should ensure tensors remain on CPU when the input and model are CPU-based.",
+  "Author": "coolteemf",
+  "Status": "Closed",
+  "Description": "The _concatenate_tensors method in monai/apps/generation/maisi/networks/autoencoderkl_maisi.py, specifically around line 228 where the tensor transfer to CUDA occurs.",
+  "Time stamp": "2026-02-09T18:56:53Z",
+  "Cost": "High (requires fixing the unconditional CUDA transfer which causes OOM errors on systems with limited GPU memory)",
+  "Risk": "Technical debt: Unconditional CUDA transfer causes out-of-memory errors when GPU memory is insufficient. Potential side effects include unexpected GPU memory usage and crashes in CPU-only environments.",
+  "Argument": [
+    {
+      "author": "coolteemf",
+      "timestamp": "2026-02-09T18:56:53Z",
+      "argument": "The current implementation unconditionally transfers tensors to CUDA (line 228: `x = x.to(\"cuda\", non_blocking=True)`), which causes out-of-memory errors when the input and model are on CPU but the system has limited GPU memory. The fix should check the device of the input and model before transferring to CUDA."
+    }
+  ],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "AutoencoderKLMaisi model implementation (PyTorch)",
+  "Justification": "The issue involves unconditional CUDA tensor transfer in the model's tensor concatenation method (`_concatenate_tensors`), which directly relates to device handling during model operations. The fix requires modifying model implementation code around line 228 to conditionally handle CPU/GPU device placement, clearly falling under model architecture/operation improvements. Keywords like 'model' and 'layers' (implied by tensor transfer in neural network context) align with modeling development."
+}

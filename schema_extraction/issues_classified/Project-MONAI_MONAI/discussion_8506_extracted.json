@@ -1,0 +1,21 @@
+{
+  "Issue": "Confusion regarding the labeling of the dataset and the coordinate system of the images for 3D Retinanet in MONAI.",
+  "Decision": "Use of LPS coordinates for custom datasets and voxel coordinates for labels in 3D Retinanet.",
+  "Rationale": "The user seeks clarification on whether both images and labels should be converted to RAS coordinates or if using LPS for images and voxel coordinates for labels is acceptable.",
+  "Author": "yangjuanyj113",
+  "Status": null,
+  "Description": "3D Retinanet for detection in a customized dataset using CBCT images.",
+  "Time stamp": "2025-07-03T02:03:13Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "yangjuanyj113",
+      "timestamp": "2025-07-03T02:03:13Z",
+      "argument": "Using LPS coordinates for images and voxel coordinates for labels may not be optimal; converting both to RAS coordinates could be necessary for consistency."
+    }
+  ],
+  "Mapped Stage": "Data Preparation",
+  "Primary Artifact": "Dataset labeling (coordinate system specification)",
+  "Justification": "The decision revolves around the labeling of the dataset and the coordinate system of images, which are core aspects of data preparation. Keywords 'labeling' and 'coordinate system' directly indicate this stage."
+}

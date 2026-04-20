@@ -1,0 +1,240 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dsq: <https://example.com/mlops/dsq#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.com/mlops/dsq> a owl:Ontology ;
+    rdfs:label "Data Systems Quality Ontology" ;
+    dcterms:created "2026-04-20T09:01:50.234748+00:00"^^xsd:dateTime ;
+    dcterms:description "This ontology provides abstract concepts for specifying and validating data quality constraints in recurring data processing, with emphasis on automated, history-aware validation for pipelines. It models constraints, validation processes, recurrence, and the use of historical observations as an input to constraint generation. The ontology is intended for MLOps and data engineering governance where continuous quality checks are needed across repeated pipeline executions. It aligns with standard vocabularies (OWL, RDFS, SKOS, schema.org) for interoperability." ;
+    dcterms:identifier "hash:3aad7336f270317431043a14f0a289fb1e046f8fd6ea5caf09741b047e0a59de" ;
+    dcterms:title "dsq" ;
+    rdfs:comment "This ontology provides abstract concepts for specifying, generating, and validating data quality constraints for recurring data processing and MLOps pipelines. It emphasizes automated, history-aware validation across repeated pipeline executions, including observations, metrics, drift detection triggers, and governance roles that influence quality requirements. It models constraints, validation processes, recurrence, and the use of historical observations and baselines as inputs to constraint generation and continuous monitoring. The ontology is intended for data engineering and MLOps governance where continuous quality checks are needed across repeated runs, and it aligns with standard vocabularies (OWL, RDFS, SKOS, schema.org) for interoperability." ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasDerivedFrom <urn:hash:b774048bae7cf53964d7fe07e584bc9cd4215abc5cbd9f36a5f5f882d3bd339f> .
+
+dsq:Anomaly a owl:Class ;
+    rdfs:label "Anomaly" ;
+    rdfs:comment "An unexpected pattern or deviation in observed data quality signals relative to historical observations or a baseline." ;
+    rdfs:subClassOf dsq:QualityIssue .
+
+dsq:ComplianceRole a owl:Class ;
+    rdfs:label "Compliance role" ;
+    rdfs:comment "Role focusing on compliance concerns that influence quality requirements, such as bias, fairness, and regulatory constraints." ;
+    rdfs:subClassOf dsq:StakeholderRole .
+
+dsq:DataEngineerRole a owl:Class ;
+    rdfs:label "Data engineer role" ;
+    rdfs:comment "Role responsible for data collection, cleaning, preparation, and data pipeline construction, including data quality and governance concerns." ;
+    rdfs:subClassOf dsq:StakeholderRole .
+
+dsq:DataScientistRole a owl:Class ;
+    rdfs:label "Data scientist role" ;
+    rdfs:comment "Role responsible for data analysis, feature engineering, model training and evaluation, and collaborating on quality requirements and validation." ;
+    rdfs:subClassOf dsq:StakeholderRole .
+
+dsq:DataStewardRole a owl:Class ;
+    rdfs:label "Data steward role" ;
+    rdfs:comment "Role specializing in data quality management and stewardship, including defining or overseeing quality policies and constraints." ;
+    rdfs:subClassOf dsq:StakeholderRole .
+
+dsq:DevOpsEngineerRole a owl:Class ;
+    rdfs:label "DevOps engineer role" ;
+    rdfs:comment "Role supporting deployment, integration, and operational stability of systems that include ML and data pipelines." ;
+    rdfs:subClassOf dsq:StakeholderRole .
+
+dsq:DriftEvent a owl:Class ;
+    rdfs:label "Drift event" ;
+    rdfs:comment "A detected shift (e.g., data or concept drift) that is relevant to monitoring and may require updating constraints, pipelines, or models." ;
+    rdfs:subClassOf dsq:QualityIssue,
+        schema:Event .
+
+dsq:MLOpsEngineerRole a owl:Class ;
+    rdfs:label "MLOps engineer role" ;
+    rdfs:comment "Role responsible for building and optimizing automated pipelines and monitoring, including history-aware validation and operational stability." ;
+    rdfs:subClassOf dsq:StakeholderRole .
+
+dsq:QualityIssueTypeScheme a owl:Class ;
+    rdfs:label "Quality issue type scheme" ;
+    rdfs:comment "A SKOS concept scheme used to classify types of quality issues detected in monitoring/validation." ;
+    rdfs:subClassOf skos:ConceptScheme .
+
+dsq:SecurityRole a owl:Class ;
+    rdfs:label "Security role" ;
+    rdfs:comment "Role focusing on integrity, confidentiality, and availability of data and ML assets, influencing secure handling and quality governance." ;
+    rdfs:subClassOf dsq:StakeholderRole .
+
+dsq:baselineWindow a owl:ObjectProperty ;
+    rdfs:label "baseline window" ;
+    rdfs:comment "Relates a historical baseline to the observation window of historical executions/observations used to compute it." ;
+    rdfs:domain dsq:HistoricalBaseline ;
+    rdfs:range dsq:ObservationWindow ;
+    rdfs:subPropertyOf schema:hasPart .
+
+dsq:definesQualityRequirement a owl:ObjectProperty ;
+    rdfs:label "defines quality requirement" ;
+    rdfs:comment "Relates a stakeholder role to a quality requirement or constraint definition activity for pipelines and datasets." ;
+    rdfs:domain dsq:StakeholderRole ;
+    rdfs:range schema:Intangible ;
+    rdfs:subPropertyOf schema:knowsAbout .
+
+dsq:detectsIssue a owl:ObjectProperty ;
+    rdfs:label "detects issue" ;
+    rdfs:comment "Relates a quality monitoring activity to a quality issue it detects." ;
+    rdfs:domain dsq:QualityMonitoring ;
+    rdfs:range dsq:QualityIssue ;
+    rdfs:subPropertyOf schema:result .
+
+dsq:executionOf a owl:ObjectProperty ;
+    rdfs:label "execution of" ;
+    rdfs:comment "Relates a pipeline execution to the recurring pipeline that it executes." ;
+    rdfs:domain dsq:PipelineExecution ;
+    rdfs:range dsq:RecurringPipeline ;
+    rdfs:subPropertyOf schema:isPartOf ;
+    owl:inverseOf dsq:hasExecution .
+
+dsq:handledBy a owl:ObjectProperty ;
+    rdfs:label "handled by" ;
+    rdfs:comment "Associates a quality issue with the stakeholder role typically responsible for handling or coordinating the response." ;
+    rdfs:domain dsq:QualityIssue ;
+    rdfs:range dsq:StakeholderRole ;
+    rdfs:subPropertyOf schema:agent .
+
+dsq:hasQualityObservation a owl:ObjectProperty ;
+    rdfs:label "has quality observation" ;
+    rdfs:comment "Links a pipeline execution to a recorded observation of data quality metrics for that run." ;
+    rdfs:domain dsq:PipelineExecution ;
+    rdfs:range dsq:QualityObservation ;
+    rdfs:subPropertyOf schema:subjectOf .
+
+dsq:issueType a owl:ObjectProperty ;
+    rdfs:label "issue type" ;
+    rdfs:comment "Assigns a classification concept to a quality issue for consistent reporting and aggregation." ;
+    rdfs:domain dsq:QualityIssue ;
+    rdfs:range dsq:QualityIssueType ;
+    rdfs:subPropertyOf schema:category .
+
+dsq:metricValue a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "metric value" ;
+    rdfs:comment "Numeric value of a recorded quality metric observation (unit depends on the metric definition)." ;
+    rdfs:domain dsq:QualityObservation ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf schema:value .
+
+dsq:observedMetric a owl:ObjectProperty ;
+    rdfs:label "observed metric" ;
+    rdfs:comment "Indicates which quality metric a quality observation is about." ;
+    rdfs:domain dsq:QualityObservation ;
+    rdfs:range dsq:QualityMetric ;
+    rdfs:subPropertyOf schema:measuredProperty .
+
+dsq:respondedWith a owl:ObjectProperty ;
+    rdfs:label "responded with" ;
+    rdfs:comment "Links a quality issue to a remediation action taken to address it." ;
+    rdfs:domain dsq:QualityIssue ;
+    rdfs:range dsq:RemediationAction ;
+    rdfs:subPropertyOf schema:potentialAction .
+
+dsq:triggers a owl:ObjectProperty ;
+    rdfs:label "triggers" ;
+    rdfs:comment "Indicates that a quality issue triggers a downstream trigger condition (e.g., retraining or remediation workflows)." ;
+    rdfs:domain dsq:QualityIssue ;
+    rdfs:range dsq:RetrainingTrigger ;
+    rdfs:subPropertyOf schema:potentialAction .
+
+dsq:usesBaseline a owl:ObjectProperty ;
+    rdfs:label "uses baseline" ;
+    rdfs:comment "Relates a monitoring or validation activity to a historical baseline used to interpret current measurements or generate constraints." ;
+    rdfs:domain dsq:QualityMonitoring ;
+    rdfs:range dsq:HistoricalBaseline ;
+    rdfs:subPropertyOf schema:instrument .
+
+dsq:windowSize a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "window size" ;
+    rdfs:comment "Size of an observation window expressed as a count of executions/observations (unit: COUNT)." ;
+    rdfs:domain dsq:ObservationWindow ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf schema:value .
+
+dsq:windowSizeUnit a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "window size unit" ;
+    rdfs:comment "Unit for window size; intended to be a count of observations/executions." ;
+    rdfs:domain dsq:ObservationWindow ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:unitCode ;
+    schema:unitCode "COUNT"^^xsd:string .
+
+dsq:QualityIssueType a owl:Class ;
+    rdfs:label "Quality issue type" ;
+    rdfs:comment "A SKOS concept used to categorize quality issues (e.g., anomaly, drift, violation) for reporting and governance." ;
+    rdfs:subClassOf skos:Concept .
+
+dsq:QualityMetric a owl:Class ;
+    rdfs:label "Quality metric" ;
+    rdfs:comment "A measurable indicator of data quality (e.g., completeness, accuracy proxy, distribution shift signals) used in validation and monitoring." ;
+    rdfs:subClassOf schema:PropertyValue .
+
+dsq:RemediationAction a owl:Class ;
+    rdfs:label "Remediation action" ;
+    rdfs:comment "An action taken in response to a quality issue (e.g., data fix, pipeline adjustment, constraint update) to restore acceptable quality." ;
+    rdfs:subClassOf schema:Action .
+
+dsq:RetrainingTrigger a owl:Class ;
+    rdfs:label "Retraining trigger" ;
+    rdfs:comment "A trigger condition (often derived from monitoring or validation results) indicating that downstream retraining or updating activities should occur." ;
+    rdfs:subClassOf schema:Intangible .
+
+dsq:hasExecution a owl:ObjectProperty ;
+    rdfs:label "has execution" ;
+    rdfs:comment "Relates a recurring pipeline to one of its executions." ;
+    rdfs:domain dsq:RecurringPipeline ;
+    rdfs:range dsq:PipelineExecution ;
+    rdfs:subPropertyOf schema:hasPart .
+
+dsq:HistoricalBaseline a owl:Class ;
+    rdfs:label "Historical baseline" ;
+    rdfs:comment "A baseline derived from historical observations used to generate constraints or to contextualize current measurements in recurring pipelines." ;
+    rdfs:subClassOf schema:Intangible .
+
+dsq:QualityMonitoring a owl:Class ;
+    rdfs:label "Quality monitoring" ;
+    rdfs:comment "A continuous or on-demand activity that tracks data quality and constraint compliance over time across pipeline executions." ;
+    rdfs:subClassOf schema:Action .
+
+dsq:RecurringPipeline a owl:Class ;
+    rdfs:label "Recurring pipeline" ;
+    rdfs:comment "A data pipeline intended to execute repeatedly (e.g., scheduled or triggered), enabling history-aware quality validation across runs." ;
+    rdfs:subClassOf schema:SoftwareApplication .
+
+dsq:ObservationWindow a owl:Class ;
+    rdfs:label "Observation window" ;
+    rdfs:comment "A time-bounded window of historical observations used for computing baselines and history-aware constraints." ;
+    rdfs:subClassOf schema:Intangible .
+
+dsq:PipelineExecution a owl:Class ;
+    rdfs:label "Pipeline execution" ;
+    rdfs:comment "A single run of a (recurring) data pipeline whose outputs can be validated against data quality constraints and compared to historical executions." ;
+    rdfs:subClassOf schema:Event .
+
+dsq:QualityObservation a owl:Class ;
+    rdfs:label "Quality observation" ;
+    rdfs:comment "A recorded measurement (observation) of one or more quality metrics for a dataset or pipeline execution, used for history-aware validation." ;
+    rdfs:subClassOf schema:Observation .
+
+dsq:QualityIssue a owl:Class ;
+    rdfs:label "Quality issue" ;
+    rdfs:comment "A detected problem related to data quality, such as a constraint violation or anomaly, that may trigger remediation or retraining workflows." ;
+    rdfs:subClassOf schema:Thing .
+
+dsq:StakeholderRole a owl:Class ;
+    rdfs:label "Stakeholder role" ;
+    rdfs:comment "An abstract role participating in defining, validating, monitoring, or governing data quality in MLOps and data pipelines." ;
+    rdfs:subClassOf schema:Role .
+

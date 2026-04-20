@@ -1,0 +1,21 @@
+{
+  "Issue": "Add Matthews Correlation Coefficient (MCC) Loss",
+  "Decision": "Add Matthews Correlation Coefficient (MCC) loss function to monai.losses",
+  "Rationale": "MCC loss considers all four entries of the confusion matrix (TP, TN, FP, FN), making it effective for class-imbalanced segmentation tasks. The loss was proposed in Abhishek & Hamarneh (IEEE ISBI 2021), has been cited 75 times, and has been adopted by Segmentation Models PyTorch (smp). The implementation follows MONAI conventions, supporting sigmoid, softmax, to_onehot_y, include_background, batch, and reduction parameters.",
+  "Author": "kakumarabhishek",
+  "Status": "closed",
+  "Description": "monai.losses",
+  "Time stamp": "2026-03-19T11:59:05Z",
+  "Cost": "Resources: Implementation time and testing effort; Complexity: Integration with MONAI conventions and support for multiple parameters (sigmoid, softmax, to_onehot_y, include_background, batch, reduction)",
+  "Risk": "Potential technical debt in maintaining compatibility with MONAI conventions and ensuring robustness across all supported parameters. Risk of overfitting to class-imbalanced scenarios if not properly validated.",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-19T11:59:22Z",
+      "argument": "MCC loss considers all four entries of the confusion matrix (TP, TN, FP, FN), making it more effective for class-imbalanced segmentation tasks compared to Dice and Tversky losses which only use TP, FP, and FN."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "Loss function (MCC)",
+  "Justification": "The decision involves adding a new loss function ('MCC Loss') to the MONAI library, which directly relates to algorithm selection and model architecture development. Keywords like 'loss function', 'batch' (support for batch parameters), and 'softmax' (model-specific parameters) indicate this is part of modeling rather than other stages."
+}

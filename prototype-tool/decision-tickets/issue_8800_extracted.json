@@ -1,0 +1,15 @@
+{
+  "Issue": "Potentially wrong device using_cuda variable status in monai/auto3dseg/analyzer.py",
+  "Decision": "Set label_tensor device to image_tensor device only if both tensors use the same device",
+  "Rationale": "The current implementation incorrectly sets using_cuda to True when label_tensor uses CUDA but image_tensor does not, leading to a mismatch where label_tensor is forced to CPU despite using_cuda being True",
+  "Author": "benediktjohannes",
+  "Status": "closed",
+  "Description": "monai/auto3dseg/analyzer.py",
+  "Time stamp": "2026-04-02T13:23:03Z",
+  "Cost": null,
+  "Risk": "Technical debt: Incorrect device handling may lead to runtime errors or unexpected behavior. Potential side effects include performance degradation or incorrect tensor operations due to device mismatch",
+  "Argument": [],
+  "Mapped Stage": "Modeling Development",
+  "Primary Artifact": "device handling logic in analyzer.py",
+  "Justification": "The issue involves incorrect device handling (using_cuda variable status) and tensor device mismatch in model-related code (monai/auto3dseg/analyzer.py), suggesting a Modeling Development concern. Keywords like 'device' and context of CUDA tensors point to hardware/implementation details during model execution."
+}

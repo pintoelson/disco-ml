@@ -1,0 +1,23 @@
+{
+  "Issue": "PatchEmbeddingBlock with proj_type='perceptron' raises TypeError on einops >= 0.8.x due to Rearrange.__init__() no longer accepting arbitrary keyword arguments",
+  "Decision": "Embed patch size values directly as integer literals in the einops pattern string (e.g., 'b c (h 16) (w 16) (d 16)') instead of using kwargs",
+  "Rationale": "einops supports integer literals in patterns across all versions including 0.8.x, making the change semantically identical to the original implementation",
+  "Author": "williams145",
+  "Status": "open",
+  "Description": "PatchEmbeddingBlock in MONAI's codebase, specifically the proj_type='perceptron' implementation",
+  "Time stamp": "2026-04-18T13:36:39Z (Issue creation), 2026-04-18T20:03:46Z (CI green confirmation)",
+  "Cost": "Low (non-breaking change fix with minimal code modification)",
+  "Risk": "Technical debt from maintaining compatibility with multiple einops versions, potential side effects from pattern string changes",
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-04-18T13:37:04Z",
+      "argument": "Introduces a new PyTorch module _PatchRearrange that converts inputs shaped (B, C, ...spatial...) into a sequence (B, n_patches, patch_dim) using explicit view/permute/reshape. In PatchEmbeddingBlock.__init__ for proj_type == 'perceptron', construction of the Rearrage layer is wrapped in a try block; if einops.Rearrange raises a TypeError, code falls back to _PatchRearrange(spatial_dims, patch_size) before applying nn.Linear(self.patch_dim, hidden_size). The original Rearrage -> Linear path is preserved when no error occurs."
+    },
+    {
+      "author": "williams145",
+      "timestamp": "2026-04-18T20:03:46Z",
+      "argument": "CI is green and the branch is up to date, indicating successful testing of the fix"
+    }
+  ]
+}

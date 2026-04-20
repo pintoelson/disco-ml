@@ -1,0 +1,26 @@
+{
+  "Issue": "Remove legacy PyTorch 1.8.0 compatibility code from FFT utilities due to MONAI now requiring PyTorch \u2265 2.4.1",
+  "Decision": "Remove legacy PyTorch 1.8.0 compatibility code from FFT utilities",
+  "Rationale": "MONAI now requires PyTorch \u2265 2.4.1, so the version checks and NumPy fallbacks are no longer needed",
+  "Author": "aymuos15",
+  "Status": "Decided",
+  "Description": "FFT utilities in MONAI",
+  "Time stamp": "2026-03-02T06:02:25Z",
+  "Cost": null,
+  "Risk": null,
+  "Argument": [
+    {
+      "author": "coderabbitai[bot]",
+      "timestamp": "2026-03-02T06:02:40Z",
+      "argument": "Removes embedded version check logic and related documentation from FFT utility functions, consolidating to direct use of torch.fft functions in Fourier.shift_fourier and Fourier.inv_shift_fourier, with numeric computation paths unchanged for both Tensor and NumPy inputs."
+    },
+    {
+      "author": "ericspod",
+      "timestamp": "2026-03-03T17:11:35Z",
+      "argument": "The coderabbit comment is preexisting and not in the scope of this PR, and should be removed with a deprecation warning in a separate PR."
+    }
+  ],
+  "Mapped Stage": "Miscellaneous",
+  "Primary Artifact": "FFT utilities code",
+  "Justification": "The issue involves removing legacy compatibility code for PyTorch version changes in MONAI's FFT utilities, which is a general bug fix unrelated to ML lifecycle stages. Keywords like 'compatibility code' and 'FFT utilities' indicate this is about general software maintenance rather than a specific MLOps stage."
+}

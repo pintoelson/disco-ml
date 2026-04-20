@@ -1,0 +1,21 @@
+{
+  "Issue": "Incorrect `truncated` parameter in `make_gaussian_kernel` causing corrupted `LocalNormalizedCrossCorrelationLoss`",
+  "Decision": "Divide the pixel radius by `sigma` to convert it into the correct sigma-unit ratio",
+  "Rationale": "The fix ensures correct Gaussian kernel generation by converting pixel radius to sigma units via `truncated = (kernel_size // 2) / sigma`, enabling accurate `LocalNormalizedCrossCorrelationLoss` computation for identical inputs.",
+  "Author": "ytl0623",
+  "Status": "closed",
+  "Description": "The fix applies to the `make_gaussian_kernel` function in `monai/losses/image_dissimilarity.py` and its impact on `LocalNormalizedCrossCorrelationLoss` in the MONAI library.",
+  "Time stamp": "2026-03-18T14:46:35Z",
+  "Cost": "Low to moderate (involves a simple parameter adjustment and validation through added test cases)",
+  "Risk": "Minimal (the change corrects a unit mismatch, reducing risk of incorrect loss calculations but introduces no new architectural risks)",
+  "Argument": [
+    {
+      "author": "ytl0623",
+      "timestamp": "2026-03-18T14:46:35Z",
+      "argument": "Dividing the pixel radius by `sigma` converts it into the correct sigma-unit ratio, ensuring accurate Gaussian kernel generation and fixing the `LocalNormalizedCrossCorrelationLoss` corruption issue."
+    }
+  ],
+  "Mapped Stage": "Modeling (Development)",
+  "Primary Artifact": "Gaussian kernel generation and LocalNormalizedCrossCorrelationLoss",
+  "Justification": "The issue involves a parameter adjustment in `make_gaussian_kernel` (suggesting algorithm/filter design) and its impact on `LocalNormalizedCrossCorrelationLoss` (a loss function). Keywords like 'kernel', 'loss', and the focus on correct computation imply modeling development activities."
+}
