@@ -1,0 +1,295 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix drgo: <https://example.com/drgo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.com/drgo> a owl:Ontology ;
+    rdfs:label "Design Rationale and Governance Ontology" ;
+    dcterms:created "2026-04-27T12:47:08.908041+00:00"^^xsd:dateTime ;
+    dcterms:description "This ontology models abstract concepts used to capture and analyze design rationale and governance in engineering and software/system architecture. It represents issues (questions), options, criteria, decisions, dependencies, and the state-based lifecycle of decisions, supporting structured rationale capture and traceability. It also provides constructs for representing decision taxonomies and decision models such as decision trees and state machines. The ontology is intended for use in architecture knowledge management, design reviews, and decision documentation across domains." ;
+    dcterms:identifier "hash:fdcc29e188447841e7799e0d7bcb08b9bae163f3b66501afaaffd5aed9f295d9" ;
+    dcterms:title "drgo" ;
+    rdfs:comment "This ontology models abstract concepts used to capture, organize, and analyze architectural and engineering design decisions and their rationale. It represents decision types and taxonomies, decision attributes (e.g., rationale, scope, state, cost, risk), inter-decision dependencies (e.g., constrains, forbids, enables, subsumes), and decision lifecycles, enabling structured rationale capture, traceability to requirements and other artifacts, and reasoning over graphs of interdependent decisions." ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasDerivedFrom <urn:hash:d85c70de2b63d656d78104c3300caafd2a400e8a660e75c53780fcc16c3abcbb> .
+
+drgo:ArchitectureView a owl:Class ;
+    rdfs:label "Architecture view" ;
+    rdfs:comment "A representation of architecture from a particular viewpoint (e.g., logical view), used to organize and communicate structural/behavioral decisions." ;
+    rdfs:subClassOf drgo:ArchitectureArtifact,
+        schema:CreativeWork .
+
+drgo:BanDecision a owl:Class ;
+    rdfs:label "Ban (non-existence) decision" ;
+    rdfs:comment "A decision asserting that some architectural element or artifact will not appear; useful to document rejected/eliminated alternatives that leave no architectural 'hook'." ;
+    rdfs:subClassOf drgo:ExistenceDecision .
+
+drgo:BehavioralDecision a owl:Class ;
+    rdfs:label "Behavioral decision" ;
+    rdfs:comment "A decision primarily affecting interactions/collaborations among elements (behavior), often to satisfy functionality or quality attributes (including connector choices)." ;
+    rdfs:subClassOf drgo:ExistenceDecision .
+
+drgo:DecisionDependency a owl:Class ;
+    rdfs:label "Decision dependency" ;
+    rdfs:comment "A relationship capturing how one decision affects another (e.g., constrains, forbids, enables, subsumes)." ;
+    rdfs:subClassOf schema:Intangible .
+
+drgo:Epitome a owl:Class ;
+    rdfs:label "Epitome" ;
+    rdfs:comment "A short textual summary of a decision." ;
+    rdfs:subClassOf drgo:DecisionAttribute .
+
+drgo:ExecutiveDecision a owl:Class ;
+    rdfs:label "Executive decision" ;
+    rdfs:comment "A decision about process, technology, organization, or other executive aspects that shape or constrain architectural choices." ;
+    rdfs:subClassOf drgo:ArchitecturalDesignDecision .
+
+drgo:PoliticalDecisionTag a owl:Class ;
+    rdfs:label "Political decision tag" ;
+    rdfs:comment "A tag indicating a decision was made primarily on political grounds, useful to flag for revisiting when context changes." ;
+    rdfs:subClassOf drgo:DecisionTag .
+
+drgo:PropertyDecision a owl:Class ;
+    rdfs:label "Property decision" ;
+    rdfs:comment "A decision setting a property, rule, or constraint on architectural elements or behavior (e.g., standards, styles, quality-related constraints)." ;
+    rdfs:subClassOf drgo:ArchitecturalDesignDecision .
+
+drgo:Scope a owl:Class ;
+    rdfs:label "Scope" ;
+    rdfs:comment "The scope/context over which a decision applies (e.g., subsystem, view, organization boundary)." ;
+    rdfs:subClassOf drgo:DecisionAttribute .
+
+drgo:StructuralDecision a owl:Class ;
+    rdfs:label "Structural decision" ;
+    rdfs:comment "A decision primarily affecting architectural structure (e.g., subsystems, layers, partitions, components) in one or more architecture views." ;
+    rdfs:subClassOf drgo:ExistenceDecision .
+
+drgo:documentsDecision a owl:ObjectProperty ;
+    rdfs:label "documents decision" ;
+    rdfs:comment "Links an architecture artifact to the decision(s) it documents (often where rationale is captured)." ;
+    rdfs:domain drgo:ArchitectureArtifact ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf schema:about ;
+    owl:inverseOf drgo:hasArchitectureArtifact .
+
+drgo:hasCostEstimate a owl:ObjectProperty ;
+    rdfs:label "has cost estimate" ;
+    rdfs:comment "Links a decision to an associated cost estimate." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:CostEstimate ;
+    rdfs:subPropertyOf schema:cost .
+
+drgo:hasDecisionTag a owl:ObjectProperty ;
+    rdfs:label "has decision tag" ;
+    rdfs:comment "Associates a decision with one or more tags/categories for classification and retrieval." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:DecisionTag ;
+    rdfs:subPropertyOf schema:about .
+
+drgo:hasEpitome a owl:DatatypeProperty ;
+    rdfs:label "has epitome" ;
+    rdfs:comment "Associates a decision with its short textual summary (epitome)." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:abstract .
+
+drgo:hasHistoryEntry a owl:ObjectProperty ;
+    rdfs:label "has history entry" ;
+    rdfs:comment "Links a decision to a history entry recording a change event." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:DecisionHistoryEntry ;
+    rdfs:subPropertyOf schema:subjectOf .
+
+drgo:hasImpact a owl:DatatypeProperty ;
+    rdfs:label "has impact" ;
+    rdfs:comment "Numeric impact factor used to compute or justify risk exposure." ;
+    rdfs:domain drgo:RiskAssessment ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf schema:ratingValue .
+
+drgo:hasLikelihood a owl:DatatypeProperty ;
+    rdfs:label "has likelihood" ;
+    rdfs:comment "Numeric likelihood/probability factor used to compute or justify risk exposure." ;
+    rdfs:domain drgo:RiskAssessment ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf schema:ratingValue .
+
+drgo:hasRiskAssessment a owl:ObjectProperty ;
+    rdfs:label "has risk assessment" ;
+    rdfs:comment "Links a decision to a risk assessment about taking that decision." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:RiskAssessment ;
+    rdfs:subPropertyOf schema:risk .
+
+drgo:hasRiskExposure a owl:ObjectProperty ;
+    rdfs:label "has risk exposure" ;
+    rdfs:comment "Associates a risk assessment with an exposure level." ;
+    rdfs:domain drgo:RiskAssessment ;
+    rdfs:range drgo:RiskExposure ;
+    rdfs:subPropertyOf schema:additionalProperty .
+
+drgo:hasScope a owl:DatatypeProperty ;
+    rdfs:label "has scope" ;
+    rdfs:comment "Associates a decision with a textual statement of its scope." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:description .
+
+drgo:historyActor a owl:ObjectProperty ;
+    rdfs:label "history actor" ;
+    rdfs:comment "Agent responsible for the change recorded in a history entry." ;
+    rdfs:domain drgo:DecisionHistoryEntry ;
+    rdfs:range schema:Person ;
+    rdfs:subPropertyOf schema:agent .
+
+drgo:historyChangeDescription a owl:DatatypeProperty ;
+    rdfs:label "history change description" ;
+    rdfs:comment "Text describing what changed in a decision history entry." ;
+    rdfs:domain drgo:DecisionHistoryEntry ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:description .
+
+drgo:historyTimestamp a owl:DatatypeProperty ;
+    rdfs:label "history timestamp" ;
+    rdfs:comment "Timestamp of a decision history entry." ;
+    rdfs:domain drgo:DecisionHistoryEntry ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf schema:startTime .
+
+drgo:isConstrainedBy a owl:ObjectProperty ;
+    rdfs:label "is constrained by" ;
+    rdfs:comment "Inverse of constrains: indicates a decision is contingent on another decision." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf drgo:isRelatedTo ;
+    owl:inverseOf drgo:constrains .
+
+drgo:isEnabledBy a owl:ObjectProperty ;
+    rdfs:label "is enabled by" ;
+    rdfs:comment "Inverse of enables: indicates a decision is made possible by another decision." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf drgo:isRelatedTo ;
+    owl:inverseOf drgo:enables .
+
+drgo:isForbiddenBy a owl:ObjectProperty ;
+    rdfs:label "is forbidden by" ;
+    rdfs:comment "Inverse of forbids: indicates a decision is excluded by another decision." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf drgo:isRelatedTo ;
+    owl:inverseOf drgo:forbids .
+
+drgo:isSubsumedBy a owl:ObjectProperty ;
+    rdfs:label "is subsumed by" ;
+    rdfs:comment "Inverse of subsumes: indicates a decision is a narrower part within a broader decision." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf drgo:isRelatedTo ;
+    owl:inverseOf drgo:subsumes .
+
+drgo:CostEstimate a owl:Class ;
+    rdfs:label "Cost estimate" ;
+    rdfs:comment "A value representing the cost associated with taking a decision, supporting comparison among alternatives." ;
+    rdfs:subClassOf drgo:DecisionAttribute,
+        schema:MonetaryAmount .
+
+drgo:RiskExposure a owl:Class ;
+    rdfs:label "Risk exposure" ;
+    rdfs:comment "A risk level representing exposure, commonly modeled as a combination of impact and likelihood." ;
+    rdfs:subClassOf schema:Enumeration .
+
+drgo:constrains a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "constrains" ;
+    rdfs:comment "Decision A constrains decision B: B is contingent on A (if A is dropped, B is dropped) and cannot reach a higher state than A." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf drgo:isRelatedTo .
+
+drgo:enables a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "enables" ;
+    rdfs:comment "Decision A enables decision B: A makes B possible but does not force B; a weaker form of constraining." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf drgo:isRelatedTo .
+
+drgo:forbids a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "forbids" ;
+    rdfs:comment "Decision A forbids (excludes) decision B: B cannot be taken/promoted unless A is not taken (demoted to the null/initial state)." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf drgo:isRelatedTo .
+
+drgo:hasArchitectureArtifact a owl:ObjectProperty ;
+    rdfs:label "has architecture artifact" ;
+    rdfs:comment "Links a decision to an architectural artifact it creates, modifies, or is documented in." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:ArchitectureArtifact ;
+    rdfs:subPropertyOf schema:mentions .
+
+drgo:subsumes a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "subsumes" ;
+    rdfs:comment "Decision A subsumes decision B: A is broader/more encompassing and B is a narrower part or refinement within A." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf drgo:isRelatedTo .
+
+drgo:DecisionTag a owl:Class ;
+    rdfs:label "Decision tag" ;
+    rdfs:comment "A tag/category assigned to a decision to support classification and later review (e.g., politics, usability, safety, COTS)." ;
+    rdfs:subClassOf skos:Concept .
+
+drgo:ArchitecturalDesignDecision a owl:Class ;
+    rdfs:label "Architectural design decision" ;
+    rdfs:comment "A design decision in the context of software/system architecture; treated as a first-class entity with attributes, relationships, and lifecycle." ;
+    rdfs:subClassOf drgo:Decision,
+        schema:CreativeWork .
+
+drgo:ArchitectureArtifact a owl:Class ;
+    rdfs:label "Architecture artifact" ;
+    rdfs:comment "An architectural work product or element (e.g., subsystem, layer, component, connector, view) that a decision introduces, constrains, or documents." ;
+    rdfs:subClassOf schema:CreativeWork .
+
+drgo:ExistenceDecision a owl:Class ;
+    rdfs:label "Existence decision" ;
+    rdfs:comment "A decision asserting that some architectural element or artifact will exist (appear) in the design or implementation." ;
+    rdfs:subClassOf drgo:ArchitecturalDesignDecision .
+
+drgo:DecisionAttribute a owl:Class ;
+    rdfs:label "Decision attribute" ;
+    rdfs:comment "An attribute used to describe a decision (e.g., epitome, rationale, scope, state, cost, risk, history)." ;
+    rdfs:subClassOf schema:PropertyValue .
+
+drgo:DecisionHistoryEntry a owl:Class ;
+    rdfs:label "Decision history entry" ;
+    rdfs:comment "A record of a change in a decision over time, typically including timestamp, author/actor, and description of the change." ;
+    rdfs:subClassOf schema:Action .
+
+drgo:RiskAssessment a owl:Class ;
+    rdfs:label "Risk assessment" ;
+    rdfs:comment "An assessment of risk associated with taking a decision, often expressed as exposure derived from impact and likelihood." ;
+    rdfs:subClassOf drgo:DecisionAttribute,
+        schema:Risk .
+
+drgo:isRelatedTo a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is related to" ;
+    rdfs:comment "Indicates a general relationship between two decisions without committing to a specific dependency type." ;
+    rdfs:domain drgo:Decision ;
+    rdfs:range drgo:Decision ;
+    rdfs:subPropertyOf schema:relatedTo .
+

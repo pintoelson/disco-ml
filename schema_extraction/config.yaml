@@ -2,6 +2,9 @@ repositories:
   - "Project-MONAI/MONAI"
 
 extraction_schema:
+
+
+extraction_schema:
   - name: "Issue"
     description: "The design problem or 'Architectural Issue' that necessitates a decision. It describes the requirements or constraints that the decision must address."
     singular_occurrence: true
@@ -14,35 +17,16 @@ extraction_schema:
     description: "The 'Reasoning' or 'Justification' for the decision. This includes why a specific alternative was selected over others, often referencing architectural principles or trade-offs."
     singular_occurrence: true
 
-  - name: "Author"
-    description: "The stakeholder or 'Agent' responsible for making or capturing the decision."
-    singular_occurrence: true
-
-  - name: "Status"
-    description: "The 'State' of the decision according to Kruchten's lifecycle: Idea, Tentative, Decided, Approved, Challenged, Obsolesced, or Rejected."
-    singular_occurrence: true
-
   - name: "Description"
     description: "The 'Scope' and context of the decision. Defines the portion of the system (e.g., layers, components, or subsystems) affected by this specific ADD."
     singular_occurrence: true
 
-  - name: "Time stamp"
-    description: "The 'History' element recording when the decision state changed or when it was originally captured."
-    singular_occurrence: true
-
-  - name: "Cost"
-    description: "The 'Cost' estimate in terms of resources, time, or complexity required to implement the decision."
-    singular_occurrence: true
-
-  - name: "Risk"
-    description: "The 'Risk' associated with the decision, including technical debt, potential side effects, or uncertainties introduced to the architecture."
-    singular_occurrence: true
-
   - name: "Argument"
-    description: "Extract arguments only if they compare two alternatives (e.g., 'X is better than Y because...'), cite a constraint (e.g., 'Kubernetes limits...'), or mention a trade-off (e.g., 'Higher latency but better accuracy'). IGNORE all non-technical meta-discourse (e.g., social gratitude or administrative updates)."
+    description: "Extract arguments that support (Pro), oppose (Con), or discuss (Neutral) a decision. Use the classification label explicitly provided in the text header (Pro, Con, Neutral, or NA) for the 'classification' field. IGNORE all non-technical meta-discourse (e.g., social gratitude or administrative updates) unless it carries technical weight."
     singular_occurrence: false
     type: "JsonObjectConcept"
     structure:
       author: "str"
       timestamp: "str"
+      classification: "str"
       argument: "str"

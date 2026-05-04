@@ -1,18 +1,49 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <https://example.com/adr#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix mlops: <https://growgraph.dev/mlops#> .
+@prefix schema: <https://schema.org/> .
+@prefix sioc_arg: <https://rdfs.org/sioc/argument#> .
 
-mlops:DecisionTicketShape
+# 1. Decision Node Shape
+:DecisionShape
     a sh:NodeShape ;
-    sh:targetClass mlops:DecisionTicket ;
-    sh:property [
-        sh:path mlops:hasArgument ;
-        sh:minCount 1 ;
-        sh:message "A DecisionTicket must have at least one Argument." ;
-    ] ;
-    sh:property [
-        sh:path mlops:hasAccountableAgent ;
-        sh:minCount 1 ;
-        sh:message "A DecisionTicket must have at least one AccountableAgent." ;
-    ] .
+    sh:targetClass schema:Decision ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path schema:text ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path :hasAuthor ; sh:minCount 1 ; sh:maxCount 1 ; sh:class schema:Person ] ;
+    sh:property [ sh:path :hasTimeStamp ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ] ;
+    sh:property [ sh:path :decides ; sh:minCount 1 ; sh:maxCount 1 ; sh:class sioc_arg:Issue ] ;
+
+    # Optional Stance Properties
+    sh:property [ sh:path :agrees_with ; sh:class sioc_arg:Argument ] ;
+    sh:property [ sh:path :disagrees_with ; sh:class sioc_arg:Argument ] ;
+    sh:property [ sh:path :neutral_towards ; sh:class sioc_arg:Argument ] .
+
+# 2. Issue Node Shape
+:IssueShape
+    a sh:NodeShape ;
+    sh:targetClass sioc_arg:Issue ;
+    sh:property [ sh:path :hasAuthor ; sh:minCount 1 ; sh:class schema:Person ] ;
+    sh:property [ sh:path :hasTimeStamp ; sh:minCount 1 ; sh:datatype xsd:dateTime ] ;
+    sh:property [ sh:path :hasDescription ; sh:minCount 1 ; sh:class :IssueDescription ] .
+
+# 3. Issue Description Node Shape
+:IssueDescriptionShape
+    a sh:NodeShape ;
+    sh:targetClass :IssueDescription ;
+    sh:property [ sh:path schema:text ; sh:minCount 1 ; sh:datatype xsd:string ] .
+
+# 4. Argument Node Shape
+:ArgumentShape
+    a sh:NodeShape ;
+    sh:targetClass sioc_arg:Argument ;
+    sh:property [ sh:path schema:text ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path schema:about ; sh:minCount 1 ; sh:class schema:Decision ] ;
+    sh:property [ sh:path :hasAuthor ; sh:minCount 1 ; sh:class schema:Person ] ;
+    sh:property [ sh:path :hasTimeStamp ; sh:minCount 1 ; sh:datatype xsd:dateTime ] .
+
+# 5. Person Node Shape
+:PersonShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Person ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:datatype xsd:string ] .

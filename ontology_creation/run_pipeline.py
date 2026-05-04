@@ -20,8 +20,8 @@ logger = logging.getLogger(__name__)
 def parse_args():
     parser = argparse.ArgumentParser(description="OntoCast Master Pipeline Orchestrator")
     parser.add_argument("-i", "--input", required=True, help="Path to input directory containing PDFs")
-    parser.add_argument("-p", "--prompt", required=True, help="Path to custom instruction file (.txt)")
-    parser.add_argument("-d", "--domain", required=True, help="Current domain namespace (e.g. https://example.com/domain)")
+    parser.add_argument("-p", "--prompt", default="", help="Path to custom instruction file (.txt)")
+    parser.add_argument("-d", "--domain", help="Current domain namespace (e.g. https://example.com/domain)")
     parser.add_argument("-n", "--dataset", default="default_project", help="Dataset identifier for Fuseki/Versioning")
     parser.add_argument("-m", "--mode", choices=["owl2", "rdf-star"], default="owl2", help="Provenance mode")
     parser.add_argument("-e", "--env-file", default=".env.test", help="Path to environment file")
@@ -78,6 +78,12 @@ def main():
     # 1. Pre-computation Logic: Dataset and Domain
     logger.info("Initializing context...")
     
+    # Resolve paths to absolute to avoid issues with different CWD
+    if args.input:
+        args.input = str(pathlib.Path(args.input).absolute())
+    if args.prompt:
+        args.prompt = str(pathlib.Path(args.prompt).absolute())
+    
     # Environment Setup
     current_env = os.environ.copy()
     
@@ -91,7 +97,10 @@ def main():
                     current_env[key] = value
 
     current_env["FUSEKI_DATASET"] = args.dataset
-    current_env["CURRENT_DOMAIN"] = args.domain
+    if args.domain:
+        current_env["CURRENT_DOMAIN"] = args.domain
+    elif "CURRENT_DOMAIN" not in current_env:
+        current_env["CURRENT_DOMAIN"] = "https://example.com/"
     current_env["PROVENANCE_MODE"] = args.mode
     
     # 2. Cache Management
@@ -109,7 +118,10 @@ def main():
         ontocast_bin = str(possible_venv_bin)
         logger.info(f"Using ontocast binary from venv: {ontocast_bin}")
     
-    ontocast_cmd = f"{ontocast_bin} --env-file {env_file} --input-path {args.input} --instruction-file {args.prompt} --provenance-mode {args.mode}"
+    if args.prompt:
+        ontocast_cmd = f"{ontocast_bin} --env-file {env_file} --input-path {args.input} --instruction-file {args.prompt} --provenance-mode {args.mode}"
+    else:
+        ontocast_cmd = f"{ontocast_bin} --env-file {env_file} --input-path {args.input} --provenance-mode {args.mode}"
 
     
     success = run_step("Ontology Extraction", ontocast_cmd, cwd=project_root, env=current_env)

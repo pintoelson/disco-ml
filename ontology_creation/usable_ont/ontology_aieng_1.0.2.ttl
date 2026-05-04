@@ -9,7 +9,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<aieng:> a owl:Ontology ;
+aieng: a owl:Ontology ;
     rdfs:label "AI Engineering Ontology" ;
     dcterms:created "2026-04-16T12:08:10.375291+00:00"^^xsd:dateTime ;
     dcterms:description "Ontology for concepts and relationships in AI engineering, covering processes, tools, roles, maturity models, challenges, provenance, and related artifacts." ;
@@ -19,7 +19,7 @@
     owl:versionInfo "1.0.2" ;
     prov:wasDerivedFrom <urn:hash:3c297330825987614be4ca8244408b0f7bb4f02ee27a5674c68b01a524a1a473> .
 
-ns1: dcterms:description "Extended ontology for AI engineering with added abstract concepts for MLOps research, including processes, maturity models, attributes, benefits, challenges, research questions, and search strategies."^^xsd:string,
+<http://example.org/aieng#> dcterms:description "Extended ontology for AI engineering with added abstract concepts for MLOps research, including processes, maturity models, attributes, benefits, challenges, research questions, and search strategies."^^xsd:string,
         "Ontology for AI engineering, with emphasis on MLOps processes, tools, maturity models, challenges, and scholarly artifacts."^^xsd:string .
 
 ns1:AIOpsFramework a owl:Class ;

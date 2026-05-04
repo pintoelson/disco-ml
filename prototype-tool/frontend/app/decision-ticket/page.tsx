@@ -1,16 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TicketTable } from "../../components/decision-ticket/ticket-table";
 import { PageContainer } from "../../components/layout/page-container";
-import { mockTickets } from "../../lib/mock-data";
+import { DecisionTicket } from "../../lib/types";
 
 export default function DecisionTicketsPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [tickets, setTickets] = useState<DecisionTicket[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/data/tickets")
+      .then((res) => res.json())
+      .then((resData) => {
+        if (resData.status === "ok") {
+          setTickets(resData.data);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch tickets", err);
+        setLoading(false);
+      });
+  }, []);
   
-  const filteredTickets = mockTickets.filter((t) => 
-    t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    t.id.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredTickets = tickets.filter((t) => 
+    t.issue?.label?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    t.id?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -26,7 +43,9 @@ export default function DecisionTicketsPage() {
         />
       </div>
       
-      {filteredTickets.length > 0 ? (
+      {loading ? (
+        <p className="text-gray-500">Loading tickets...</p>
+      ) : filteredTickets.length > 0 ? (
         <TicketTable tickets={filteredTickets} />
       ) : (
         <p className="text-gray-500">No tickets found.</p>

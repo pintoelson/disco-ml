@@ -1,0 +1,582 @@
+@prefix : <https://example.com/dd#> .
+@prefix dd: <https://example.com/dd#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <https://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sioc_arg: <https://rdfs.org/sioc/argument#> .
+@base <https://example.com/dd> .
+
+<https://example.com/dd> rdf:type owl:Ontology ;
+                          dcterms:created "2026-04-27T12:47:08.908041+00:00"^^xsd:dateTime ;
+                          dcterms:description "This ontology models abstract concepts used to capture and analyze design rationale and governance in engineering and software/system architecture. It represents issues (questions), options, criteria, decisions, dependencies, and the state-based lifecycle of decisions, supporting structured rationale capture and traceability. It also provides constructs for representing decision taxonomies and decision models such as decision trees and state machines. The ontology is intended for use in architecture knowledge management, design reviews, and decision documentation across domains." ;
+                          dcterms:identifier "hash:fdcc29e188447841e7799e0d7bcb08b9bae163f3b66501afaaffd5aed9f295d9" ;
+                          dcterms:title "drgo" ;
+                          rdfs:comment "This ontology models abstract concepts used to capture, organize, and analyze architectural and engineering design decisions and their rationale. It represents decision types and taxonomies, decision attributes (e.g., rationale, scope, state, cost, risk), inter-decision dependencies (e.g., constrains, forbids, enables, subsumes), and decision lifecycles, enabling structured rationale capture, traceability to requirements and other artifacts, and reasoning over graphs of interdependent decisions." ;
+                          rdfs:label "Design Rationale and Governance Ontology" ;
+                          owl:versionInfo "1.0.1" ;
+                          prov:wasDerivedFrom <urn:hash:d85c70de2b63d656d78104c3300caafd2a400e8a660e75c53780fcc16c3abcbb> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rdfs.org/sioc/argument#agrees_with
+<http://rdfs.org/sioc/argument#agrees_with> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            rdfs:domain sioc_arg:Argument ;
+                                            rdfs:range dd:Decision .
+
+
+###  http://rdfs.org/sioc/argument#disagrees_with
+<http://rdfs.org/sioc/argument#disagrees_with> rdf:type owl:ObjectProperty ;
+                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                               rdfs:domain sioc_arg:Argument ;
+                                               rdfs:range dd:Decision .
+
+
+###  http://rdfs.org/sioc/argument#neutral_towards
+<http://rdfs.org/sioc/argument#neutral_towards> rdf:type owl:ObjectProperty ;
+                                                rdfs:subPropertyOf owl:topObjectProperty ;
+                                                rdfs:domain sioc_arg:Argument ;
+                                                rdfs:range dd:Decision .
+
+
+###  http://rdfs.org/sioc/argument#supported_by
+<http://rdfs.org/sioc/argument#supported_by> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf owl:topObjectProperty ;
+                                             rdfs:domain dd:Decision ;
+                                             rdfs:range sioc_arg:Position .
+
+
+###  https://example.com/dd#constrains
+dd:constrains rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf dd:isRelatedTo ;
+              owl:inverseOf dd:isConstrainedBy ;
+              rdf:type owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty ;
+              rdfs:domain dd:Decision ;
+              rdfs:range dd:Decision ;
+              rdfs:comment "Decision A constrains decision B: B is contingent on A (if A is dropped, B is dropped) and cannot reach a higher state than A." ;
+              rdfs:label "constrains" .
+
+
+###  https://example.com/dd#documentsDecision
+dd:documentsDecision rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf schema:about ;
+                     owl:inverseOf dd:hasArchitectureArtifact ;
+                     rdfs:domain dd:ArchitectureArtifact ;
+                     rdfs:range dd:Decision ;
+                     rdfs:comment "Links an architecture artifact to the decision(s) it documents (often where rationale is captured)." ;
+                     rdfs:label "documents decision" .
+
+
+###  https://example.com/dd#enables
+dd:enables rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf dd:isRelatedTo ;
+           owl:inverseOf dd:isEnabledBy ;
+           rdf:type owl:AsymmetricProperty ,
+                    owl:IrreflexiveProperty ;
+           rdfs:domain dd:Decision ;
+           rdfs:range dd:Decision ;
+           rdfs:comment "Decision A enables decision B: A makes B possible but does not force B; a weaker form of constraining." ;
+           rdfs:label "enables" .
+
+
+###  https://example.com/dd#forbids
+dd:forbids rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf dd:isRelatedTo ;
+           owl:inverseOf dd:isForbiddenBy ;
+           rdf:type owl:AsymmetricProperty ,
+                    owl:IrreflexiveProperty ;
+           rdfs:domain dd:Decision ;
+           rdfs:range dd:Decision ;
+           rdfs:comment "Decision A forbids (excludes) decision B: B cannot be taken/promoted unless A is not taken (demoted to the null/initial state)." ;
+           rdfs:label "forbids" .
+
+
+###  https://example.com/dd#hasArchitectureArtifact
+dd:hasArchitectureArtifact rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf schema:mentions ;
+                           rdfs:domain dd:Decision ;
+                           rdfs:range dd:ArchitectureArtifact ;
+                           rdfs:comment "Links a decision to an architectural artifact it creates, modifies, or is documented in." ;
+                           rdfs:label "has architecture artifact" .
+
+
+###  https://example.com/dd#hasCostEstimate
+dd:hasCostEstimate rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf schema:cost ;
+                   rdfs:domain dd:Decision ;
+                   rdfs:range dd:CostEstimate ;
+                   rdfs:comment "Links a decision to an associated cost estimate." ;
+                   rdfs:label "has cost estimate" .
+
+
+###  https://example.com/dd#hasDecisionTag
+dd:hasDecisionTag rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf schema:about ;
+                  rdfs:domain dd:Decision ;
+                  rdfs:range dd:DecisionTag ;
+                  rdfs:comment "Associates a decision with one or more tags/categories for classification and retrieval." ;
+                  rdfs:label "has decision tag" .
+
+
+###  https://example.com/dd#hasHistoryEntry
+dd:hasHistoryEntry rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf schema:subjectOf ;
+                   rdfs:domain dd:Decision ;
+                   rdfs:range dd:DecisionHistoryEntry ;
+                   rdfs:comment "Links a decision to a history entry recording a change event." ;
+                   rdfs:label "has history entry" .
+
+
+###  https://example.com/dd#hasPreviousVersion
+dd:hasPreviousVersion rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf dd:isRelatedTo ;
+                      owl:inverseOf dd:isSupersededBy ;
+                      rdfs:domain dd:Decision ;
+                      rdfs:range dd:Decision .
+
+
+###  https://example.com/dd#hasRiskAssessment
+dd:hasRiskAssessment rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf schema:risk ;
+                     rdfs:domain dd:Decision ;
+                     rdfs:range dd:RiskAssessment ;
+                     rdfs:comment "Links a decision to a risk assessment about taking that decision." ;
+                     rdfs:label "has risk assessment" .
+
+
+###  https://example.com/dd#hasRiskExposure
+dd:hasRiskExposure rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf schema:additionalProperty ;
+                   rdfs:domain dd:RiskAssessment ;
+                   rdfs:range dd:RiskExposure ;
+                   rdfs:comment "Associates a risk assessment with an exposure level." ;
+                   rdfs:label "has risk exposure" .
+
+
+###  https://example.com/dd#historyActor
+dd:historyActor rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf schema:agent ;
+                rdfs:domain dd:DecisionHistoryEntry ;
+                rdfs:range schema:Person ;
+                rdfs:comment "Agent responsible for the change recorded in a history entry." ;
+                rdfs:label "history actor" .
+
+
+###  https://example.com/dd#isAddressedBy
+dd:isAddressedBy rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain sioc_arg:Issue ;
+                 rdfs:range dd:Decision .
+
+
+###  https://example.com/dd#isConstrainedBy
+dd:isConstrainedBy rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf dd:isRelatedTo ;
+                   rdfs:domain dd:Decision ;
+                   rdfs:range dd:Decision ;
+                   rdfs:comment "Inverse of constrains: indicates a decision is contingent on another decision." ;
+                   rdfs:label "is constrained by" .
+
+
+###  https://example.com/dd#isEnabledBy
+dd:isEnabledBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf dd:isRelatedTo ;
+               rdfs:domain dd:Decision ;
+               rdfs:range dd:Decision ;
+               rdfs:comment "Inverse of enables: indicates a decision is made possible by another decision." ;
+               rdfs:label "is enabled by" .
+
+
+###  https://example.com/dd#isForbiddenBy
+dd:isForbiddenBy rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf dd:isRelatedTo ;
+                 rdfs:domain dd:Decision ;
+                 rdfs:range dd:Decision ;
+                 rdfs:comment "Inverse of forbids: indicates a decision is excluded by another decision." ;
+                 rdfs:label "is forbidden by" .
+
+
+###  https://example.com/dd#isRelatedTo
+dd:isRelatedTo rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf schema:relatedTo ;
+               rdf:type owl:SymmetricProperty ;
+               rdfs:domain dd:Decision ;
+               rdfs:range dd:Decision ;
+               rdfs:comment "Indicates a general relationship between two decisions without committing to a specific dependency type." ;
+               rdfs:label "is related to" .
+
+
+###  https://example.com/dd#isSubsumedBy
+dd:isSubsumedBy rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf dd:isRelatedTo ;
+                owl:inverseOf dd:subsumes ;
+                rdfs:domain dd:Decision ;
+                rdfs:range dd:Decision ;
+                rdfs:comment "Inverse of subsumes: indicates a decision is a narrower part within a broader decision." ;
+                rdfs:label "is subsumed by" .
+
+
+###  https://example.com/dd#isSupersededBy
+dd:isSupersededBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf dd:isRelatedTo ;
+                  rdfs:domain dd:Decision .
+
+
+###  https://example.com/dd#subsumes
+dd:subsumes rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf dd:isRelatedTo ;
+            rdf:type owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty ;
+            rdfs:domain dd:Decision ;
+            rdfs:range dd:Decision ;
+            rdfs:comment "Decision A subsumes decision B: A is broader/more encompassing and B is a narrower part or refinement within A." ;
+            rdfs:label "subsumes" .
+
+
+###  https://schema.org/about
+schema:about rdf:type owl:ObjectProperty .
+
+
+###  https://schema.org/additionalProperty
+schema:additionalProperty rdf:type owl:ObjectProperty .
+
+
+###  https://schema.org/agent
+schema:agent rdf:type owl:ObjectProperty .
+
+
+###  https://schema.org/cost
+schema:cost rdf:type owl:ObjectProperty .
+
+
+###  https://schema.org/mentions
+schema:mentions rdf:type owl:ObjectProperty .
+
+
+###  https://schema.org/relatedTo
+schema:relatedTo rdf:type owl:ObjectProperty .
+
+
+###  https://schema.org/risk
+schema:risk rdf:type owl:ObjectProperty .
+
+
+###  https://schema.org/subjectOf
+schema:subjectOf rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://example.com/dd#hasEpitome
+dd:hasEpitome rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf schema:abstract ;
+              rdfs:domain dd:Decision ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Associates a decision with its short textual summary (epitome)." ;
+              rdfs:label "has epitome" .
+
+
+###  https://example.com/dd#hasImpact
+dd:hasImpact rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf schema:ratingValue ;
+             rdfs:domain dd:RiskAssessment ;
+             rdfs:range xsd:decimal ;
+             rdfs:comment "Numeric impact factor used to compute or justify risk exposure." ;
+             rdfs:label "has impact" .
+
+
+###  https://example.com/dd#hasLikelihood
+dd:hasLikelihood rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf schema:ratingValue ;
+                 rdfs:domain dd:RiskAssessment ;
+                 rdfs:range xsd:decimal ;
+                 rdfs:comment "Numeric likelihood/probability factor used to compute or justify risk exposure." ;
+                 rdfs:label "has likelihood" .
+
+
+###  https://example.com/dd#hasScope
+dd:hasScope rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf schema:description ;
+            rdfs:domain dd:Decision ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Associates a decision with a textual statement of its scope." ;
+            rdfs:label "has scope" .
+
+
+###  https://example.com/dd#hasTimeStamp
+dd:hasTimeStamp rdf:type owl:DatatypeProperty ;
+                rdfs:domain dd:Decision ,
+                            sioc_arg:Argument ,
+                            sioc_arg:Issue ,
+                            sioc_arg:Position .
+
+
+###  https://example.com/dd#historyChangeDescription
+dd:historyChangeDescription rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf schema:description ;
+                            rdfs:domain dd:DecisionHistoryEntry ;
+                            rdfs:range xsd:string ;
+                            rdfs:comment "Text describing what changed in a decision history entry." ;
+                            rdfs:label "history change description" .
+
+
+###  https://schema.org/abstract
+schema:abstract rdf:type owl:DatatypeProperty .
+
+
+###  https://schema.org/description
+schema:description rdf:type owl:DatatypeProperty .
+
+
+###  https://schema.org/ratingValue
+schema:ratingValue rdf:type owl:DatatypeProperty .
+
+
+###  https://schema.org/startTime
+schema:startTime rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  https://example.com/dd#ArchitecturalDesignDecision
+dd:ArchitecturalDesignDecision rdf:type owl:Class ;
+                               rdfs:subClassOf dd:Decision ,
+                                               schema:CreativeWork ;
+                               rdfs:comment "A design decision in the context of software/system architecture; treated as a first-class entity with attributes, relationships, and lifecycle." ;
+                               rdfs:label "Architectural design decision" .
+
+
+###  https://example.com/dd#ArchitectureArtifact
+dd:ArchitectureArtifact rdf:type owl:Class ;
+                        rdfs:subClassOf schema:CreativeWork ;
+                        rdfs:comment "An architectural work product or element (e.g., subsystem, layer, component, connector, view) that a decision introduces, constrains, or documents." ;
+                        rdfs:label "Architecture artifact" .
+
+
+###  https://example.com/dd#ArchitectureView
+dd:ArchitectureView rdf:type owl:Class ;
+                    rdfs:subClassOf dd:ArchitectureArtifact ,
+                                    schema:CreativeWork ;
+                    rdfs:comment "A representation of architecture from a particular viewpoint (e.g., logical view), used to organize and communicate structural/behavioral decisions." ;
+                    rdfs:label "Architecture view" .
+
+
+###  https://example.com/dd#BanDecision
+dd:BanDecision rdf:type owl:Class ;
+               rdfs:subClassOf dd:ExistenceDecision ;
+               rdfs:comment "A decision asserting that some architectural element or artifact will not appear; useful to document rejected/eliminated alternatives that leave no architectural 'hook'." ;
+               rdfs:label "Ban (non-existence) decision" .
+
+
+###  https://example.com/dd#BehavioralDecision
+dd:BehavioralDecision rdf:type owl:Class ;
+                      rdfs:subClassOf dd:ExistenceDecision ;
+                      rdfs:comment "A decision primarily affecting interactions/collaborations among elements (behavior), often to satisfy functionality or quality attributes (including connector choices)." ;
+                      rdfs:label "Behavioral decision" .
+
+
+###  https://example.com/dd#CostEstimate
+dd:CostEstimate rdf:type owl:Class ;
+                rdfs:subClassOf dd:DecisionAttribute ,
+                                schema:MonetaryAmount ;
+                rdfs:comment "A value representing the cost associated with taking a decision, supporting comparison among alternatives." ;
+                rdfs:label "Cost estimate" .
+
+
+###  https://example.com/dd#Decision
+dd:Decision rdf:type owl:Class .
+
+
+###  https://example.com/dd#DecisionAttribute
+dd:DecisionAttribute rdf:type owl:Class ;
+                     rdfs:subClassOf schema:PropertyValue ;
+                     rdfs:comment "An attribute used to describe a decision (e.g., epitome, rationale, scope, state, cost, risk, history)." ;
+                     rdfs:label "Decision attribute" .
+
+
+###  https://example.com/dd#DecisionDependency
+dd:DecisionDependency rdf:type owl:Class ;
+                      rdfs:subClassOf schema:Intangible ;
+                      rdfs:comment "A relationship capturing how one decision affects another (e.g., constrains, forbids, enables, subsumes)." ;
+                      rdfs:label "Decision dependency" .
+
+
+###  https://example.com/dd#DecisionHistoryEntry
+dd:DecisionHistoryEntry rdf:type owl:Class ;
+                        rdfs:subClassOf schema:Action ;
+                        rdfs:comment "A record of a change in a decision over time, typically including timestamp, author/actor, and description of the change." ;
+                        rdfs:label "Decision history entry" .
+
+
+###  https://example.com/dd#DecisionTag
+dd:DecisionTag rdf:type owl:Class ;
+               rdfs:subClassOf skos:Concept ;
+               rdfs:comment "A tag/category assigned to a decision to support classification and later review (e.g., politics, usability, safety, COTS)." ;
+               rdfs:label "Decision tag" .
+
+
+###  https://example.com/dd#Epitome
+dd:Epitome rdf:type owl:Class ;
+           rdfs:subClassOf dd:DecisionAttribute ;
+           rdfs:comment "A short textual summary of a decision." ;
+           rdfs:label "Epitome" .
+
+
+###  https://example.com/dd#ExecutiveDecision
+dd:ExecutiveDecision rdf:type owl:Class ;
+                     rdfs:subClassOf dd:ArchitecturalDesignDecision ;
+                     rdfs:comment "A decision about process, technology, organization, or other executive aspects that shape or constrain architectural choices." ;
+                     rdfs:label "Executive decision" .
+
+
+###  https://example.com/dd#ExistenceDecision
+dd:ExistenceDecision rdf:type owl:Class ;
+                     rdfs:subClassOf dd:ArchitecturalDesignDecision ;
+                     rdfs:comment "A decision asserting that some architectural element or artifact will exist (appear) in the design or implementation." ;
+                     rdfs:label "Existence decision" .
+
+
+###  https://example.com/dd#PoliticalDecisionTag
+dd:PoliticalDecisionTag rdf:type owl:Class ;
+                        rdfs:subClassOf dd:DecisionTag ;
+                        rdfs:comment "A tag indicating a decision was made primarily on political grounds, useful to flag for revisiting when context changes." ;
+                        rdfs:label "Political decision tag" .
+
+
+###  https://example.com/dd#PropertyDecision
+dd:PropertyDecision rdf:type owl:Class ;
+                    rdfs:subClassOf dd:ArchitecturalDesignDecision ;
+                    rdfs:comment "A decision setting a property, rule, or constraint on architectural elements or behavior (e.g., standards, styles, quality-related constraints)." ;
+                    rdfs:label "Property decision" .
+
+
+###  https://example.com/dd#RiskAssessment
+dd:RiskAssessment rdf:type owl:Class ;
+                  rdfs:subClassOf dd:DecisionAttribute ,
+                                  schema:Risk ;
+                  rdfs:comment "An assessment of risk associated with taking a decision, often expressed as exposure derived from impact and likelihood." ;
+                  rdfs:label "Risk assessment" .
+
+
+###  https://example.com/dd#RiskExposure
+dd:RiskExposure rdf:type owl:Class ;
+                rdfs:subClassOf schema:Enumeration ;
+                rdfs:comment "A risk level representing exposure, commonly modeled as a combination of impact and likelihood." ;
+                rdfs:label "Risk exposure" .
+
+
+###  https://example.com/dd#Scope
+dd:Scope rdf:type owl:Class ;
+         rdfs:subClassOf dd:DecisionAttribute ;
+         rdfs:comment "The scope/context over which a decision applies (e.g., subsystem, view, organization boundary)." ;
+         rdfs:label "Scope" .
+
+
+###  https://example.com/dd#StructuralDecision
+dd:StructuralDecision rdf:type owl:Class ;
+                      rdfs:subClassOf dd:ExistenceDecision ;
+                      rdfs:comment "A decision primarily affecting architectural structure (e.g., subsystems, layers, partitions, components) in one or more architecture views." ;
+                      rdfs:label "Structural decision" .
+
+
+###  https://rdfs.org/sioc/argument#Argument
+sioc_arg:Argument rdf:type owl:Class .
+
+
+###  https://rdfs.org/sioc/argument#Evaluation
+sioc_arg:Evaluation rdf:type owl:Class ;
+                    rdfs:subClassOf sioc_arg:Argument .
+
+
+###  https://rdfs.org/sioc/argument#Example
+sioc_arg:Example rdf:type owl:Class ;
+                 rdfs:subClassOf sioc_arg:Argument .
+
+
+###  https://rdfs.org/sioc/argument#Issue
+sioc_arg:Issue rdf:type owl:Class .
+
+
+###  https://rdfs.org/sioc/argument#Justification
+sioc_arg:Justification rdf:type owl:Class ;
+                       rdfs:subClassOf sioc_arg:Argument .
+
+
+###  https://rdfs.org/sioc/argument#Position
+sioc_arg:Position rdf:type owl:Class .
+
+
+###  https://schema.org/Action
+schema:Action rdf:type owl:Class .
+
+
+###  https://schema.org/CreativeWork
+schema:CreativeWork rdf:type owl:Class .
+
+
+###  https://schema.org/Enumeration
+schema:Enumeration rdf:type owl:Class .
+
+
+###  https://schema.org/Intangible
+schema:Intangible rdf:type owl:Class .
+
+
+###  https://schema.org/MonetaryAmount
+schema:MonetaryAmount rdf:type owl:Class .
+
+
+###  https://schema.org/Person
+schema:Person rdf:type owl:Class .
+
+
+###  https://schema.org/PropertyValue
+schema:PropertyValue rdf:type owl:Class .
+
+
+###  https://schema.org/Risk
+schema:Risk rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

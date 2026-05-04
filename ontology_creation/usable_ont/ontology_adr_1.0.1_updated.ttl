@@ -1,0 +1,601 @@
+@prefix : <https://example.com/adr#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <https://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sioc_arg: <https://rdfs.org/sioc/argument#> .
+@base <https://example.com/adr> .
+
+<https://example.com/adr> rdf:type owl:Ontology ;
+                           dcterms:created "2026-05-04T10:45:31.340367+00:00"^^xsd:dateTime ;
+                           dcterms:description "An ontology representing the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and records (ADR). It models abstract concepts such as decisions, rationales, constraints, stakeholders, and their interrelationships to capture the decision-making process in software and system architecture." ;
+                           dcterms:identifier "hash:275b02d3464b2d38bc8ed17b0d9a957237508a01fc33b46a121cbb6a76e1d795" ;
+                           dcterms:title "adr" ;
+                           rdfs:comment "An ontology representing the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and records (ADR). It models abstract concepts such as decisions, rationales, constraints, stakeholders, and their interrelationships to capture the decision-making process in software and system architecture." ;
+                           rdfs:label "Architectural Design Rationale Ontology" ;
+                           owl:versionInfo "1.0.1" ;
+                           prov:wasDerivedFrom <urn:hash:253d54c61deeda22c9a90270e838294597ad326400a6c64b188deff4c0654198> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#broader
+skos:broader rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+###  https://example.com/adr#addresses
+:addresses rdf:type owl:AnnotationProperty ;
+           rdfs:subPropertyOf schema:about .
+
+
+###  https://example.com/adr#constrains
+:constrains rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf schema:constrains .
+
+
+###  https://example.com/adr#enables
+:enables rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf schema:enables .
+
+
+###  https://example.com/adr#forbids
+:forbids rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf schema:excludes .
+
+
+###  https://example.com/adr#hasAlternative
+:hasAlternative rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf schema:alternate .
+
+
+###  https://example.com/adr#hasConstraint
+:hasConstraint rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf schema:subjectOf .
+
+
+###  https://example.com/adr#hasCost
+:hasCost rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf schema:cost .
+
+
+###  https://example.com/adr#hasEpitome
+:hasEpitome rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf schema:name .
+
+
+###  https://example.com/adr#hasHistory
+:hasHistory rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf schema:hasPart .
+
+
+###  https://example.com/adr#hasRationale
+:hasRationale rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf schema:description .
+
+
+###  https://example.com/adr#hasRisk
+:hasRisk rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf schema:risk .
+
+
+###  https://example.com/adr#hasScope
+:hasScope rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf schema:scope .
+
+
+###  https://example.com/adr#hasStakeholder
+:hasStakeholder rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf schema:contributor .
+
+
+###  https://example.com/adr#hasState
+:hasState rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf schema:additionalProperty .
+
+
+###  https://example.com/adr#hasTradeOff
+:hasTradeOff rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf schema:subjectOf .
+
+
+###  https://example.com/adr#implies
+:implies rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf schema:implies .
+
+
+###  https://example.com/adr#subsumes
+:subsumes rdf:type owl:AnnotationProperty ;
+          rdfs:subPropertyOf skos:broader .
+
+
+###  https://example.com/adr#tradeOffWith
+:tradeOffWith rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf schema:relatedTo .
+
+
+###  https://schema.org/about
+schema:about rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/additionalProperty
+schema:additionalProperty rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/alternate
+schema:alternate rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/constrains
+schema:constrains rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/contributor
+schema:contributor rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/cost
+schema:cost rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/enables
+schema:enables rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/excludes
+schema:excludes rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/hasPart
+schema:hasPart rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/implies
+schema:implies rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/name
+schema:name rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/relatedTo
+schema:relatedTo rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/risk
+schema:risk rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/scope
+schema:scope rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/subjectOf
+schema:subjectOf rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://example.com/adr#addresses
+:addresses rdf:type owl:ObjectProperty ;
+           rdfs:domain :ArchitecturalDesignDecision ;
+           rdfs:range :Constraint .
+
+
+###  https://example.com/adr#agrees_with
+:agrees_with rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain schema:Decision ;
+             rdfs:range sioc_arg:Argument .
+
+
+###  https://example.com/adr#constrains
+:constrains rdf:type owl:ObjectProperty ;
+            rdfs:domain :ArchitecturalDesignDecision ;
+            rdfs:range :ArchitecturalDesignDecision .
+
+
+###  https://example.com/adr#decides
+:decides rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:domain schema:Decision ;
+         rdfs:range sioc_arg:Issue .
+
+
+###  https://example.com/adr#disagrees_with
+:disagrees_with rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain schema:Decision ;
+                rdfs:range sioc_arg:Argument .
+
+
+###  https://example.com/adr#enables
+:enables rdf:type owl:ObjectProperty ;
+         rdfs:domain :ArchitecturalDesignDecision ;
+         rdfs:range :ArchitecturalDesignDecision .
+
+
+###  https://example.com/adr#forbids
+:forbids rdf:type owl:ObjectProperty ;
+         rdfs:domain :ArchitecturalDesignDecision ;
+         rdfs:range :ArchitecturalDesignDecision .
+
+
+###  https://example.com/adr#hasAlternative
+:hasAlternative rdf:type owl:ObjectProperty ;
+                rdfs:domain :ArchitecturalDesignDecision ;
+                rdfs:range :Alternative .
+
+
+###  https://example.com/adr#hasAuthor
+:hasAuthor rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain sioc_arg:Argument ,
+                       sioc_arg:Issue ,
+                       schema:Decision ;
+           rdfs:range schema:Person .
+
+
+###  https://example.com/adr#hasConstraint
+:hasConstraint rdf:type owl:ObjectProperty ;
+               rdfs:domain :ArchitecturalDesignDecision ;
+               rdfs:range :Constraint .
+
+
+###  https://example.com/adr#hasCost
+:hasCost rdf:type owl:ObjectProperty ;
+         rdfs:domain :ArchitecturalDesignDecision ;
+         rdfs:range :Cost .
+
+
+###  https://example.com/adr#hasDescription
+:hasDescription rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain sioc_arg:Issue ;
+                rdfs:range :IssueDescription .
+
+
+###  https://example.com/adr#hasHistory
+:hasHistory rdf:type owl:ObjectProperty ;
+            rdfs:domain :ArchitecturalDesignDecision ;
+            rdfs:range :DecisionHistory .
+
+
+###  https://example.com/adr#hasPreviousVersion
+:hasPreviousVersion rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain schema:Decision ;
+                    rdfs:range schema:Decision .
+
+
+###  https://example.com/adr#hasRationale
+:hasRationale rdf:type owl:ObjectProperty ;
+              rdfs:domain :ArchitecturalDesignDecision ;
+              rdfs:range :Rationale .
+
+
+###  https://example.com/adr#hasRisk
+:hasRisk rdf:type owl:ObjectProperty ;
+         rdfs:domain :ArchitecturalDesignDecision ;
+         rdfs:range :Risk .
+
+
+###  https://example.com/adr#hasStakeholder
+:hasStakeholder rdf:type owl:ObjectProperty ;
+                rdfs:domain :ArchitecturalDesignDecision ;
+                rdfs:range :Stakeholder .
+
+
+###  https://example.com/adr#hasState
+:hasState rdf:type owl:ObjectProperty ;
+          rdfs:domain :ArchitecturalDesignDecision ;
+          rdfs:range :DecisionState .
+
+
+###  https://example.com/adr#hasTradeOff
+:hasTradeOff rdf:type owl:ObjectProperty ;
+             rdfs:domain :ArchitecturalDesignDecision ;
+             rdfs:range :TradeOff .
+
+
+###  https://example.com/adr#hasUpdatedVersion
+:hasUpdatedVersion rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain schema:Decision ;
+                   rdfs:range schema:Decision .
+
+
+###  https://example.com/adr#implies
+:implies rdf:type owl:ObjectProperty ;
+         rdfs:domain :ArchitecturalDesignDecision ;
+         rdfs:range :ArchitecturalDesignDecision .
+
+
+###  https://example.com/adr#neutral_towards
+:neutral_towards rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain schema:Decision ;
+                 rdfs:range sioc_arg:Argument .
+
+
+###  https://example.com/adr#subsumes
+:subsumes rdf:type owl:ObjectProperty ;
+          rdfs:domain :ArchitecturalDesignDecision ;
+          rdfs:range :ArchitecturalDesignDecision .
+
+
+###  https://example.com/adr#tradeOffWith
+:tradeOffWith rdf:type owl:ObjectProperty ;
+              rdfs:domain :TradeOff ;
+              rdfs:range :TradeOff .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://example.com/adr#hasEpitome
+:hasEpitome rdf:type owl:DatatypeProperty ;
+            rdfs:domain :ArchitecturalDesignDecision ;
+            rdfs:range xsd:string .
+
+
+###  https://example.com/adr#hasScope
+:hasScope rdf:type owl:DatatypeProperty ;
+          rdfs:domain :ArchitecturalDesignDecision ;
+          rdfs:range xsd:string .
+
+
+###  https://example.com/adr#hasTimeStamp
+:hasTimeStamp rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain sioc_arg:Argument ,
+                          sioc_arg:Issue ,
+                          schema:Decision ;
+              rdfs:range xsd:dateTime .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  https://example.com/adr#Alternative
+:Alternative rdf:type owl:Class ;
+             rdfs:subClassOf schema:Thing ;
+             rdfs:comment "A potential solution or option considered during the decision-making process for an architectural design decision."@en ;
+             rdfs:label "Alternative"@en .
+
+
+###  https://example.com/adr#Anticrisis
+:Anticrisis rdf:type owl:Class ;
+            rdfs:subClassOf :ExistenceDecision ;
+            rdfs:comment "A decision that explicitly forbids the existence of a system element, representing a ban or non-existence constraint."@en ;
+            rdfs:label "Anticrisis"@en .
+
+
+###  https://example.com/adr#ArchitecturalDesignDecision
+:ArchitecturalDesignDecision rdf:type owl:Class ;
+                             rdfs:subClassOf schema:Decision ;
+                             rdfs:comment "A significant decision made during the architectural design process of a software-intensive system, representing a first-class entity in software architecture representation."@en ;
+                             rdfs:label "ArchitecturalDesignDecision"@en .
+
+
+###  https://example.com/adr#Constraint
+:Constraint rdf:type owl:Class ;
+            rdfs:subClassOf schema:Thing ;
+            rdfs:comment "A restriction or condition that limits the design space for architectural decisions, often derived from requirements, standards, or organizational policies."@en ;
+            rdfs:label "Constraint"@en .
+
+
+###  https://example.com/adr#Cost
+:Cost rdf:type owl:Class ;
+      rdfs:subClassOf schema:Thing ;
+      rdfs:comment "The resource expenditure associated with implementing an architectural design decision, including development, acquisition, or operational costs."@en ;
+      rdfs:label "Cost"@en .
+
+
+###  https://example.com/adr#DecisionHistory
+:DecisionHistory rdf:type owl:Class ;
+                 rdfs:subClassOf schema:Thing ;
+                 rdfs:comment "A record of changes to an architectural design decision over time, including timestamps, authors, and modifications."@en ;
+                 rdfs:label "DecisionHistory"@en .
+
+
+###  https://example.com/adr#DecisionState
+:DecisionState rdf:type owl:Class ;
+               rdfs:subClassOf skos:Concept ;
+               rdfs:comment "The state or status of an architectural design decision, such as proposed, accepted, rejected, or deprecated."@en ;
+               rdfs:label "DecisionState"@en .
+
+
+###  https://example.com/adr#ExecutiveDecision
+:ExecutiveDecision rdf:type owl:Class ;
+                   rdfs:subClassOf :ArchitecturalDesignDecision ;
+                   rdfs:comment "A decision that governs the process, technology, or organizational aspects of the system, often involving high-level policy or strategic choices."@en ;
+                   rdfs:label "ExecutiveDecision"@en .
+
+
+###  https://example.com/adr#ExistenceDecision
+:ExistenceDecision rdf:type owl:Class ;
+                   rdfs:subClassOf :ArchitecturalDesignDecision ;
+                   rdfs:comment "A decision that asserts the presence or absence of a system element, such as a component, layer, or connector."@en ;
+                   rdfs:label "ExistenceDecision"@en .
+
+
+###  https://example.com/adr#IssueDescription
+:IssueDescription rdf:type owl:Class ;
+                  rdfs:subClassOf skos:Concept .
+
+
+###  https://example.com/adr#PropertyDecision
+:PropertyDecision rdf:type owl:Class ;
+                  rdfs:subClassOf :ArchitecturalDesignDecision ;
+                  rdfs:comment "A decision that defines or constrains a property or quality attribute of the system, such as performance, security, or usability."@en ;
+                  rdfs:label "PropertyDecision"@en .
+
+
+###  https://example.com/adr#Rationale
+:Rationale rdf:type owl:Class ;
+           rdfs:subClassOf schema:Thing ;
+           rdfs:comment "The justification or reasoning behind an architectural design decision, including trade-offs, constraints, and alternatives considered."@en ;
+           rdfs:label "Rationale"@en .
+
+
+###  https://example.com/adr#Risk
+:Risk rdf:type owl:Class ;
+      rdfs:subClassOf schema:Thing ;
+      rdfs:comment "The potential for negative consequences associated with an architectural design decision, often quantified by exposure (impact and likelihood)."@en ;
+      rdfs:label "Risk"@en .
+
+
+###  https://example.com/adr#Stakeholder
+:Stakeholder rdf:type owl:Class ;
+             rdfs:subClassOf schema:Person ;
+             rdfs:comment "An individual or group with an interest in the outcome of architectural design decisions, such as developers, architects, or end-users."@en ;
+             rdfs:label "Stakeholder"@en .
+
+
+###  https://example.com/adr#TimeStamp
+:TimeStamp rdf:type owl:Class ;
+           rdfs:subClassOf skos:Concept .
+
+
+###  https://example.com/adr#TradeOff
+:TradeOff rdf:type owl:Class ;
+          rdfs:subClassOf schema:Thing ;
+          rdfs:comment "A balancing of competing factors or concerns in architectural design decisions, such as cost, performance, or usability."@en ;
+          rdfs:label "TradeOff"@en .
+
+
+###  https://rdfs.org/sioc/argument#Argument
+sioc_arg:Argument rdf:type owl:Class .
+
+
+###  https://rdfs.org/sioc/argument#Issue
+sioc_arg:Issue rdf:type owl:Class .
+
+
+###  https://schema.org/Decision
+schema:Decision rdf:type owl:Class .
+
+
+###  https://schema.org/Person
+schema:Person rdf:type owl:Class .
+
+
+###  https://schema.org/Thing
+schema:Thing rdf:type owl:Class .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:addresses rdfs:comment "Relates an architectural design decision to a constraint it addresses or satisfies."@en ;
+           rdfs:label "addresses"@en .
+
+
+:constrains rdfs:comment "Indicates that one architectural design decision imposes constraints on another, making the latter contingent upon the former."@en ;
+            rdfs:label "constrains"@en .
+
+
+:enables rdfs:comment "Indicates that one architectural design decision makes another possible, though not mandatory."@en ;
+         rdfs:label "enables"@en .
+
+
+:forbids rdfs:comment "Indicates that one architectural design decision explicitly forbids or excludes another."@en ;
+         rdfs:label "forbids"@en .
+
+
+:hasAlternative rdfs:comment "Relates an architectural design decision to an alternative option considered during its formulation."@en ;
+                rdfs:label "hasAlternative"@en .
+
+
+:hasConstraint rdfs:comment "Relates an architectural design decision to a constraint it must satisfy."@en ;
+               rdfs:label "hasConstraint"@en .
+
+
+:hasCost rdfs:comment "Relates an architectural design decision to its associated cost."@en ;
+         rdfs:label "hasCost"@en .
+
+
+:hasEpitome rdfs:comment "Relates an architectural design decision to a concise summary or epitome of its content."@en ;
+            rdfs:label "hasEpitome"@en .
+
+
+:hasHistory rdfs:comment "Relates an architectural design decision to its history of changes over time."@en ;
+            rdfs:label "hasHistory"@en .
+
+
+:hasRationale rdfs:comment "Relates an architectural design decision to its rationale or justification."@en ;
+              rdfs:label "hasRationale"@en .
+
+
+:hasRisk rdfs:comment "Relates an architectural design decision to its associated risk."@en ;
+         rdfs:label "hasRisk"@en .
+
+
+:hasScope rdfs:comment "Relates an architectural design decision to its scope or domain of applicability."@en ;
+          rdfs:label "hasScope"@en .
+
+
+:hasStakeholder rdfs:comment "Relates an architectural design decision to a stakeholder involved in its formulation or approval."@en ;
+                rdfs:label "hasStakeholder"@en .
+
+
+:hasState rdfs:comment "Relates an architectural design decision to its current state or status."@en ;
+          rdfs:label "hasState"@en .
+
+
+:hasTradeOff rdfs:comment "Relates an architectural design decision to a trade-off it must balance or consider."@en ;
+             rdfs:label "hasTradeOff"@en .
+
+
+:implies rdfs:comment "Indicates that one architectural design decision logically implies or necessitates another."@en ;
+         rdfs:label "implies"@en .
+
+
+:subsumes rdfs:comment "Indicates that one architectural design decision is broader or more encompassing than another."@en ;
+          rdfs:label "subsumes"@en .
+
+
+:tradeOffWith rdfs:comment "Relates two trade-offs that are in conflict or require balancing in architectural design decisions."@en ;
+              rdfs:label "tradeOffWith"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

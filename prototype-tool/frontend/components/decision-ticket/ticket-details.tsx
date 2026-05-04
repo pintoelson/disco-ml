@@ -2,62 +2,47 @@ import { FC } from "react";
 import { DecisionTicket } from "../../lib/types";
 import { Badge } from "../ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { Separator } from "../ui/separator";
-import { Calendar, User, FileText, Link as LinkIcon, AlertCircle, CheckCircle2, XCircle, GitBranch, Clock } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../ui/card";
+import { Calendar, User, FileText, Link as LinkIcon, AlertCircle, GitBranch, MessageSquare } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
 import { ClientOnly } from "../ui/client-only";
-import { formatDate } from "../../lib/utils";
 
 interface Props {
   ticket: DecisionTicket;
 }
 
 export const TicketDetails: FC<Props> = ({ ticket }) => {
-  const version = ticket.versions[ticket.currentVersionIndex];
-
-  const statusColors: Record<string, string> = {
-    draft: "bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300",
-    proposed: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-    accepted: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-    rejected: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
-    deprecated: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    Decided: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-    open: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-    closed: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-    idea: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-  };
-
   return (
-    <div className="flex flex-col h-full max-h-[80vh]">
-      <DialogHeader className="mb-4">
+    <div className="flex flex-col h-full max-h-[85vh]">
+      <DialogHeader className="mb-6">
         <div className="flex items-start justify-between">
-          <div>
-            <DialogTitle className="text-xl font-bold flex items-center gap-2">
-              {ticket.title}
-              <Badge className={`ml-2 ${statusColors[ticket.status]}`}>{ticket.status}</Badge>
-            </DialogTitle>
-            <DialogDescription className="text-sm text-gray-500 mt-1 flex items-center gap-2">
-              <span className="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded">{ticket.id}</span>
-              {ticket.createdAt && (
-                <>
-                  <span>•</span>
-                  <span>{formatDate(ticket.createdAt)}</span>
-                </>
-              )}
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <ClientOnly fallback={<div className="w-3 h-3" />}>
-                  <User className="w-3 h-3" />
-                </ClientOnly>
-                {ticket.owner.name}
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="font-mono text-xs font-bold bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-2 py-1 rounded">
+                #{ticket.id}
               </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <ClientOnly fallback={<div className="w-3 h-3" />}>
-                  <Calendar className="w-3 h-3" />
+              <Badge variant="outline" className="text-xs uppercase tracking-wider font-semibold border-blue-200 text-blue-700">
+                {ticket.status}
+              </Badge>
+              <Badge className="text-xs bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400">
+                {ticket.bucket}
+              </Badge>
+            </div>
+            <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+              {ticket.title}
+            </DialogTitle>
+            <DialogDescription className="text-sm text-gray-500 mt-2 flex items-center gap-4 flex-wrap">
+              <span className="flex items-center gap-1.5">
+                <ClientOnly fallback={<div className="w-3.5 h-3.5" />}>
+                  <Calendar className="w-3.5 h-3.5" />
                 </ClientOnly>
-                Updated {ticket.updatedAt}
+                {ticket.createdAt ? new Date(ticket.createdAt).toLocaleString() : "Unknown date"}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <ClientOnly fallback={<div className="w-3.5 h-3.5" />}>
+                  <User className="w-3.5 h-3.5" />
+                </ClientOnly>
+                {ticket.author}
               </span>
             </DialogDescription>
           </div>
@@ -65,160 +50,133 @@ export const TicketDetails: FC<Props> = ({ ticket }) => {
       </DialogHeader>
 
       <Tabs defaultValue="overview" className="flex-1 overflow-hidden flex flex-col">
-        <TabsList className="grid w-full grid-cols-4 mb-4">
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="arguments">Arguments</TabsTrigger>
-          <TabsTrigger value="artifacts">Artifacts</TabsTrigger>
-          <TabsTrigger value="graph">Graph View</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-3 mb-6 bg-gray-100 dark:bg-gray-800/50 p-1 p-1 rounded-lg">
+          <TabsTrigger value="overview" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 shadow-sm">Overview</TabsTrigger>
+          <TabsTrigger value="arguments" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 shadow-sm">
+            Arguments ({ticket.arguments?.length || 0})
+          </TabsTrigger>
+          <TabsTrigger value="history" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 shadow-sm">History</TabsTrigger>
         </TabsList>
 
-        <div className="flex-1 overflow-y-auto pr-2 space-y-4">
+        <div className="flex-1 overflow-y-auto pr-2 space-y-6">
           {/* Overview Tab */}
-          <TabsContent value="overview" className="mt-0 space-y-4">
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-base font-medium flex items-center gap-2">
+          <TabsContent value="overview" className="mt-0 space-y-6">
+            <div className="grid grid-cols-1 gap-6">
+              <Card className="border-blue-100 dark:border-blue-900/50 shadow-sm">
+                <CardHeader className="pb-3 bg-blue-50/30 dark:bg-blue-900/10">
+                  <CardTitle className="text-sm font-semibold flex items-center gap-2 text-blue-800 dark:text-blue-300">
+                    <ClientOnly fallback={<div className="w-4 h-4" />}>
+                      <GitBranch className="w-4 h-4" />
+                    </ClientOnly>
+                    Decision Summary
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-4">
+                  <p className="text-base text-gray-800 dark:text-gray-200 leading-relaxed font-medium">
+                    {ticket.decision}
+                  </p>
+                </CardContent>
+              </Card>
+
+              <div className="space-y-3">
+                <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2 uppercase tracking-wide">
                   <ClientOnly fallback={<div className="w-4 h-4" />}>
-                    <GitBranch className="w-4 h-4 text-blue-500" />
+                    <AlertCircle className="w-4 h-4 text-orange-500" />
                   </ClientOnly>
-                  Current Decision (v{version.versionId})
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
-                  {version.decision}
-                </p>
-              </CardContent>
-            </Card>
-
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
-                <ClientOnly fallback={<div className="w-4 h-4" />}>
-                  <FileText className="w-4 h-4" />
-                </ClientOnly>
-                Rationale
-              </h3>
-              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg border text-sm text-gray-600 dark:text-gray-400">
-                {version.rationale}
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Context</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                {version.context}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="space-y-2 p-3 bg-blue-50/50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-lg">
-                <h3 className="text-sm font-semibold text-blue-900 dark:text-blue-100 flex items-center gap-2">
-                   Cost
+                  Rationale
                 </h3>
-                <p className="text-sm text-blue-800/80 dark:text-blue-200/80">
-                  {version.cost || "No cost data available"}
-                </p>
+                <div className="bg-gray-50 dark:bg-gray-900/30 p-4 rounded-xl border border-gray-200 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 leading-relaxed italic">
+                  {ticket.rationale}
+                </div>
               </div>
-              <div className="space-y-2 p-3 bg-orange-50/50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-900/30 rounded-lg">
-                <h3 className="text-sm font-semibold text-orange-900 dark:text-orange-100 flex items-center gap-2">
-                  Risk
+
+              <div className="space-y-3">
+                <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2 uppercase tracking-wide">
+                  <ClientOnly fallback={<div className="w-4 h-4" />}>
+                    <FileText className="w-4 h-4 text-gray-500" />
+                  </ClientOnly>
+                  Context & Constraints
                 </h3>
-                <p className="text-sm text-orange-800/80 dark:text-orange-200/80">
-                  {version.risk || "No risk data available"}
-                </p>
+                <div className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-wrap">
+                  {ticket.description}
+                </div>
               </div>
             </div>
           </TabsContent>
 
           {/* Arguments Tab */}
-          <TabsContent value="arguments" className="mt-0 space-y-3">
-            {version.arguments.length === 0 ? (
-              <div className="text-center py-8 text-gray-500 text-sm">No arguments recorded yet.</div>
-            ) : (
-              version.arguments.map((arg) => (
-                <div
-                  key={arg.id}
-                  className={`flex gap-3 p-3 rounded-lg border ${arg.type === 'supports'
-                    ? 'bg-green-50/50 border-green-100 dark:bg-green-900/10 dark:border-green-900/30'
-                    : 'bg-red-50/50 border-red-100 dark:bg-red-900/10 dark:border-red-900/30'
-                    }`}
-                >
-                  <div className="mt-0.5">
-                    {arg.type === 'supports' ? (
-                      <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
-                    ) : (
-                      <XCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
-                    )}
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-800 dark:text-gray-200">{arg.content}</p>
-                    <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
-                      <ClientOnly fallback={<div className="w-3 h-3" />}>
-                        <User className="w-3 h-3" />
-                      </ClientOnly>
-                      {arg.author} {arg.createdAt && `• ${formatDate(arg.createdAt)}`}
-                    </p>
-                  </div>
-                </div>
-              ))
-            )}
-          </TabsContent>
-
-          {/* Artifacts Tab */}
-          <TabsContent value="artifacts" className="mt-0 h-full">
-            {version.artifacts.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-12 text-gray-500 gap-2">
-                <ClientOnly fallback={<div className="w-8 h-8" />}>
-                  <AlertCircle className="w-8 h-8 opacity-50" />
-                </ClientOnly>
-                <p className="text-sm">No artifacts linked to this version.</p>
+          <TabsContent value="arguments" className="mt-0 space-y-4">
+            {!ticket.arguments || ticket.arguments.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-16 text-gray-400 gap-2">
+                <MessageSquare className="w-8 h-8 opacity-20" />
+                <p className="text-sm">No argumentation data captured for this decision.</p>
               </div>
             ) : (
-              <div className="grid gap-2">
-                {version.artifacts.map((art) => (
-                  <a
-                    key={art.id}
-                    href={art.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-md border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group"
+              <div className="space-y-3">
+                {ticket.arguments.map((arg, index) => (
+                  <div
+                    key={arg.id || index}
+                    className={`flex gap-4 p-4 rounded-xl border transition-all ${
+                      arg.type === 'supports' ? 'bg-green-50/50 border-green-100 dark:bg-green-900/10 dark:border-green-900/30' :
+                      arg.type === 'opposes' ? 'bg-red-50/50 border-red-100 dark:bg-red-900/10 dark:border-red-900/30' :
+                      'bg-gray-50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700'
+                    }`}
                   >
-                    <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded text-blue-600 dark:text-blue-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/40 transition-colors">
-                      <ClientOnly fallback={<div className="w-4 h-4" />}>
-                        <LinkIcon className="w-4 h-4" />
-                      </ClientOnly>
+                    <div className="mt-1">
+                      {arg.type === 'supports' ? (
+                        <div className="p-1.5 bg-green-100 dark:bg-green-900/50 rounded-full">
+                          <GitBranch className="w-4 h-4 text-green-600 dark:text-green-400" />
+                        </div>
+                      ) : arg.type === 'opposes' ? (
+                        <div className="p-1.5 bg-red-100 dark:bg-red-900/50 rounded-full">
+                          <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400" />
+                        </div>
+                      ) : (
+                        <div className="p-1.5 bg-gray-200 dark:bg-gray-700 rounded-full">
+                          <MessageSquare className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                        </div>
+                      )}
                     </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{art.name}</p>
-                      <p className="text-xs text-gray-500 uppercase tracking-wider">{art.type}</p>
+                    <div className="space-y-2 flex-1">
+                      <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed font-medium">
+                        {arg.content}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-1.5">
+                            <User className="w-3 h-3" />
+                            {arg.author}
+                          </span>
+                          {arg.createdAt && (
+                            <span className="text-xs text-gray-500 flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              {new Date(arg.createdAt).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}
+                            </span>
+                          )}
+                        </div>
+                        <Badge variant="outline" className="text-[10px] uppercase font-bold py-0 h-4">
+                          {arg.type}
+                        </Badge>
+                      </div>
                     </div>
-                  </a>
+                  </div>
                 ))}
               </div>
             )}
           </TabsContent>
 
-          {/* Graph View Tab */}
-          <TabsContent value="graph" className="mt-0 h-full">
-            <div className="flex flex-col items-center justify-center py-12 text-gray-500 gap-4">
+          {/* History Tab */}
+          <TabsContent value="history" className="mt-0">
+             <div className="flex flex-col items-center justify-center py-16 text-gray-500 gap-4">
               <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-full">
-                <ClientOnly fallback={<div className="w-8 h-8" />}>
-                  <GitBranch className="w-8 h-8 opacity-50" />
-                </ClientOnly>
+                <GitBranch className="w-8 h-8 opacity-40" />
               </div>
-              <div className="text-center space-y-2">
-                <p className="font-medium text-gray-900 dark:text-gray-100">Decision Graph Visualization</p>
-                <p className="text-sm max-w-xs mx-auto">
-                  Explore the full decision knowledge graph and its evolution history.
+              <div className="text-center space-y-1">
+                <p className="font-semibold text-gray-900 dark:text-gray-100">Decision Provenance</p>
+                <p className="text-sm text-gray-500 max-w-xs mx-auto">
+                  Version history and diffs are coming soon. This decision is currently on version <b>{ticket.versions[0]?.versionId.split('_v').pop()}</b>.
                 </p>
               </div>
-              <a
-                href="#"
-                className="mt-2 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium transition-colors"
-              >
-                View Graph History
-                <LinkIcon className="w-4 h-4" />
-              </a>
             </div>
           </TabsContent>
         </div>

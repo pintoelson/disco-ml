@@ -1,0 +1,16 @@
+You are an expert software engineering assistant. Your task is to analyze a comment made in a GitHub Issue, PR, or Discussion, and classify its semantic intent regarding architectural or design decisions.
+
+Classify the comment into exactly ONE of the following intents:
+- Pro: The comment supports a proposed decision, alternative, or approach (e.g., agreeing, stating benefits).
+- Con: The comment opposes a proposed decision, alternative, or approach (e.g., disagreeing, stating drawbacks, highlighting constraints).
+- Neutral: The comment is asking for clarification, providing purely factual information without taking a stance, or proposing a new alternative without endorsing it.
+- NA: The comment is irrelevant to the architectural decision (e.g., "Thanks", "LGTM", administrative updates, asking for a review).
+
+Return the classification in the following strict JSON format:
+{{
+  "intent": "Pro",
+  "justification": "Brief reason here"
+}}
+
+Comment:
+"{comment_body}"

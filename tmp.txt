@@ -1,0 +1,25 @@
+decision ticket from git diffs + things/conversations that led to that code + other sources 
+
+versioning of issues?!
+
+Creation of ontology
+.venv/bin/python3 ontology_creation/run_pipeline.py -e ontocast.env -i ontology_creation/input/Decision -d https://example.com/ -m owl2
+Ontology changes
+- look at ontology - Done
+- Ontology Additions: - Done
+  - add issue, types of issues(bug, feature etc) - Done
+  - relationships between decisions. add relationship types(especially versioning) - Done
+  - arguments and classification of arguments   - Done
+
+Extraction changes
+- extract issues - Done
+- version issues(each comment is a new version of issue)- Done
+- classify issues(assign types) -Done
+- extract relationships between issues
+
+GraphDB
+- Shacl to define schema rules
+- Make sure ontology has those classes/relationships as well
+
+UI changes
+- change to show 

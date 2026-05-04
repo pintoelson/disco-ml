@@ -17,9 +17,9 @@ export const TicketTable: FC<Props> = ({ tickets }) => (
     <tbody>
       {tickets.map((t) => (
         <tr key={t.id} className="hover:bg-gray-100">
-          <td className="border px-4 py-2">{t.title}</td>
-          <td className="border px-4 py-2">{t.decision}</td>
-          <td className="border px-4 py-2">{t.timestamp}</td>
+          <td className="border px-4 py-2">{t.issue?.label}</td>
+          <td className="border px-4 py-2">{t.decision?.label}</td>
+          <td className="border px-4 py-2">{t.issue?.timestamp}</td>
         </tr>
       ))}
     </tbody>

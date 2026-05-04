@@ -1,0 +1,182 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.com/adr> a owl:Ontology ;
+    rdfs:label "Architectural Design Rationale Ontology" ;
+    dcterms:created "2026-05-04T10:45:31.340367+00:00"^^xsd:dateTime ;
+    dcterms:description "An ontology representing the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and records (ADR). It models abstract concepts such as decisions, rationales, constraints, stakeholders, and their interrelationships to capture the decision-making process in software and system architecture." ;
+    dcterms:identifier "hash:275b02d3464b2d38bc8ed17b0d9a957237508a01fc33b46a121cbb6a76e1d795" ;
+    dcterms:title "adr" ;
+    rdfs:comment "An ontology representing the rationale, trade-offs, and lineage of Architectural Design Decisions (ADD) and records (ADR). It models abstract concepts such as decisions, rationales, constraints, stakeholders, and their interrelationships to capture the decision-making process in software and system architecture." ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasDerivedFrom <urn:hash:253d54c61deeda22c9a90270e838294597ad326400a6c64b188deff4c0654198> .
+
+<https://example.com/adr#Anticrisis> rdfs:label "Anticrisis"@en ;
+    rdfs:comment "A decision that explicitly forbids the existence of a system element, representing a ban or non-existence constraint."@en ;
+    rdfs:subClassOf <https://example.com/adr#ExistenceDecision> .
+
+<https://example.com/adr#ExecutiveDecision> rdfs:label "ExecutiveDecision"@en ;
+    rdfs:comment "A decision that governs the process, technology, or organizational aspects of the system, often involving high-level policy or strategic choices."@en ;
+    rdfs:subClassOf <https://example.com/adr#ArchitecturalDesignDecision> .
+
+<https://example.com/adr#PropertyDecision> rdfs:label "PropertyDecision"@en ;
+    rdfs:comment "A decision that defines or constrains a property or quality attribute of the system, such as performance, security, or usability."@en ;
+    rdfs:subClassOf <https://example.com/adr#ArchitecturalDesignDecision> .
+
+<https://example.com/adr#addresses> rdfs:label "addresses"@en ;
+    rdfs:comment "Relates an architectural design decision to a constraint it addresses or satisfies."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#Constraint> ;
+    rdfs:subPropertyOf schema:about .
+
+<https://example.com/adr#constrains> rdfs:label "constrains"@en ;
+    rdfs:comment "Indicates that one architectural design decision imposes constraints on another, making the latter contingent upon the former."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:subPropertyOf schema:constrains .
+
+<https://example.com/adr#enables> rdfs:label "enables"@en ;
+    rdfs:comment "Indicates that one architectural design decision makes another possible, though not mandatory."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:subPropertyOf schema:enables .
+
+<https://example.com/adr#forbids> rdfs:label "forbids"@en ;
+    rdfs:comment "Indicates that one architectural design decision explicitly forbids or excludes another."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:subPropertyOf schema:excludes .
+
+<https://example.com/adr#hasAlternative> rdfs:label "hasAlternative"@en ;
+    rdfs:comment "Relates an architectural design decision to an alternative option considered during its formulation."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#Alternative> ;
+    rdfs:subPropertyOf schema:alternate .
+
+<https://example.com/adr#hasConstraint> rdfs:label "hasConstraint"@en ;
+    rdfs:comment "Relates an architectural design decision to a constraint it must satisfy."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#Constraint> ;
+    rdfs:subPropertyOf schema:subjectOf .
+
+<https://example.com/adr#hasCost> rdfs:label "hasCost"@en ;
+    rdfs:comment "Relates an architectural design decision to its associated cost."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#Cost> ;
+    rdfs:subPropertyOf schema:cost .
+
+<https://example.com/adr#hasEpitome> rdfs:label "hasEpitome"@en ;
+    rdfs:comment "Relates an architectural design decision to a concise summary or epitome of its content."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:name .
+
+<https://example.com/adr#hasHistory> rdfs:label "hasHistory"@en ;
+    rdfs:comment "Relates an architectural design decision to its history of changes over time."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#DecisionHistory> ;
+    rdfs:subPropertyOf schema:hasPart .
+
+<https://example.com/adr#hasRationale> rdfs:label "hasRationale"@en ;
+    rdfs:comment "Relates an architectural design decision to its rationale or justification."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#Rationale> ;
+    rdfs:subPropertyOf schema:description .
+
+<https://example.com/adr#hasRisk> rdfs:label "hasRisk"@en ;
+    rdfs:comment "Relates an architectural design decision to its associated risk."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#Risk> ;
+    rdfs:subPropertyOf schema:risk .
+
+<https://example.com/adr#hasScope> rdfs:label "hasScope"@en ;
+    rdfs:comment "Relates an architectural design decision to its scope or domain of applicability."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:scope .
+
+<https://example.com/adr#hasStakeholder> rdfs:label "hasStakeholder"@en ;
+    rdfs:comment "Relates an architectural design decision to a stakeholder involved in its formulation or approval."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#Stakeholder> ;
+    rdfs:subPropertyOf schema:contributor .
+
+<https://example.com/adr#hasState> rdfs:label "hasState"@en ;
+    rdfs:comment "Relates an architectural design decision to its current state or status."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#DecisionState> ;
+    rdfs:subPropertyOf schema:additionalProperty .
+
+<https://example.com/adr#hasTradeOff> rdfs:label "hasTradeOff"@en ;
+    rdfs:comment "Relates an architectural design decision to a trade-off it must balance or consider."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#TradeOff> ;
+    rdfs:subPropertyOf schema:subjectOf .
+
+<https://example.com/adr#implies> rdfs:label "implies"@en ;
+    rdfs:comment "Indicates that one architectural design decision logically implies or necessitates another."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:subPropertyOf schema:implies .
+
+<https://example.com/adr#subsumes> rdfs:label "subsumes"@en ;
+    rdfs:comment "Indicates that one architectural design decision is broader or more encompassing than another."@en ;
+    rdfs:domain <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:range <https://example.com/adr#ArchitecturalDesignDecision> ;
+    rdfs:subPropertyOf skos:broader .
+
+<https://example.com/adr#tradeOffWith> rdfs:label "tradeOffWith"@en ;
+    rdfs:comment "Relates two trade-offs that are in conflict or require balancing in architectural design decisions."@en ;
+    rdfs:domain <https://example.com/adr#TradeOff> ;
+    rdfs:range <https://example.com/adr#TradeOff> ;
+    rdfs:subPropertyOf schema:relatedTo .
+
+<https://example.com/adr#Alternative> rdfs:label "Alternative"@en ;
+    rdfs:comment "A potential solution or option considered during the decision-making process for an architectural design decision."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/adr#Cost> rdfs:label "Cost"@en ;
+    rdfs:comment "The resource expenditure associated with implementing an architectural design decision, including development, acquisition, or operational costs."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/adr#DecisionHistory> rdfs:label "DecisionHistory"@en ;
+    rdfs:comment "A record of changes to an architectural design decision over time, including timestamps, authors, and modifications."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/adr#DecisionState> rdfs:label "DecisionState"@en ;
+    rdfs:comment "The state or status of an architectural design decision, such as proposed, accepted, rejected, or deprecated."@en ;
+    rdfs:subClassOf skos:Concept .
+
+<https://example.com/adr#ExistenceDecision> rdfs:label "ExistenceDecision"@en ;
+    rdfs:comment "A decision that asserts the presence or absence of a system element, such as a component, layer, or connector."@en ;
+    rdfs:subClassOf <https://example.com/adr#ArchitecturalDesignDecision> .
+
+<https://example.com/adr#Rationale> rdfs:label "Rationale"@en ;
+    rdfs:comment "The justification or reasoning behind an architectural design decision, including trade-offs, constraints, and alternatives considered."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/adr#Risk> rdfs:label "Risk"@en ;
+    rdfs:comment "The potential for negative consequences associated with an architectural design decision, often quantified by exposure (impact and likelihood)."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/adr#Stakeholder> rdfs:label "Stakeholder"@en ;
+    rdfs:comment "An individual or group with an interest in the outcome of architectural design decisions, such as developers, architects, or end-users."@en ;
+    rdfs:subClassOf schema:Person .
+
+<https://example.com/adr#Constraint> rdfs:label "Constraint"@en ;
+    rdfs:comment "A restriction or condition that limits the design space for architectural decisions, often derived from requirements, standards, or organizational policies."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/adr#TradeOff> rdfs:label "TradeOff"@en ;
+    rdfs:comment "A balancing of competing factors or concerns in architectural design decisions, such as cost, performance, or usability."@en ;
+    rdfs:subClassOf schema:Thing .
+
+<https://example.com/adr#ArchitecturalDesignDecision> rdfs:label "ArchitecturalDesignDecision"@en ;
+    rdfs:comment "A significant decision made during the architectural design process of a software-intensive system, representing a first-class entity in software architecture representation."@en ;
+    rdfs:subClassOf schema:Decision .
+

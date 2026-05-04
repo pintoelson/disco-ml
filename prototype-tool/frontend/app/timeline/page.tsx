@@ -1,41 +1,46 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Link from "next/link";
-import { mockTickets } from "../../lib/mock-data";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
+import { DecisionTicket } from "../../lib/types";
+import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import {
-  ArrowLeft,
   Clock,
-  GitBranch,
   User,
   Scale,
-  Tag,
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
 import { ClientOnly } from "../../components/ui/client-only";
 
 const TimelinePage: FC = () => {
-  const sortedTickets = [...mockTickets].sort(
-    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-  );
+  const [tickets, setTickets] = useState<DecisionTicket[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const statusColors: Record<string, string> = {
-    draft: "bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300",
-    proposed: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-    accepted: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-    rejected: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
-    deprecated: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-  };
+  useEffect(() => {
+    fetch("http://localhost:8000/data/tickets")
+      .then((res) => res.json())
+      .then((resData) => {
+        if (resData.status === "ok") {
+          const sorted = resData.data.sort(
+            (a: DecisionTicket, b: DecisionTicket) => 
+              new Date(b.issue?.timestamp || 0).getTime() - new Date(a.issue?.timestamp || 0).getTime()
+          );
+          setTickets(sorted);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch tickets", err);
+        setLoading(false);
+      });
+  }, []);
 
-  const bucketColors: Record<string, string> = {
-    "Model Training": "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-    "Model Evaluation": "bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-    "Model Deployment": "bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
-  };
+  if (loading) {
+    return <div className="p-6 text-center">Loading timeline...</div>;
+  }
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
@@ -49,26 +54,9 @@ const TimelinePage: FC = () => {
       <div className="relative">
         <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
         <div className="space-y-6">
-          {sortedTickets.map((ticket, index) => {
-            const version = ticket.versions[ticket.currentVersionIndex];
-            const supportCount = version.arguments.filter(
-              (a) => a.type === "supports"
-            ).length;
-            const opposeCount = version.arguments.filter(
-              (a) => a.type === "opposes"
-            ).length;
-
-            return (
-              <TimelineCard
-                key={ticket.id}
-                ticket={ticket}
-                supportCount={supportCount}
-                opposeCount={opposeCount}
-                statusColors={statusColors}
-                bucketColors={bucketColors}
-              />
-            );
-          })}
+          {tickets.map((ticket) => (
+            <TimelineCard key={ticket.id} ticket={ticket} />
+          ))}
         </div>
       </div>
     </div>
@@ -76,22 +64,11 @@ const TimelinePage: FC = () => {
 };
 
 interface TimelineCardProps {
-  ticket: typeof mockTickets[0];
-  supportCount: number;
-  opposeCount: number;
-  statusColors: Record<string, string>;
-  bucketColors: Record<string, string>;
+  ticket: DecisionTicket;
 }
 
-const TimelineCard: FC<TimelineCardProps> = ({
-  ticket,
-  supportCount,
-  opposeCount,
-  statusColors,
-  bucketColors,
-}) => {
+const TimelineCard: FC<TimelineCardProps> = ({ ticket }) => {
   const [expanded, setExpanded] = useState(false);
-  const reversedVersions = [...ticket.versions].reverse();
 
   return (
     <div className="relative">
@@ -101,31 +78,24 @@ const TimelineCard: FC<TimelineCardProps> = ({
           <div className="flex justify-between items-start">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <Badge className={`text-xs ${bucketColors[ticket.bucket]}`}>
-                  {ticket.bucket}
-                </Badge>
-                <Badge className={`${statusColors[ticket.status]}`}>
-                  {ticket.status}
-                </Badge>
+                {ticket.issue?.phase && (
+                  <Badge className="text-xs bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                    {ticket.issue.phase.split("#").pop()}
+                  </Badge>
+                )}
               </div>
               <Link
                 href={`/ticket/${ticket.id}`}
                 className="text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400"
               >
-                {ticket.id}: {ticket.title}
+                {ticket.id}: {ticket.issue?.label}
               </Link>
               <div className="flex items-center gap-4 mt-2 text-sm text-gray-500 dark:text-gray-400">
                 <div className="flex items-center gap-1">
                   <ClientOnly fallback={<div className="w-4 h-4" />}>
                     <Clock className="w-4 h-4" />
                   </ClientOnly>
-                  <span>Updated {ticket.updatedAt}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <ClientOnly fallback={<div className="w-4 h-4" />}>
-                    <GitBranch className="w-4 h-4" />
-                  </ClientOnly>
-                  <span>{ticket.versions.length} version{ticket.versions.length > 1 ? "s" : ""}</span>
+                  <span>{ticket.issue?.timestamp}</span>
                 </div>
               </div>
             </div>
@@ -147,19 +117,8 @@ const TimelineCard: FC<TimelineCardProps> = ({
         </CardHeader>
         <CardContent>
           <p className="text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
-            {ticket.versions[ticket.currentVersionIndex].rationale}
+            {ticket.decision?.label}
           </p>
-
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            {ticket.tags.map((tag) => (
-              <Badge key={tag} variant="outline" className="text-xs dark:border-gray-600 dark:text-gray-400">
-                <ClientOnly fallback={<div className="w-3 h-3 mr-1" />}>
-                  <Tag className="w-3 h-3 mr-1" />
-                </ClientOnly>
-                {tag}
-              </Badge>
-            ))}
-          </div>
 
           <div className="flex items-center justify-between pt-2 border-t dark:border-gray-700">
             <div className="flex items-center gap-4">
@@ -167,18 +126,16 @@ const TimelineCard: FC<TimelineCardProps> = ({
                 <ClientOnly fallback={<div className="w-4 h-4" />}>
                   <User className="w-4 h-4 text-gray-400" />
                 </ClientOnly>
-                <span className="text-sm text-gray-600 dark:text-gray-400">{ticket.owner.name}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  {ticket.issue?.author?.split("#").pop() || "Unknown Author"}
+                </span>
               </div>
               <div className="flex items-center gap-1">
                 <ClientOnly fallback={<div className="w-4 h-4" />}>
                   <Scale className="w-4 h-4 text-gray-400" />
                 </ClientOnly>
-                <span className="text-sm text-green-600 dark:text-green-400">
-                  {supportCount} supports
-                </span>
-                <span className="mx-1 text-gray-300 dark:text-gray-600">•</span>
-                <span className="text-sm text-red-600 dark:text-red-400">
-                  {opposeCount} opposes
+                <span className="text-sm text-blue-600 dark:text-blue-400">
+                  {ticket.arguments?.length || 0} arguments
                 </span>
               </div>
             </div>
@@ -189,41 +146,25 @@ const TimelineCard: FC<TimelineCardProps> = ({
             </Link>
           </div>
 
-          {expanded && (
+          {expanded && ticket.arguments && ticket.arguments.length > 0 && (
             <div className="mt-4 pt-4 border-t dark:border-gray-700">
               <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                Version History
+                Arguments
               </h4>
               <div className="space-y-3">
-                {reversedVersions.map((version, idx) => (
+                {ticket.arguments.map((arg, idx) => (
                   <div
-                    key={version.versionId}
-                    className={`p-3 rounded-lg border ${
-                      idx === 0
-                        ? "border-blue-300 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-700"
-                        : "border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50"
-                    }`}
+                    key={idx}
+                    className="p-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50"
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center gap-2">
-                        <span className="font-semibold text-sm text-gray-900 dark:text-gray-100">
-                          v{version.versionId}
-                        </span>
-                        {idx === 0 && (
-                          <Badge variant="secondary" className="text-xs">
-                            Current
-                          </Badge>
-                        )}
-                      </div>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">
-                        {ticket.versions.findIndex(v => v.versionId === version.versionId) === 0
-                          ? "Latest"
-                          : `← v${version.parentVersionId}`}
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {arg.comment}
+                    </p>
+                    <div className="mt-1 flex items-center justify-between">
+                      <span className="text-xs text-gray-500 dark:text-gray-500">
+                        {arg.author?.split("#").pop()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {version.decision}
-                    </p>
                   </div>
                 ))}
               </div>

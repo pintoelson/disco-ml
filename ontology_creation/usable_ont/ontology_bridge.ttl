@@ -1,0 +1,59 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dd: <https://example.com/dd#> .
+@prefix mlops: <https://example.com/mlops#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sioc_arg: <https://rdfs.org/sioc/argument#> .
+@prefix bridge: <https://example.com/decision-bridge#> .
+
+<https://example.com/decision-bridge> a owl:Ontology ;
+    rdfs:label "MLOps-Decision Bridge Ontology" ;
+    rdfs:comment "A mediation layer connecting decision-making entities to MLOps lifecycle artifacts and phases." ;
+    owl:imports <https://example.com/dd> , 
+                <https://example.com/mlops> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  bridge:occursInPhase
+bridge:occursInPhase a owl:ObjectProperty ;
+    rdfs:domain dd:Issue ;
+    rdfs:range mlops:MLOLifecycleStage ;
+    rdfs:label "occurs in phase" ;
+    rdfs:comment "Relates a decision issue to the specific MLOps lifecycle phase where the need for a decision was identified." .
+
+###  bridge:governsArtifact
+bridge:governsArtifact a owl:ObjectProperty ;
+    rdfs:domain dd:Decision ;
+    rdfs:range prov:Entity ;
+    rdfs:label "governs artifact" ;
+    rdfs:comment "Connects a finalized decision to the technical MLOps artifact (e.g., Model, Dataset, Config) that is affected by said decision." .
+
+###  bridge:isTriggeredBy
+bridge:isTriggeredBy a owl:ObjectProperty ;
+    rdfs:domain dd:Issue ;
+    rdfs:range prov:Activity ;
+    rdfs:label "is triggered by" ;
+    rdfs:comment "Formalizes the link between an operational event (e.g., Data Drift) and the start of a decision-making process." .
+
+###  bridge:isTriggeredBy
+bridge:hasAuthor a owl:ObjectProperty ;
+    rdfs:domain sioc_arg:Issue ;
+    rdfs:range prov:Agent ;
+    rdfs:label "is authored by" ;
+    rdfs:comment "Relates a decision issue to the author who created it." .
+
+bridge:hasAuthor a owl:ObjectProperty ;
+    rdfs:domain sioc_arg:Position ;
+    rdfs:range prov:Agent ;
+    rdfs:label "is authored by" ;
+    rdfs:comment "Relates a decision issue to the author who created it." .
+
+bridge:hasAuthor a owl:ObjectProperty ;
+    rdfs:domain sioc_arg:Argument ;
+    rdfs:range prov:Agent ;
+    rdfs:label "is authored by" ;
+    rdfs:comment "Relates a decision issue to the author who created it." .
