@@ -17,8 +17,17 @@
     # Optional Stance Properties
     sh:property [ sh:path :agrees_with ; sh:class sioc_arg:Argument ] ;
     sh:property [ sh:path :disagrees_with ; sh:class sioc_arg:Argument ] ;
-    sh:property [ sh:path :neutral_towards ; sh:class sioc_arg:Argument ] .
-
+    sh:property [ sh:path :neutral_towards ; sh:class sioc_arg:Argument ] ;
+    
+    # Optional Rationale
+    sh:property [ sh:path :hasRationale ; sh:class :Rationale ] ;
+    
+    # Optional Cost
+    sh:property [ sh:path :hasCost ; sh:class :Cost ];
+    
+    # Optional Risk
+    sh:property [ sh:path :hasRisk ; sh:class :Risk ].
+    
 # 2. Issue Node Shape
 :IssueShape
     a sh:NodeShape ;
@@ -47,3 +56,22 @@
     a sh:NodeShape ;
     sh:targetClass schema:Person ;
     sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:datatype xsd:string ] .
+
+# 6. Rationale Node Shape
+:RationaleShape
+    a sh:NodeShape ;
+    sh:targetClass :Rationale ;
+    sh:property [ sh:path schema:text ; sh:minCount 1 ; sh:datatype xsd:string ] .
+
+# 7. Cost Node Shape
+:CostShape
+    a sh:NodeShape ;
+    sh:targetClass :Cost ;
+    sh:property [ sh:path schema:text ; sh:minCount 1 ; sh:datatype xsd:string ] .
+
+# 8. Risk Node Shape
+:RiskShape
+    a sh:NodeShape ;
+    sh:targetClass :Risk ;
+    sh:property [ sh:path schema:text ; sh:minCount 1 ; sh:datatype xsd:string ] .
+

@@ -1,32 +1,44 @@
 repositories:
   - "Project-MONAI/MONAI"
 
-extraction_schema:
-
 
 extraction_schema:
   - name: "Issue"
-    description: "The design problem or 'Architectural Issue' that necessitates a decision. It describes the requirements or constraints that the decision must address."
+    description: "The original GitHub Issue or Pull Request that started the discussion. Extract the exact title, body, author, and timestamp as provided in the context."
     singular_occurrence: true
+    type: "JsonObjectConcept"
+    structure:
+      title: "str"
+      body: "str"
+      author: "str"
+      timestamp: "str"
 
   - name: "Decision"
-    description: "The 'Architectural Design Decision' (ADD) itself. A specific choice or position taken to resolve the issue from among various alternatives."
+    description: "The current consensus of the choice made. If a decision was established earlier, it REMAINS the decision. DO NOT return null if a consensus was previously reached. Summarize the consensus up to this point."
     singular_occurrence: true
 
   - name: "Rationale"
-    description: "The 'Reasoning' or 'Justification' for the decision. This includes why a specific alternative was selected over others, often referencing architectural principles or trade-offs."
+    description: "The justification for the decision. Maintain technical reasoning discussed throughout the history. Ensure established rationale is carried forward."
     singular_occurrence: true
 
   - name: "Description"
-    description: "The 'Scope' and context of the decision. Defines the portion of the system (e.g., layers, components, or subsystems) affected by this specific ADD."
+    description: "The scope and context (components, layers, MLOps stages). Defines where the decision applies."
     singular_occurrence: true
 
   - name: "Argument"
-    description: "Extract arguments that support (Pro), oppose (Con), or discuss (Neutral) a decision. Use the classification label explicitly provided in the text header (Pro, Con, Neutral, or NA) for the 'classification' field. IGNORE all non-technical meta-discourse (e.g., social gratitude or administrative updates) unless it carries technical weight."
+    description: "Extract arguments (Pro, Con, Neutral) from the text. Use provided classification labels."
     singular_occurrence: false
     type: "JsonObjectConcept"
     structure:
       author: "str"
       timestamp: "str"
-      classification: "str"
+      classification: "str" # Must be Pro, Con, or Neutral
       argument: "str"
+
+  - name: "Cost"
+    description: "Resources required (e.g., development time, compute, storage). Summarize if mentioned or clearly implied. This is CUMULATIVE: maintain all previously identified costs unless revised."
+    singular_occurrence: true
+
+  - name: "Risk"
+    description: "Potential downsides, technical debt, or uncertainties. Summarize if mentioned or clearly implied. This is CUMULATIVE: maintain all previously identified risks unless revised."
+    singular_occurrence: true

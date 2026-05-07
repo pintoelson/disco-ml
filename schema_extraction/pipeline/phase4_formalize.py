@@ -13,7 +13,14 @@ def get_config(config_path):
         return yaml.safe_load(f)
 
 def extract_decision_concepts(versioned_item: VersionedItem, llm, schema):
-    doc = Document(raw_text=versioned_item.text_content)
+    # Prepend a global instruction to ensure consistent extraction across versions
+    system_instruction = (
+        "INSTRUCTION: You are extracting the CURRENT STATE of an architectural decision from a chronological discussion. "
+        "Maintain all established consensus, rationales, costs, and risks identified in earlier parts of the text "
+        "unless they are explicitly contradicted or updated in later comments. DO NOT return null for these fields "
+        "if the information was already established in the history.\n\n"
+    )
+    doc = Document(raw_text=system_instruction + versioned_item.text_content)
     
     TYPE_MAP = {
         "str": str,

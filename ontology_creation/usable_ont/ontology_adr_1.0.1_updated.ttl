@@ -9,7 +9,7 @@
 @prefix schema: <https://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix sioc_arg: <https://rdfs.org/sioc/argument#> .
-@base <https://example.com/adr> .
+@base <https://example.com/adr#> .
 
 <https://example.com/adr> rdf:type owl:Ontology ;
                            dcterms:created "2026-05-04T10:45:31.340367+00:00"^^xsd:dateTime ;
@@ -51,92 +51,110 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#addresses
 :addresses rdf:type owl:AnnotationProperty ;
-           rdfs:subPropertyOf schema:about .
+           rdfs:subPropertyOf schema:about ;
+           rdfs:range :Constraint .
 
 
 ###  https://example.com/adr#constrains
 :constrains rdf:type owl:AnnotationProperty ;
-            rdfs:subPropertyOf schema:constrains .
+            rdfs:subPropertyOf schema:constrains ;
+            rdfs:range :ArchitecturalDesignDecision .
 
 
 ###  https://example.com/adr#enables
 :enables rdf:type owl:AnnotationProperty ;
-         rdfs:subPropertyOf schema:enables .
+         rdfs:subPropertyOf schema:enables ;
+         rdfs:range :ArchitecturalDesignDecision .
 
 
 ###  https://example.com/adr#forbids
 :forbids rdf:type owl:AnnotationProperty ;
-         rdfs:subPropertyOf schema:excludes .
+         rdfs:subPropertyOf schema:excludes ;
+         rdfs:range :ArchitecturalDesignDecision .
 
 
 ###  https://example.com/adr#hasAlternative
 :hasAlternative rdf:type owl:AnnotationProperty ;
-                rdfs:subPropertyOf schema:alternate .
+                rdfs:subPropertyOf schema:alternate ;
+                rdfs:range :Alternative .
 
 
 ###  https://example.com/adr#hasConstraint
 :hasConstraint rdf:type owl:AnnotationProperty ;
-               rdfs:subPropertyOf schema:subjectOf .
+               rdfs:subPropertyOf schema:subjectOf ;
+               rdfs:range :Constraint .
 
 
 ###  https://example.com/adr#hasCost
 :hasCost rdf:type owl:AnnotationProperty ;
-         rdfs:subPropertyOf schema:cost .
+         rdfs:subPropertyOf schema:cost ;
+         rdfs:range :Cost .
 
 
 ###  https://example.com/adr#hasEpitome
 :hasEpitome rdf:type owl:AnnotationProperty ;
-            rdfs:subPropertyOf schema:name .
+            rdfs:subPropertyOf schema:name ;
+            rdfs:range xsd:string .
 
 
 ###  https://example.com/adr#hasHistory
 :hasHistory rdf:type owl:AnnotationProperty ;
-            rdfs:subPropertyOf schema:hasPart .
+            rdfs:subPropertyOf schema:hasPart ;
+            rdfs:range :DecisionHistory .
 
 
 ###  https://example.com/adr#hasRationale
 :hasRationale rdf:type owl:AnnotationProperty ;
-              rdfs:subPropertyOf schema:description .
+              rdfs:subPropertyOf schema:description ;
+              rdfs:range :Rationale .
 
 
 ###  https://example.com/adr#hasRisk
 :hasRisk rdf:type owl:AnnotationProperty ;
-         rdfs:subPropertyOf schema:risk .
+         rdfs:subPropertyOf schema:risk ;
+         rdfs:range :Risk .
 
 
 ###  https://example.com/adr#hasScope
 :hasScope rdf:type owl:AnnotationProperty ;
-          rdfs:subPropertyOf schema:scope .
+          rdfs:subPropertyOf schema:scope ;
+          rdfs:range xsd:string .
 
 
 ###  https://example.com/adr#hasStakeholder
 :hasStakeholder rdf:type owl:AnnotationProperty ;
-                rdfs:subPropertyOf schema:contributor .
+                rdfs:subPropertyOf schema:contributor ;
+                rdfs:range :Stakeholder .
 
 
 ###  https://example.com/adr#hasState
 :hasState rdf:type owl:AnnotationProperty ;
-          rdfs:subPropertyOf schema:additionalProperty .
+          rdfs:subPropertyOf schema:additionalProperty ;
+          rdfs:range :DecisionState .
 
 
 ###  https://example.com/adr#hasTradeOff
 :hasTradeOff rdf:type owl:AnnotationProperty ;
-             rdfs:subPropertyOf schema:subjectOf .
+             rdfs:subPropertyOf schema:subjectOf ;
+             rdfs:range :TradeOff .
 
 
 ###  https://example.com/adr#implies
 :implies rdf:type owl:AnnotationProperty ;
-         rdfs:subPropertyOf schema:implies .
+         rdfs:subPropertyOf schema:implies ;
+         rdfs:range :ArchitecturalDesignDecision .
 
 
 ###  https://example.com/adr#subsumes
 :subsumes rdf:type owl:AnnotationProperty ;
-          rdfs:subPropertyOf skos:broader .
+          rdfs:subPropertyOf skos:broader ;
+          rdfs:range :ArchitecturalDesignDecision .
 
 
 ###  https://example.com/adr#tradeOffWith
 :tradeOffWith rdf:type owl:AnnotationProperty ;
-              rdfs:subPropertyOf schema:relatedTo .
+              rdfs:subPropertyOf schema:relatedTo ;
+              rdfs:range :TradeOff .
 
 
 ###  https://schema.org/about
@@ -209,8 +227,8 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#addresses
 :addresses rdf:type owl:ObjectProperty ;
-           rdfs:domain :ArchitecturalDesignDecision ;
-           rdfs:range :Constraint .
+           rdfs:domain schema:Decision ;
+           rdfs:range schema:Decision .
 
 
 ###  https://example.com/adr#agrees_with
@@ -222,8 +240,8 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#constrains
 :constrains rdf:type owl:ObjectProperty ;
-            rdfs:domain :ArchitecturalDesignDecision ;
-            rdfs:range :ArchitecturalDesignDecision .
+            rdfs:domain schema:Decision ;
+            rdfs:range schema:Decision .
 
 
 ###  https://example.com/adr#decides
@@ -242,20 +260,20 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#enables
 :enables rdf:type owl:ObjectProperty ;
-         rdfs:domain :ArchitecturalDesignDecision ;
-         rdfs:range :ArchitecturalDesignDecision .
+         rdfs:domain schema:Decision ;
+         rdfs:range schema:Decision .
 
 
 ###  https://example.com/adr#forbids
 :forbids rdf:type owl:ObjectProperty ;
-         rdfs:domain :ArchitecturalDesignDecision ;
-         rdfs:range :ArchitecturalDesignDecision .
+         rdfs:domain schema:Decision ;
+         rdfs:range schema:Decision .
 
 
 ###  https://example.com/adr#hasAlternative
 :hasAlternative rdf:type owl:ObjectProperty ;
-                rdfs:domain :ArchitecturalDesignDecision ;
-                rdfs:range :Alternative .
+                rdfs:domain schema:Decision ;
+                rdfs:range schema:Decision .
 
 
 ###  https://example.com/adr#hasAuthor
@@ -269,13 +287,13 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#hasConstraint
 :hasConstraint rdf:type owl:ObjectProperty ;
-               rdfs:domain :ArchitecturalDesignDecision ;
+               rdfs:domain schema:Decision ;
                rdfs:range :Constraint .
 
 
 ###  https://example.com/adr#hasCost
 :hasCost rdf:type owl:ObjectProperty ;
-         rdfs:domain :ArchitecturalDesignDecision ;
+         rdfs:domain schema:Decision ;
          rdfs:range :Cost .
 
 
@@ -288,7 +306,7 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#hasHistory
 :hasHistory rdf:type owl:ObjectProperty ;
-            rdfs:domain :ArchitecturalDesignDecision ;
+            rdfs:domain schema:Decision ;
             rdfs:range :DecisionHistory .
 
 
@@ -301,31 +319,25 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#hasRationale
 :hasRationale rdf:type owl:ObjectProperty ;
-              rdfs:domain :ArchitecturalDesignDecision ;
+              rdfs:domain schema:Decision ;
               rdfs:range :Rationale .
 
 
 ###  https://example.com/adr#hasRisk
 :hasRisk rdf:type owl:ObjectProperty ;
-         rdfs:domain :ArchitecturalDesignDecision ;
+         rdfs:domain schema:Decision ;
          rdfs:range :Risk .
-
-
-###  https://example.com/adr#hasStakeholder
-:hasStakeholder rdf:type owl:ObjectProperty ;
-                rdfs:domain :ArchitecturalDesignDecision ;
-                rdfs:range :Stakeholder .
 
 
 ###  https://example.com/adr#hasState
 :hasState rdf:type owl:ObjectProperty ;
-          rdfs:domain :ArchitecturalDesignDecision ;
+          rdfs:domain schema:Decision ;
           rdfs:range :DecisionState .
 
 
 ###  https://example.com/adr#hasTradeOff
 :hasTradeOff rdf:type owl:ObjectProperty ;
-             rdfs:domain :ArchitecturalDesignDecision ;
+             rdfs:domain schema:Decision ;
              rdfs:range :TradeOff .
 
 
@@ -338,8 +350,8 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#implies
 :implies rdf:type owl:ObjectProperty ;
-         rdfs:domain :ArchitecturalDesignDecision ;
-         rdfs:range :ArchitecturalDesignDecision .
+         rdfs:domain schema:Decision ;
+         rdfs:range schema:Decision .
 
 
 ###  https://example.com/adr#neutral_towards
@@ -351,14 +363,8 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#subsumes
 :subsumes rdf:type owl:ObjectProperty ;
-          rdfs:domain :ArchitecturalDesignDecision ;
-          rdfs:range :ArchitecturalDesignDecision .
-
-
-###  https://example.com/adr#tradeOffWith
-:tradeOffWith rdf:type owl:ObjectProperty ;
-              rdfs:domain :TradeOff ;
-              rdfs:range :TradeOff .
+          rdfs:domain schema:Decision ;
+          rdfs:range schema:Decision .
 
 
 #################################################################
@@ -367,14 +373,12 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#hasEpitome
 :hasEpitome rdf:type owl:DatatypeProperty ;
-            rdfs:domain :ArchitecturalDesignDecision ;
-            rdfs:range xsd:string .
+            rdfs:domain :ArchitecturalDesignDecision .
 
 
 ###  https://example.com/adr#hasScope
 :hasScope rdf:type owl:DatatypeProperty ;
-          rdfs:domain :ArchitecturalDesignDecision ;
-          rdfs:range xsd:string .
+          rdfs:domain :ArchitecturalDesignDecision .
 
 
 ###  https://example.com/adr#hasTimeStamp
@@ -574,10 +578,6 @@ schema:Thing rdf:type owl:Class .
           rdfs:label "hasScope"@en .
 
 
-:hasStakeholder rdfs:comment "Relates an architectural design decision to a stakeholder involved in its formulation or approval."@en ;
-                rdfs:label "hasStakeholder"@en .
-
-
 :hasState rdfs:comment "Relates an architectural design decision to its current state or status."@en ;
           rdfs:label "hasState"@en .
 
@@ -592,10 +592,6 @@ schema:Thing rdf:type owl:Class .
 
 :subsumes rdfs:comment "Indicates that one architectural design decision is broader or more encompassing than another."@en ;
           rdfs:label "subsumes"@en .
-
-
-:tradeOffWith rdfs:comment "Relates two trade-offs that are in conflict or require balancing in architectural design decisions."@en ;
-              rdfs:label "tradeOffWith"@en .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

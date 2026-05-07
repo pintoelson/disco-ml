@@ -90,15 +90,36 @@ export const TicketDetails: FC<Props> = ({ ticket }) => {
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2 uppercase tracking-wide">
-                  <ClientOnly fallback={<div className="w-4 h-4" />}>
-                    <FileText className="w-4 h-4 text-gray-500" />
-                  </ClientOnly>
-                  Context & Constraints
-                </h3>
-                <div className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-wrap">
-                  {ticket.description}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                <div className="space-y-2">
+                  <h3 className="text-xs font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2 uppercase tracking-wide">
+                    <ClientOnly fallback={<div className="w-3 h-3" />}>
+                      <LinkIcon className="w-3 h-3 text-purple-500" />
+                    </ClientOnly>
+                    Associated Cost
+                  </h3>
+                  <div className={`p-3 rounded-lg border text-xs leading-normal ${
+                    ticket.cost 
+                      ? "bg-purple-50/30 dark:bg-purple-900/10 border-purple-100 dark:border-purple-900/30 text-gray-700 dark:text-gray-300"
+                      : "bg-gray-50/50 dark:bg-gray-800/30 border-gray-100 dark:border-gray-800 text-gray-400 italic"
+                  }`}>
+                    {ticket.cost || "Not specified in discussion"}
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xs font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2 uppercase tracking-wide">
+                    <ClientOnly fallback={<div className="w-3 h-3" />}>
+                      <AlertCircle className="w-3 h-3 text-red-500" />
+                    </ClientOnly>
+                    Risk Exposure
+                  </h3>
+                  <div className={`p-3 rounded-lg border text-xs leading-normal ${
+                    ticket.risk 
+                      ? "bg-red-50/30 dark:bg-red-900/10 border-red-100 dark:border-red-900/30 text-gray-700 dark:text-gray-300"
+                      : "bg-gray-50/50 dark:bg-gray-800/30 border-gray-100 dark:border-gray-800 text-gray-400 italic"
+                  }`}>
+                    {ticket.risk || "Not specified in discussion"}
+                  </div>
                 </div>
               </div>
             </div>
@@ -166,17 +187,40 @@ export const TicketDetails: FC<Props> = ({ ticket }) => {
           </TabsContent>
 
           {/* History Tab */}
-          <TabsContent value="history" className="mt-0">
-             <div className="flex flex-col items-center justify-center py-16 text-gray-500 gap-4">
-              <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-full">
-                <GitBranch className="w-8 h-8 opacity-40" />
-              </div>
-              <div className="text-center space-y-1">
-                <p className="font-semibold text-gray-900 dark:text-gray-100">Decision Provenance</p>
-                <p className="text-sm text-gray-500 max-w-xs mx-auto">
-                  Version history and diffs are coming soon. This decision is currently on version <b>{ticket.versions[0]?.versionId.split('_v').pop()}</b>.
-                </p>
-              </div>
+          <TabsContent value="history" className="mt-0 pb-6">
+            <div className="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-gray-200 dark:before:bg-gray-800">
+              {ticket.versions.slice().reverse().map((v, i) => (
+                <div key={v.versionId} className="relative">
+                  <div className={`absolute -left-6 top-1 w-4 h-4 rounded-full border-2 bg-white dark:bg-gray-900 ${
+                    i === 0 ? "border-blue-500 z-10" : "border-gray-300 dark:border-gray-700"
+                  }`} />
+                  <div className={`p-4 rounded-xl border transition-all ${
+                    i === 0 
+                      ? "bg-blue-50/30 border-blue-100 dark:bg-blue-900/10 dark:border-blue-900/30 shadow-sm" 
+                      : "bg-white border-gray-100 dark:bg-gray-900/50 dark:border-gray-800 opacity-80"
+                  }`}>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-tight">
+                        Version {v.versionId.split('_v').pop()}
+                        {i === 0 && <Badge className="ml-2 bg-blue-100 text-blue-700 hover:bg-blue-100 border-none text-[10px] h-4">LATEST</Badge>}
+                      </span>
+                      <span className="text-[10px] text-gray-500 font-medium">
+                        {new Date(v.timestamp).toLocaleString()}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
+                      {v.decision || "No decision summary in this version."}
+                    </p>
+                    <div className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center gap-3">
+                      <Badge variant="outline" className="text-[10px] py-0 h-4">
+                        {v.arguments.length} arguments
+                      </Badge>
+                      {v.cost && <Badge variant="outline" className="text-[10px] py-0 h-4 border-purple-200 text-purple-600">Cost included</Badge>}
+                      {v.risk && <Badge variant="outline" className="text-[10px] py-0 h-4 border-red-200 text-red-600">Risk included</Badge>}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </TabsContent>
         </div>

@@ -18,13 +18,17 @@ class LifecycleClassification(BaseModel):
     primary_artifact: str = Field(alias="Primary Artifact")
     justification: str = Field(alias="Justification")
 
-def classify_comment(comment_body: str, model: str, prompt_template: str) -> CommentClassification:
+def classify_comment(comment_body: str, issue_title: str, issue_body: str, model: str, prompt_template: str) -> CommentClassification:
     if not comment_body.strip():
         return CommentClassification(intent="NA", justification="Empty comment")
         
     try:
         # Note: double curly braces in the text file are already there for .format()
-        content_prompt = prompt_template.format(comment_body=comment_body)
+        content_prompt = prompt_template.format(
+            issue_title=issue_title,
+            issue_body=issue_body,
+            comment_body=comment_body
+        )
         
         response = litellm.completion(
             model=model,
@@ -149,7 +153,7 @@ def run_phase2():
 
             # Comment classification
             for comment in item.comments:
-                classification = classify_comment(comment.body, model_name, comment_prompt)
+                classification = classify_comment(comment.body, item.title, item.body, model_name, comment_prompt)
                 comment.classification = classification.intent
                 comment.justification = classification.justification
                 

@@ -23,7 +23,6 @@ export const TicketCard: FC<Props> = ({ ticket }) => {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-2">
-        <p>{ticket.description}</p>
         <div className="flex flex-wrap gap-2">
           <Badge variant="default">Decision: {ticket.decision}</Badge>
         </div>

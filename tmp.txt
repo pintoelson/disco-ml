@@ -23,3 +23,9 @@ GraphDB
 
 UI changes
 - change to show 
+
+
+
+Issue Extraction
+- Missing comments
+- Classification incorrect (what happens when NA?)

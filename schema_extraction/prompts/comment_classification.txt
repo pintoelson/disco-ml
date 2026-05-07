@@ -12,5 +12,9 @@ Return the classification in the following strict JSON format:
   "justification": "Brief reason here"
 }}
 
-Comment:
+Context (Original Issue/PR):
+Title: {issue_title}
+Description: {issue_body}
+
+Comment to classify:
 "{comment_body}"

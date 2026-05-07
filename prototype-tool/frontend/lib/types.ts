@@ -54,6 +54,8 @@ export interface TicketVersion {
   versionId: string;
   decision: string;
   rationale: string;
+  cost?: string;
+  risk?: string;
   context: string;
   timestamp: string;
   arguments: Argument[];
@@ -77,6 +79,8 @@ export interface DecisionTicket {
   // Dashboard convenience fields
   decision: string;
   rationale: string;
+  cost?: string;
+  risk?: string;
   description: string;
   author: string;
   arguments: Argument[];
