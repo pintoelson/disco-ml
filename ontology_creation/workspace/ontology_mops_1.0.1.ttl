@@ -1,0 +1,324 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mops: <https://example.com//mops#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mops:ABTesting a owl:Class ;
+    rdfs:label "A/B Testing" ;
+    rdfs:comment "A deployment strategy that compares alternative model versions by exposing them to different traffic or user groups." ;
+    rdfs:subClassOf mops:DeploymentStrategy .
+
+mops:BlueGreenDeployment a owl:Class ;
+    rdfs:label "Blue-Green Deployment" ;
+    rdfs:comment "A deployment strategy that switches traffic between two production environments to reduce release risk." ;
+    rdfs:subClassOf mops:DeploymentStrategy .
+
+mops:CI_CDTool a owl:Class ;
+    rdfs:label "CI/CD Tool" ;
+    rdfs:comment "A continuous integration and continuous delivery tool adapted to support automated MLOps workflows." ;
+    rdfs:subClassOf mops:MLTool .
+
+mops:CanaryDeployment a owl:Class ;
+    rdfs:label "Canary Deployment" ;
+    rdfs:comment "A deployment strategy that releases an updated model gradually to a limited portion of traffic before full rollout." ;
+    rdfs:subClassOf mops:DeploymentStrategy .
+
+mops:DataEngineer a owl:Class ;
+    rdfs:label "Data Engineer" ;
+    rdfs:comment "A role responsible for building and maintaining data pipelines, preprocessing flows, and data-related operational infrastructure." ;
+    rdfs:subClassOf mops:Role .
+
+mops:DataQualityIssue a owl:Class ;
+    rdfs:label "Data Quality Issue" ;
+    rdfs:comment "A problem affecting the correctness, consistency, completeness, or validity of data used in MLOps pipelines." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:DataScientist a owl:Class ;
+    rdfs:label "Data Scientist" ;
+    rdfs:comment "A role responsible for model development, training, experimentation, and collaboration on ML data and operational workflows." ;
+    rdfs:subClassOf mops:Role .
+
+mops:ExperimentRecord a owl:Class ;
+    rdfs:label "Experiment Record" ;
+    rdfs:comment "A provenance-bearing record of a machine learning experiment, including configuration and outcomes for analysis or compliance." ;
+    rdfs:subClassOf mops:MLAsset .
+
+mops:FeatureSet a owl:Class ;
+    rdfs:label "Feature Set" ;
+    rdfs:comment "A managed collection of features used as input for machine learning training or inference." ;
+    rdfs:subClassOf mops:MLAsset .
+
+mops:ITOpsTeam a owl:Class ;
+    rdfs:label "IT Operations Team" ;
+    rdfs:comment "A role or team responsible for operating and monitoring deployed ML-enabled systems and related infrastructure." ;
+    rdfs:subClassOf mops:Role .
+
+mops:MLEngineer a owl:Class ;
+    rdfs:label "ML Engineer" ;
+    rdfs:comment "A role focused on engineering practices for building, operationalizing, and maintaining machine learning systems." ;
+    rdfs:subClassOf mops:Role .
+
+mops:MLModelProductionalization a owl:Class ;
+    rdfs:label "ML Model Productionalization" ;
+    rdfs:comment "The process of transitioning a machine learning model from a laboratory or experimental setting into a production environment." ;
+    rdfs:subClassOf mops:MLLifecycleActivity .
+
+mops:MLOpsOntology a owl:Ontology ;
+    rdfs:label "MLOps Ontology" ;
+    dcterms:created "2026-05-11T10:57:46.701460+00:00"^^xsd:dateTime ;
+    dcterms:description "This ontology captures abstract concepts related to MLOps as an operational discipline for machine learning systems. It models activities, roles and responsibilities, deployment-oriented tasks, tools, and challenges that arise in the operationalization of ML models. The ontology is intended for describing and comparing MLOps literature at a higher level of abstraction than any single study or report." ;
+    dcterms:identifier "hash:927af6ff6e216458ccafb72653109ed8dfc8dad7312d928993c615799b8a692c" ;
+    dcterms:title "mops" ;
+    rdfs:comment "Ontology capturing abstract concepts, activities, roles, practices, tools, and challenges involved in the operationalization of machine learning systems across the ML lifecycle." ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasDerivedFrom <urn:hash:e799cc2fe78ddb7ea525c16e4a0f94189ccd71303066491df005efa90f944d80> ;
+    mops:OntologyDescription "This ontology models abstract MLOps concepts for describing and comparing literature on machine learning operations, including model productionalization, monitoring, retraining, deployment, infrastructure provisioning, pipelines, provenance, and cross-team collaboration." .
+
+mops:ModelDrift a owl:Class ;
+    rdfs:label "Model Drift" ;
+    rdfs:comment "A change in data or model behavior over time that can degrade model performance or require intervention." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:ModelRetraining a owl:Class ;
+    rdfs:label "Model Retraining" ;
+    rdfs:comment "The activity of training an existing model again using newly available or updated data after operational issues or drift are detected." ;
+    rdfs:subClassOf mops:MLLifecycleActivity .
+
+mops:OntologyDescription a owl:AnnotationProperty .
+
+mops:PipelineOrchestration a owl:Class ;
+    rdfs:label "Pipeline Orchestration" ;
+    rdfs:comment "The coordination and execution management of steps within an ML pipeline." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:ProjectTeam a owl:Class ;
+    rdfs:label "Project Team" ;
+    rdfs:comment "A cross-functional team that collaborates on MLOps activities across development, operations, and data work." ;
+    rdfs:subClassOf mops:Role .
+
+mops:SafetyConstraintViolation a owl:Class ;
+    rdfs:label "Safety Constraint Violation" ;
+    rdfs:comment "A detected failure of a deployed model or system to satisfy required safety constraints." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:ShadowDeployment a owl:Class ;
+    rdfs:label "Shadow Deployment" ;
+    rdfs:comment "A deployment strategy where a candidate model runs alongside the active model without serving live decisions, enabling evaluation before activation." ;
+    rdfs:subClassOf mops:DeploymentStrategy .
+
+mops:SoftwareEngineer a owl:Class ;
+    rdfs:label "Software Engineer" ;
+    rdfs:comment "A role responsible for integrating ML models with software systems, packaging code, and supporting deployment workflows." ;
+    rdfs:subClassOf mops:Role .
+
+mops:WorkflowEngine a owl:Class ;
+    rdfs:label "Workflow Engine" ;
+    rdfs:comment "A workflow orchestration tool used to define and execute multi-step MLOps pipelines." ;
+    rdfs:subClassOf mops:MLTool .
+
+mops:containsActivity a owl:ObjectProperty ;
+    rdfs:label "contains activity" ;
+    rdfs:comment "Relates an ML pipeline to the activity steps that are part of it." ;
+    rdfs:domain mops:MLPipeline ;
+    rdfs:range mops:MLLifecycleActivity ;
+    owl:transitiveProperty true .
+
+mops:detectsIssue a owl:ObjectProperty ;
+    rdfs:label "detects issue" ;
+    rdfs:comment "Relates a monitoring or validation activity to the issue it identifies." ;
+    rdfs:domain mops:ModelMonitoring ;
+    rdfs:range mops:MLOpsConcept .
+
+mops:emitsEvent a owl:ObjectProperty ;
+    rdfs:label "emits event" ;
+    rdfs:comment "Relates a monitoring platform or operational component to the events it emits." ;
+    rdfs:domain mops:ModelMonitoring ;
+    rdfs:range mops:MonitoringEvent .
+
+mops:hasDeploymentEnvironment a owl:ObjectProperty ;
+    rdfs:label "has deployment environment" ;
+    rdfs:comment "Relates a deployment or infrastructure task to the environment where it is executed." ;
+    rdfs:domain mops:ModelDeployment ;
+    rdfs:range mops:InfrastructureProvisioning .
+
+mops:hasVersion a owl:ObjectProperty ;
+    rdfs:label "has version" ;
+    rdfs:comment "Relates a model or asset to a specific version used in MLOps management and deployment." ;
+    rdfs:domain mops:MLAsset ;
+    rdfs:range mops:ModelVersion ;
+    owl:inverseOf mops:isVersionOf .
+
+mops:isSupportedByTool a owl:ObjectProperty ;
+    rdfs:label "is supported by tool" ;
+    rdfs:comment "Relates an MLOps activity to a software tool that supports its execution or automation." ;
+    rdfs:domain mops:MLOpsConcept ;
+    rdfs:range mops:MLTool ;
+    rdfs:subPropertyOf schema:softwareHelp .
+
+mops:monitorsModel a owl:ObjectProperty ;
+    rdfs:label "monitors model" ;
+    rdfs:comment "Relates a monitoring activity or team to the model, model version, or deployed system being monitored." ;
+    rdfs:domain mops:ModelMonitoring ;
+    rdfs:range mops:ModelVersion ;
+    rdfs:subPropertyOf schema:monitoring .
+
+mops:packageModelCode a owl:ObjectProperty ;
+    rdfs:label "package model code" ;
+    rdfs:comment "Relates a deployment activity to the packaging of model code and dependencies into an executable form such as a container." ;
+    rdfs:domain mops:ModelDeployment ;
+    rdfs:range mops:MLAsset .
+
+mops:requiresDataPipeline a owl:ObjectProperty ;
+    rdfs:label "requires data pipeline" ;
+    rdfs:comment "Relates an ML activity such as retraining or deployment to the data pipeline it depends on." ;
+    rdfs:domain mops:MLLifecycleActivity ;
+    rdfs:range mops:MLPipeline ;
+    rdfs:subPropertyOf schema:requires .
+
+mops:respondsToEvent a owl:ObjectProperty ;
+    rdfs:label "responds to event" ;
+    rdfs:comment "Relates an MLOps activity or team to the monitoring event that triggers response or analysis." ;
+    rdfs:domain mops:MLOpsConcept ;
+    rdfs:range mops:MonitoringEvent .
+
+mops:CrossTeamCollaboration a owl:Class ;
+    rdfs:label "Cross-Team Collaboration" ;
+    rdfs:comment "Collaboration between different teams or disciplines required to operationalize ML systems effectively." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mops:involvesRole ;
+            owl:someValuesFrom mops:Role ],
+        mops:MLOpsConcept .
+
+mops:Dataset a owl:Class ;
+    rdfs:label "Dataset" ;
+    rdfs:comment "A collection of data used for training, validation, testing, monitoring, or retraining of machine learning systems." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mops:isInputTo ;
+            owl:someValuesFrom mops:MLLifecycleActivity ],
+        mops:MLAsset .
+
+mops:InfrastructureProvisioning a owl:Class ;
+    rdfs:label "Infrastructure Provisioning" ;
+    rdfs:comment "The activity of creating and configuring computing infrastructure and execution environments for ML development, testing, training, or deployment." ;
+    rdfs:subClassOf mops:MLLifecycleActivity .
+
+mops:ProvenanceRecord a owl:Class ;
+    rdfs:label "Provenance Record" ;
+    rdfs:comment "A record documenting the origin, history, or transformation of an ML artifact or activity." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mops:documentsActivity ;
+            owl:someValuesFrom mops:MLLifecycleActivity ],
+        mops:MLAsset .
+
+mops:documentsActivity a owl:ObjectProperty ;
+    rdfs:label "documents activity" ;
+    rdfs:comment "Relates a provenance or experiment record to the ML activity that it documents." ;
+    rdfs:domain mops:ProvenanceRecord ;
+    rdfs:range mops:MLLifecycleActivity ;
+    rdfs:subPropertyOf schema:about .
+
+mops:involvesRole a owl:ObjectProperty ;
+    rdfs:label "involves role" ;
+    rdfs:comment "Relates a collaboration context or MLOps activity to the roles involved in it." ;
+    rdfs:domain mops:CrossTeamCollaboration ;
+    rdfs:range mops:Role ;
+    rdfs:subPropertyOf schema:participant .
+
+mops:isInputTo a owl:ObjectProperty ;
+    rdfs:label "is input to" ;
+    rdfs:comment "Relates a dataset or asset to an ML activity that consumes it as input." ;
+    rdfs:domain mops:Dataset ;
+    rdfs:range mops:MLLifecycleActivity ;
+    owl:inverseOf mops:usesInput .
+
+mops:isVersionOf a owl:ObjectProperty ;
+    rdfs:label "is version of" ;
+    rdfs:comment "Relates a model version to the model or asset of which it is a version." ;
+    rdfs:domain mops:ModelVersion ;
+    rdfs:range mops:MLAsset .
+
+mops:orchestratesActivity a owl:ObjectProperty ;
+    rdfs:label "orchestrates activity" ;
+    rdfs:comment "Relates a pipeline or workflow to the ML lifecycle activity it coordinates." ;
+    rdfs:domain mops:MLPipeline ;
+    rdfs:range mops:MLLifecycleActivity ;
+    rdfs:subPropertyOf schema:workflow .
+
+mops:usesDeploymentStrategy a owl:ObjectProperty ;
+    rdfs:label "uses deployment strategy" ;
+    rdfs:comment "Relates a model deployment to the strategy used to release or upgrade the model." ;
+    rdfs:domain mops:ModelDeployment ;
+    rdfs:range mops:DeploymentStrategy ;
+    rdfs:subPropertyOf schema:requires .
+
+mops:usesInput a owl:ObjectProperty ;
+    rdfs:label "uses input" ;
+    rdfs:comment "Relates an ML activity to a dataset or other asset that it consumes as input." ;
+    rdfs:domain mops:MLLifecycleActivity ;
+    rdfs:range mops:MLAsset .
+
+mops:MonitoringEvent a owl:Class ;
+    rdfs:label "Monitoring Event" ;
+    rdfs:comment "An event emitted by monitoring or operational platforms that can be consumed for analysis and response." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:MLPipeline a owl:Class ;
+    rdfs:label "ML Pipeline" ;
+    rdfs:comment "An automated or semi-automated workflow that orchestrates machine learning lifecycle activities such as data management, training, testing, deployment, and monitoring." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mops:orchestratesActivity ;
+            owl:someValuesFrom mops:MLLifecycleActivity ],
+        mops:MLOpsConcept .
+
+mops:MLTool a owl:Class ;
+    rdfs:label "ML Tool" ;
+    rdfs:comment "A software tool or platform used to support MLOps activities such as orchestration, monitoring, validation, or deployment." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:ModelDeployment a owl:Class ;
+    rdfs:label "Model Deployment" ;
+    rdfs:comment "The activity of packaging, releasing, and operating a trained machine learning model in a target environment." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mops:usesDeploymentStrategy ;
+            owl:someValuesFrom mops:DeploymentStrategy ],
+        mops:MLLifecycleActivity .
+
+mops:ModelMonitoring a owl:Class ;
+    rdfs:label "Model Monitoring" ;
+    rdfs:comment "The activity of observing deployed models and related data to detect performance problems, drift, safety violations, or other operational issues." ;
+    rdfs:subClassOf mops:MLLifecycleActivity .
+
+mops:ModelVersion a owl:Class ;
+    rdfs:label "Model Version" ;
+    rdfs:comment "A specific version or revision of a machine learning model used for training, testing, deployment, or comparison." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:DeploymentStrategy a owl:Class ;
+    rdfs:label "Deployment Strategy" ;
+    rdfs:comment "A strategy for safely introducing updated or alternative model versions into production." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:MLAsset a owl:Class ;
+    rdfs:label "ML Asset" ;
+    rdfs:comment "A managed artifact used in MLOps, such as a dataset, feature set, model, or experiment record." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:Role a owl:Class ;
+    rdfs:label "Role" ;
+    rdfs:comment "A human or organizational role involved in MLOps activities and responsibilities." ;
+    rdfs:subClassOf schema:Role .
+
+mops:MLLifecycleActivity a owl:Class ;
+    rdfs:label "ML Lifecycle Activity" ;
+    rdfs:comment "An activity performed as part of machine learning system development, operationalization, or maintenance." ;
+    rdfs:subClassOf mops:MLOpsConcept .
+
+mops:MLOpsConcept a owl:Class ;
+    rdfs:label "MLOps Concept" ;
+    rdfs:comment "A generic abstract concept in the MLOps domain used to organize the ontology's higher-level vocabulary." ;
+    rdfs:subClassOf skos:Concept .
+
