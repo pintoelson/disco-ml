@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useCallback, useMemo } from "react";
+import { FC, useCallback, useMemo, useEffect } from "react";
 import ReactFlow, {
   Node,
   Edge,
@@ -45,34 +45,21 @@ const nodeTypes = {
 };
 
 interface KnowledgeGraphProps {
-  ticketId: string;
+  ticket: DecisionTicket;
+  versionIndex: number;
 }
 
-const KnowledgeGraph: FC<KnowledgeGraphProps> = ({ ticketId }) => {
-  const ticket = generateGraphFromTicket({
-    id: ticketId,
-    title: "",
-    status: "accepted",
-    bucket: "Modeling Development",
-    decision: "",
-    rationale: "",
-    description: "",
-    timestamp: "",
-    author: "",
-    arguments: [],
-    owner: { id: "", name: "", role: "" },
-    createdAt: "",
-    updatedAt: "",
-    tags: [],
-    versions: [],
-    currentVersionIndex: 0,
-  });
+const KnowledgeGraph: FC<KnowledgeGraphProps> = ({ ticket, versionIndex }) => {
+  const graphData = useMemo(() => 
+    generateGraphFromTicket(ticket, versionIndex),
+    [ticket, versionIndex]
+  );
 
   const initialNodes: Node[] = useMemo(() => {
     const nodes: Node[] = [];
     let yOffset = 0;
 
-    ticket.nodes.forEach((node, index) => {
+    graphData.nodes.forEach((node, index) => {
       let xOffset = 0;
 
       if (node.type === "decision") {
@@ -102,17 +89,14 @@ const KnowledgeGraph: FC<KnowledgeGraphProps> = ({ ticketId }) => {
     });
 
     return nodes;
-  }, [ticket]);
+  }, [graphData]);
 
   const initialEdges: Edge[] = useMemo(() => {
-    return ticket.edges.map((edge) => {
+    return graphData.edges.map((edge) => {
       let animated = false;
       let strokeWidth = 1.5;
 
-      if (edge.type === "supports") {
-        strokeWidth = 2;
-        animated = true;
-      } else if (edge.type === "opposes") {
+      if (edge.type === "supports" || edge.type === "opposes") {
         strokeWidth = 2;
         animated = true;
       }
@@ -139,10 +123,16 @@ const KnowledgeGraph: FC<KnowledgeGraphProps> = ({ ticketId }) => {
         },
       };
     });
-  }, [ticket]);
+  }, [graphData]);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  // Update nodes and edges when initial data changes (e.g. version slider moved)
+  useEffect(() => {
+    setNodes(initialNodes);
+    setEdges(initialEdges);
+  }, [initialNodes, initialEdges, setNodes, setEdges]);
 
   const onConnect = useCallback(
     (params: any) => setEdges((eds) => [...eds, params]),
@@ -150,7 +140,7 @@ const KnowledgeGraph: FC<KnowledgeGraphProps> = ({ ticketId }) => {
   );
 
   return (
-    <div className="h-[450px] border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+    <div className="w-full h-full min-h-[400px] overflow-hidden">
       <ReactFlow
         nodes={nodes}
         edges={edges}

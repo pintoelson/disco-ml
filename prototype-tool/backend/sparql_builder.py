@@ -1,13 +1,13 @@
 import urllib.parse
 from pathlib import Path
-from models import DecisionTicketInput
+from models import IngestionPayload
 
-def build_upload_query(ticket: DecisionTicketInput, template_path: Path) -> tuple[str, str]:
+def build_upload_query(ticket: IngestionPayload, template_path: Path) -> tuple[str, str]:
     """
     Constructs the SPARQL update query and returns (graph_uri, update_query).
     """
-    # Determine the unique key for URIs (filename preferred, else version_id)
-    ticket_key = ticket.filename or ticket.version_id
+    # Determine the unique key for URIs from nested decision_ticket
+    ticket_key = ticket.decision_ticket.filename or "unknown_ticket"
     if ticket_key.endswith(".json"):
         ticket_key = ticket_key[:-5]
         
@@ -23,9 +23,24 @@ def build_upload_query(ticket: DecisionTicketInput, template_path: Path) -> tupl
     def norm_dt(dt_str):
         return (dt_str or "").replace(" ", "T")
     
+    # Issue handling
+    issue_obj = ticket.decision_ticket.Issue
+    if isinstance(issue_obj, str):
+        # Legacy flat string
+        issue_title = issue_obj.split("\n")[0].replace('"', '\\"')
+        issue_body = issue_obj.replace('"', '\\"')
+        author_name = "unknown"
+        issue_ts = ticket.decision_ticket.timestamp
+    else:
+        # Structured IssueInput
+        issue_title = issue_obj.title.replace('"', '\\"')
+        issue_body = issue_obj.body.replace('"', '\\"')
+        author_name = issue_obj.author
+        issue_ts = issue_obj.timestamp
+
     # URI generation
     graph_uri = f"https://example.com/graphs/{ticket_key}"
-    person_uri = f"https://example.com/persons/{urllib.parse.quote(ticket.author)}"
+    person_uri = f"https://example.com/persons/{urllib.parse.quote(author_name)}"
     issue_uri = f"https://example.com/issues/{issue_number}"
     desc_uri = f"https://example.com/descriptions/{ticket_key}"
     decision_uri = f"https://example.com/decisions/{ticket_key}"
@@ -33,33 +48,34 @@ def build_upload_query(ticket: DecisionTicketInput, template_path: Path) -> tupl
     cost_uri = f"https://example.com/costs/{ticket_key}"
     risk_uri = f"https://example.com/risks/{ticket_key}"
     
-    # Escape quotes in text content
-    issue_obj = ticket.schema_data.get("Issue")
-    if isinstance(issue_obj, dict):
-        # If it's the new structured Issue object, separate title and body
-        issue_title = (issue_obj.get('title', '')).replace('"', '\\"')
-        issue_body = (issue_obj.get('body', '')).replace('"', '\\"')
-    else:
-        issue_title = str(issue_obj or "").split("\n")[0]
-        issue_body = str(issue_obj or "")
+    # Helper to safely escape quotes in text content
+    def escape(val):
+        return str(val or "").replace('"', '\\"')
         
-    issue_title = issue_title.replace('"', '\\"')
-    issue_body = issue_body.replace('"', '\\"')
-    decision_text = (ticket.schema_data.get("Decision") or "").replace('"', '\\"')
+    decision_obj = ticket.decision_ticket.Decision
+    decision_text = None
+    decision_name = "Pending Decision"
+    decision_authors = []
     
-    rationale_text = (ticket.schema_data.get("Rationale") or "").replace('"', '\\"')
-    cost_text = (ticket.schema_data.get("Cost") or "").replace('"', '\\"')
-    risk_text = (ticket.schema_data.get("Risk") or "").replace('"', '\\"')
+    if decision_obj:
+        decision_text = escape(decision_obj.decision)
+        if decision_text:
+            decision_name = decision_text[:100]
+        decision_authors = decision_obj.authors or []
+    
+    rationale_text = escape(ticket.decision_ticket.Rationale)
+    cost_text = escape(ticket.decision_ticket.Cost)
+    risk_text = escape(ticket.decision_ticket.Risk)
     
     triples = f"""
     <{person_uri}> a schema:Person ;
-        schema:name "{ticket.author}" .
+        schema:name "{escape(author_name)}" .
     
     # Issue
     <{issue_uri}> a sioc_arg:Issue ;
         schema:name "{issue_title}" ;
         adr:hasAuthor <{person_uri}> ;
-        adr:hasTimeStamp "{norm_dt(ticket.timestamp)}"^^xsd:dateTime ;
+        adr:hasTimeStamp "{norm_dt(issue_ts)}"^^xsd:dateTime ;
         adr:hasDescription <{desc_uri}> .
         
     <{desc_uri}> a adr:IssueDescription ;
@@ -68,10 +84,26 @@ def build_upload_query(ticket: DecisionTicketInput, template_path: Path) -> tupl
     # Decision
     <{decision_uri}> a schema:Decision ;
         adr:decides <{issue_uri}> ;
-        adr:hasAuthor <{person_uri}> ;
-        adr:hasTimeStamp "{norm_dt(ticket.timestamp)}"^^xsd:dateTime ;
-        schema:text \"\"\"{decision_text}\"\"\" ;
-        schema:name \"\"\"{decision_text[:100]}\"\"\" .
+        adr:hasTimeStamp "{norm_dt(ticket.decision_ticket.timestamp)}"^^xsd:dateTime ;
+        schema:name "{decision_name}" .
+    """
+
+    # Add Decision Authors
+    if not decision_authors:
+        # Fallback to issue author if no specific decision authors identified
+        triples += f"<{decision_uri}> adr:hasAuthor <{person_uri}> .\n"
+    else:
+        for auth in decision_authors:
+            d_auth_uri = f"https://example.com/persons/{urllib.parse.quote(auth)}"
+            triples += f"""
+    <{decision_uri}> adr:hasAuthor <{d_auth_uri}> .
+    <{d_auth_uri}> a schema:Person ;
+        schema:name "{escape(auth)}" .
+    """
+
+    if decision_text:
+        triples += f"""
+    <{decision_uri}> schema:text \"\"\"{decision_text}\"\"\" .
     """
 
     if rationale_text:
@@ -96,43 +128,88 @@ def build_upload_query(ticket: DecisionTicketInput, template_path: Path) -> tupl
     """
     
     # Arguments
-    arguments = ticket.schema_data.get("Argument", [])
-    if isinstance(arguments, list):
-        for i, arg in enumerate(arguments):
-            classification = arg.get("classification", "Neutral")
+    arguments = ticket.decision_ticket.Argument or []
+    for i, arg in enumerate(arguments):
+        classification = arg.classification or "Neutral"
+        
+        arg_author_name = arg.author
+        arg_author_uri = f"https://example.com/persons/{urllib.parse.quote(arg_author_name)}"
+        arg_uri = f"https://example.com/arguments/{ticket_key}_{i}"
+        arg_text = escape(arg.argument)
+        
+        # Map classification to SHACL stance property
+        if classification.lower() == "pro":
+            stance_prop = "adr:agrees_with"
+        elif classification.lower() == "con":
+            stance_prop = "adr:disagrees_with"
+        else:
+            stance_prop = "adr:neutral_towards"
+        
+        triples += f"""
+        <{arg_author_uri}> a schema:Person ;
+            schema:name "{escape(arg_author_name)}" .
+        <{arg_uri}> a sioc_arg:Argument ;
+            adr:hasAuthor <{arg_author_uri}> ;
+            adr:hasTimeStamp "{norm_dt(arg.timestamp)}"^^xsd:dateTime ;
+            schema:text \"\"\"{arg_text}\"\"\" .
+        """
+        
+        triples += f"<{decision_uri}> {stance_prop} <{arg_uri}> .\n"
             
-            # Skip if classification is NA
-            if classification.upper() == "NA":
-                continue
-                
-            arg_author_name = arg.get('author', 'unknown')
-            arg_author_uri = f"https://example.com/persons/{urllib.parse.quote(arg_author_name)}"
-            arg_uri = f"https://example.com/arguments/{ticket_key}_{i}"
-            arg_text = arg.get("argument", "").replace('"', '\\"')
-            
-            # Map classification to UI-friendly type and SHACL stance property
-            if classification.lower() == "pro":
-                arg_type = "supports"
-                stance_prop = "adr:agrees_with"
-            elif classification.lower() == "con":
-                arg_type = "opposes"
-                stance_prop = "adr:disagrees_with"
-            else:
-                arg_type = "neutral"
-                stance_prop = "adr:neutral_towards"
-            
+    activity_uri = None
+    activity_uri = None
+    if ticket.ml_elements:
+        if ticket.ml_elements.lifecycle_stage:
+            stage_class = ticket.ml_elements.lifecycle_stage.value
+            activity_uri = f"https://example.com/activities/{ticket_key}"
             triples += f"""
-            <{arg_author_uri}> a schema:Person ;
-                schema:name "{arg_author_name}" .
-            <{arg_uri}> a sioc_arg:Argument ;
-                schema:about <{decision_uri}> ;
-                adr:hasAuthor <{arg_author_uri}> ;
-                adr:hasTimeStamp "{norm_dt(arg.get('timestamp'))}"^^xsd:dateTime ;
-                schema:text \"\"\"{arg_text}\"\"\" .
+            # Lifecycle Activity
+            <{activity_uri}> a mops:{stage_class} ;
+                prov:wasAssociatedWith <{person_uri}> .
+                
+            <{issue_uri}> prov:wasGeneratedBy <{activity_uri}> .
+            <{decision_uri}> prov:wasGeneratedBy <{activity_uri}> .
             """
+
+        if ticket.ml_elements.author_roles:
+            for author_name, role in ticket.ml_elements.author_roles.items():
+                author_uri_role = f"https://example.com/persons/{urllib.parse.quote(author_name)}"
+                role_class = role.value
+                triples += f"""
+            <{author_uri_role}> bridge:hasRole mops:{role_class} .
+            """
+
+        # Main Assets
+        for asset in (ticket.ml_elements.main_assets or []):
+            asset_name = escape(asset.name)
+            asset_uri = f"https://example.com/assets/{urllib.parse.quote(asset_name)}"
+            asset_type = asset.asset_type.value
             
-            triples += f"<{decision_uri}> {stance_prop} <{arg_uri}> .\n"
-            
+            location_triple = ""
+            location = asset.location
+            if location and str(location).lower() != "null":
+                safe_location = escape(location)
+                location_triple = f';\n            mops:hasLocation "{safe_location}"'
+                
+            triples += f"""
+            # Main Asset
+            <{asset_uri}> a mops:{asset_type} ;
+                schema:name "{asset_name}" {location_triple} .
+            """
+            if activity_uri:
+                 triples += f"<{asset_uri}> prov:wasGeneratedBy <{activity_uri}> .\n"
+
+        # Mentioned Assets
+        for asset in (ticket.ml_elements.mentioned_assets or []):
+            asset_name = escape(asset.name)
+            asset_uri = f"https://example.com/assets/{urllib.parse.quote(asset_name)}"
+            asset_type = asset.asset_type.value
+            triples += f"""
+            # Mentioned Asset
+            <{asset_uri}> a mops:{asset_type} ;
+                schema:name "{asset_name}" .
+            """
+
     # Load the upload template
     if not template_path.exists():
         raise FileNotFoundError(f"Upload template not found at {template_path}")

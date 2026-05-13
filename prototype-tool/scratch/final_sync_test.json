@@ -1,0 +1,23 @@
+{
+    "decision_ticket": {
+        "filename": "final_sync_test_v2.json",
+        "status": "closed",
+        "timestamp": "2024-05-13T15:00:00",
+        "Issue": {
+            "title": "Final Structural Sync",
+            "body": "Verifying that metadata inside decision_ticket works end-to-end.",
+            "author": "final_tester",
+            "timestamp": "2024-05-13T14:00:00"
+        },
+        "Decision": "Move all metadata into decision_ticket and remove top-level versioning."
+    },
+    "ml_elements": {
+        "lifecycle_stage": "ModelDeployment",
+        "main_assets": [
+            {
+                "name": "Sync Validator",
+                "asset_type": "MLAsset"
+            }
+        ]
+    }
+}

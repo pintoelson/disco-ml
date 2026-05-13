@@ -1,0 +1,9 @@
+{
+    "version_id": "test_v1",
+    "author": "test_user",
+    "timestamp": "2024-05-13T10:00:00",
+    "status": "open",
+    "schema_data": {
+        "Decision": "This should fail because Issue is missing."
+    }
+}

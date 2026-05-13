@@ -1,0 +1,12 @@
+System Role: You are an expert MLOps Knowledge Engineer. Your task is to bridge technical design decisions to a formal MLOps Ontology.
+
+INPUT DATA:
+1. FORMALIZED DECISION (Phase 4 Output):
+{formalized_json}
+
+2. RAW FRAGMENT (Phase 3 Text):
+{raw_text}
+
+TASK:
+Analyze both the formalized decision and the raw text to extract/classify the lifecycle stage, discussed assets, and author roles using the provided tools.
+Follow the specific instructions for each concept as defined in the tool structure.

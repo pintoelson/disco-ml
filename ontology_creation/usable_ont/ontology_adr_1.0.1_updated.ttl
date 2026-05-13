@@ -52,31 +52,36 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://example.com/adr#addresses
 :addresses rdf:type owl:AnnotationProperty ;
            rdfs:subPropertyOf schema:about ;
-           rdfs:range :Constraint .
+           rdfs:range :Constraint ,
+                      schema:Decision .
 
 
 ###  https://example.com/adr#constrains
 :constrains rdf:type owl:AnnotationProperty ;
             rdfs:subPropertyOf schema:constrains ;
-            rdfs:range :ArchitecturalDesignDecision .
+            rdfs:range :ArchitecturalDesignDecision ,
+                       schema:Decision .
 
 
 ###  https://example.com/adr#enables
 :enables rdf:type owl:AnnotationProperty ;
          rdfs:subPropertyOf schema:enables ;
-         rdfs:range :ArchitecturalDesignDecision .
+         rdfs:range :ArchitecturalDesignDecision ,
+                    schema:Decision .
 
 
 ###  https://example.com/adr#forbids
 :forbids rdf:type owl:AnnotationProperty ;
          rdfs:subPropertyOf schema:excludes ;
-         rdfs:range :ArchitecturalDesignDecision .
+         rdfs:range :ArchitecturalDesignDecision ,
+                    schema:Decision .
 
 
 ###  https://example.com/adr#hasAlternative
 :hasAlternative rdf:type owl:AnnotationProperty ;
                 rdfs:subPropertyOf schema:alternate ;
-                rdfs:range :Alternative .
+                rdfs:range :Alternative ,
+                           schema:Decision .
 
 
 ###  https://example.com/adr#hasConstraint
@@ -93,7 +98,6 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#hasEpitome
 :hasEpitome rdf:type owl:AnnotationProperty ;
-            rdfs:subPropertyOf schema:name ;
             rdfs:range xsd:string .
 
 
@@ -142,13 +146,15 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://example.com/adr#implies
 :implies rdf:type owl:AnnotationProperty ;
          rdfs:subPropertyOf schema:implies ;
-         rdfs:range :ArchitecturalDesignDecision .
+         rdfs:range :ArchitecturalDesignDecision ,
+                    schema:Decision .
 
 
 ###  https://example.com/adr#subsumes
 :subsumes rdf:type owl:AnnotationProperty ;
           rdfs:subPropertyOf skos:broader ;
-          rdfs:range :ArchitecturalDesignDecision .
+          rdfs:range :ArchitecturalDesignDecision ,
+                     schema:Decision .
 
 
 ###  https://example.com/adr#tradeOffWith
@@ -201,10 +207,6 @@ schema:hasPart rdf:type owl:AnnotationProperty .
 schema:implies rdf:type owl:AnnotationProperty .
 
 
-###  https://schema.org/name
-schema:name rdf:type owl:AnnotationProperty .
-
-
 ###  https://schema.org/relatedTo
 schema:relatedTo rdf:type owl:AnnotationProperty .
 
@@ -227,21 +229,19 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#addresses
 :addresses rdf:type owl:ObjectProperty ;
-           rdfs:domain schema:Decision ;
-           rdfs:range schema:Decision .
+           rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#agrees_with
 :agrees_with rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain schema:Decision ;
-             rdfs:range sioc_arg:Argument .
+             rdfs:domain sioc_arg:Argument ;
+             rdfs:range schema:Decision .
 
 
 ###  https://example.com/adr#constrains
 :constrains rdf:type owl:ObjectProperty ;
-            rdfs:domain schema:Decision ;
-            rdfs:range schema:Decision .
+            rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#decides
@@ -254,26 +254,23 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 ###  https://example.com/adr#disagrees_with
 :disagrees_with rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                rdfs:domain schema:Decision ;
-                rdfs:range sioc_arg:Argument .
+                rdfs:domain sioc_arg:Argument ;
+                rdfs:range schema:Decision .
 
 
 ###  https://example.com/adr#enables
 :enables rdf:type owl:ObjectProperty ;
-         rdfs:domain schema:Decision ;
-         rdfs:range schema:Decision .
+         rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#forbids
 :forbids rdf:type owl:ObjectProperty ;
-         rdfs:domain schema:Decision ;
-         rdfs:range schema:Decision .
+         rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#hasAlternative
 :hasAlternative rdf:type owl:ObjectProperty ;
-                rdfs:domain schema:Decision ;
-                rdfs:range schema:Decision .
+                rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#hasAuthor
@@ -287,14 +284,12 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#hasConstraint
 :hasConstraint rdf:type owl:ObjectProperty ;
-               rdfs:domain schema:Decision ;
-               rdfs:range :Constraint .
+               rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#hasCost
 :hasCost rdf:type owl:ObjectProperty ;
-         rdfs:domain schema:Decision ;
-         rdfs:range :Cost .
+         rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#hasDescription
@@ -306,8 +301,7 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#hasHistory
 :hasHistory rdf:type owl:ObjectProperty ;
-            rdfs:domain schema:Decision ;
-            rdfs:range :DecisionHistory .
+            rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#hasPreviousVersion
@@ -319,26 +313,22 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#hasRationale
 :hasRationale rdf:type owl:ObjectProperty ;
-              rdfs:domain schema:Decision ;
-              rdfs:range :Rationale .
+              rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#hasRisk
 :hasRisk rdf:type owl:ObjectProperty ;
-         rdfs:domain schema:Decision ;
-         rdfs:range :Risk .
+         rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#hasState
 :hasState rdf:type owl:ObjectProperty ;
-          rdfs:domain schema:Decision ;
-          rdfs:range :DecisionState .
+          rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#hasTradeOff
 :hasTradeOff rdf:type owl:ObjectProperty ;
-             rdfs:domain schema:Decision ;
-             rdfs:range :TradeOff .
+             rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#hasUpdatedVersion
@@ -350,26 +340,42 @@ schema:subjectOf rdf:type owl:AnnotationProperty .
 
 ###  https://example.com/adr#implies
 :implies rdf:type owl:ObjectProperty ;
-         rdfs:domain schema:Decision ;
-         rdfs:range schema:Decision .
+         rdfs:domain schema:Decision .
 
 
 ###  https://example.com/adr#neutral_towards
 :neutral_towards rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
-                 rdfs:domain schema:Decision ;
-                 rdfs:range sioc_arg:Argument .
+                 rdfs:domain sioc_arg:Argument ;
+                 rdfs:range schema:Decision .
 
 
 ###  https://example.com/adr#subsumes
 :subsumes rdf:type owl:ObjectProperty ;
-          rdfs:domain schema:Decision ;
-          rdfs:range schema:Decision .
+          rdfs:domain schema:Decision .
 
 
 #################################################################
 #    Data properties
 #################################################################
+
+###  http://schema.org/name
+<http://schema.org/name> rdf:type owl:DatatypeProperty ;
+                         rdfs:range xsd:string .
+
+
+###  http://schema.org/text
+<http://schema.org/text> rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :Alternative ,
+                                     :Constraint ,
+                                     :Cost ,
+                                     :Rationale ,
+                                     :Risk ,
+                                     sioc_arg:Argument ,
+                                     sioc_arg:Issue ,
+                                     schema:Decision ;
+                         rdfs:range xsd:string .
+
 
 ###  https://example.com/adr#hasEpitome
 :hasEpitome rdf:type owl:DatatypeProperty ;

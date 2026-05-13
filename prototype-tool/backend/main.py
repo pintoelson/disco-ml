@@ -1,13 +1,11 @@
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
 import httpx
 import re
-import urllib.parse
+import os
 from pathlib import Path
-from typing import List, Dict, Any, Optional
 
-from models import DecisionTicketInput, ArgumentInput
+from models import IngestionPayload
 from sparql_builder import build_upload_query
 
 app = FastAPI(title="DISCO-ML Backend")
@@ -15,14 +13,14 @@ app = FastAPI(title="DISCO-ML Backend")
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[os.environ.get("FRONTEND_URL", "http://localhost:3000")],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-GRAPHDB_URL = "http://localhost:7200"
-DEFAULT_REPO = "disco-ml"
+GRAPHDB_URL = os.environ.get("GRAPHDB_URL", "http://localhost:7200")
+DEFAULT_REPO = os.environ.get("DEFAULT_REPO", "disco-ml")
 
 # --- Helper Functions ---
 
@@ -56,17 +54,17 @@ async def execute_sparql_update(repository_id: str, update_query: str):
 
 # --- Endpoints ---
 
-@app.get("/")
-async def root():
-    return {"message": "DISCO-ML Backend API is running"}
+@app.get("/api/v1/health")
+async def health_check():
+    return {"status": "ok", "message": "DISCO-ML Backend API is running"}
 
-@app.post("/test/upload-ticket")
-async def upload_ticket(ticket: DecisionTicketInput):
+@app.post("/api/v1/tickets/upload")
+async def upload_ticket(ticket: IngestionPayload):
     """
     Maps a formalized Decision Ticket to RDF and uploads it to GraphDB 
     according to the defined SHACL constraints.
     """
-    template_path = Path(__file__).parent / "upload_template.ru"
+    template_path = Path(__file__).parent.parent / "SPARQL Queries" / "upload_template.ru"
     
     try:
         graph_uri, update_query = build_upload_query(ticket, template_path)
@@ -80,7 +78,7 @@ async def upload_ticket(ticket: DecisionTicketInput):
     
     return await execute_sparql_update(DEFAULT_REPO, update_query)
 
-@app.get("/health/graphdb")
+@app.get("/api/v1/graphdb/health")
 async def check_graphdb_health():
     # ... existing code ...
     try:
@@ -96,7 +94,7 @@ async def check_graphdb_health():
     except httpx.RequestError as e:
         raise HTTPException(status_code=503, detail=f"Could not connect to GraphDB: {str(e)}")
 
-@app.get("/repositories")
+@app.get("/api/v1/graphdb/repositories")
 async def get_repositories():
     # ... existing code ...
     try:
@@ -119,10 +117,29 @@ async def get_repositories():
     except httpx.RequestError as e:
         raise HTTPException(status_code=503, detail=f"Could not connect to GraphDB: {str(e)}")
 
-@app.get("/data/tickets")
-async def get_tickets_data():
-    # ... existing code ...
-    template_path = Path(__file__).parent / "data_acquisition_template.ru"
+@app.get("/api/v1/tickets")
+async def get_tickets_data(limit: int = 50, offset: int = 0):
+    # STEP 1: Fetch distinct graph URIs (Pagination)
+    graph_query = f"""
+    SELECT DISTINCT ?g WHERE {{
+        GRAPH ?g {{ ?issue a <https://rdfs.org/sioc/argument#Issue> }}
+        FILTER(STRSTARTS(STR(?g), "https://example.com/graphs/"))
+    }} LIMIT {limit} OFFSET {offset}
+    """
+    graph_results = await execute_sparql_query(DEFAULT_REPO, graph_query)
+    
+    graph_uris = []
+    if "results" in graph_results and "bindings" in graph_results["results"]:
+        for binding in graph_results["results"]["bindings"]:
+            uri = binding.get("g", {}).get("value")
+            if uri:
+                graph_uris.append(f"<{uri}>")
+                
+    if not graph_uris:
+        return {"status": "ok", "count": 0, "data": []}
+        
+    # STEP 2: Fetch detailed triples for ONLY those graphs
+    template_path = Path(__file__).parent.parent / "SPARQL Queries" / "data_acquisition_template.ru"
     if not template_path.exists():
         raise HTTPException(status_code=500, detail="SPARQL template not found")
     try:
@@ -130,13 +147,10 @@ async def get_tickets_data():
             query_template = f.read()
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error reading template: {str(e)}")
-    query = query_template
-    query = re.sub(r"FROM\s+<[^>]+>", "", query, flags=re.IGNORECASE)
-    base_uri = "https://example.com/graphs/"
-    query = re.sub(r"WHERE\s*\{", f"WHERE {{\n    GRAPH ?g {{\n        FILTER(STRSTARTS(STR(?g), \"{base_uri}\"))", query, flags=re.IGNORECASE)
-    query = query.rstrip()
-    if query.endswith("}"):
-        query = query[:-1] + "\n    }\n}"
+        
+    values_clause = f"VALUES ?g {{ {' '.join(graph_uris)} }}"
+    query = query_template.replace("{{GRAPH_FILTER}}", values_clause)
+    
     results = await execute_sparql_query(DEFAULT_REPO, query)
     
     # Process results into the frontend-expected format
@@ -156,26 +170,32 @@ async def get_tickets_data():
                     "id": ticket_id,
                     "title": binding.get("issueLabel", {}).get("value"),
                     "status": binding.get("status", {}).get("value") or "open",
-                    "bucket": binding.get("phase", {}).get("value") or "Miscellaneous",
+                    "bucket": "Miscellaneous", # Will be overwritten by stageClass if present
                     "owner": {
                         "id": binding.get("issueAuthor", {}).get("value").split("/")[-1],
-                        "name": binding.get("issueAuthorName", {}).get("value")
+                        "name": binding.get("issueAuthorName", {}).get("value"),
+                        "role": binding.get("issueAuthorRole", {}).get("value")
                     },
                     "createdAt": binding.get("issueTime", {}).get("value"),
                     "updatedAt": "",
                     "tags": [],
                     "currentVersionIndex": 0,
-                    "versions": [],
+                    "versions": {},
                     "cost": "",
                     "risk": ""
                 }
             
+            # Update bucket if stageClass is present
+            stage_class = binding.get("stageClass", {}).get("value")
+            if stage_class:
+                # Map camelCase class to human readable
+                mapped_bucket = re.sub(r'([A-Z])', r' \1', stage_class).strip().replace("_", " ")
+                tickets_map[ticket_id]["bucket"] = mapped_bucket
+
             # Version processing
             version_id = graph_uri.split("/")[-1]
-            version = next((v for v in tickets_map[ticket_id]["versions"] if v["versionId"] == version_id), None)
-            
-            if not version:
-                version = {
+            if version_id not in tickets_map[ticket_id]["versions"]:
+                tickets_map[ticket_id]["versions"][version_id] = {
                     "versionId": version_id,
                     "decision": binding.get("decisionLabel", {}).get("value") or "",
                     "rationale": binding.get("rationaleText", {}).get("value") or "",
@@ -184,36 +204,57 @@ async def get_tickets_data():
                     "context": binding.get("issueBody", {}).get("value") or binding.get("issueLabel", {}).get("value"),
                     "author": binding.get("issueAuthorName", {}).get("value") or "unknown",
                     "timestamp": binding.get("issueTime", {}).get("value"),
-                    "arguments": []
+                    "arguments": {},
+                    "assets": {}
                 }
-                tickets_map[ticket_id]["versions"].append(version)
+            version = tickets_map[ticket_id]["versions"][version_id]
                 
+            # Asset processing
+            asset_uri = binding.get("asset", {}).get("value")
+            if asset_uri:
+                asset_id = asset_uri.split("/")[-1]
+                if asset_id not in version["assets"]:
+                    version["assets"][asset_id] = {
+                        "id": asset_id,
+                        "name": binding.get("assetName", {}).get("value"),
+                        "type": binding.get("assetClass", {}).get("value") or "MLAsset",
+                        "location": binding.get("assetLocation", {}).get("value")
+                    }
+
             # Argument processing
             arg_uri = binding.get("arg", {}).get("value")
             if arg_uri:
                 arg_id = arg_uri.split("/")[-1]
-                if not any(a["id"] == arg_id for a in version["arguments"]):
-                    version["arguments"].append({
+                if arg_id not in version["arguments"]:
+                    version["arguments"][arg_id] = {
                         "id": arg_id,
                         "content": binding.get("comment", {}).get("value"),
                         "type": binding.get("stance", {}).get("value") or "neutral",
                         "author": binding.get("argAuthorName", {}).get("value"),
+                        "role": binding.get("argAuthorRole", {}).get("value"),
                         "createdAt": binding.get("argTime", {}).get("value")
-                    })
+                    }
                     
     # Final assembly: Sort versions and keep ONLY the latest one
     processed_results = []
     for ticket in tickets_map.values():
+        versions_list = list(ticket["versions"].values())
+        
         # Natural sort for versions (e.g., v2 comes before v10)
         def get_v_num(v_obj):
             v_id = v_obj["versionId"]
             match = re.search(r"_v(\d+)", v_id)
             return int(match.group(1)) if match else 0
             
-        ticket["versions"].sort(key=get_v_num)
+        versions_list.sort(key=get_v_num)
+        ticket["versions"] = versions_list
+        
+        for v in versions_list:
+            v["arguments"] = list(v["arguments"].values())
+            v["assets"] = list(v["assets"].values())
         
         # Set top-level fields from the latest version
-        latest = ticket["versions"][-1]
+        latest = versions_list[-1]
         
         ticket["decision"] = latest.get("decision", "")
         ticket["rationale"] = latest.get("rationale", "")
@@ -223,6 +264,7 @@ async def get_tickets_data():
         ticket["description"] = latest.get("context", "")
         ticket["author"] = latest.get("author", ticket["owner"]["name"])
         ticket["arguments"] = latest["arguments"]
+        ticket["assets"] = latest["assets"]
         ticket["currentVersionIndex"] = len(ticket["versions"]) - 1
         
         processed_results.append(ticket)

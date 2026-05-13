@@ -47,6 +47,7 @@ export interface Argument {
   content: string;
   type: "supports" | "opposes" | "neutral";
   author: string;
+  role?: string;
   createdAt: string;
 }
 
@@ -59,6 +60,7 @@ export interface TicketVersion {
   context: string;
   timestamp: string;
   arguments: Argument[];
+  assets?: { id: string; name: string; type: string; location?: string }[];
 }
 
 export interface DecisionTicket {
@@ -69,6 +71,7 @@ export interface DecisionTicket {
   owner: {
     id: string;
     name: string;
+    role?: string;
   };
   createdAt: string;
   updatedAt?: string;
@@ -84,4 +87,5 @@ export interface DecisionTicket {
   description: string;
   author: string;
   arguments: Argument[];
+  assets?: { id: string; name: string; type: string; location?: string }[];
 }

@@ -11,7 +11,8 @@ export default function DecisionTicketsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/data/tickets")
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    fetch(`${apiUrl}/api/v1/tickets`)
       .then((res) => res.json())
       .then((resData) => {
         if (resData.status === "ok") {

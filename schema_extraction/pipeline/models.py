@@ -7,8 +7,6 @@ class GitHubComment(BaseModel):
     author: str
     timestamp: datetime
     body: str
-    classification: Optional[str] = None  # Pro, Con, Neutral, NA, etc.
-    justification: Optional[str] = None # Why LLM classified it this way
 
 class GitHubItem(BaseModel):
     id: str
@@ -20,9 +18,6 @@ class GitHubItem(BaseModel):
     timestamp: datetime
     status: str
     comments: List[GitHubComment] = []
-    lifecycle_stage: Optional[str] = None
-    lifecycle_artifact: Optional[str] = None
-    lifecycle_justification: Optional[str] = None
     
 class VersionedItem(BaseModel):
     version_id: str  # e.g., "{item_id}_v_{timestamp}"
@@ -32,18 +27,24 @@ class VersionedItem(BaseModel):
     author: str
     timestamp: datetime
     status: str
-    text_content: str  # The accumulated text context
-    trigger_classification: str # Pro, Con, Neutral
-    lifecycle_stage: Optional[str] = None
-    lifecycle_artifact: Optional[str] = None
-    lifecycle_justification: Optional[str] = None
+    text_content: str  # The trigger text (body for v1, comment for v2+)
+    previous_version_id: Optional[str] = None # For incremental formalization
     
 class DecisionFormalization(BaseModel):
-    version_id: str
-    filename: Optional[str] = None
-    author: Optional[str] = None
-    timestamp: Optional[datetime] = None
-    status: Optional[str] = None
-    lifecycle_stage: Optional[str] = None
-    lifecycle_artifact: Optional[str] = None
-    schema_data: Dict[str, Any]
+    decision_ticket: Dict[str, Any] = {}
+
+class MLAsset(BaseModel):
+    name: str = Field(..., description="Name of the ML asset")
+    asset_type: str = Field(..., description="Type of asset (Dataset, Model, Code, Feature Set, Provenance, or NA)")
+    location: Optional[str] = Field(None, description="Link or location of the asset")
+    discussed_by: List[str] = Field(default_factory=list, description="List of authors who discussed this asset")
+    current_state: Optional[str] = Field(None, description="Current state of the asset (e.g., 'Proposed', 'In Development', 'Implemented')")
+
+class MLElements(BaseModel):
+    lifecycle_stage: str = Field(..., description="The MLOps lifecycle stage")
+    main_assets: List[MLAsset] = Field(default_factory=list, description="Primary assets discussed")
+    mentioned_assets: List[MLAsset] = Field(default_factory=list, description="Assets mentioned in passing")
+    author_roles: Dict[str, str] = Field(default_factory=dict, description="Map of GitHub username to their identified role")
+
+class BridgedDecision(DecisionFormalization):
+    ml_elements: MLElements

@@ -1,39 +1,52 @@
 repositories:
   - "Project-MONAI/MONAI"
 
+extraction_model: "rwth_gpt/mistralai-mistral-small-4-119b"
+
 
 extraction_schema:
   - name: "Issue"
-    description: "The original GitHub Issue or Pull Request that started the discussion. Extract the exact title, body, author, and timestamp as provided in the context."
+    description: "The original GitHub Issue or Pull Request metadata."
     singular_occurrence: true
     type: "JsonObjectConcept"
     structure:
-      title: "str"
-      body: "str"
-      author: "str"
-      timestamp: "str"
+      title: "str (The title of the issue)"
+      body: "str (The full body text of the issue)"
+      author: "str (The username who created it)"
+      timestamp: "str (The creation date)"
 
   - name: "Decision"
-    description: "The current consensus of the choice made. If a decision was established earlier, it REMAINS the decision. DO NOT return null if a consensus was previously reached. Summarize the consensus up to this point."
+    description: "The proposed or reached technical decision. Summarize the current path forward and list the authors/stakeholders involved. If a decision is being discussed or proposed, extract it here."
     singular_occurrence: true
+    type: "JsonObjectConcept"
+    structure:
+      decision: "str (The path forward or reached decision)"
+      authors: "str (Comma-separated GitHub usernames of stakeholders involved)"
 
   - name: "Rationale"
-    description: "The justification for the decision. Maintain technical reasoning discussed throughout the history. Ensure established rationale is carried forward."
+    description: "The technical reasoning or justification for the proposal or decision."
     singular_occurrence: true
 
   - name: "Description"
-    description: "The scope and context (components, layers, MLOps stages). Defines where the decision applies."
+    description: "Technical scope and context of the proposal."
     singular_occurrence: true
 
   - name: "Argument"
-    description: "Extract arguments (Pro, Con, Neutral) from the text. Use provided classification labels."
+    description: >
+      CONVERSATION LOG: Extract EVERYTHING from the NEW FRAGMENT.
+      This is a historical record, so NO fragment should be skipped. 
+      - Pro: Supports the proposal or decision.
+      - Con: Disagrees or identifies blockers.
+      - Neutral: ALL OTHER content (Status checks, inquiries, 'any updates?', PR links, and social chatter).
+      CRITICAL: Even if the fragment is short or non-technical, you MUST extract it.
+      Return author, timestamp, classification (Pro/Con/Neutral), and argument text.
     singular_occurrence: false
     type: "JsonObjectConcept"
     structure:
-      author: "str"
-      timestamp: "str"
-      classification: "str" # Must be Pro, Con, or Neutral
-      argument: "str"
+      author: "str (GitHub username)"
+      timestamp: "str (ISO timestamp)"
+      classification: "str (Stance vs CURRENT DECISION: Pro, Con, or Neutral)"
+      argument: "str (Technical content of the comment)"
 
   - name: "Cost"
     description: "Resources required (e.g., development time, compute, storage). Summarize if mentioned or clearly implied. This is CUMULATIVE: maintain all previously identified costs unless revised."
@@ -41,4 +54,64 @@ extraction_schema:
 
   - name: "Risk"
     description: "Potential downsides, technical debt, or uncertainties. Summarize if mentioned or clearly implied. This is CUMULATIVE: maintain all previously identified risks unless revised."
+    singular_occurrence: true
+
+bridge_schema:
+  - name: "lifecycle_stage"
+    description: >
+      Classify the project state into EXACTLY ONE of the following CRISP-ML(Q) stages. 
+      Return ONLY the stage name, not the description:
+      - ML Project Initiation
+      - Data Preparation
+      - Modeling Development
+      - Model Evaluation
+      - Model Deployment
+      - Monitoring & Maintenance
+      - Miscellaneous
+      - Uncertain
+    singular_occurrence: true
+
+  - name: "main_assets"
+    description: >
+      CRITICAL: Extract ONLY the high-level, primary ML assets (Model, Dataset, Code Project) 
+      that are the DIRECT SUBJECT of the decision. 
+      STRICT EXCLUSIONS: 
+      1. Do NOT include sub-components, internal layers, 
+         utility functions (e.g., pixel_unshuffle), or helper classes. 
+      2. Do NOT create duplicate entries for the same asset . 
+         Consolidate into a single canonical name.
+      3. Supporting blocks or refactored components belong in 'mentioned_assets'.
+      Asset types must be exactly one of: Dataset, Model, Code, Feature Set, Provenance, or NA.
+    singular_occurrence: false
+    type: "JsonObjectConcept"
+    structure:
+      name: "str (Canonical name of the asset)"
+      asset_type: "str (MUST be exactly one of: Dataset, Model, Code, Feature Set, Provenance, or NA.)"
+      location: "str (The URL or path mentioned. Set to null if no explicit link is found. DO NOT use placeholders.)"
+      discussed_by: "str (Comma-separated list of GitHub usernames who argue about this asset.)"
+      current_state: "str (Status of the asset, e.g., 'Proposed', 'Implemented'.)"
+
+  - name: "mentioned_assets"
+    description: >
+      Supporting technical components, sub-modules, layers, 
+      utility functions, or reference libraries mentioned in the text. 
+      These are assets that facilitate the main decision but are not the primary subject itself.
+      Asset types must be exactly one of: Dataset, Model, Code, Feature Set, Provenance, or NA.
+    singular_occurrence: false
+    type: "JsonObjectConcept"
+    structure:
+      name: "str (Name of the asset, e.g., 'MDTA')"
+      asset_type: "str (MUST be exactly one of: Dataset, Model, Code, Feature Set, Provenance, or NA.)"
+      location: "str (The URL or path mentioned. Set to null if no explicit link is found.)"
+
+  - name: "author_role"
+    description: >
+      Identify the author's role based on their technical contribution in this fragment. 
+      Return ONLY the role name (e.g., 'ML Engineer'). Do not include descriptions:
+      - Data Engineer
+      - Data Scientist
+      - ML Engineer
+      - Project Team Member
+      - Software Engineer
+      - NA
     singular_occurrence: true

@@ -5,9 +5,30 @@ import { Search, Bell, Settings, Menu } from "lucide-react";
 import ThemeToggle from "../theme-toggle";
 import { useSidebar } from "./sidebar-context";
 import { ClientOnly } from "../ui/client-only";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export const Header: FC = () => {
   const { toggleSidebar } = useSidebar();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState(searchParams?.get("q") || "");
+
+  useEffect(() => {
+    setSearchQuery(searchParams?.get("q") || "");
+  }, [searchParams]);
+
+  const handleSearch = (term: string) => {
+    setSearchQuery(term);
+    const params = new URLSearchParams(searchParams?.toString());
+    if (term) {
+      params.set("q", term);
+    } else {
+      params.delete("q");
+    }
+    router.replace(`${pathname}?${params.toString()}`);
+  };
 
   return (
     <header className="h-16 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 sticky top-0 z-10">
@@ -28,6 +49,8 @@ export const Header: FC = () => {
           <input
             type="text"
             placeholder="Search tickets, decisions, arguments..."
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
             className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 dark:text-gray-100"
           />
         </div>

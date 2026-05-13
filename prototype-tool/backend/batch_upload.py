@@ -5,8 +5,69 @@ import re
 from pathlib import Path
 from collections import defaultdict
 
-BACKEND_URL = "http://localhost:8000/test/upload-ticket"
-FORMALIZED_DATA_DIR = Path("../../schema_extraction/pipeline/data/formalized/Project-MONAI_MONAI")
+BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8000/api/v1/tickets/upload")
+FORMALIZED_DATA_DIR = Path("../../schema_extraction/pipeline/data/bridged/Project-MONAI_MONAI")
+
+STATE_FILE = Path(".ingested_state.json")
+
+# Legacy Mappings moved from Backend to Ingestion Script
+STAGE_MAP = {
+    "ML Project Initiation": "Business_and_Data_Understanding",
+    "Data Preparation": "Data_Engineering",
+    "Modeling Development": "Model_Engineering",
+    "Model Evaluation": "Model_Evaluation",
+    "Model Deployment": "ModelDeployment",
+    "Monitoring & Maintenance": "ModelMonitoring"
+}
+
+ASSET_MAP = {
+    "Dataset": "Dataset",
+    "Model": "MLAsset",
+    "Code": "MLAsset",
+    "Feature Set": "FeatureSet",
+    "Provenance": "ProvenanceRecord",
+    "NA": "MLAsset"
+}
+
+ROLE_MAP = {
+    "Data Engineer": "DataEngineer",
+    "ML Engineer": "MLEngineer",
+    "Data Scientist": "DataScientist",
+    "Software Engineer": "SoftwareEngineer",
+    "IT Operations Team": "ITOpsTeam",
+    "Project Team": "ProjectTeam"
+}
+
+def load_state():
+    if STATE_FILE.exists():
+        with open(STATE_FILE, "r") as f:
+            return set(json.load(f))
+    return set()
+
+def save_state(state_set):
+    with open(STATE_FILE, "w") as f:
+        json.dump(list(state_set), f)
+
+def normalize_payload(payload):
+    """Maps legacy human-readable strings to strict ontology class names."""
+    # Normalize Stage
+    if "lifecycle_stage" in payload and payload["lifecycle_stage"] in STAGE_MAP:
+        payload["lifecycle_stage"] = STAGE_MAP[payload["lifecycle_stage"]]
+    
+    # Normalize Roles
+    if "author_roles" in payload and payload["author_roles"]:
+        new_roles = {}
+        for author, role in payload["author_roles"].items():
+            new_roles[author] = ROLE_MAP.get(role, "Role")
+        payload["author_roles"] = new_roles
+        
+    # Normalize Assets
+    if "main_assets" in payload and payload["main_assets"]:
+        for asset in payload["main_assets"]:
+            if "asset_type" in asset:
+                asset["asset_type"] = ASSET_MAP.get(asset["asset_type"], "MLAsset")
+                
+    return payload
 
 def batch_upload_versioned(ticket_limit=10):
     if not FORMALIZED_DATA_DIR.exists():
@@ -32,7 +93,7 @@ def batch_upload_versioned(ticket_limit=10):
     print(f"Found {len(ticket_groups)} unique tickets.")
     print(f"Prioritizing tickets with fewest versions...")
 
-    success_count = 0
+    state = load_state()
     total_files_uploaded = 0
     
     for i, (ticket_id, files) in enumerate(sorted_tickets):
@@ -45,6 +106,10 @@ def batch_upload_versioned(ticket_limit=10):
         files.sort(key=lambda x: x.name)
         
         for file_path in files:
+            if file_path.name in state:
+                print(f"  Skipping {file_path.name} (already uploaded)")
+                continue
+
             print(f"  Uploading {file_path.name}...", end=" ", flush=True)
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
@@ -53,11 +118,16 @@ def batch_upload_versioned(ticket_limit=10):
                 if "filename" not in payload:
                     payload["filename"] = file_path.name
 
+                # Strict Ontology Normalization
+                payload = normalize_payload(payload)
+
                 response = requests.post(BACKEND_URL, json=payload)
                 
                 if response.status_code == 200:
                     print("OK")
                     total_files_uploaded += 1
+                    state.add(file_path.name)
+                    save_state(state)
                 else:
                     print(f"FAILED ({response.status_code})")
                     print(f"    Detail: {response.text}")

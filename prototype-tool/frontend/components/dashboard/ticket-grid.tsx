@@ -16,9 +16,10 @@ import {
   User,
   History,
 } from "lucide-react";
+import { ClientOnly } from "../ui/client-only";
+import { useSearchParams } from "next/navigation";
 import { Dialog, DialogContent } from "../ui/dialog";
 import { TicketDetails } from "../decision-ticket/ticket-details";
-import { ClientOnly } from "../ui/client-only";
 
 const BUCKETS: TicketBucket[] = [
   "ML Project Initiation",
@@ -37,8 +38,8 @@ interface TicketCardProps {
 }
 
 const TicketCard: FC<TicketCardProps> = ({ ticket, onTicketClick }) => {
-  // Extract version number for display
-  const versionId = ticket.versions[0]?.versionId || "v1";
+  const currentVersion = ticket.versions[ticket.currentVersionIndex] || ticket.versions[ticket.versions.length - 1];
+  const versionId = currentVersion?.versionId || "v1";
   const versionNum = versionId.includes("_v") ? `v${versionId.split("_v").pop()}` : versionId;
 
   return (
@@ -135,14 +136,18 @@ const BucketColumn: FC<BucketColumnProps> = ({ bucket, tickets, onTicketClick })
 };
 
 const Dashboard: FC = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams?.get("q") || "";
+
+  
   const [tickets, setTickets] = useState<DecisionTicket[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedTicket, setSelectedTicket] = useState<DecisionTicket | null>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8000/data/tickets")
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    fetch(`${apiUrl}/api/v1/tickets`)
       .then((res) => res.json())
       .then((resData) => {
         if (resData.status === "ok") {
@@ -158,7 +163,7 @@ const Dashboard: FC = () => {
 
   const handleTicketClick = (ticket: DecisionTicket) => {
     setSelectedTicket(ticket);
-    setIsDialogOpen(true);
+    setIsModalOpen(true);
   };
 
   const filteredTickets = tickets.filter((ticket) =>
@@ -191,18 +196,6 @@ const Dashboard: FC = () => {
 
       <div className="flex items-center justify-between mb-8 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="flex items-center gap-4">
-          <div className="relative w-96">
-            <ClientOnly fallback={<div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" />}>
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-            </ClientOnly>
-            <input
-              type="text"
-              placeholder="Search by title, decision, or ID..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100"
-            />
-          </div>
           <Button variant="outline" className="flex items-center gap-2 dark:border-gray-700 dark:text-gray-300">
             <ClientOnly fallback={<div className="w-4 h-4" />}>
               <Filter className="w-4 h-4" />
@@ -243,12 +236,10 @@ const Dashboard: FC = () => {
         )}
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        {selectedTicket && (
-          <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
-            <TicketDetails ticket={selectedTicket} />
-          </DialogContent>
-        )}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden p-0 gap-0">
+          {selectedTicket && <TicketDetails ticket={selectedTicket} />}
+        </DialogContent>
       </Dialog>
     </div>
   );

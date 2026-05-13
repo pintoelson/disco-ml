@@ -1,5 +1,8 @@
 import { FC } from "react";
+import { useRouter } from "next/navigation";
 import { DecisionTicket } from "../../lib/types";
+import { Button } from "../ui/button";
+import { ExternalLink } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { Calendar, User, FileText, Link as LinkIcon, AlertCircle, GitBranch, MessageSquare } from "lucide-react";
@@ -12,6 +15,8 @@ interface Props {
 }
 
 export const TicketDetails: FC<Props> = ({ ticket }) => {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col h-full max-h-[85vh]">
       <DialogHeader className="mb-6">
@@ -43,8 +48,24 @@ export const TicketDetails: FC<Props> = ({ ticket }) => {
                   <User className="w-3.5 h-3.5" />
                 </ClientOnly>
                 {ticket.author}
+                {ticket.owner?.role && (
+                  <Badge variant="secondary" className="ml-1 text-[10px] h-4 py-0 px-1.5">
+                    {ticket.owner.role}
+                  </Badge>
+                )}
               </span>
             </DialogDescription>
+          </div>
+          <div className="flex gap-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="flex items-center gap-2 border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-400 dark:hover:bg-blue-900/20"
+              onClick={() => router.push(`/ticket/${ticket.id}`)}
+            >
+              <ExternalLink className="w-4 h-4" />
+              View Full Timeline
+            </Button>
           </div>
         </div>
       </DialogHeader>
@@ -55,7 +76,9 @@ export const TicketDetails: FC<Props> = ({ ticket }) => {
           <TabsTrigger value="arguments" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 shadow-sm">
             Arguments ({ticket.arguments?.length || 0})
           </TabsTrigger>
-          <TabsTrigger value="history" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 shadow-sm">History</TabsTrigger>
+          <TabsTrigger value="artifacts" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 shadow-sm">
+            Artifacts ({ticket.assets?.length || 0})
+          </TabsTrigger>
         </TabsList>
 
         <div className="flex-1 overflow-y-auto pr-2 space-y-6">
@@ -134,7 +157,9 @@ export const TicketDetails: FC<Props> = ({ ticket }) => {
               </div>
             ) : (
               <div className="space-y-3">
-                {ticket.arguments.map((arg, index) => (
+                {[...ticket.arguments]
+                  .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
+                  .map((arg, index) => (
                   <div
                     key={arg.id || index}
                     className={`flex gap-4 p-4 rounded-xl border transition-all ${
@@ -167,6 +192,11 @@ export const TicketDetails: FC<Props> = ({ ticket }) => {
                           <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-1.5">
                             <User className="w-3 h-3" />
                             {arg.author}
+                            {arg.role && (
+                              <Badge variant="secondary" className="ml-1 text-[10px] h-3.5 py-0 px-1 bg-gray-200 dark:bg-gray-700">
+                                {arg.role}
+                              </Badge>
+                            )}
                           </span>
                           {arg.createdAt && (
                             <span className="text-xs text-gray-500 flex items-center gap-1">
@@ -186,42 +216,43 @@ export const TicketDetails: FC<Props> = ({ ticket }) => {
             )}
           </TabsContent>
 
-          {/* History Tab */}
-          <TabsContent value="history" className="mt-0 pb-6">
-            <div className="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-gray-200 dark:before:bg-gray-800">
-              {ticket.versions.slice().reverse().map((v, i) => (
-                <div key={v.versionId} className="relative">
-                  <div className={`absolute -left-6 top-1 w-4 h-4 rounded-full border-2 bg-white dark:bg-gray-900 ${
-                    i === 0 ? "border-blue-500 z-10" : "border-gray-300 dark:border-gray-700"
-                  }`} />
-                  <div className={`p-4 rounded-xl border transition-all ${
-                    i === 0 
-                      ? "bg-blue-50/30 border-blue-100 dark:bg-blue-900/10 dark:border-blue-900/30 shadow-sm" 
-                      : "bg-white border-gray-100 dark:bg-gray-900/50 dark:border-gray-800 opacity-80"
-                  }`}>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-tight">
-                        Version {v.versionId.split('_v').pop()}
-                        {i === 0 && <Badge className="ml-2 bg-blue-100 text-blue-700 hover:bg-blue-100 border-none text-[10px] h-4">LATEST</Badge>}
-                      </span>
-                      <span className="text-[10px] text-gray-500 font-medium">
-                        {new Date(v.timestamp).toLocaleString()}
-                      </span>
+          {/* Artifacts Tab */}
+          <TabsContent value="artifacts" className="mt-0 pb-6">
+            {!ticket.assets || ticket.assets.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-20 text-gray-400 dark:text-gray-500 border-2 border-dashed border-gray-100 dark:border-gray-800 rounded-2xl">
+                <FileText className="w-10 h-10 opacity-20 mb-3" />
+                <p className="text-sm font-medium">No technical artifacts identified yet.</p>
+                <p className="text-xs mt-1">Artifacts like datasets, models, and code will appear here.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-4">
+                {ticket.assets.map((asset, index) => (
+                  <Card key={asset.id || index} className="overflow-hidden border-gray-200 dark:border-gray-800">
+                    <div className="p-4 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-lg">
+                          <FileText className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h4 className="font-semibold text-gray-900 dark:text-gray-100">{asset.name}</h4>
+                            <Badge variant="outline" className="text-[10px] uppercase h-4 py-0 font-bold">
+                              {asset.type}
+                            </Badge>
+                          </div>
+                          {asset.location && (
+                            <a href={asset.location} target="_blank" rel="noreferrer" className="text-xs text-blue-500 hover:underline flex items-center gap-1 mt-1">
+                              <ExternalLink className="w-3 h-3" />
+                              {asset.location.length > 50 ? asset.location.substring(0, 50) + "..." : asset.location}
+                            </a>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
-                      {v.decision || "No decision summary in this version."}
-                    </p>
-                    <div className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center gap-3">
-                      <Badge variant="outline" className="text-[10px] py-0 h-4">
-                        {v.arguments.length} arguments
-                      </Badge>
-                      {v.cost && <Badge variant="outline" className="text-[10px] py-0 h-4 border-purple-200 text-purple-600">Cost included</Badge>}
-                      {v.risk && <Badge variant="outline" className="text-[10px] py-0 h-4 border-red-200 text-red-600">Risk included</Badge>}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  </Card>
+                ))}
+              </div>
+            )}
           </TabsContent>
         </div>
       </Tabs>

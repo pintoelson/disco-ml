@@ -47,21 +47,25 @@ export function generateGraphFromTicket(ticket: DecisionTicket) {
     });
   });
 
-  version.artifacts.forEach((art) => {
-    const artNodeId = `art-${art.id}`;
-    nodes.push({
-      id: artNodeId,
-      type: "artifact",
-      label: art.name,
-      metadata: { type: art.type },
+  // @ts-ignore - version.artifacts is removed from types but might still be in data
+  if (version.artifacts) {
+    // @ts-ignore
+    version.artifacts.forEach((art) => {
+      const artNodeId = `art-${art.id}`;
+      nodes.push({
+        id: artNodeId,
+        type: "artifact",
+        label: art.name,
+        metadata: { type: art.type },
+      });
+      edges.push({
+        id: `edge-art-${art.id}`,
+        source: decisionNodeId,
+        target: artNodeId,
+        type: "usesArtifact",
+      });
     });
-    edges.push({
-      id: `edge-art-${art.id}`,
-      source: decisionNodeId,
-      target: artNodeId,
-      type: "usesArtifact",
-    });
-  });
+  }
 
   return { nodes, edges };
 }

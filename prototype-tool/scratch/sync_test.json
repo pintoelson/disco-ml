@@ -1,0 +1,19 @@
+{
+    "version_id": "sync_test_v1",
+    "author": "sync_tester",
+    "timestamp": "2024-05-13T12:00:00",
+    "status": "open",
+    "decision_ticket": {
+        "Issue": "Verifying structural synchronization between pipeline and backend.",
+        "Decision": "Rename all data keys to decision_ticket and ml_elements."
+    },
+    "ml_elements": {
+        "lifecycle_stage": "Data_Engineering",
+        "main_assets": [
+            {
+                "name": "Validation Model",
+                "asset_type": "Model"
+            }
+        ]
+    }
+}
